@@ -9,7 +9,6 @@ public class PlayerInteracteble : ITickable
     private LayerMask _layerInteracteble;
     private float _distance;
     private string _description;
-
     public event Action<string> OnChangeCurrentInteracteble;
 
     public PlayerInteracteble(SettingsPlayer settingsPlayer, Transform head)
@@ -43,14 +42,14 @@ public class PlayerInteracteble : ITickable
     public void OnInteracteble()
     {
         if (_currentInteracteble == null) { return; }
-        //_currentInteracteble.BaseInteract();
+        _currentInteracteble.BaseInteract();
     }
 
     private void ChangeCurrentInteracteble(IInteracteble interacteble)
     {
         if (interacteble == _currentInteracteble) { return; }
         _currentInteracteble = interacteble;
-        //_description = _currentInteracteble == null ? string.Empty : _currentInteracteble.Description;
+        _description = _currentInteracteble == null ? string.Empty : _currentInteracteble.Description;
         OnChangeCurrentInteracteble?.Invoke(_description);
     }
 }

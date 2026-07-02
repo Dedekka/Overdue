@@ -18,7 +18,7 @@ public class PlayerLook
         _sensitivityY = settingsPlayer.SensitivityY;
         _sensitivityX = settingsPlayer.SensitivityX;
         _coefficientSensitivityAim = 1;
-        _sensitivity = 1;
+        _sensitivity = settingsPlayer.MainSensitivity;
         Cursor.lockState = CursorLockMode.Locked;
     }
 

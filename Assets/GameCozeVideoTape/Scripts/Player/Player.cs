@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public PlayerMove PlayerMove => _playerMove;
     public PlayerLook PlayerLook => _playerLook;
-    //public PlayerAim PlayerAim => _playerAim;
+    public PlayerAim PlayerAim => _playerAim;
     //public PlayerWeapon PlayerWeapon => _playerWeapon;
     //public PlayerHealth PlayerHealth => _playerHealth;
     public CharacterController CharacterController => _characterController;
@@ -17,20 +17,20 @@ public class Player : MonoBehaviour
     //private PlayerWeapon _playerWeapon;
     //private PlayerHealth _playerHealth;
     private PlayerLook _playerLook;
-    //private PlayerAim _playerAim;
+    private PlayerAim _playerAim;
     //private SystemBuss _systemBuss;
 
     [Inject]
-    public void Construct(PlayerMove playerMove, PlayerLook playerLook)//, PlayerAim playerAim, PlayerWeapon playerWeapon, SystemBuss systemBuss, PlayerHealth playerHealth, PlayerInteracteble playerInteracteble)
+    public void Construct(PlayerMove playerMove, PlayerLook playerLook, PlayerAim playerAim)//, PlayerWeapon playerWeapon, SystemBuss systemBuss, PlayerHealth playerHealth, PlayerInteracteble playerInteracteble)
     {
         _playerMove = playerMove;
         _playerLook = playerLook;
-        //_playerAim = playerAim;
+        _playerAim = playerAim;
         //_playerHealth = playerHealth;
         //_playerWeapon = playerWeapon;
         //_systemBuss = systemBuss;
         //_playerInteracteble = playerInteracteble;
-       
+
     }
 
     private void Awake()

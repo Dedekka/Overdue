@@ -20,4 +20,14 @@ MonoBehaviour:
   _gravity: -9.8
   _sensitivityY: 30
   _sensitivityX: 30
-  _sensitivity: 0
+  _sensitivity: 0.25
+  _coefficientSensitivityAim: 0.5
+  _coefficientSpeedMoveForAim: 0.5
+  _startFieldOfView: 60
+  _endFieldOfView: 30
+  _speedChooseView: 100
+  _layerInteracteble:
+    serializedVersion: 2
+    m_Bits: 128
+  _distanceInteracteble: 1
+  _coefficientSmoothSpeed: 0

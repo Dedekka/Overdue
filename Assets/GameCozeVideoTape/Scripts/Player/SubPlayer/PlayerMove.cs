@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using Zenject;
 
-public class PlayerMove : IFixedTickable //ITickable,
+public class PlayerMove : IFixedTickable //ITickable,*/
 {
     private Collider[] _colliders;
     private CharacterController _controller;
@@ -14,8 +13,6 @@ public class PlayerMove : IFixedTickable //ITickable,
     private Vector3 _final;
     private LayerMask _groundLayer;
     private float _coefficientSpeedForAim;
-    private float _coefficientSpeedForAir;
-    private float _coefficientKidSpeedMove;
     private float _jumpHeight;
     private float _groundPointRadius;
     private float _gravity;
@@ -31,8 +28,6 @@ public class PlayerMove : IFixedTickable //ITickable,
     public PlayerMove(SettingsPlayer settingsPlayer, CharacterController characterController, Transform groundPoint)
     {
         _normalSpeed = settingsPlayer.MovementSpeed;
-        //_normalCoefficientSpeedForAir = settingsPlayer.CoefficientSpeedWalkForAir;
-        //_jumpHeight = settingsPlayer.JumpHeight;
         _groundPoint = groundPoint;
         _groundLayer = settingsPlayer.GroundLayer;
         _groundPointRadius = settingsPlayer.GroundPointRadius;
@@ -43,19 +38,7 @@ public class PlayerMove : IFixedTickable //ITickable,
         _body = characterController.transform;
         _colliders = new Collider[10];
         _coefficientSpeedForAim = 1;
-        _coefficientSpeedForAir = 1;
-        _coefficientKidSpeedMove = 1;
     }
-
-    public void FixedTick()
-    {
-        OnUpdate();
-    }
-
-    //public void Tick()
-    //{
-
-    //}
 
     public void ProcessMove(Vector2 pos)
     {
@@ -63,7 +46,7 @@ public class PlayerMove : IFixedTickable //ITickable,
         _moveDirection.z = pos.y;
         _moveDirection = _body.TransformDirection(_moveDirection);
         _playerVelocity.y += _gravity * Time.deltaTime;
-        _speed = _normalSpeed * _coefficientSpeedForAim * _coefficientSpeedForAir * _coefficientKidSpeedMove;
+        _speed = _normalSpeed * _coefficientSpeedForAim;
         if ((_isGrounded && _playerVelocity.y < 0))
         {
             _playerVelocity = _velocityGround;
@@ -81,30 +64,10 @@ public class PlayerMove : IFixedTickable //ITickable,
         ChangeCoefficientSpeed(ref _coefficientSpeedForAim, coefficientSpeed);
     }
 
-    /// <summary>
-    /// Изменяет coefficient скорости когда игрок находится в воздухе
-    /// </summary>
-    /// <param name="coefficientSpeed"></param>
-    public void ChangeCoefficientSpeedForAir(float coefficientSpeed)
+    public void FixedTick()
     {
-        ChangeCoefficientSpeed(ref _coefficientSpeedForAir, coefficientSpeed);
+        CheckGround();
     }
-
-    public void ChangeCoefficientKidSpeedMove(float coefficientSpeed)
-    {
-        ChangeCoefficientSpeed(ref _coefficientKidSpeedMove, coefficientSpeed);
-    }
-
-    //public void Jump()
-    //{
-    //    if (_isGrounded)
-    //    {
-    //        _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravity);
-    //        _playerVelocity.x = _moveDirection.x * _speed;
-    //        _playerVelocity.z = _moveDirection.z * _speed;
-    //        //SoundSystem.instance.PlayJump();
-    //    }
-    //}
 
     private void ChangeCoefficientSpeed(ref float coefficient, float tempCoefficientSpeed)
     {
@@ -112,12 +75,8 @@ public class PlayerMove : IFixedTickable //ITickable,
         coefficient = tempCoefficientSpeed > 1 ? 1 : tempCoefficientSpeed;
     }
 
-    private void OnUpdate()
+    private void CheckGround()
     {
         _isGrounded = Physics.OverlapSphereNonAlloc(_groundPoint.position, _groundPointRadius, _colliders, _groundLayer) > 0;
-        float coefficientSpeed = _isGrounded ? 1 : _normalCoefficientSpeedForAir;
-        ChangeCoefficientSpeedForAir(coefficientSpeed);
-        //OnMove?.Invoke(Vector3.SqrMagnitude(_final));
-        //OnGrounded?.Invoke(_isGrounded);
     }
 }

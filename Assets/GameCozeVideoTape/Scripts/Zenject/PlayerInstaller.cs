@@ -13,8 +13,8 @@ public class PlayerInstaller : MonoInstaller
     [Header("PlayerLook/PlayerInteracteble")]
     [SerializeField] private Transform _headSlot;
 
-    //[Header("PlayerAim")]
-    //[SerializeField] private CinemachineCamera cinemachineCamera;
+    [Header("PlayerAim")]
+    [SerializeField] private CinemachineCamera cinemachineCamera;
 
     //[Header("PlayerControlAnimation")]
     //[SerializeField] private Animator _armorHandAnimator;
@@ -45,15 +45,15 @@ public class PlayerInstaller : MonoInstaller
             .WithArguments(_settingsPlayer, _headSlot, _playerCharecter.transform)
             .NonLazy();
 
-        //Container.BindInterfacesAndSelfTo<PlayerAim>()
-        //    .AsSingle()
-        //    .WithArguments(_settingsPlayer, cinemachineCamera)
-        //    .NonLazy();
+        Container.BindInterfacesAndSelfTo<PlayerInteracteble>()
+            .AsSingle()
+            .WithArguments(_settingsPlayer, _headSlot)
+            .NonLazy();
 
-        //Container.BindInterfacesAndSelfTo<PlayerInteracteble>()
-        //    .AsSingle()
-        //    .WithArguments(_settingsPlayer, _headSlot)
-        //    .NonLazy();
+        Container.BindInterfacesAndSelfTo<PlayerAim>()
+            .AsSingle()
+            .WithArguments(_settingsPlayer, cinemachineCamera)
+            .NonLazy();
 
         //Container.Bind<TestPlayerControlAnimation>()
         //   .AsSingle()
@@ -82,15 +82,15 @@ public class PlayerInstaller : MonoInstaller
 
     private void BindImporter()
     {
-        //Container.BindInterfacesAndSelfTo<ImporterAimMove>()
-        //    .AsSingle()
-        //    .WithArguments(_settingsPlayer)
-        //    .NonLazy();
+        Container.BindInterfacesAndSelfTo<ImporterAimMove>()
+            .AsSingle()
+            .WithArguments(_settingsPlayer)
+            .NonLazy();
 
-        //Container.BindInterfacesAndSelfTo<ImporterAimSensitivity>()
-        //    .AsSingle()
-        //    .WithArguments(_settingsPlayer)
-        //    .NonLazy();
+        Container.BindInterfacesAndSelfTo<ImporterAimSensitivity>()
+            .AsSingle()
+            .WithArguments(_settingsPlayer)
+            .NonLazy();
 
         //Container.BindInterfacesAndSelfTo<ImporterMoveAnimation>()
         //   .AsSingle()
@@ -103,9 +103,9 @@ public class PlayerInstaller : MonoInstaller
 
     private void BindUI()
     {
-        //Container.BindInterfacesAndSelfTo<ImporterInteractebleUI>()
-        //   .AsSingle()
-        //   .NonLazy();
+        Container.BindInterfacesAndSelfTo<ImporterInteractebleUI>()
+           .AsSingle()
+           .NonLazy();
 
         //Container.BindInterfacesAndSelfTo<TestPlayerSetUpUi>()
         //  .AsSingle()

@@ -7,22 +7,22 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
 {
     private PlayerMove _playerMover;
     private PlayerLook _playerLook;
-    //private PlayerAim _playerAim;
-    //private PlayerInteracteble _playerInteracteble;
+    private PlayerAim _playerAim;
+    private PlayerInteracteble _playerInteracteble;
     //private TestWeaponSystem _weaponSystem;
     private PlayerSystemActions _playerInput;
     private PlayerSystemActions.PlayerActions _playerActions;
     //private SystemBuss _systemBuss;
     private bool _isPlayerControl;
 
-    public PlayerInputControl(Player testPlayerCharacter , PlayerSystemActions inputActions)//, PlayerInteracteble testPlayerInteracteble, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
+    public PlayerInputControl(Player testPlayerCharacter , PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
     {
-        
+
         //_weaponSystem = testWeaponSystem;
-        //_playerInteracteble = testPlayerInteracteble;
+        _playerInteracteble = testPlayerInteracteble;
         _playerMover = testPlayerCharacter.PlayerMove;
         _playerLook = testPlayerCharacter.PlayerLook;
-        //_playerAim = testPlayerCharacter.PlayerAim;
+        _playerAim = testPlayerCharacter.PlayerAim;
         _playerInput = inputActions;
         _playerActions = inputActions.Player;
         //_systemBuss = systemBuss;
@@ -33,7 +33,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
         //_playerActions.Jump.performed -= Jump;
         ////_playerActions.Aim.started -= AimControl;
         ////_playerActions.Aim.canceled -= AimControl;
-        //_playerActions.Interact.started -= OnInteracteble;
+        _playerActions.Interact.started -= OnInteracteble;
         //_playerActions.Shoot.canceled -= OnShoot;
         //_playerActions.Shoot.started -= OnShoot;
         //_playerActions.ShootTwo.started -= OnShootTwo;
@@ -47,9 +47,9 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
     {
         _playerActions.Enable();
         _isPlayerControl = true;
-        //_playerActions.Aim.started += AimControl;
-        //_playerActions.Aim.canceled += AimControl;
-        //_playerActions.Interact.started += OnInteracteble;
+        _playerActions.Aim.started += AimControl;
+        _playerActions.Aim.canceled += AimControl;
+        _playerActions.Interact.started += OnInteracteble;
         //_playerActions.Shoot.started += OnShoot;
         //_playerActions.Shoot.canceled += OnShoot;
         //_playerActions.ShootTwo.started += OnShootTwo;
@@ -103,13 +103,13 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
         _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
     }
 
-    //private void OnInteracteble(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Started)
-    //    {
-    //        _playerInteracteble.OnInteracteble();
-    //    }
-    //}
+    private void OnInteracteble(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _playerInteracteble.OnInteracteble();
+        }
+    }
 
     //private void Jump(InputAction.CallbackContext context)
     //{
@@ -128,15 +128,15 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
     //    }
     //}
 
-    //private void AimControl(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Started)
-    //    {
-    //        _playerAim.ProcessAim(true);
-    //    }
-    //    else if (context.phase == InputActionPhase.Canceled)
-    //    {
-    //        _playerAim.ProcessAim(false);
-    //    }
-    //}
+    private void AimControl(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _playerAim.ProcessAim(true);
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            _playerAim.ProcessAim(false);
+        }
+    }
 }
