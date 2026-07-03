@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     //private PlayerInteracteble _playerInteracteble;
     private CharacterController _characterController;
     private PlayerMove _playerMove;
+    private PlayerInventory _playerInventory;
+
     //private PlayerWeapon _playerWeapon;
     //private PlayerHealth _playerHealth;
     private PlayerLook _playerLook;
@@ -21,11 +23,12 @@ public class Player : MonoBehaviour
     //private SystemBuss _systemBuss;
 
     [Inject]
-    public void Construct(PlayerMove playerMove, PlayerLook playerLook, PlayerAim playerAim)//, PlayerWeapon playerWeapon, SystemBuss systemBuss, PlayerHealth playerHealth, PlayerInteracteble playerInteracteble)
+    public void Construct(PlayerMove playerMove, PlayerLook playerLook, PlayerAim playerAim, PlayerInventory playerInventory)//, PlayerWeapon playerWeapon, SystemBuss systemBuss, PlayerHealth playerHealth, PlayerInteracteble playerInteracteble)
     {
         _playerMove = playerMove;
         _playerLook = playerLook;
         _playerAim = playerAim;
+        _playerInventory = playerInventory;
         //_playerHealth = playerHealth;
         //_playerWeapon = playerWeapon;
         //_systemBuss = systemBuss;

@@ -19,6 +19,7 @@ public class SettingsPlayer : ScriptableObject
     public float EndFieldOfView => _endFieldOfView;
     public float SpeedChooseView => _speedChooseView;
     public float DistanceInteracteble => _distanceInteracteble;
+    public int CountSlotInventory => _countSlotInventory;
     //public float CoefficientSmoothSpeed => _coefficientSmoothSpeed;
 
     #endregion
@@ -47,6 +48,9 @@ public class SettingsPlayer : ScriptableObject
     [Header("PlayerInteracteble")]
     [SerializeField] private LayerMask _layerInteracteble;
     [SerializeField] private float _distanceInteracteble;
+
+    [Header("PlayerInventory")]
+    [SerializeField] private int _countSlotInventory = 10;
 
     //[Header("PlayerControlAnimation")]
     //[SerializeField] private float _coefficientSmoothSpeed;

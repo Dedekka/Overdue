@@ -16,6 +16,9 @@ public class PlayerInstaller : MonoInstaller
     [Header("PlayerAim")]
     [SerializeField] private CinemachineCamera cinemachineCamera;
 
+    [Header("PlayerInventory")]
+    [SerializeField] private Transform _handSlot;
+
     //[Header("PlayerControlAnimation")]
     //[SerializeField] private Animator _armorHandAnimator;
     //[SerializeField] private Animator _glovesHandAnimator;
@@ -53,6 +56,11 @@ public class PlayerInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<PlayerAim>()
             .AsSingle()
             .WithArguments(_settingsPlayer, cinemachineCamera)
+            .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<PlayerInventory>()
+            .AsSingle()
+            .WithArguments(_settingsPlayer, _handSlot)
             .NonLazy();
 
         //Container.Bind<TestPlayerControlAnimation>()
