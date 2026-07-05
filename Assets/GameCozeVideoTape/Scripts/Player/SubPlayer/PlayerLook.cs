@@ -6,7 +6,6 @@ public class PlayerLook
     private Transform _body;
     private float _sensitivityY;
     private float _sensitivityX;
-    private float _coefficientAim;
     private float _sensitivity;
     private float _xRotation = 0;
     private float _coefficientSensitivityAim;

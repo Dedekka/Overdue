@@ -19,11 +19,6 @@ public class PlayerInstaller : MonoInstaller
     [Header("PlayerInventory")]
     [SerializeField] private Transform _handSlot;
 
-    //[Header("PlayerControlAnimation")]
-    //[SerializeField] private Animator _armorHandAnimator;
-    //[SerializeField] private Animator _glovesHandAnimator;
-
-
     public override void InstallBindings()
     {
         BindPlayer();
@@ -60,29 +55,12 @@ public class PlayerInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<PlayerInventory>()
             .AsSingle()
-            //.WithArguments(_settingsPlayer, _handSlot)
             .NonLazy();
-
 
         Container.Bind<InventorySlot>()
             .AsSingle()
             .WithArguments(_settingsPlayer, _handSlot);
-            
-
-
-    //Container.Bind<TestPlayerControlAnimation>()
-    //   .AsSingle()
-    //   .WithArguments(_armorHandAnimator, _glovesHandAnimator, _settingsPlayer)
-    //   .NonLazy();
-
-    //Container.Bind<PlayerWeapon>()
-    //   .AsSingle()
-    //   .NonLazy();
-
-    //Container.Bind<PlayerHealth>()
-    //   .AsSingle()
-    //   .NonLazy();
-}
+    }
 
     private void BindInput()
     {
@@ -106,14 +84,6 @@ public class PlayerInstaller : MonoInstaller
             .AsSingle()
             .WithArguments(_settingsPlayer)
             .NonLazy();
-
-        //Container.BindInterfacesAndSelfTo<ImporterMoveAnimation>()
-        //   .AsSingle()
-        //   .NonLazy();
-
-        //Container.BindInterfacesAndSelfTo<ImporterPlayerWeaponAnimation>()
-        //   .AsSingle()
-        //   .NonLazy();
     }
 
     private void BindUI()
@@ -121,9 +91,5 @@ public class PlayerInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ImporterInteractebleUI>()
            .AsSingle()
            .NonLazy();
-
-        //Container.BindInterfacesAndSelfTo<TestPlayerSetUpUi>()
-        //  .AsSingle()
-        //  .NonLazy();
     }
 }

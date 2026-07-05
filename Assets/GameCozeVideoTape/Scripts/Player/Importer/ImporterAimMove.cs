@@ -5,7 +5,7 @@ public class ImporterAimMove : IDisposable, IInitializable
 {
     private PlayerAim _testPlayerAim;
     private PlayerMove _testPlayerMove;
-    private float coefficientSpeedForAim;
+    private float _coefficientSpeedForAim;
     private readonly float _normalCoefficientSpeedForAim;
 
     public ImporterAimMove(PlayerAim testPlayerAim, PlayerMove testPlayerMove, SettingsPlayer settingsPlayer)
@@ -22,13 +22,13 @@ public class ImporterAimMove : IDisposable, IInitializable
 
     public void Initialize()
     {
-        coefficientSpeedForAim = 1;
+        _coefficientSpeedForAim = 1;
         _testPlayerAim.OnAim += OnAim;
     }
 
     private void OnAim(bool isAim)
     {
-        coefficientSpeedForAim = isAim ? _normalCoefficientSpeedForAim : 1;
-        _testPlayerMove.ChangeCoefficientSpeedForAim(coefficientSpeedForAim);
+        _coefficientSpeedForAim = isAim ? _normalCoefficientSpeedForAim : 1;
+        _testPlayerMove.ChangeCoefficientSpeedForAim(_coefficientSpeedForAim);
     }
 }

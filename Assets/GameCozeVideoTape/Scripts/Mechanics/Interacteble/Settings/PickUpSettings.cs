@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "PickUpSettings", menuName = "Create/Settings/PickUpSettings")]
 public class PickUpSettings : ScriptableObject
 {

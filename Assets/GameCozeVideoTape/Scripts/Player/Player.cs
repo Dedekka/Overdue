@@ -7,20 +7,13 @@ public class Player : MonoBehaviour
     public PlayerMove PlayerMove => _playerMove;
     public PlayerLook PlayerLook => _playerLook;
     public PlayerAim PlayerAim => _playerAim;
-    //public PlayerWeapon PlayerWeapon => _playerWeapon;
-    //public PlayerHealth PlayerHealth => _playerHealth;
     public CharacterController CharacterController => _characterController;
 
-    //private PlayerInteracteble _playerInteracteble;
     private CharacterController _characterController;
     private PlayerMove _playerMove;
     private PlayerInventory _playerInventory;
-
-    //private PlayerWeapon _playerWeapon;
-    //private PlayerHealth _playerHealth;
     private PlayerLook _playerLook;
     private PlayerAim _playerAim;
-    //private SystemBuss _systemBuss;
 
     [Inject]
     public void Construct(PlayerMove playerMove, PlayerLook playerLook, PlayerAim playerAim, PlayerInventory playerInventory)//, PlayerWeapon playerWeapon, SystemBuss systemBuss, PlayerHealth playerHealth, PlayerInteracteble playerInteracteble)
@@ -29,49 +22,10 @@ public class Player : MonoBehaviour
         _playerLook = playerLook;
         _playerAim = playerAim;
         _playerInventory = playerInventory;
-        //_playerHealth = playerHealth;
-        //_playerWeapon = playerWeapon;
-        //_systemBuss = systemBuss;
-        //_playerInteracteble = playerInteracteble;
-
     }
 
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
-        //_systemBuss.SpawnPlayer(this);
     }
-
-    //public void SetUseItem(IItemUseble itemUseble)
-    //{
-    //    _playerInteracteble.SetUseItem(itemUseble);
-    //}
-
-    //public void SetStrategyHealtheble(IPlayerStrategyHealtheble strategy)
-    //{
-    //    PlayerHealth.SetStrategyHealtheble(strategy);
-    //}
-
-    //public void TakeDamage(float Damage)
-    //{
-    //    _playerHealth.TakeDamage(Damage);
-    //}
-
-    //public void SetHealth(int health)
-    //{
-    //    _playerHealth.SetHealth(health);
-    //}
-
-    //public void GiveWeapon(EquipHand equipHand)
-    //{
-    //    PlayerWeapon.GiveWeapon(equipHand);
-    //}
-
-    //public void ChangeSize(float size, float minSize = 0.5f)
-    //{
-    //    size = Mathf.Clamp01(size);
-    //    size = size >= 0.1f ? size : minSize;
-    //    transform.localScale = Vector3.one * size;
-    //    _playerMove.ChangeCoefficientKidSpeedMove(0.8f);
-    //}
 }

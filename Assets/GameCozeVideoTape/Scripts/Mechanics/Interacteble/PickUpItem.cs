@@ -8,44 +8,44 @@ public class PickUpItem
     private Transform _body;
     private PlayerInventory _playerInventory;
     private Transform _hand;
+    private Coroutine _pickUp;
+    private float _speedBlend2;
     private readonly float _speedBlend;
     private readonly float _coeffBlend;
     private readonly float _minDistance;
     private readonly float _minRotation;
-
-    private Coroutine _pickUp;
-    private float _speedBlend2;
     private bool _isActive;
 
-    public PickUpItem(PickUpSettings PickUpSettings, PlayerInventory playerInventory)//, Transform hand)
+    public PickUpItem(PickUpSettings PickUpSettings, PlayerInventory playerInventory, Transform hand)
     {
         _speedBlend = PickUpSettings.SpeedBlend;
         _coeffBlend = PickUpSettings.CoeffBlend;
         _minDistance = PickUpSettings.MinDistance;
         _minRotation = PickUpSettings.MinRotation;
         _playerInventory = playerInventory;
-        //_hand = hand;
+        _hand = hand;
     }
 
-    public void SetBody(CassetteObject transform)
+    public void SetBody(CassetteObject transform, Rigidbody rigidbody)
     {
         _cassette = transform;
         _body = _cassette.transform;
     }
 
-    public void PickUp()
+    public bool PickUp()
     {
-        if (CheckFreeSlot())
+        bool isSucsses = CheckFreeSlot();
+        if (isSucsses)
         {
             _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
         }
+        return isSucsses;
     }
 
     public void Drop()
     {
         _cassette.StopCoroutine(_pickUp);
     }
-
 
     private bool CheckFreeSlot()
     {
@@ -64,7 +64,7 @@ public class PickUpItem
             _body.rotation = Quaternion.Lerp(_body.rotation, temptransform.rotation, _speedBlend2 * Time.deltaTime);
             _isActive = CheckEnd(temptransform);
         }
-        _body.SetParent(temptransform);
+        _body.SetParent(_hand);
     }
 
     private bool CheckEnd(Transform temptransform)

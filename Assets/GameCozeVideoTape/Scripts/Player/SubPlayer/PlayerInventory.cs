@@ -13,7 +13,7 @@ public class PlayerInventory : IDisposable, IInitializable
 
     public void Initialize()
     {
-        //_inventorySlot.Construct(_hand, _SlotInventoryMax);
+
     }
 
     public void Dispose()

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public abstract class BazeInteracteble : MonoBehaviour, IInteracteble
 {
-    //[Header("Settings")]
-    //public bool UseEvents;
     public string Description
     {
         get
@@ -22,10 +20,6 @@ public abstract class BazeInteracteble : MonoBehaviour, IInteracteble
     /// </summary>
     public virtual void BaseInteract()
     {
-        //if (UseEvents)
-        //{
-        //    GetComponent<InteractebleEvents>().OnInteract?.Invoke();
-        //}
         Interact();
     }
 

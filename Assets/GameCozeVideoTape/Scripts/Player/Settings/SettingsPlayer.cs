@@ -4,10 +4,10 @@ using UnityEngine;
 public class SettingsPlayer : ScriptableObject
 {
     #region PublicField
+    public Vector2 RotationOffset => _rotationOffset;
     public LayerMask GroundLayer => _groundLayer;
     public LayerMask LayerInteracteble => _layerInteracteble;
     public float MovementSpeed => _movementSpeed;
-
     public float GroundPointRadius => _groundPointRadius;
     public float Gravity => _gravity;
     public float SensitivityY => _sensitivityY;
@@ -19,9 +19,10 @@ public class SettingsPlayer : ScriptableObject
     public float EndFieldOfView => _endFieldOfView;
     public float SpeedChooseView => _speedChooseView;
     public float DistanceInteracteble => _distanceInteracteble;
+    public float OffsetSlotY => _offsetSlotY;
+    public float OffsetHandY => _offsetHandY;
+    public float ForceDrop => _forceDrop;
     public int CountSlotInventory => _countSlotInventory;
-
-    //public float CoefficientSmoothSpeed => _coefficientSmoothSpeed;
 
     #endregion
 
@@ -51,8 +52,9 @@ public class SettingsPlayer : ScriptableObject
     [SerializeField] private float _distanceInteracteble;
 
     [Header("PlayerInventory")]
+    [SerializeField] private Vector2 _rotationOffset = new Vector2(15, -20);
+    [SerializeField] private float _offsetSlotY = 0.1f;
+    [SerializeField] private float _offsetHandY = 3f;
+    [SerializeField] private float _forceDrop = 3f;
     [SerializeField] private int _countSlotInventory = 10;
-
-    //[Header("PlayerControlAnimation")]
-    //[SerializeField] private float _coefficientSmoothSpeed;
 }

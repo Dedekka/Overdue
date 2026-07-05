@@ -13,17 +13,11 @@ public class PlayerMove : IFixedTickable //ITickable,*/
     private Vector3 _final;
     private LayerMask _groundLayer;
     private float _coefficientSpeedForAim;
-    private float _jumpHeight;
     private float _groundPointRadius;
     private float _gravity;
     private float _speed;
-    private bool _isGrounded;
-
     private readonly float _normalSpeed;
-    private readonly float _normalCoefficientSpeedForAir;
-
-    //public event Action<bool> OnGrounded;
-    //public event Action<float> OnMove;
+    private bool _isGrounded;
 
     public PlayerMove(SettingsPlayer settingsPlayer, CharacterController characterController, Transform groundPoint)
     {

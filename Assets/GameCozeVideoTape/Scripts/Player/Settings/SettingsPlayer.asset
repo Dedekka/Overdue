@@ -20,7 +20,7 @@ MonoBehaviour:
   _gravity: -9.8
   _sensitivityY: 30
   _sensitivityX: 30
-  _sensitivity: 0.25
+  _sensitivity: 0.5
   _coefficientSensitivityAim: 0.5
   _coefficientSpeedMoveForAim: 0.5
   _startFieldOfView: 60
@@ -30,4 +30,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _distanceInteracteble: 2
+  _offsetSlotY: 0.1
+  _offsetHandY: 0.3
+  _rotationOffset: {x: 10, y: -20}
   _countSlotInventory: 10

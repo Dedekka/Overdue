@@ -2,12 +2,12 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-public class CassetteObject : BazeInteracteble //, ICassetteble
+public class CassetteObject : BazeInteracteble
 {
+    public Rigidbody Rigidbody => _rigidbody;
     private PickUpItem _pickUpItem;
     private Rigidbody _rigidbody;
     private Collider _collider;
-    //public Transform Body => transform;
 
     [Inject]
     public void Construct(PickUpItem PickUpItem)
@@ -17,24 +17,24 @@ public class CassetteObject : BazeInteracteble //, ICassetteble
 
     private void Awake()
     {
-        _pickUpItem.SetBody(this);
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        _pickUpItem.SetBody(this, _rigidbody);
     }
 
-    public void Drop(Vector3 vector3)
+    public void Drop()
     {
         _pickUpItem.Drop();
         transform.SetParent(null);
-        _rigidbody.isKinematic = false;
         _collider.enabled = true;
-        _rigidbody.AddForce(vector3, ForceMode.Impulse);
     }
 
     protected override void Interact()
     {
-        _collider.enabled = false;
-        _rigidbody.isKinematic = true;
-        _pickUpItem.PickUp();
+        if (_pickUpItem.PickUp())
+        {
+            _collider.enabled = false;
+            _rigidbody.isKinematic = true;
+        }
     }
 }

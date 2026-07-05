@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -9,13 +8,12 @@ public class TestItem : BazeInteracteble
     [SerializeField] private float _coeffBlend;
     [SerializeField] private float _minDistance;
     [SerializeField] private float _minRotation;
-
-    private float _speedBlend2;
+    private float _tempSpeedBlend;
     private bool _isActive;
 
     private void Start()
     {
-        _speedBlend2 = _speedBlend;
+        _tempSpeedBlend = _speedBlend;
     }
 
     protected override void Interact()
@@ -28,17 +26,16 @@ public class TestItem : BazeInteracteble
         StartCoroutine(FlyToHand(temptransform));
     }
 
-
     private IEnumerator FlyToHand(Transform temptransform)
     {
         _isActive = true;
-        _speedBlend2 = _speedBlend;
+        _tempSpeedBlend = _speedBlend;
         while (_isActive)
         {
             yield return null;
-            _speedBlend2 *= _coeffBlend;
-            transform.position = Vector3.Lerp(transform.position, temptransform.position, _speedBlend2 * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, _transform.rotation, _speedBlend2 * Time.deltaTime);
+            _tempSpeedBlend *= _coeffBlend;
+            transform.position = Vector3.Lerp(transform.position, temptransform.position, _tempSpeedBlend * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, _transform.rotation, _tempSpeedBlend * Time.deltaTime);
             _isActive = CheckEnd(temptransform);
         }
         transform.SetParent(_transform);
@@ -46,7 +43,7 @@ public class TestItem : BazeInteracteble
 
     private bool CheckEnd(Transform temptransform)
     {
-        bool isCurrentPos =_minDistance < Vector3.Distance(transform.position, temptransform.position);
+        bool isCurrentPos = _minDistance < Vector3.Distance(transform.position, temptransform.position);
         bool isCurrentRotation = _minRotation < Quaternion.Angle(transform.rotation, temptransform.rotation);
         return isCurrentPos == true || isCurrentRotation == true;
     }

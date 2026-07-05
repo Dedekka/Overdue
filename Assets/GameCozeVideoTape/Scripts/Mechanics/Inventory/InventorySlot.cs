@@ -2,38 +2,45 @@ using UnityEngine;
 
 public class InventorySlot
 {
-    private CassetteObject _currentCassette;
-    //private CassetteObject[] _cassets;
     private InventoryData[] _cassets2;
-
+    private CassetteObject _currentCassette;
+    private Vector2 _rotationOffset;
+    private Vector3 _startOffsetHand;
+    private Vector3 _endOffsetHand;
     private readonly Transform _hand;
-    //private readonly Transform _startPos;
-    //private readonly Transform _endPos;
     private readonly int _SlotInventoryMax;
     private int _countSlotInventory;
+    private float _offsetSlotY;
+    private float _offsetHandY;
+    private float _forceDrop;
 
     public InventorySlot(SettingsPlayer settingsPlayer, Transform hand)//, Transform startPos, Transform endPos)
     {
         _SlotInventoryMax = settingsPlayer.CountSlotInventory;
         _hand = hand;
+        _offsetSlotY = settingsPlayer.OffsetSlotY;
+        _offsetHandY = settingsPlayer.OffsetHandY;
+        _rotationOffset = settingsPlayer.RotationOffset;
+        _forceDrop = settingsPlayer.ForceDrop;
         _cassets2 = CreateInventoryData(_SlotInventoryMax);
-        //_cassets = new CassetteObject[_SlotInventoryMax];
         _countSlotInventory = 0;
-        //_startPos = startPos;
-        //_endPos = endPos;
+        _startOffsetHand = _hand.localPosition;
+        _endOffsetHand = _hand.localPosition;
+        _endOffsetHand.y -= _offsetHandY;
     }
 
     public bool CheckFreeSlot(CassetteObject CassetteObject, out Transform transform)
     {
         bool isSucsses = false;
-        transform = _hand;
-        _currentCassette = CassetteObject;
+        transform = null;
         isSucsses = _countSlotInventory < _SlotInventoryMax;
         if (isSucsses)
         {
-            AddCassette(CassetteObject);
+            _currentCassette = CassetteObject;
+            AddCassette(CassetteObject, ref transform);
             Debug.Log($"Slot {CassetteObject.gameObject.name} Index {_countSlotInventory}");
             _countSlotInventory++;
+            MoveHand();
         }
         return isSucsses;
     }
@@ -42,79 +49,74 @@ public class InventorySlot
     {
         if (_currentCassette != null)
         {
-            _currentCassette.Drop(_hand.right);
+            _currentCassette.Rigidbody.isKinematic = false;
+            _currentCassette.Rigidbody.AddForce(_hand.right * _forceDrop, ForceMode.Impulse);
+            _currentCassette.Drop();
             _currentCassette = null;
             _countSlotInventory--;
-
+            MoveHand();
             ChangeCurrentCassette();
         }
     }
 
     private void ChangeCurrentCassette()
     {
-        Debug.Log($"ChangeCurrentCassette|countSlotInventory {_countSlotInventory-1}");
         if (_countSlotInventory == 0) { return; }
-        _currentCassette = GetCassetteForIndex(_countSlotInventory-1);
-        //_currentCassette = GetCassette()
-
-        //Debug.Log($"_countSlotInventory {_countSlotInventory}");
-        //if (_countSlotInventory <= 0)
-        //{
-        //    _countSlotInventory = 0;
-        //    _currentCassette = null;
-        //}
-        //else
-        //{
-        //    _currentCassette = _cassets[_countSlotInventory];
-        //}
+        InventoryData temp = GetCassetteForIndex(_countSlotInventory - 1);
+        _currentCassette = temp.CassetteObject;
     }
 
-    private CassetteObject GetCassetteForIndex(int index)
+    private InventoryData GetCassetteForIndex(int index)
     {
-        CassetteObject tempCassetteObject = null;   
+        InventoryData tempCassetteObject = null;
         foreach (var _cassets in _cassets2)
         {
             if (_cassets.Index == index)
             {
-                if (_cassets.CassetteObject != null)
-                {
-                    tempCassetteObject = _cassets.CassetteObject;
-                    return tempCassetteObject;
-                }
-                else
-                {
-                    //tempCassetteObject = GetCassetteForIndex(index--);
-                }
+                tempCassetteObject = _cassets;
+                break;
             }
         }
-        Debug.Log($"GetCassetteForIndex| null");
         return tempCassetteObject;
     }
 
-    private void AddCassette(CassetteObject cassetteObject)
+    private void AddCassette(CassetteObject cassetteObject, ref Transform transform)
     {
-        CassetteObject tempCassette = GetCassetteForIndex(_countSlotInventory);
-        tempCassette = cassetteObject;
-        //GetCassetteForIndex
-
-        //inventoryData.CassetteObject = cassetteObject;
-        //inventoryData.Index = _countSlotInventory;
+        InventoryData tempCassette = GetCassetteForIndex(_countSlotInventory);
+        tempCassette.CassetteObject = cassetteObject;
+        transform = tempCassette.Position;
+        float tempBlend = Random.Range(0, 1f);
+        transform.localRotation = Quaternion.identity;
+        transform.localRotation = Quaternion.AngleAxis(Random.Range(_rotationOffset.x, _rotationOffset.y), Vector3.up);
     }
 
     private InventoryData[] CreateInventoryData(int slotInventoryMax)
     {
         InventoryData[] tempInventoryDataArray = new InventoryData[slotInventoryMax];
+        var TempSlot = new GameObject("Slot");
         for (int i = 0; i < tempInventoryDataArray.Length; i++)
         {
+            tempInventoryDataArray[i] = new InventoryData();
             tempInventoryDataArray[i].Index = i;
+
+            Vector3 pos = _hand.position;
+            pos.y += i * _offsetSlotY;
+            tempInventoryDataArray[i].Position = Transform.Instantiate(TempSlot.transform, pos, _hand.rotation, _hand);
         }
         return tempInventoryDataArray;
     }
+
+    private void MoveHand()
+    {
+        float temp = (float)_countSlotInventory / _SlotInventoryMax;
+        Debug.Log($"MoveHand {temp}");
+        _hand.localPosition = Vector3.Lerp(_startOffsetHand, _endOffsetHand, temp);
+    }
 }
 
-public struct InventoryData
+public class InventoryData
 {
+    public Transform Position;
     public CassetteObject CassetteObject;
     public int Index;
-
 }

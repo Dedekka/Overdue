@@ -3,26 +3,22 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, ITickable
+public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILateTickable,
 {
     private PlayerMove _playerMover;
     private PlayerLook _playerLook;
     private PlayerAim _playerAim;
     private PlayerInteracteble _playerInteracteble;
     private PlayerInventory _playerInventory;
-    private PlayerSystemActions _playerInput;
     private PlayerSystemActions.PlayerActions _playerActions;
-    //private SystemBuss _systemBuss;
     private bool _isPlayerControl;
 
-    public PlayerInputControl(Player testPlayerCharacter , PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
+    public PlayerInputControl(Player testPlayerCharacter, PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
     {
-
         _playerInteracteble = testPlayerInteracteble;
         _playerMover = testPlayerCharacter.PlayerMove;
         _playerLook = testPlayerCharacter.PlayerLook;
         _playerAim = testPlayerCharacter.PlayerAim;
-        _playerInput = inputActions;
         _playerActions = inputActions.Player;
         _playerInventory = playerInventory;
     }
@@ -33,12 +29,6 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
         _playerActions.Aim.canceled -= AimControl;
         _playerActions.Interact.started -= OnInteracteble;
         _playerActions.Drop.started -= OnDrop;
-        //_playerActions.Shoot.canceled -= OnShoot;
-        //_playerActions.Shoot.started -= OnShoot;
-        //_playerActions.ShootTwo.started -= OnShootTwo;
-        //_playerActions.ShootTwo.canceled -= OnShootTwo;
-        //_playerActions.Block.started -= BlockControl;
-        //_playerActions.Block.canceled -= BlockControl;
         _playerActions.Disable();
     }
 
@@ -50,12 +40,6 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
         _playerActions.Aim.canceled += AimControl;
         _playerActions.Interact.started += OnInteracteble;
         _playerActions.Drop.started += OnDrop;
-        //_playerActions.Shoot.started += OnShoot;
-        //_playerActions.Shoot.canceled += OnShoot;
-        //_playerActions.ShootTwo.started += OnShootTwo;
-        //_playerActions.ShootTwo.canceled += OnShootTwo;
-        //_playerActions.Block.started += BlockControl;
-        //_playerActions.Block.canceled += BlockControl;
         //_playerActions.Pause.started += OnPause;
     }
 
@@ -67,41 +51,20 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
     //    }
     //}
 
-    //private void OnShoot(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Started)
-    //    {
-    //        _weaponSystem.AttackOne(true);
-    //    }
-    //    else if (context.phase == InputActionPhase.Canceled)
-    //    {
-    //        _weaponSystem.AttackOne(false);
-    //    }
-    //}
-
-    //private void OnShootTwo(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Started)
-    //    {
-    //        _weaponSystem.AttackTwo(true);
-    //    }
-    //    else if (context.phase == InputActionPhase.Canceled)
-    //    {
-    //        _weaponSystem.AttackTwo(false);
-    //    }
-    //}
-
     public void Tick()
     {
         if (!_isPlayerControl) { return; }
         _playerMover.ProcessMove(_playerActions.Move.ReadValue<Vector2>());
-    }
 
-    public void LateTick()
-    {
         if (!_isPlayerControl) { return; }
         _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
     }
+
+    //public void LateTick()
+    //{
+    //    //if (!_isPlayerControl) { return; }
+    //    //_playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
+    //}
 
     private void OnInteracteble(InputAction.CallbackContext context)
     {
@@ -118,23 +81,6 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
             _playerInventory.Drop();
         }
     }
-
-    //private void Jump(InputAction.CallbackContext context)
-    //{
-    //    _playerMover.Jump();
-    //}
-
-    //private void BlockControl(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Started)
-    //    {
-    //        _weaponSystem.Block(true);
-    //    }
-    //    else if (context.phase == InputActionPhase.Canceled)
-    //    {
-    //        _weaponSystem.Block(false);
-    //    }
-    //}
 
     private void AimControl(InputAction.CallbackContext context)
     {

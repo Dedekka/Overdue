@@ -5,6 +5,7 @@ public class GameInstaller : MonoInstaller
 {
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private PickUpSettings _pickUpSettings;
+    [SerializeField] private Transform _hand;
 
     public override void InstallBindings()
     {
@@ -24,8 +25,6 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
-            .WithArguments(_pickUpSettings);
+            .WithArguments(_pickUpSettings, _hand);
     }
-
-   
 }
