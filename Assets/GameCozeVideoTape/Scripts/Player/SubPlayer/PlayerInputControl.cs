@@ -9,31 +9,30 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
     private PlayerLook _playerLook;
     private PlayerAim _playerAim;
     private PlayerInteracteble _playerInteracteble;
-    //private TestWeaponSystem _weaponSystem;
+    private PlayerInventory _playerInventory;
     private PlayerSystemActions _playerInput;
     private PlayerSystemActions.PlayerActions _playerActions;
     //private SystemBuss _systemBuss;
     private bool _isPlayerControl;
 
-    public PlayerInputControl(Player testPlayerCharacter , PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
+    public PlayerInputControl(Player testPlayerCharacter , PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
     {
 
-        //_weaponSystem = testWeaponSystem;
         _playerInteracteble = testPlayerInteracteble;
         _playerMover = testPlayerCharacter.PlayerMove;
         _playerLook = testPlayerCharacter.PlayerLook;
         _playerAim = testPlayerCharacter.PlayerAim;
         _playerInput = inputActions;
         _playerActions = inputActions.Player;
-        //_systemBuss = systemBuss;
+        _playerInventory = playerInventory;
     }
 
     public void Dispose()
     {
-        //_playerActions.Jump.performed -= Jump;
-        ////_playerActions.Aim.started -= AimControl;
-        ////_playerActions.Aim.canceled -= AimControl;
+        _playerActions.Aim.started -= AimControl;
+        _playerActions.Aim.canceled -= AimControl;
         _playerActions.Interact.started -= OnInteracteble;
+        _playerActions.Drop.started -= OnDrop;
         //_playerActions.Shoot.canceled -= OnShoot;
         //_playerActions.Shoot.started -= OnShoot;
         //_playerActions.ShootTwo.started -= OnShootTwo;
@@ -50,6 +49,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
         _playerActions.Aim.started += AimControl;
         _playerActions.Aim.canceled += AimControl;
         _playerActions.Interact.started += OnInteracteble;
+        _playerActions.Drop.started += OnDrop;
         //_playerActions.Shoot.started += OnShoot;
         //_playerActions.Shoot.canceled += OnShoot;
         //_playerActions.ShootTwo.started += OnShootTwo;
@@ -108,6 +108,14 @@ public class PlayerInputControl : IDisposable, IInitializable, ILateTickable, IT
         if (context.phase == InputActionPhase.Started)
         {
             _playerInteracteble.OnInteracteble();
+        }
+    }
+
+    private void OnDrop(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _playerInventory.Drop();
         }
     }
 

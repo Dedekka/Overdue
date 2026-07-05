@@ -43,6 +43,11 @@ public class PlayerInteracteble : ITickable
     {
         if (_currentInteracteble == null) { return; }
         _currentInteracteble.BaseInteract();
+        if (_currentInteracteble is ICassetteble cassett)
+        {
+            //_playerPickUp.PickUp(cassett);
+        }
+
     }
 
     private void ChangeCurrentInteracteble(IInteracteble interacteble)

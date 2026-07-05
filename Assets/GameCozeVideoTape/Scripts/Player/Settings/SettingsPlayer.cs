@@ -20,6 +20,7 @@ public class SettingsPlayer : ScriptableObject
     public float SpeedChooseView => _speedChooseView;
     public float DistanceInteracteble => _distanceInteracteble;
     public int CountSlotInventory => _countSlotInventory;
+
     //public float CoefficientSmoothSpeed => _coefficientSmoothSpeed;
 
     #endregion
@@ -40,7 +41,7 @@ public class SettingsPlayer : ScriptableObject
 
     [Header("PlayerAim")]
     [SerializeField, Range(0, 1)] private float _coefficientSensitivityAim = 0.5f;
-    [SerializeField, Range(0, 1)] private float _coefficientSpeedMoveForAim= 0.5f;
+    [SerializeField, Range(0, 1)] private float _coefficientSpeedMoveForAim = 0.5f;
     [SerializeField] private float _startFieldOfView = 60f;
     [SerializeField] private float _endFieldOfView = 30f;
     [SerializeField, Min(0.1f)] private float _speedChooseView = 1;

@@ -60,22 +60,29 @@ public class PlayerInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<PlayerInventory>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, _handSlot)
+            //.WithArguments(_settingsPlayer, _handSlot)
             .NonLazy();
 
-        //Container.Bind<TestPlayerControlAnimation>()
-        //   .AsSingle()
-        //   .WithArguments(_armorHandAnimator, _glovesHandAnimator, _settingsPlayer)
-        //   .NonLazy();
 
-        //Container.Bind<PlayerWeapon>()
-        //   .AsSingle()
-        //   .NonLazy();
+        Container.Bind<InventorySlot>()
+            .AsSingle()
+            .WithArguments(_settingsPlayer, _handSlot);
+            
 
-        //Container.Bind<PlayerHealth>()
-        //   .AsSingle()
-        //   .NonLazy();
-    }
+
+    //Container.Bind<TestPlayerControlAnimation>()
+    //   .AsSingle()
+    //   .WithArguments(_armorHandAnimator, _glovesHandAnimator, _settingsPlayer)
+    //   .NonLazy();
+
+    //Container.Bind<PlayerWeapon>()
+    //   .AsSingle()
+    //   .NonLazy();
+
+    //Container.Bind<PlayerHealth>()
+    //   .AsSingle()
+    //   .NonLazy();
+}
 
     private void BindInput()
     {

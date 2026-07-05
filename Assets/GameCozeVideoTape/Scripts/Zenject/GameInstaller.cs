@@ -4,10 +4,12 @@ using Zenject;
 public class GameInstaller : MonoInstaller
 {
     [SerializeField] private PlayerUi _playerUi;
+    [SerializeField] private PickUpSettings _pickUpSettings;
 
     public override void InstallBindings()
     {
         BindUI();
+        BindPickUp();
     }
 
     private void BindUI()
@@ -17,4 +19,13 @@ public class GameInstaller : MonoInstaller
            .AsSingle()
            .NonLazy();
     }
+
+    private void BindPickUp()
+    {
+        Container.Bind<PickUpItem>()
+            .AsTransient()
+            .WithArguments(_pickUpSettings);
+    }
+
+   
 }
