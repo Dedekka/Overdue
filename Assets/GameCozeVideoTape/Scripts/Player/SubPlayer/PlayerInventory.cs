@@ -26,6 +26,11 @@ public class PlayerInventory : IDisposable, IInitializable
         _inventorySlot.Drop();
     }
 
+    public void Scroll(Vector2 vector)
+    {
+        _inventorySlot.Scroll(vector.y<0);
+    }
+
     public bool CheckFreeSlot(CassetteObject CassetteObject, out Transform transform)
     {
         return _inventorySlot.CheckFreeSlot(CassetteObject,out transform);

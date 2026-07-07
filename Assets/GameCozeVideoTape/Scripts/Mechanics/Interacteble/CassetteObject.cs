@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class CassetteObject : BazeInteracteble
 {
+    public TextMeshPro textMeshPro;
     public Rigidbody Rigidbody => _rigidbody;
     private PickUpItem _pickUpItem;
     private Rigidbody _rigidbody;
@@ -27,6 +29,11 @@ public class CassetteObject : BazeInteracteble
         _pickUpItem.Drop();
         transform.SetParent(null);
         _collider.enabled = true;
+    }
+
+    public void Scroll(Transform transform)
+    {
+        _pickUpItem.Scroll(transform);
     }
 
     protected override void Interact()

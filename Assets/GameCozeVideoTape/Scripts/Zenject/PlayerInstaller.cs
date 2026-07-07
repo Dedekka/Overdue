@@ -18,6 +18,7 @@ public class PlayerInstaller : MonoInstaller
 
     [Header("PlayerInventory")]
     [SerializeField] private Transform _handSlot;
+    [SerializeField] private Transform[] _inventorySlot;
 
     public override void InstallBindings()
     {
@@ -59,7 +60,7 @@ public class PlayerInstaller : MonoInstaller
 
         Container.Bind<InventorySlot>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, _handSlot);
+            .WithArguments(_settingsPlayer, _handSlot, _inventorySlot);
     }
 
     private void BindInput()

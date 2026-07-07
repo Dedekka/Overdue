@@ -19,7 +19,7 @@ public class SettingsPlayer : ScriptableObject
     public float EndFieldOfView => _endFieldOfView;
     public float SpeedChooseView => _speedChooseView;
     public float DistanceInteracteble => _distanceInteracteble;
-    public float OffsetSlotY => _offsetSlotY;
+    public float HeightSlotY => _heightSlotY;
     public float OffsetHandY => _offsetHandY;
     public float ForceDrop => _forceDrop;
     public int CountSlotInventory => _countSlotInventory;
@@ -53,7 +53,7 @@ public class SettingsPlayer : ScriptableObject
 
     [Header("PlayerInventory")]
     [SerializeField] private Vector2 _rotationOffset = new Vector2(15, -20);
-    [SerializeField] private float _offsetSlotY = 0.1f;
+    [SerializeField] private float _heightSlotY = 0.05f;
     [SerializeField] private float _offsetHandY = 3f;
     [SerializeField] private float _forceDrop = 3f;
     [SerializeField] private int _countSlotInventory = 10;

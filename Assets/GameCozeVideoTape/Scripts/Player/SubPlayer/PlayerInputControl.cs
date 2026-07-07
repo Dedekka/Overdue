@@ -29,6 +29,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Aim.canceled -= AimControl;
         _playerActions.Interact.started -= OnInteracteble;
         _playerActions.Drop.started -= OnDrop;
+        _playerActions.Scroll.started -= OnScroll;
         _playerActions.Disable();
     }
 
@@ -40,6 +41,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Aim.canceled += AimControl;
         _playerActions.Interact.started += OnInteracteble;
         _playerActions.Drop.started += OnDrop;
+        _playerActions.Scroll.started += OnScroll;
         //_playerActions.Pause.started += OnPause;
     }
 
@@ -79,6 +81,14 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         if (context.phase == InputActionPhase.Started)
         {
             _playerInventory.Drop();
+        }
+    }
+
+    private void OnScroll(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _playerInventory.Scroll(context.ReadValue<Vector2>());
         }
     }
 
