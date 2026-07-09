@@ -52,7 +52,6 @@ public class PickUpItem
         _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
     }
 
-
     public void Drop()
     {
         _cassette.StopCoroutine(_pickUp);
@@ -77,8 +76,6 @@ public class PickUpItem
         }
         _body.SetParent(_hand);
     }
-
-
 
     private bool CheckEnd(Transform temptransform)
     {
