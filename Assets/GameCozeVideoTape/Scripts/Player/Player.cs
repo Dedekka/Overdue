@@ -28,4 +28,14 @@ public class Player : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
     }
+
+    public bool CheckActiveCassette()
+    {
+        return _playerInventory.CheckActiveCassette();
+    }
+
+    public CassetteObject GetCassette()
+    {
+       return _playerInventory.Install();
+    }
 }

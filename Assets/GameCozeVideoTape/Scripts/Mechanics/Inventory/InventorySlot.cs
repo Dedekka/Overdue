@@ -51,9 +51,8 @@ public class InventorySlot
         ChangeCurrentCassette();
         if (_currentCassette != null)
         {
-            _currentCassette.Rigidbody.isKinematic = false;
-            _currentCassette.Rigidbody.AddForce(_hand.right * _forceDrop, ForceMode.Impulse);
             _currentCassette.Drop();
+            _currentCassette.Rigidbody.AddForce(_hand.right * _forceDrop, ForceMode.Impulse);
             _cassets[0].CassetteObject = null;
             _activeCassets[0] = null;
             _currentCassette = null;
@@ -61,6 +60,34 @@ public class InventorySlot
             NextCurrentCassette();
             _countSlotInventory--;
         }
+    }
+
+    public bool CheckActiveCassette()
+    {
+        ChangeCurrentCassette();
+        return _currentCassette != null;
+    }
+
+    public CassetteObject Install()
+    {
+        ChangeCurrentCassette();
+        if (_currentCassette == null) { return null; }
+
+
+        CassetteObject temp = _currentCassette;
+        _cassets[0].CassetteObject = null;
+        _activeCassets[0] = null;
+        _currentCassette = null;
+        MoveHand();
+        NextCurrentCassette();
+        _countSlotInventory--;
+        return temp;
+
+        //Debug.Log("InventorySlot_Install");
+        //Debug.Log("InventorySlot_currentCassette != Null");
+        //CassetteObject _tempCurrentCassette = _currentCassette;
+        //Drop();
+        //_tempCurrentCassette.Scroll(pos);
     }
 
     public void Scroll(bool duration)
@@ -91,8 +118,7 @@ public class InventorySlot
 
     private void ChangeCurrentCassette()
     {
-        if (_countSlotInventory == 0) { return; }
-        _currentCassette = _cassets[0].CassetteObject;
+        _currentCassette = _countSlotInventory == 0 ? null : _cassets[0].CassetteObject;
     }
 
     private InventoryData GetCassetteForIndex(int index)

@@ -10,7 +10,7 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindUI();
-        BindPickUp();
+        BindItem();
     }
 
     private void BindUI()
@@ -21,10 +21,13 @@ public class GameInstaller : MonoInstaller
            .NonLazy();
     }
 
-    private void BindPickUp()
+    private void BindItem()
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
             .WithArguments(_pickUpSettings, _hand);
+
+        Container.Bind<InstallItem>()
+           .AsTransient();
     }
 }

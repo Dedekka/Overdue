@@ -21,6 +21,17 @@ public class PlayerInventory : IDisposable, IInitializable
 
     }
 
+    public bool CheckActiveCassette()
+    {
+        return _inventorySlot.CheckActiveCassette();
+    }
+
+    public CassetteObject Install( )
+    {
+       return _inventorySlot.Install();
+    }
+
+
     public void Drop()
     {
         _inventorySlot.Drop();

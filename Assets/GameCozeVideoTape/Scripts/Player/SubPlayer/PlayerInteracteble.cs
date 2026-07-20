@@ -43,18 +43,27 @@ public class PlayerInteracteble : ITickable
     {
         if (_currentInteracteble == null) { return; }
         _currentInteracteble.BaseInteract();
-        if (_currentInteracteble is ICassetteble cassett)
-        {
-            //_playerPickUp.PickUp(cassett);
-        }
-
+        //if (_currentInteracteble is ICassetteble cassett)
+        //{
+        //    //_playerPickUp.PickUp(cassett);
+        //}
     }
 
     private void ChangeCurrentInteracteble(IInteracteble interacteble)
     {
         if (interacteble == _currentInteracteble) { return; }
+        ControlView(_currentInteracteble, false);
         _currentInteracteble = interacteble;
+        ControlView(_currentInteracteble, true);
         _description = _currentInteracteble == null ? string.Empty : _currentInteracteble.Description;
         OnChangeCurrentInteracteble?.Invoke(_description);
+    }
+
+    private void ControlView(IInteracteble interacteble, bool isView)
+    {
+        if (interacteble != null)
+        {
+            interacteble.EnterCursor(isView);
+        }
     }
 }

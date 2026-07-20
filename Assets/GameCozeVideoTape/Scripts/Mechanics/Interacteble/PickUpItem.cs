@@ -32,32 +32,27 @@ public class PickUpItem
         _body = _cassette.transform;
     }
 
-    public bool PickUp()
+    public void PickUp()
     {
-        bool isSucsses = CheckFreeSlot();
-        if (isSucsses)
-        {
-            _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
-        }
-        return isSucsses;
+        _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
     }
 
     public void Scroll(Transform transform)
     {
         _hand = transform;
+        StopMove();
+        _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
+    }
+
+    public void StopMove()
+    {
         if (_pickUp != null)
         {
             _cassette.StopCoroutine(_pickUp);
         }
-        _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
     }
 
-    public void Drop()
-    {
-        _cassette.StopCoroutine(_pickUp);
-    }
-
-    private bool CheckFreeSlot()
+    public bool CheckFreeSlot()
     {
         return _playerInventory.CheckFreeSlot(CassetteObject, out _hand);
     }

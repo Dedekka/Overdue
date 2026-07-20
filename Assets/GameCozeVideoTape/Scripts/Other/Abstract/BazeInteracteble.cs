@@ -29,4 +29,9 @@ public abstract class BazeInteracteble : MonoBehaviour, IInteracteble
     protected virtual void Interact()
     {
     }
+
+
+    public virtual void EnterCursor(bool isVisible)
+    {
+    }
 }

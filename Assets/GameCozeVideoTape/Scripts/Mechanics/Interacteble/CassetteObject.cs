@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -7,14 +9,20 @@ public class CassetteObject : BazeInteracteble
 {
     public TextMeshPro textMeshPro;
     public Rigidbody Rigidbody => _rigidbody;
+    //public bool IsInstall => _isInstall;
     private PickUpItem _pickUpItem;
+    private InstallItem _installItem;
     private Rigidbody _rigidbody;
     private Collider _collider;
+    //public bool _isInstall;
+
+    public event Action<CassetteObject> OnPickUp;
 
     [Inject]
-    public void Construct(PickUpItem PickUpItem)
+    public void Construct(PickUpItem PickUpItem, InstallItem installItem)
     {
         _pickUpItem = PickUpItem;
+        _installItem = installItem;
     }
 
     private void Awake()
@@ -22,13 +30,14 @@ public class CassetteObject : BazeInteracteble
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
         _pickUpItem.SetBody(this, _rigidbody);
+        _installItem.SetBody(this);
     }
 
     public void Drop()
     {
-        _pickUpItem.Drop();
+        _pickUpItem.StopMove();
         transform.SetParent(null);
-        _collider.enabled = true;
+        Control(true);
     }
 
     public void Scroll(Transform transform)
@@ -36,12 +45,40 @@ public class CassetteObject : BazeInteracteble
         _pickUpItem.Scroll(transform);
     }
 
+    public void Install(Transform transform, Ease Ease, float _time)
+    {
+        //_isInstall = true;
+        _pickUpItem.StopMove();
+        _installItem.Install(transform,Ease, _time);
+    }
+
     protected override void Interact()
     {
-        if (_pickUpItem.PickUp())
+        if (_pickUpItem.CheckFreeSlot())
         {
-            _collider.enabled = false;
-            _rigidbody.isKinematic = true;
+            OnPickUp?.Invoke(this);
+            _pickUpItem.PickUp();
+            Control(false);
         }
+
+        //if (_pickUpItem.PickUp())
+        //{
+        //    Control(false);
+        //    //_collider.enabled = false;
+        //    //_rigidbody.isKinematic = true;
+        //}
     }
+
+    public void Control(bool isFree)
+    {
+        _collider.enabled = isFree;
+        _rigidbody.isKinematic = !isFree;
+    }
+
+    public void Control(bool isCollider, bool isKinematic)
+    {
+        _collider.enabled = isCollider;
+        _rigidbody.isKinematic = isKinematic;
+    }
+
 }
