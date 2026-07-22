@@ -57,6 +57,7 @@ public class InventorySlot
             _activeCassets[0] = null;
             _currentCassette = null;
             MoveHand();
+            
             NextCurrentCassette();
             _countSlotInventory--;
         }

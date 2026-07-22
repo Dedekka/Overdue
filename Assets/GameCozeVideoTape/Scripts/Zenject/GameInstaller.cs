@@ -6,11 +6,15 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private PickUpSettings _pickUpSettings;
     [SerializeField] private Transform _hand;
+    [Header("DataCassets")]
+    [SerializeField] private DataCassets _dataCassets;
+    [SerializeField] private DataLanguage _dataLanguage;
 
     public override void InstallBindings()
     {
         BindUI();
         BindItem();
+        BindSystem();
     }
 
     private void BindUI()
@@ -29,5 +33,13 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<InstallItem>()
            .AsTransient();
+    }
+
+    private void BindSystem()
+    {
+        Container.Bind<ManagerCassette>()
+           .AsSingle()
+           .WithArguments(_dataCassets, _dataLanguage);
+
     }
 }

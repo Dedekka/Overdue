@@ -7,6 +7,7 @@ using Zenject;
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class CassetteObject : BazeInteracteble
 {
+    [SerializeField] private int _id;
     public TextMeshPro textMeshPro;
     public Rigidbody Rigidbody => _rigidbody;
     //public bool IsInstall => _isInstall;
@@ -14,15 +15,21 @@ public class CassetteObject : BazeInteracteble
     private InstallItem _installItem;
     private Rigidbody _rigidbody;
     private Collider _collider;
+    private ItemSettings _itemSettings;
     //public bool _isInstall;
 
     public event Action<CassetteObject> OnPickUp;
 
     [Inject]
-    public void Construct(PickUpItem PickUpItem, InstallItem installItem)
+    public void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette)
     {
         _pickUpItem = PickUpItem;
         _installItem = installItem;
+        _itemSettings = managerCassette.GetSettings(_id);
+        if (_itemSettings == null)
+        {
+            Debug.LogError($"Cassette: {gameObject.name}, Id: {_id} Not Found Settings");
+        }
     }
 
     private void Awake()
@@ -31,6 +38,11 @@ public class CassetteObject : BazeInteracteble
         _collider = GetComponent<Collider>();
         _pickUpItem.SetBody(this, _rigidbody);
         _installItem.SetBody(this);
+    }
+
+    private void Start()
+    {
+        Description = _itemSettings.Original_Title;
     }
 
     public void Drop()
@@ -49,7 +61,7 @@ public class CassetteObject : BazeInteracteble
     {
         //_isInstall = true;
         _pickUpItem.StopMove();
-        _installItem.Install(transform,Ease, _time);
+        _installItem.Install(transform, Ease, _time);
     }
 
     protected override void Interact()
