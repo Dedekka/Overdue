@@ -139,7 +139,7 @@ public class InventorySlot
     {
         InventoryData tempCassette = GetCassetteForIndex(_countCassette);
         _activeCassets[_countCassette] = cassetteObject;
-        cassetteObject.textMeshPro.SetText(_countCassette.ToString());
+        //cassetteObject.textMeshPro.SetText(_countCassette.ToString());
         tempCassette.CassetteObject = cassetteObject;
         tempCassette.CassetteObject.gameObject.name = $"Cassette {_countSlotInventory}";
         transform = tempCassette.Position;
@@ -171,7 +171,7 @@ public class InventorySlot
             _activeCassets[i] = _cassets[i].CassetteObject;
             if (_activeCassets[i] != null)
             {
-                _activeCassets[i].textMeshPro.SetText(i.ToString());
+                //_activeCassets[i].textMeshPro.SetText(i.ToString());
             }
         }
     }

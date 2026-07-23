@@ -29,5 +29,8 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<InstallItem>()
            .AsTransient();
+
+        Container.Bind<CassetteRenderer>()
+          .AsSingle();
     }
 }

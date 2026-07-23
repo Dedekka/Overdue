@@ -2,27 +2,28 @@ using DG.Tweening;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class CassetteObject : BazeInteracteble
 {
-    public TextMeshPro textMeshPro;
     public Rigidbody Rigidbody => _rigidbody;
-    //public bool IsInstall => _isInstall;
+    [SerializeField] private int _id = 0;
     private PickUpItem _pickUpItem;
     private InstallItem _installItem;
     private Rigidbody _rigidbody;
     private Collider _collider;
-    //public bool _isInstall;
+    private CassetteRenderer _cassetteRenderer;
 
     public event Action<CassetteObject> OnPickUp;
-
+    
     [Inject]
-    public void Construct(PickUpItem PickUpItem, InstallItem installItem)
+    public void Construct(PickUpItem PickUpItem, InstallItem installItem, CassetteRenderer cassetteRenderer)
     {
         _pickUpItem = PickUpItem;
         _installItem = installItem;
+        _cassetteRenderer = cassetteRenderer;
     }
 
     private void Awake()
@@ -31,6 +32,8 @@ public class CassetteObject : BazeInteracteble
         _collider = GetComponent<Collider>();
         _pickUpItem.SetBody(this, _rigidbody);
         _installItem.SetBody(this);
+        Renderer _renderer = GetComponent<Renderer>();
+        _cassetteRenderer.Initialization(_renderer, _id);
     }
 
     public void Drop()
@@ -47,7 +50,6 @@ public class CassetteObject : BazeInteracteble
 
     public void Install(Transform transform, Ease Ease, float _time)
     {
-        //_isInstall = true;
         _pickUpItem.StopMove();
         _installItem.Install(transform,Ease, _time);
     }
@@ -60,13 +62,6 @@ public class CassetteObject : BazeInteracteble
             _pickUpItem.PickUp();
             Control(false);
         }
-
-        //if (_pickUpItem.PickUp())
-        //{
-        //    Control(false);
-        //    //_collider.enabled = false;
-        //    //_rigidbody.isKinematic = true;
-        //}
     }
 
     public void Control(bool isFree)
@@ -80,5 +75,4 @@ public class CassetteObject : BazeInteracteble
         _collider.enabled = isCollider;
         _rigidbody.isKinematic = isKinematic;
     }
-
 }
