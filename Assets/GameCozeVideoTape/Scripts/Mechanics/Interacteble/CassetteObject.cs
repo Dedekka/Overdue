@@ -1,8 +1,6 @@
 using DG.Tweening;
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
@@ -15,22 +13,22 @@ public class CassetteObject : BazeInteracteble
     private Rigidbody _rigidbody;
     private Collider _collider;
     private ItemSettings _itemSettings;
-    //private CassetteRenderer _cassetteRenderer;
+    private CassetteRenderer _cassetteRenderer;
     public event Action<CassetteObject> OnPickUp;
 
     [Inject]
-    public void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette)//, CassetteRenderer cassetteRenderer)
+    private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, CassetteRenderer cassetteRenderer)
     {
         _pickUpItem = PickUpItem;
         _installItem = installItem;
         _itemSettings = managerCassette.GetSettings(_id);
-        //_cassetteRenderer = cassetteRenderer;
+        _cassetteRenderer = cassetteRenderer;
         if (_itemSettings == null)
         {
             Debug.LogError($"Cassette: {gameObject.name}, Id: {_id} Not Found Settings");
         }
     }
-  
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -38,7 +36,7 @@ public class CassetteObject : BazeInteracteble
         _pickUpItem.SetBody(this, _rigidbody);
         _installItem.SetBody(this);
         Renderer _renderer = GetComponent<Renderer>();
-        //_cassetteRenderer.Initialization(_renderer, _id);
+        _cassetteRenderer.Initialization(_renderer, _id);
     }
 
     private void Start()
@@ -64,16 +62,6 @@ public class CassetteObject : BazeInteracteble
         _installItem.Install(transform, Ease, _time);
     }
 
-    protected override void Interact()
-    {
-        if (_pickUpItem.CheckFreeSlot())
-        {
-            OnPickUp?.Invoke(this);
-            _pickUpItem.PickUp();
-            Control(false);
-        }
-    }
-
     public void Control(bool isFree)
     {
         _collider.enabled = isFree;
@@ -84,5 +72,14 @@ public class CassetteObject : BazeInteracteble
     {
         _collider.enabled = isCollider;
         _rigidbody.isKinematic = isKinematic;
+    }
+    protected override void Interact()
+    {
+        if (_pickUpItem.CheckFreeSlot())
+        {
+            OnPickUp?.Invoke(this);
+            _pickUpItem.PickUp();
+            Control(false);
+        }
     }
 }

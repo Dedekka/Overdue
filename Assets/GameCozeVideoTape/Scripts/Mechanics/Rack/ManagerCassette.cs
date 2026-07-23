@@ -13,6 +13,7 @@ public class ManagerCassette
 
     public ItemSettings GetSettings(int Id)
     {
+        Debug.Log($"ManagerCassette , _dataCassets == null {_dataCassets == null}");
        return _dataCassets.GetItem(Id);
     }
 }

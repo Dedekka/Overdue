@@ -7,14 +7,21 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private PickUpSettings _pickUpSettings;
     [SerializeField] private Transform _hand;
     [Header("DataCassets")]
-    [SerializeField] private DataCassets _dataCassets;
-    [SerializeField] private DataLanguage _dataLanguage;
+    private DataCassets _dataCassets;
+    private DataLanguage _dataLanguage;
 
     public override void InstallBindings()
     {
+        FindSub();
         BindUI();
         BindItem();
         BindSystem();
+    }
+
+    private void FindSub()
+    {
+        _dataCassets = Resources.Load<DataCassets>(Path.DataCassetsAsset);
+        _dataLanguage = Resources.Load<DataLanguage>(Path.LanguageCassetsAsset);
     }
 
     private void BindUI()
