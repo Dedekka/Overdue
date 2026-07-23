@@ -8,7 +8,8 @@ public class ItemSettings
     public int Id;
     public string Genre;
     public string SubGenre;
-    public string Color;
+    public string Material;
+    public int MaterialIndex;
 }
 
 [Serializable]

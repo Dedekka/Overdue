@@ -36,7 +36,7 @@ public class CassetteObject : BazeInteracteble
         _pickUpItem.SetBody(this, _rigidbody);
         _installItem.SetBody(this);
         Renderer _renderer = GetComponent<Renderer>();
-        _cassetteRenderer.Initialization(_renderer, _id);
+        _cassetteRenderer.Initialization(_renderer, _itemSettings.Material, _itemSettings.MaterialIndex);
     }
 
     private void Start()
