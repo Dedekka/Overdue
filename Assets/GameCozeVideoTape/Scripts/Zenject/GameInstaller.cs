@@ -4,13 +4,15 @@ using Zenject;
 public class GameInstaller : MonoInstaller
 {
     [SerializeField] private PlayerUi _playerUi;
-    [SerializeField] private PickUpSettings _pickUpSettings;
     [SerializeField] private Transform _hand;
     [Header("DataCassets")]
     private DataCassets _dataCassets;
     private DataLanguage _dataLanguage;
     [Header("Materials")]
     [SerializeField] private Material _material;
+    [Header("Items")]
+    [SerializeField] private PickUpSettings _pickUpSettings;
+    [SerializeField] private ShelfSlotSettings _shelfSlotSettings;
 
     public override void InstallBindings()
     {
@@ -46,6 +48,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<CassetteRenderer>()
           .AsSingle()
           .WithArguments(_material);
+
+        Container.Bind<ShelfSlotSettings>()
+          .FromInstance(_shelfSlotSettings)
+          .AsSingle();
     }
 
     private void BindSystem()

@@ -1,15 +1,23 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
+using Zenject;
 
 public class ContentSlot : BazeInteracteble
 {
-    [SerializeField] private Ease Ease;
-    [SerializeField] private float _time;
+    private Player _player;
+    private Ease _ease;
+    private float _time;
     private MeshRenderer _meshRenderer;
 
-    public event Action OnInteract;
+    public event Action<CassetteObject> OnInteract;
     public event Action<bool> OnEnterCursor;
+
+    [Inject]
+    public void Construct(Player player)
+    {
+        _player = player;
+    }
 
     private void Awake()
     {
@@ -23,11 +31,21 @@ public class ContentSlot : BazeInteracteble
 
     protected override void Interact()
     {
-        OnInteract?.Invoke();
+        if (_player.CheckActiveCassette(out CassetteObject currentCassette))
+        {
+            OnInteract?.Invoke(currentCassette);
+        }
+    }
+
+    public void SetSettings(Ease ease, float time)
+    {
+        _ease = ease;
+        _time = time;
     }
 
     public void ControlVisible(bool isVisible)
     {
+        if (_meshRenderer.enabled == isVisible) return;
         _meshRenderer.enabled = isVisible;
         //gameObject.SetActive(isVisible);
     }
@@ -39,7 +57,7 @@ public class ContentSlot : BazeInteracteble
 
         if (isSuccessful) { return isSuccessful; }
 
-        cassetteObject.Install(transform, Ease, _time);
+        cassetteObject.Install(transform, _ease, _time);
         //Debug.Log($"isSuccessful {isSuccessful}");
 
         return isSuccessful;

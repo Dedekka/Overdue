@@ -3,24 +3,39 @@ using UnityEngine;
 
 public class GoogleMenu
 {
+    #region System
     private const string SpreadSheet_id = "1E8nV_8KQ_zj8EQ3zbHRbxc3EquugKUKNG12jmPgthus";
-    private const string Items_sheets_mane = "BazeCassette";
-    private const string Language_sheets_mane = "Language";
     private const string Credentials_path = "overdue-503208-d39af501a561.json";
+    #endregion
+
+    #region Sheets Name
+    private const string Items_sheets_name = "BazeCassette";
+    private const string Language_sheets_name = "Language";
+    private const string Genre_sheets_name = "Genre";
+    private const string SubGenre_sheets_name = "SubGenre";
+
+    #endregion
+
     private const string SettingFileName = "MainGoogleSettings";
 
-    private const string FilePathDataCassets = "Assets/Resources/Data/DataCassets.asset";
-    private const string FilePathLanguageCassets = "Assets/Resources/Data/LanguageCassets.asset";
 
     [MenuItem("Google/LoadGoogleSheets")]
     private static async void LoadItemsSettings()
     {
         GoogleImporter sheetsImporter = new GoogleImporter(Credentials_path, SpreadSheet_id);
         MainGoogleSettings gameSettings = LoadSettings();
+
+        GenreParser GenreParser = new GenreParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(Genre_sheets_name, GenreParser);
+
+        SubGenreParser subGenreParser = new SubGenreParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(SubGenre_sheets_name, subGenreParser);
+
+
         ItemSettingsParser ItemParser = new ItemSettingsParser(gameSettings);
         ItemLanguageParser LanguageParser = new ItemLanguageParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(Items_sheets_mane, ItemParser);
-        await sheetsImporter.DownloandAndParseSheet(Language_sheets_mane, LanguageParser);
+        await sheetsImporter.DownloandAndParseSheet(Items_sheets_name, ItemParser);
+        await sheetsImporter.DownloandAndParseSheet(Language_sheets_name, LanguageParser);
 
         SaveSettings(gameSettings);
     }
@@ -47,6 +62,10 @@ public class GoogleMenu
         DataLanguage dataLanguage = ScriptableObject.CreateInstance<DataLanguage>();
         dataLanguage.Initialization(mainGoogleSettings);
         SaveAssets(Path.LanguageCassetsPath, dataLanguage);
+
+        DataGenre dataGenre = ScriptableObject.CreateInstance<DataGenre>();
+        dataGenre.Initialization(mainGoogleSettings);
+        SaveAssets(Path.GenrePath, dataGenre);
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
