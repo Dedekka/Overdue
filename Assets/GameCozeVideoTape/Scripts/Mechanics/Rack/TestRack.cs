@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[SelectionBase]
 public class TestRack : BazeInteracteble
 {
     [SerializeField] private Genre _genre;
