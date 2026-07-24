@@ -7,6 +7,7 @@ using Zenject;
 public class CassetteObject : BazeInteracteble
 {
     public Rigidbody Rigidbody => _rigidbody;
+    public ItemSettings ItemSettings => _itemSettings;
     [SerializeField] private int _id = 0;
     private PickUpItem _pickUpItem;
     private InstallItem _installItem;

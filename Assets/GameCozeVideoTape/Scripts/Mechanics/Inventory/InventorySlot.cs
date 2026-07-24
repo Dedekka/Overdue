@@ -63,8 +63,9 @@ public class InventorySlot
         }
     }
 
-    public bool CheckActiveCassette()
+    public bool CheckActiveCassette(out CassetteObject cassetteObject)
     {
+        cassetteObject = _currentCassette;
         ChangeCurrentCassette();
         return _currentCassette != null;
     }

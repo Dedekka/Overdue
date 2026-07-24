@@ -1,0 +1,519 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1cd52685560f14987e59676e6c4553, type: 3}
+  m_Name: Genre
+  m_EditorClassIdentifier: Assembly-CSharp::DataGenre
+  itemSettings:
+  - GenreName: "\u0422\u0440\u0438\u043B\u043B\u0435\u0440"
+    IdGenre: 1
+    SubGenreList:
+    - SubGenreName: "\u041F\u0441\u0438\u0445\u043E\u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u0442\u0440\u0438\u043B\u043B\u0435\u0440\u044B"
+      IdSubGenre: 1
+    - SubGenreName: "\u041D\u0443\u0430\u0440"
+      IdSubGenre: 2
+    - SubGenreName: "\u041D\u0435\u043E\u043D\u0443\u0430\u0440"
+      IdSubGenre: 3
+    - SubGenreName: "\u041A\u0440\u0438\u043C\u0438\u043D\u0430\u043B\u044C\u043D\u044B\u0435
+        \u0442\u0440\u0438\u043B\u043B\u0435\u0440\u044B"
+      IdSubGenre: 4
+    - SubGenreName: "\u041C\u0430\u0444\u0438\u044F"
+      IdSubGenre: 5
+    - SubGenreName: "\u041E\u0433\u0440\u0430\u0431\u043B\u0435\u043D\u0438\u044F"
+      IdSubGenre: 6
+    - SubGenreName: "\u0422\u044E\u0440\u0435\u043C\u043D\u043E\u0435 \u043A\u0438\u043D\u043E"
+      IdSubGenre: 7
+    - SubGenreName: "\u0417\u0430\u0433\u043E\u0432\u043E\u0440\u044B \u0438 \u0448\u043F\u0438\u043E\u043D\u0430\u0436"
+      IdSubGenre: 8
+    - SubGenreName: "\u0422\u0440\u0438\u043B\u043B\u0435\u0440\u044B \u043E \u043F\u0440\u0435\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u0438"
+      IdSubGenre: 9
+    - SubGenreName: "\u0422\u0435\u0445\u043D\u043E\u0442\u0440\u0438\u043B\u043B\u0435\u0440\u044B"
+      IdSubGenre: 10
+  - GenreName: "\u0411\u043E\u0435\u0432\u0438\u043A"
+    IdGenre: 2
+    SubGenreList:
+    - SubGenreName: "\u0411\u043E\u0435\u0432\u0438\u043A\u0438 80-\u0445"
+      IdSubGenre: 1
+    - SubGenreName: "\u0411\u043E\u0435\u0432\u0438\u043A\u0438 90-\u0445"
+      IdSubGenre: 2
+    - SubGenreName: "\u041F\u043E\u043B\u0438\u0446\u0435\u0439\u0441\u043A\u0438\u0435
+        \u0431\u043E\u0435\u0432\u0438\u043A\u0438"
+      IdSubGenre: 3
+    - SubGenreName: "\u041A\u0443\u043D\u0433-\u0444\u0443 \u0438 \u0432\u043E\u0441\u0442\u043E\u0447\u043D\u044B\u0435
+        \u0431\u043E\u0435\u0432\u0438\u043A\u0438"
+      IdSubGenre: 4
+    - SubGenreName: "\u0424\u0438\u043B\u044C\u043C\u044B \u043E \u043C\u0435\u0441\u0442\u0438"
+      IdSubGenre: 5
+    - SubGenreName: "\u0412\u043E\u0435\u043D\u043D\u044B\u0435 \u0431\u043E\u0435\u0432\u0438\u043A\u0438"
+      IdSubGenre: 6
+    - SubGenreName: "\u0421\u043F\u0435\u0446\u043D\u0430\u0437 \u0438 \u044D\u043B\u0438\u0442\u043D\u044B\u0435
+        \u043F\u043E\u0434\u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u044F"
+      IdSubGenre: 7
+    - SubGenreName: "\u041D\u0430\u0451\u043C\u043D\u0438\u043A\u0438 \u0438 \u0441\u043E\u043B\u0434\u0430\u0442\u044B
+        \u0443\u0434\u0430\u0447\u0438"
+      IdSubGenre: 8
+    - SubGenreName: "\u0422\u044E\u0440\u0435\u043C\u043D\u044B\u0439 \u044D\u043A\u0448\u0435\u043D"
+      IdSubGenre: 9
+    - SubGenreName: "\u0413\u043E\u043D\u043A\u0438 \u0438 \u043F\u043E\u0433\u043E\u043D\u0438"
+      IdSubGenre: 10
+  - GenreName: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u043A\u0430"
+    IdGenre: 3
+    SubGenreList:
+    - SubGenreName: "\u041A\u043E\u0441\u043C\u043E\u043E\u043F\u0435\u0440\u0430"
+      IdSubGenre: 1
+    - SubGenreName: "\u0420\u043E\u0431\u043E\u0442\u044B \u0438 \u0418\u0418"
+      IdSubGenre: 2
+    - SubGenreName: "\u041F\u0440\u0438\u0448\u0435\u043B\u044C\u0446\u044B"
+      IdSubGenre: 3
+    - SubGenreName: "\u041A\u0438\u0431\u0435\u0440\u043F\u0430\u043D\u043A"
+      IdSubGenre: 4
+    - SubGenreName: "\u041F\u043E\u0441\u0442\u0430\u043F\u043E\u043A\u0430\u043B\u0438\u043F\u0441\u0438\u0441"
+      IdSubGenre: 5
+    - SubGenreName: "\u041F\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u044F
+        \u0432\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438"
+      IdSubGenre: 6
+    - SubGenreName: "\u0410\u043D\u0442\u0438\u0443\u0442\u043E\u043F\u0438\u0438"
+      IdSubGenre: 7
+    - SubGenreName: "\u041A\u043E\u0441\u043C\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+        \u0445\u043E\u0440\u0440\u043E\u0440"
+      IdSubGenre: 8
+    - SubGenreName: "\u041C\u043E\u043D\u0441\u0442\u0440-\u043C\u0443\u0432\u0438"
+      IdSubGenre: 9
+    - SubGenreName: "\u041A\u043B\u043E\u043D\u044B \u0438 \u0433\u0435\u043D\u043D\u044B\u0435
+        \u044D\u043A\u0441\u043F\u0435\u0440\u0438\u043C\u0435\u043D\u0442\u044B"
+      IdSubGenre: 10
+  - GenreName: "\u0424\u044D\u043D\u0442\u0435\u0437\u0438"
+    IdGenre: 4
+    SubGenreList:
+    - SubGenreName: "\u0422\u0451\u043C\u043D\u043E\u0435 \u0444\u044D\u043D\u0442\u0435\u0437\u0438"
+      IdSubGenre: 1
+    - SubGenreName: "\u0413\u0435\u0440\u043E\u0438\u0447\u0435\u0441\u043A\u043E\u0435
+        \u0444\u044D\u043D\u0442\u0435\u0437\u0438 (\u043C\u0435\u0447\u0438 \u0438
+        \u043C\u0430\u0433\u0438\u044F)"
+      IdSubGenre: 2
+    - SubGenreName: "\u0412\u043E\u043B\u0448\u0435\u0431\u043D\u044B\u0435 \u043C\u0438\u0440\u044B
+        \u0438 \u043A\u0432\u0435\u0441\u0442\u044B"
+      IdSubGenre: 3
+    - SubGenreName: "\u0413\u043E\u0440\u043E\u0434\u0441\u043A\u043E\u0435 \u0444\u044D\u043D\u0442\u0435\u0437\u0438"
+      IdSubGenre: 4
+    - SubGenreName: "\u0421\u043A\u0430\u0437\u043A\u0438 \u043D\u0430 \u043D\u043E\u0432\u044B\u0439
+        \u043B\u0430\u0434"
+      IdSubGenre: 5
+    - SubGenreName: "\u0414\u0440\u0430\u043A\u043E\u043D\u044B \u0438 \u043C\u0438\u0444\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0430"
+      IdSubGenre: 6
+    - SubGenreName: "\u041C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u0430\u043A\u0430\u0434\u0435\u043C\u0438\u0438"
+      IdSubGenre: 7
+    - SubGenreName: "\u0424\u044D\u043D\u0442\u0435\u0437\u0438-\u043F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F
+        \u0434\u043B\u044F \u0432\u0441\u0435\u0439 \u0441\u0435\u043C\u044C\u0438"
+      IdSubGenre: 8
+    - SubGenreName: "\u0410\u0440\u0442\u0443\u0440\u0438\u0430\u043D\u0441\u043A\u0438\u0435
+        \u043B\u0435\u0433\u0435\u043D\u0434\u044B"
+      IdSubGenre: 9
+    - SubGenreName: "\u0412\u043E\u0441\u0442\u043E\u0447\u043D\u043E\u0435 \u0444\u044D\u043D\u0442\u0435\u0437\u0438"
+      IdSubGenre: 10
+  - GenreName: "\u041F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F"
+    IdGenre: 5
+    SubGenreList:
+    - SubGenreName: "\u0414\u0436\u0443\u043D\u0433\u043B\u0438 \u0438 \u0437\u0430\u0442\u0435\u0440\u044F\u043D\u043D\u044B\u0435
+        \u043C\u0438\u0440\u044B"
+      IdSubGenre: 1
+    - SubGenreName: "\u041C\u043E\u0440\u0441\u043A\u0438\u0435 \u043F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F
+        \u0438 \u043F\u0438\u0440\u0430\u0442\u044B"
+      IdSubGenre: 2
+    - SubGenreName: "\u041E\u0445\u043E\u0442\u0430 \u0437\u0430 \u0441\u043E\u043A\u0440\u043E\u0432\u0438\u0449\u0430\u043C\u0438"
+      IdSubGenre: 3
+    - SubGenreName: "\u042D\u043A\u0441\u043F\u0435\u0434\u0438\u0446\u0438\u0438
+        \u0438 \u0432\u044B\u0436\u0438\u0432\u0430\u043D\u0438\u0435"
+      IdSubGenre: 4
+    - SubGenreName: "\u0428\u043F\u0438\u043E\u043D\u0441\u043A\u0438\u0435 \u043F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F"
+      IdSubGenre: 5
+    - SubGenreName: "\u0421\u043F\u043E\u0440\u0442\u0438\u0432\u043D\u044B\u0435
+        \u043F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F"
+      IdSubGenre: 6
+    - SubGenreName: "\u0413\u043E\u0440\u043E\u0434\u0441\u043A\u0438\u0435 \u043A\u0432\u0435\u0441\u0442\u044B"
+      IdSubGenre: 7
+    - SubGenreName: "\u0418\u0441\u0442\u043E\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u044D\u043A\u0441\u043F\u0435\u0434\u0438\u0446\u0438\u0438"
+      IdSubGenre: 8
+    - SubGenreName: "\u041F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F
+        \u0434\u043B\u044F \u0432\u0441\u0435\u0439 \u0441\u0435\u043C\u044C\u0438"
+      IdSubGenre: 9
+    - SubGenreName: "\u042D\u043A\u0437\u043E\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u043F\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u044F"
+      IdSubGenre: 10
+  - GenreName: "\u041C\u0443\u0437\u044B\u043A\u0430"
+    IdGenre: 6
+    SubGenreList:
+    - SubGenreName: "\u041A\u043E\u043D\u0446\u0435\u0440\u0442\u043D\u044B\u0435
+        \u0437\u0430\u043F\u0438\u0441\u0438"
+      IdSubGenre: 1
+    - SubGenreName: "\u041C\u0443\u0437\u044B\u043A\u0430\u043B\u044C\u043D\u044B\u0435
+        \u043A\u043B\u0438\u043F\u044B \u0438 \u0441\u0431\u043E\u0440\u043D\u0438\u043A\u0438"
+      IdSubGenre: 2
+    - SubGenreName: "\u0420\u043E\u043A-\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430\u043B\u043A\u0438"
+      IdSubGenre: 3
+    - SubGenreName: "\u041C\u044E\u0437\u0438\u043A\u043B\u044B"
+      IdSubGenre: 4
+    - SubGenreName: "\u0422\u0430\u043D\u0446\u0435\u0432\u0430\u043B\u044C\u043D\u043E\u0435
+        \u043A\u0438\u043D\u043E"
+      IdSubGenre: 5
+    - SubGenreName: "\u0421\u0442\u0435\u043D\u0434\u0430\u043F-\u043A\u0430\u043C\u0435\u0434\u0438"
+      IdSubGenre: 6
+    - SubGenreName: "\u0422\u043E\u043A-\u0448\u043E\u0443 \u0438 \u0438\u043D\u0442\u0435\u0440\u0432\u044C\u044E"
+      IdSubGenre: 7
+    - SubGenreName: "MTV-\u0441\u0431\u043E\u0440\u043D\u0438\u043A\u0438"
+      IdSubGenre: 8
+    - SubGenreName: "\u041A\u0430\u0440\u0430\u043E\u043A\u0435 \u0438 \u043E\u0431\u0443\u0447\u0430\u044E\u0449\u0438\u0435
+        \u043A\u0430\u0441\u0441\u0435\u0442\u044B"
+      IdSubGenre: 9
+    - SubGenreName: "\u0414\u0436\u0430\u0437 \u0438 \u0431\u043B\u044E\u0437-\u043A\u043E\u043D\u0446\u0435\u0440\u0442\u044B"
+      IdSubGenre: 10
+  - GenreName: "\u041C\u0443\u043B\u044C\u0442\u0444\u0438\u043B\u044C\u043C"
+    IdGenre: 7
+    SubGenreList:
+    - SubGenreName: "Disney-\u043A\u043B\u0430\u0441\u0441\u0438\u043A\u0430"
+      IdSubGenre: 1
+    - SubGenreName: "\u0410\u043D\u0438\u043C\u0435"
+      IdSubGenre: 2
+    - SubGenreName: Stop-motion
+      IdSubGenre: 3
+    - SubGenreName: "\u041C\u0443\u043B\u044C\u0442\u0441\u0435\u0440\u0438\u0430\u043B\u044B"
+      IdSubGenre: 4
+    - SubGenreName: "\u0412\u0437\u0440\u043E\u0441\u043B\u0430\u044F \u0430\u043D\u0438\u043C\u0430\u0446\u0438\u044F"
+      IdSubGenre: 5
+    - SubGenreName: "\u0420\u043E\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043D\u0441\u043A\u0438\u0435
+        \u043C\u0443\u043B\u044C\u0442\u0444\u0438\u043B\u044C\u043C\u044B"
+      IdSubGenre: 6
+    - SubGenreName: "\u041F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0447\u0435\u0441\u043A\u0430\u044F
+        \u0430\u043D\u0438\u043C\u0430\u0446\u0438\u044F"
+      IdSubGenre: 7
+    - SubGenreName: "\u041C\u044E\u0437\u0438\u043A\u043B-\u043C\u0443\u043B\u044C\u0442\u0444\u0438\u043B\u044C\u043C\u044B"
+      IdSubGenre: 8
+    - SubGenreName: "\u041A\u043E\u0440\u043E\u0442\u043A\u043E\u043C\u0435\u0442\u0440\u0430\u0436\u043D\u044B\u0435
+        \u0441\u0431\u043E\u0440\u043D\u0438\u043A\u0438"
+      IdSubGenre: 9
+    - SubGenreName: "\u0421\u043E\u0432\u0435\u0442\u0441\u043A\u0430\u044F/\u0435\u0432\u0440\u043E\u043F\u0435\u0439\u0441\u043A\u0430\u044F
+        \u0430\u043D\u0438\u043C\u0430\u0446\u0438\u044F"
+      IdSubGenre: 10
+  - GenreName: "\u0414\u0440\u0430\u043C\u0430"
+    IdGenre: 8
+    SubGenreList:
+    - SubGenreName: "\u0414\u0440\u0430\u043C\u044B"
+      IdSubGenre: 1
+    - SubGenreName: "\u0421\u0435\u043C\u0435\u0439\u043D\u044B\u0435 \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 2
+    - SubGenreName: "\u0421\u0443\u0434\u0435\u0431\u043D\u044B\u0435 \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 3
+    - SubGenreName: "\u0421\u043E\u0446\u0438\u0430\u043B\u044C\u043D\u044B\u0435
+        \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 4
+    - SubGenreName: "\u0411\u0438\u043E\u0433\u0440\u0430\u0444\u0438\u0438"
+      IdSubGenre: 5
+    - SubGenreName: "\u0418\u0441\u0442\u043E\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 6
+    - SubGenreName: "\u0412\u043E\u0435\u043D\u043D\u044B\u0435 \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 7
+    - SubGenreName: "\u0421\u043F\u043E\u0440\u0442\u0438\u0432\u043D\u044B\u0435
+        \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 8
+    - SubGenreName: "\u041C\u0443\u0437\u044B\u043A\u0430\u043B\u044C\u043D\u044B\u0435
+        \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 9
+    - SubGenreName: "\u0410\u0440\u0442-\u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 10
+  - GenreName: "\u0423\u0436\u0430\u0441\u044B"
+    IdGenre: 9
+    SubGenreList:
+    - SubGenreName: "\u0421\u043B\u044D\u0448\u0435\u0440\u044B"
+      IdSubGenre: 1
+    - SubGenreName: "\u0412\u0430\u043C\u043F\u0438\u0440\u044B"
+      IdSubGenre: 2
+    - SubGenreName: "\u041E\u0431\u043E\u0440\u043E\u0442\u043D\u0438"
+      IdSubGenre: 3
+    - SubGenreName: "\u0417\u043E\u043C\u0431\u0438"
+      IdSubGenre: 4
+    - SubGenreName: "\u0414\u0435\u043C\u043E\u043D\u044B \u0438 \u043E\u043A\u043A\u0443\u043B\u044C\u0442\u0438\u0437\u043C"
+      IdSubGenre: 5
+    - SubGenreName: "\u041F\u0440\u0438\u0437\u0440\u0430\u043A\u0438 \u0438 \u043F\u0440\u0438\u0432\u0438\u0434\u0435\u043D\u0438\u044F"
+      IdSubGenre: 6
+    - SubGenreName: "\u041F\u0440\u043E\u043A\u043B\u044F\u0442\u044B\u0435 \u0434\u043E\u043C\u0430
+        \u0438 \u0434\u0435\u0440\u0435\u0432\u043D\u0438"
+      IdSubGenre: 7
+    - SubGenreName: "\u0411\u043E\u0434\u0438-\u0445\u043E\u0440\u0440\u043E\u0440"
+      IdSubGenre: 8
+    - SubGenreName: "\u0425\u043E\u0440\u0440\u043E\u0440-\u043A\u043E\u043C\u0435\u0434\u0438\u0438"
+      IdSubGenre: 9
+    - SubGenreName: "\u0421\u0442\u0440\u0430\u043D\u043D\u044B\u0435 \u043A\u0430\u0441\u0441\u0435\u0442\u044B
+        \u0431\u0435\u0437 \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E\u0439
+        \u043E\u0431\u043B\u043E\u0436\u043A\u0438"
+      IdSubGenre: 10
+  - GenreName: "\u041A\u043E\u043C\u0435\u0434\u0438\u0438"
+    IdGenre: 10
+    SubGenreList:
+    - SubGenreName: "\u041A\u043E\u043C\u0435\u0434\u0438\u0438 80-\u0445"
+      IdSubGenre: 1
+    - SubGenreName: "\u041A\u043E\u043C\u0435\u0434\u0438\u0438 90-\u0445"
+      IdSubGenre: 2
+    - SubGenreName: "\u0421\u0435\u043C\u0435\u0439\u043D\u044B\u0435 \u043A\u043E\u043C\u0435\u0434\u0438\u0438"
+      IdSubGenre: 3
+    - SubGenreName: "\u041C\u043E\u043B\u043E\u0434\u0451\u0436\u043D\u044B\u0435
+        \u043A\u043E\u043C\u0435\u0434\u0438\u0438"
+      IdSubGenre: 4
+    - SubGenreName: "\u041F\u0430\u0440\u043E\u0434\u0438\u0438"
+      IdSubGenre: 5
+    - SubGenreName: "\u0420\u043E\u043C\u0430\u043D\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u043A\u043E\u043C\u0435\u0434\u0438\u0438"
+      IdSubGenre: 6
+    - SubGenreName: "\u0427\u0451\u0440\u043D\u044B\u0435 \u043A\u043E\u043C\u0435\u0434\u0438\u0438"
+      IdSubGenre: 7
+    - SubGenreName: "\u0411\u0440\u0438\u0442\u0430\u043D\u0441\u043A\u0438\u0435
+        \u043A\u043E\u043C\u0435\u0434\u0438\u0438"
+      IdSubGenre: 8
+    - SubGenreName: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435
+        \u043A\u043E\u043C\u0435\u0434\u0438\u0438"
+      IdSubGenre: 9
+    - SubGenreName: "\u0410\u0431\u0441\u0443\u0440\u0434"
+      IdSubGenre: 10
+  - GenreName: "\u0418\u0441\u0442\u043E\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0435"
+    IdGenre: 11
+    SubGenreList:
+    - SubGenreName: "\u0410\u043D\u0442\u0438\u0447\u043D\u043E\u0441\u0442\u044C"
+      IdSubGenre: 1
+    - SubGenreName: "\u0421\u0440\u0435\u0434\u043D\u0435\u0432\u0435\u043A\u043E\u0432\u044C\u0435"
+      IdSubGenre: 2
+    - SubGenreName: "\u041D\u0430\u043F\u043E\u043B\u0435\u043E\u043D\u043E\u0432\u0441\u043A\u0438\u0435
+        \u0432\u043E\u0439\u043D\u044B"
+      IdSubGenre: 3
+    - SubGenreName: "\u041F\u0435\u0440\u0432\u0430\u044F \u043C\u0438\u0440\u043E\u0432\u0430\u044F"
+      IdSubGenre: 4
+    - SubGenreName: "\u0412\u0442\u043E\u0440\u0430\u044F \u043C\u0438\u0440\u043E\u0432\u0430\u044F"
+      IdSubGenre: 5
+    - SubGenreName: "\u0425\u043E\u043B\u043E\u0434\u043D\u0430\u044F \u0432\u043E\u0439\u043D\u0430"
+      IdSubGenre: 6
+    - SubGenreName: "\u0412\u0435\u0441\u0442\u0435\u0440\u043D\u044B \u0438 \u0414\u0438\u043A\u0438\u0439
+        \u0417\u0430\u043F\u0430\u0434"
+      IdSubGenre: 7
+    - SubGenreName: "\u041A\u043E\u043B\u043E\u043D\u0438\u0430\u043B\u044C\u043D\u0430\u044F
+        \u044D\u043F\u043E\u0445\u0430"
+      IdSubGenre: 8
+    - SubGenreName: "\u041A\u043E\u0441\u0442\u044E\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435
+        \u0434\u0440\u0430\u043C\u044B"
+      IdSubGenre: 9
+    - SubGenreName: "\u0420\u0435\u0432\u043E\u043B\u044E\u0446\u0438\u0438 \u0438
+        \u043F\u0435\u0440\u0435\u0432\u043E\u0440\u043E\u0442\u044B"
+      IdSubGenre: 10
+  - GenreName: "\u0414\u0435\u0442\u0435\u043A\u0442\u0438\u0432"
+    IdGenre: 12
+    SubGenreList:
+    - SubGenreName: "\u041A\u043B\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+        \u0434\u0435\u0442\u0435\u043A\u0442\u0438\u0432"
+      IdSubGenre: 1
+    - SubGenreName: "\u041F\u043E\u043B\u0438\u0446\u0435\u0439\u0441\u043A\u0438\u0439
+        \u043F\u0440\u043E\u0446\u0435\u0434\u0443\u0440\u0430\u043B"
+      IdSubGenre: 2
+    - SubGenreName: "\u0427\u0430\u0441\u0442\u043D\u044B\u0435 \u0441\u044B\u0449\u0438\u043A\u0438"
+      IdSubGenre: 3
+    - SubGenreName: "\u041A\u0442\u043E \u0443\u0431\u0438\u0439\u0446\u0430 (whodunit)"
+      IdSubGenre: 4
+    - SubGenreName: "\u0414\u0435\u0442\u0435\u043A\u0442\u0438\u0432\u044B \u043F\u0440\u043E
+        \u0436\u0443\u0440\u043D\u0430\u043B\u0438\u0441\u0442\u043E\u0432-\u0440\u0430\u0441\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439"
+      IdSubGenre: 5
+    - SubGenreName: "\u0421\u043A\u0430\u043D\u0434\u0438\u043D\u0430\u0432\u0441\u043A\u0438\u0439
+        \u043D\u0443\u0430\u0440"
+      IdSubGenre: 6
+    - SubGenreName: "\u041A\u043E\u043C\u0435\u0434\u0438\u0439\u043D\u044B\u0435
+        \u0434\u0435\u0442\u0435\u043A\u0442\u0438\u0432\u044B"
+      IdSubGenre: 7
+    - SubGenreName: "\u041F\u043E\u0434\u0440\u043E\u0441\u0442\u043A\u043E\u0432\u044B\u0435
+        \u0434\u0435\u0442\u0435\u043A\u0442\u0438\u0432\u044B"
+      IdSubGenre: 8
+    - SubGenreName: "\u042E\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+        \u0434\u0435\u0442\u0435\u043A\u0442\u0438\u0432\u044B"
+      IdSubGenre: 9
+    - SubGenreName: "\u041A\u0440\u0438\u043C\u0438\u043D\u0430\u043B\u044C\u043D\u044B\u0435
+        \u0433\u043E\u043B\u043E\u0432\u043E\u043B\u043E\u043C\u043A\u0438"
+      IdSubGenre: 10
+  - GenreName: "\u041F\u043E\u0440\u043D\u043E"
+    IdGenre: 13
+    SubGenreList:
+    - SubGenreName: Test18_1
+      IdSubGenre: 1
+    - SubGenreName: Test18_2
+      IdSubGenre: 2
+    - SubGenreName: Test18_3
+      IdSubGenre: 3
+    - SubGenreName: Test18_4
+      IdSubGenre: 4
+    - SubGenreName: Test18_5
+      IdSubGenre: 5
+    - SubGenreName: Test18_6
+      IdSubGenre: 6
+    - SubGenreName: Test18_7
+      IdSubGenre: 7
+    - SubGenreName: Test18_8
+      IdSubGenre: 8
+    - SubGenreName: Test18_9
+      IdSubGenre: 9
+    - SubGenreName: Test18_10
+      IdSubGenre: 10
+  - GenreName: "\u0425\u0438\u0442"
+    IdGenre: 14
+    SubGenreList:
+    - SubGenreName: Test_Hit_1
+      IdSubGenre: 1
+    - SubGenreName: Test_Hit_2
+      IdSubGenre: 2
+    - SubGenreName: Test_Hit_3
+      IdSubGenre: 3
+    - SubGenreName: Test_Hit_4
+      IdSubGenre: 4
+    - SubGenreName: Test_Hit_5
+      IdSubGenre: 5
+    - SubGenreName: Test_Hit_6
+      IdSubGenre: 6
+    - SubGenreName: Test_Hit_7
+      IdSubGenre: 7
+    - SubGenreName: Test_Hit_8
+      IdSubGenre: 8
+    - SubGenreName: Test_Hit_9
+      IdSubGenre: 9
+    - SubGenreName: Test_Hit_10
+      IdSubGenre: 10
+    - SubGenreName: Test_Hit_11
+      IdSubGenre: 11
+    - SubGenreName: Test_Hit_12
+      IdSubGenre: 12
+    - SubGenreName: Test_Hit_13
+      IdSubGenre: 13
+    - SubGenreName: Test_Hit_14
+      IdSubGenre: 14
+    - SubGenreName: Test_Hit_15
+      IdSubGenre: 15
+    - SubGenreName: Test_Hit_16
+      IdSubGenre: 16
+    - SubGenreName: Test_Hit_17
+      IdSubGenre: 17
+    - SubGenreName: Test_Hit_18
+      IdSubGenre: 18
+    - SubGenreName: Test_Hit_19
+      IdSubGenre: 19
+    - SubGenreName: Test_Hit_20
+      IdSubGenre: 20
+    - SubGenreName: Test_Hit_21
+      IdSubGenre: 21
+    - SubGenreName: Test_Hit_22
+      IdSubGenre: 22
+    - SubGenreName: Test_Hit_23
+      IdSubGenre: 23
+    - SubGenreName: Test_Hit_24
+      IdSubGenre: 24
+    - SubGenreName: Test_Hit_25
+      IdSubGenre: 25
+    - SubGenreName: Test_Hit_26
+      IdSubGenre: 26
+    - SubGenreName: Test_Hit_27
+      IdSubGenre: 27
+    - SubGenreName: Test_Hit_28
+      IdSubGenre: 28
+    - SubGenreName: Test_Hit_29
+      IdSubGenre: 29
+    - SubGenreName: Test_Hit_30
+      IdSubGenre: 30
+    - SubGenreName: Test_Hit_31
+      IdSubGenre: 31
+    - SubGenreName: Test_Hit_32
+      IdSubGenre: 32
+    - SubGenreName: Test_Hit_33
+      IdSubGenre: 33
+    - SubGenreName: Test_Hit_34
+      IdSubGenre: 34
+    - SubGenreName: Test_Hit_35
+      IdSubGenre: 35
+    - SubGenreName: Test_Hit_36
+      IdSubGenre: 36
+    - SubGenreName: Test_Hit_37
+      IdSubGenre: 37
+    - SubGenreName: Test_Hit_38
+      IdSubGenre: 38
+    - SubGenreName: Test_Hit_39
+      IdSubGenre: 39
+    - SubGenreName: Test_Hit_40
+      IdSubGenre: 40
+    - SubGenreName: Test_Hit_41
+      IdSubGenre: 41
+    - SubGenreName: Test_Hit_42
+      IdSubGenre: 42
+    - SubGenreName: Test_Hit_43
+      IdSubGenre: 43
+    - SubGenreName: Test_Hit_44
+      IdSubGenre: 44
+    - SubGenreName: Test_Hit_45
+      IdSubGenre: 45
+    - SubGenreName: Test_Hit_46
+      IdSubGenre: 46
+    - SubGenreName: Test_Hit_47
+      IdSubGenre: 47
+    - SubGenreName: Test_Hit_48
+      IdSubGenre: 48
+    - SubGenreName: Test_Hit_49
+      IdSubGenre: 49
+    - SubGenreName: Test_Hit_50
+      IdSubGenre: 50
+    - SubGenreName: Test_Hit_51
+      IdSubGenre: 51
+    - SubGenreName: Test_Hit_52
+      IdSubGenre: 52
+    - SubGenreName: Test_Hit_53
+      IdSubGenre: 53
+    - SubGenreName: Test_Hit_54
+      IdSubGenre: 54
+    - SubGenreName: Test_Hit_55
+      IdSubGenre: 55
+    - SubGenreName: Test_Hit_56
+      IdSubGenre: 56
+    - SubGenreName: Test_Hit_57
+      IdSubGenre: 57
+    - SubGenreName: Test_Hit_58
+      IdSubGenre: 58
+    - SubGenreName: Test_Hit_59
+      IdSubGenre: 59
+    - SubGenreName: Test_Hit_60
+      IdSubGenre: 60
+    - SubGenreName: Test_Hit_61
+      IdSubGenre: 61
+    - SubGenreName: Test_Hit_62
+      IdSubGenre: 62
+    - SubGenreName: Test_Hit_63
+      IdSubGenre: 63
+    - SubGenreName: Test_Hit_64
+      IdSubGenre: 64
+    - SubGenreName: Test_Hit_65
+      IdSubGenre: 65
+    - SubGenreName: Test_Hit_66
+      IdSubGenre: 66
+    - SubGenreName: Test_Hit_67
+      IdSubGenre: 67
+    - SubGenreName: Test_Hit_68
+      IdSubGenre: 68
+  - GenreName: "\u041E\u043F\u0435\u0440\u0430"
+    IdGenre: 15
+    SubGenreList:
+    - SubGenreName: "\u041E\u043F\u0435\u0440\u043D\u044B\u0439 \u0441\u0435\u0440\u0438\u0430\u043B "
+      IdSubGenre: 1
+  - GenreName: "\u0412\u043E\u0437\u0432\u0440\u0430\u0449\u0451\u043D\u043D\u044B\u0435"
+    IdGenre: 16
+    SubGenreList:
+    - SubGenreName: "\u0412\u043E\u0437\u0432\u0440\u0430\u0442"
+      IdSubGenre: 1

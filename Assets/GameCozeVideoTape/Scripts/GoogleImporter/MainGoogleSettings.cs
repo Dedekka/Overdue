@@ -1,12 +1,10 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-
 
 [Serializable]
-public class MainGoogleSettings 
+public class MainGoogleSettings
 {
+    public List<GenreSettings> Genre;
     public List<ItemSettings> Items;
     public List<ItemLanguage> Language;
 }
