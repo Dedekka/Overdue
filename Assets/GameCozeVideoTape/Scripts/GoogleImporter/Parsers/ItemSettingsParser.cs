@@ -37,8 +37,12 @@ public class ItemSettingsParser : IGoogleParser
                 _currentitemSettings.SubGenre = token;
                 break;
 
-            case "Color":
-                _currentitemSettings.Color = token;
+            case "Material":
+                _currentitemSettings.Material = token;
+                break;
+
+            case "MaterialIndex":
+                _currentitemSettings.MaterialIndex = Convert.ToInt32(token);
                 break;
 
             default:

@@ -79,7 +79,7 @@ public class PlayerAim : IDisposable, IInitializable
         }
         catch (OperationCanceledException)
         {
-            Debug.Log("Операция отменена ");
+            //Debug.Log("Операция отменена ");
         }
     }
 

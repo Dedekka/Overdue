@@ -40,7 +40,7 @@ public class ContentSlot : BazeInteracteble
         if (isSuccessful) { return isSuccessful; }
 
         cassetteObject.Install(transform, Ease, _time);
-        Debug.Log($"isSuccessful {isSuccessful}");
+        //Debug.Log($"isSuccessful {isSuccessful}");
 
         return isSuccessful;
     }

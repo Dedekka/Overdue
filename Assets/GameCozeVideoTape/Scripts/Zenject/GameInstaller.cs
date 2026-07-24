@@ -9,6 +9,8 @@ public class GameInstaller : MonoInstaller
     [Header("DataCassets")]
     private DataCassets _dataCassets;
     private DataLanguage _dataLanguage;
+    [Header("Materials")]
+    [SerializeField] private Material _material;
 
     public override void InstallBindings()
     {
@@ -42,7 +44,8 @@ public class GameInstaller : MonoInstaller
            .AsTransient();
 
         Container.Bind<CassetteRenderer>()
-          .AsSingle();
+          .AsSingle()
+          .WithArguments(_material);
     }
 
     private void BindSystem()
