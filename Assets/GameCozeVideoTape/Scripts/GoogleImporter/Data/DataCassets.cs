@@ -14,6 +14,21 @@ public class DataCassets : ScriptableObject
         itemSettings = mainGoogleSettings.Items;
     }
 
+    public void GetSettings(List<CassetteObject> cassettes)
+    {
+        CassetteObject tempCassette;
+        for (int i = 0; i < cassettes.Count; i++)
+        {
+            tempCassette = cassettes[i];
+            tempCassette.SetSettings(itemSettings[i]);
+        }
+    }
+
+    public int GetMaxCassette()
+    {
+        return itemSettings.Count;
+    }
+
     public ItemSettings GetItem(int id)
     {
         if (_checkDictionary)
@@ -32,4 +47,5 @@ public class DataCassets : ScriptableObject
             _cassetsData.Add(item.Id, item);
         }
     }
+
 }

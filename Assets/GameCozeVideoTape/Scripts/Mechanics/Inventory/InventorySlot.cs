@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventorySlot
@@ -57,10 +60,15 @@ public class InventorySlot
             _activeCassets[0] = null;
             _currentCassette = null;
             MoveHand();
-            
+
             NextCurrentCassette();
             _countSlotInventory--;
         }
+    }
+
+    public List<CassetteObject> GetActiveCassets()
+    {
+        return _activeCassets.ToList();
     }
 
     public bool CheckActiveCassette(out CassetteObject cassetteObject)
@@ -96,6 +104,25 @@ public class InventorySlot
     {
         ChangeSlot(duration, 0);
     }
+
+    public void Load()
+    {
+        // Здесь нужно выбрасывать кассеты
+        // И опустошать инвентарь
+        for (int i = 0; i < _cassets.Length; i++)
+        {
+            if (_activeCassets[i] != null)
+            {
+                _activeCassets[i].Drop();
+            }
+            _cassets[i].CassetteObject = null;
+            _activeCassets[i] = null;
+        }
+        _currentCassette = null;
+        _countSlotInventory = 0;
+    }
+
+
 
     private void NextCurrentCassette()
     {

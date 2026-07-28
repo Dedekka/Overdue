@@ -6,50 +6,55 @@ using Zenject;
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class CassetteObject : BazeInteracteble
 {
+    public int Id => ItemSettings.Id;
     public Rigidbody Rigidbody => _rigidbody;
+    public Collider Collider => _stateItem.Collider;
     public ItemSettings ItemSettings => _itemSettings;
-    [SerializeField] private int _id = 0;
     private PickUpItem _pickUpItem;
+    private StateItem _stateItem;
     private InstallItem _installItem;
+
     private Rigidbody _rigidbody;
-    private Collider _collider;
-    private ItemSettings _itemSettings;
+    [SerializeField]private ItemSettings _itemSettings;
     private CassetteRenderer _cassetteRenderer;
+    private ManagerCassette _managerCassette;
     public event Action<CassetteObject> OnPickUp;
 
     [Inject]
-    private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, CassetteRenderer cassetteRenderer)
+    private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, CassetteRenderer cassetteRenderer, StateItem stateItem)
     {
+        _stateItem = stateItem;
         _pickUpItem = PickUpItem;
         _installItem = installItem;
-        _itemSettings = managerCassette.GetSettings(_id);
         _cassetteRenderer = cassetteRenderer;
-        if (_itemSettings == null)
-        {
-            Debug.LogError($"Cassette: {gameObject.name}, Id: {_id} Not Found Settings");
-        }
+        _managerCassette = managerCassette;
     }
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
+        _managerCassette.AddCassette(this);
         _pickUpItem.SetBody(this, _rigidbody);
         _installItem.SetBody(this);
-        Renderer _renderer = GetComponent<Renderer>();
-        _cassetteRenderer.Initialization(_renderer, _itemSettings.Material, _itemSettings.MaterialIndex);
+        _stateItem.Initialization(this, _rigidbody);
     }
 
-    private void Start()
+    public void SetSettings(ItemSettings itemSettings)
     {
+        _itemSettings = itemSettings;
+        _cassetteRenderer.Initialization(this, _itemSettings.MaterialIndex);
         Description = _itemSettings.Original_Title;
     }
 
     public void Drop()
     {
         _pickUpItem.StopMove();
-        transform.SetParent(null);
-        Control(true);
+        _stateItem.Drop();
+    }
+
+    public void OnFixed()
+    {
+        _stateItem.OnFixed();
     }
 
     public void Scroll(Transform transform)
@@ -60,27 +65,19 @@ public class CassetteObject : BazeInteracteble
     public void Install(Transform transform, Ease Ease, float _time)
     {
         _pickUpItem.StopMove();
-        _installItem.Install(transform, Ease, _time);
+        _installItem.Install(transform, Ease, _time, _stateItem.Install);
     }
 
-    public void Control(bool isFree)
-    {
-        _collider.enabled = isFree;
-        _rigidbody.isKinematic = !isFree;
-    }
-
-    public void Control(bool isCollider, bool isKinematic)
-    {
-        _collider.enabled = isCollider;
-        _rigidbody.isKinematic = isKinematic;
-    }
     protected override void Interact()
     {
+        if (_stateItem.IsHandSlot) { return; }
+
         if (_pickUpItem.CheckFreeSlot())
         {
+            _stateItem.ControlHand(true);
             OnPickUp?.Invoke(this);
             _pickUpItem.PickUp();
-            Control(false);
+            _stateItem.Control(false);
         }
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SubGenreShelf : MonoBehaviour
 {
+    public ShelfSlot[] ShelfSlot => _shelfSlot;
     [SerializeField] private ShelfSlot[] _shelfSlot;
     private TestRack _rack;
     private int _subGenreindex;

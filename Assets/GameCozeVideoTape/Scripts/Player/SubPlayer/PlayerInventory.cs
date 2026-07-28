@@ -32,6 +32,8 @@ public class PlayerInventory : IDisposable, IInitializable
     }
 
 
+  
+
     public void Drop()
     {
         _inventorySlot.Drop();
@@ -45,5 +47,10 @@ public class PlayerInventory : IDisposable, IInitializable
     public bool CheckFreeSlot(CassetteObject CassetteObject, out Transform transform)
     {
         return _inventorySlot.CheckFreeSlot(CassetteObject,out transform);
+    }
+
+    public void Load()
+    {
+        _inventorySlot.Load();
     }
 }

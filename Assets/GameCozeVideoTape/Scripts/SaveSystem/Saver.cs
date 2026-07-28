@@ -1,0 +1,48 @@
+using System;
+using UnityEngine;
+using Zenject;
+
+namespace SaveLoadSystem
+{
+    public class Saver : IInitializable
+    {
+        [SerializeField] private CassetteHolder _cassetteHolder;
+        [SerializeField] private RackHolder _rackHolder;
+
+        private SaveLoadStrategy _saveLoadSystem;
+        public event Action OnSave;
+        public event Action OnLoad;
+
+        public Saver(CassetteHolder cassette, SaveLoadStrategy saveLoadSystem, RackHolder rackHolder)
+        {
+            _cassetteHolder = cassette;
+            _rackHolder = rackHolder;
+            _saveLoadSystem = saveLoadSystem;
+        }
+
+        public void Initialize()
+        {
+            _saveLoadSystem.AddToSaveLoad(_cassetteHolder.SaveCassette);
+            _saveLoadSystem.AddToSaveLoad(_rackHolder.SaveRack);
+        }
+
+        [ContextMenu("Save")]
+        public void Save()
+        {
+            OnSave?.Invoke();
+            _cassetteHolder.Save();
+            _rackHolder.Save();
+            _saveLoadSystem.SaveGame(SaveType.File);
+        }
+
+
+        [ContextMenu("Load")]
+        public void Load()
+        {
+            OnLoad?.Invoke();
+            _saveLoadSystem.LoadGame(SaveType.File);
+            _cassetteHolder.UpdateItems();
+            _rackHolder.UpdateItems();
+        }
+    }
+}

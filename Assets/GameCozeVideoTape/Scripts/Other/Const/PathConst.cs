@@ -1,4 +1,4 @@
-public static class Path 
+public static class PathConst 
 {
     public const string DataCassetsPath = "Assets/Resources/Data/DataCassets.asset";
     public const string LanguageCassetsPath = "Assets/Resources/Data/LanguageCassets.asset";

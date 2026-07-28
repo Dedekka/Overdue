@@ -7,7 +7,7 @@ public class ShelfSlot : MonoBehaviour
     private SubGenreShelf _subGenreShelf;
     private Player _player;
     private CassetteObject _cassetteObject;
-    private bool isEmpty => _cassetteObject == null;
+    public bool IsEmpty => _cassetteObject == null;
     private ShelfSlotSettings _settings;
 
     [Inject]
@@ -29,21 +29,33 @@ public class ShelfSlot : MonoBehaviour
         _slot.OnEnterCursor -= CheckEmptyHand;
     }
 
-
+    public void Load(CassetteObject cassetteObject)
+    {
+        _cassetteObject = cassetteObject;
+        SubPickUp(IsEmpty);
+        _slot.gameObject.SetActive(IsEmpty);
+    }
 
     public void Initialization(SubGenreShelf subGenreShelf)
     {
         _subGenreShelf = subGenreShelf;
     }
 
+    public bool TryGetIdCassette(out int id)
+    {
+        id = IsEmpty ? -1 : _cassetteObject.Id;
+        return IsEmpty;
+    }
+
     private void CheckEmptySlot(CassetteObject currentCassette)
     {
-        if (!isEmpty) { return; }
-        
+        if (!IsEmpty) { return; }
+
         if (_subGenreShelf.CheckGanre(currentCassette.ItemSettings))
         {
             _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess);
-        }else
+        }
+        else
         {
             _slot.SetSettings(_settings.EaseNothing, _settings.TimeNothing);
         }
@@ -66,8 +78,6 @@ public class ShelfSlot : MonoBehaviour
             _slot.ControlVisible(isHandCassette);
         }
     }
-
-
 
     private void SubPickUp(bool isNull)
     {

@@ -1,0 +1,17 @@
+using UnityEngine;
+
+namespace SaveLoadSystem
+{
+    public enum SaveType
+    {
+        /// <summary>
+        /// Store data as a file (*.json).
+        /// </summary>
+        File,
+
+        /// <summary>
+        /// Store data with stream cloud.
+        /// </summary>
+        SteamCloud
+    }
+}

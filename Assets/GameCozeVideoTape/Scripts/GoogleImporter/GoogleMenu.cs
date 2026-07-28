@@ -57,15 +57,15 @@ public class GoogleMenu
 
         DataCassets dataCassets = ScriptableObject.CreateInstance<DataCassets>();
         dataCassets.Initialization(mainGoogleSettings);
-        SaveAssets(Path.DataCassetsPath, dataCassets);
+        SaveAssets(PathConst.DataCassetsPath, dataCassets);
 
         DataLanguage dataLanguage = ScriptableObject.CreateInstance<DataLanguage>();
         dataLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(Path.LanguageCassetsPath, dataLanguage);
+        SaveAssets(PathConst.LanguageCassetsPath, dataLanguage);
 
         DataGenre dataGenre = ScriptableObject.CreateInstance<DataGenre>();
         dataGenre.Initialization(mainGoogleSettings);
-        SaveAssets(Path.GenrePath, dataGenre);
+        SaveAssets(PathConst.GenrePath, dataGenre);
     }
 
     private static void SaveAssets(string path, ScriptableObject data)

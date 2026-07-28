@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 
 public class InstallItem
@@ -19,7 +20,7 @@ public class InstallItem
         _body = _cassette.transform;
     }
 
-    public void Install(Transform transform, Ease Ease, float _time)
+    public void Install(Transform transform, Ease Ease, float _time,Action action)
     {
         _body.SetParent(null);
 
@@ -31,7 +32,7 @@ public class InstallItem
             _body.DORotateQuaternion(transform.rotation, _time)
             .SetEase(Ease));
 
-        _sequence.OnComplete(() => _cassette.Control(true, true));
+        _sequence.OnComplete(() => action?.Invoke()); //_cassette.Control(true, true));
         _sequence.SetLink(_body.gameObject);
         _sequence.Play();
     }
