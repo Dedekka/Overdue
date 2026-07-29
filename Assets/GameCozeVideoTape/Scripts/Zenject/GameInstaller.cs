@@ -1,10 +1,11 @@
 using SaveLoadSystem;
-using System;
 using UnityEngine;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
 {
+    [Header("PauseMenu")]
+    [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private Transform _hand;
     [Header("DataCassets")]
@@ -28,9 +29,10 @@ public class GameInstaller : MonoInstaller
         BindSaveSystem();
         BindImporter();
         BindRack();
+        BindPauseSystem();
     }
 
-   
+
 
     private void FindSub()
     {
@@ -90,6 +92,14 @@ public class GameInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<Saver>()
            .AsSingle();
+    }
+
+    private void BindPauseSystem()
+    {
+        Container.Bind<PauseSystem>()
+         .AsSingle()
+          .WithArguments(_pauseMenu);
+
     }
 
     private void BindImporter()

@@ -31,6 +31,11 @@ public class Restart : MonoBehaviour
         }
     }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
     private void ResetLevel()
     {
         SceneManager.LoadScene(0);

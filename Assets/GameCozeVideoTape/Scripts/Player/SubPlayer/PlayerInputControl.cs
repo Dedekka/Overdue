@@ -5,16 +5,18 @@ using Zenject;
 
 public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILateTickable,
 {
+    private PauseSystem _pause;
     private PlayerMove _playerMover;
     private PlayerLook _playerLook;
     private PlayerAim _playerAim;
     private PlayerInteracteble _playerInteracteble;
     private PlayerInventory _playerInventory;
     private PlayerSystemActions.PlayerActions _playerActions;
-    private bool _isPlayerControl;
+    private bool _isPause;
 
-    public PlayerInputControl(Player testPlayerCharacter, PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
+    public PlayerInputControl(Player testPlayerCharacter, PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory, PauseSystem pauseSystem)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
     {
+        _pause = pauseSystem;
         _playerInteracteble = testPlayerInteracteble;
         _playerMover = testPlayerCharacter.PlayerMove;
         _playerLook = testPlayerCharacter.PlayerLook;
@@ -36,29 +38,31 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
     public void Initialize()
     {
         _playerActions.Enable();
-        _isPlayerControl = true;
+        _isPause = false;
         _playerActions.Aim.started += AimControl;
         _playerActions.Aim.canceled += AimControl;
         _playerActions.Interact.started += OnInteracteble;
         _playerActions.Drop.started += OnDrop;
         _playerActions.Scroll.started += OnScroll;
+        _playerActions.Pause.started += OnPause;
         //_playerActions.Pause.started += OnPause;
     }
 
-    //private void OnPause(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Started)
-    //    {
-    //        _systemBuss.Pause();
-    //    }
-    //}
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _isPause = _pause.Pause();
+        }
+    }
+
 
     public void Tick()
     {
-        if (!_isPlayerControl) { return; }
+        if (_isPause) { return; }
         _playerMover.ProcessMove(_playerActions.Move.ReadValue<Vector2>());
 
-        if (!_isPlayerControl) { return; }
+        if (_isPause) { return; }
         _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
     }
 
@@ -70,6 +74,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     private void OnInteracteble(InputAction.CallbackContext context)
     {
+        if (_isPause) { return; }
         if (context.phase == InputActionPhase.Started)
         {
             _playerInteracteble.OnInteracteble();
@@ -78,6 +83,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     private void OnDrop(InputAction.CallbackContext context)
     {
+        if (_isPause) { return; }
         if (context.phase == InputActionPhase.Started)
         {
             _playerInventory.Drop();
@@ -86,6 +92,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     private void OnScroll(InputAction.CallbackContext context)
     {
+        if (_isPause) { return; }
         if (context.phase == InputActionPhase.Started)
         {
             _playerInventory.Scroll(context.ReadValue<Vector2>());
@@ -94,6 +101,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     private void AimControl(InputAction.CallbackContext context)
     {
+        if (_isPause) { return; }
         if (context.phase == InputActionPhase.Started)
         {
             _playerAim.ProcessAim(true);
