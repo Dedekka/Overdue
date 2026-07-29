@@ -12,6 +12,8 @@ public class TestRack : BazeInteracteble
     [SerializeField] private List<DataShelf> _subGenreShelfs;
     private ManagerRack _managerRack;
 
+    public event Action<bool> OnInstallState;
+
     [Inject]
     private void Construct(ManagerRack managerRack)
     {
@@ -30,7 +32,9 @@ public class TestRack : BazeInteracteble
 
     public bool CheckGanre(int subGenreindex, ItemSettings itemSettings)
     {
-        return itemSettings.IdGenre == (int)_genre && subGenreindex == itemSettings.IdSubGenre;
+        bool installState = itemSettings.IdGenre == (int)_genre && subGenreindex == itemSettings.IdSubGenre;
+        OnInstallState?.Invoke(installState);
+        return installState;
     }
 
     private void Initialization()

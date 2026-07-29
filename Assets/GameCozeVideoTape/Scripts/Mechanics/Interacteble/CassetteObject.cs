@@ -15,10 +15,12 @@ public class CassetteObject : BazeInteracteble
     private InstallItem _installItem;
 
     private Rigidbody _rigidbody;
-    [SerializeField]private ItemSettings _itemSettings;
+    private ItemSettings _itemSettings;
     private CassetteRenderer _cassetteRenderer;
     private ManagerCassette _managerCassette;
+
     public event Action<CassetteObject> OnPickUp;
+    public event Action OnDrop;
 
     [Inject]
     private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, CassetteRenderer cassetteRenderer, StateItem stateItem)
@@ -48,6 +50,7 @@ public class CassetteObject : BazeInteracteble
 
     public void Drop()
     {
+        OnDrop?.Invoke();
         _pickUpItem.StopMove();
         _stateItem.Drop();
     }

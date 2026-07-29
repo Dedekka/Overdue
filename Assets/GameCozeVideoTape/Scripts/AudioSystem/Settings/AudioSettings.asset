@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa9f0bfc66c8604f83916b4ae84eac0, type: 3}
+  m_Name: AudioSettings
+  m_EditorClassIdentifier: Assembly-CSharp::AudioSettings
+  _pickUp:
+    Guid:
+      Data1: -1736844174
+      Data2: 1135694264
+      Data3: 1451956887
+      Data4: 1533818575
+    Path: event:/Items/PickUp
+  _snapCorrect:
+    Guid:
+      Data1: -829582433
+      Data2: 1080042350
+      Data3: 993486215
+      Data4: -2138973221
+    Path: event:/Items/SnapCorrect
+  _snapWrong:
+    Guid:
+      Data1: 1414794744
+      Data2: 1097105987
+      Data3: 965223096
+      Data4: 2055342466
+    Path: event:/Items/SnapWrong
+  _drop:
+    Guid:
+      Data1: -507282293
+      Data2: 1331934657
+      Data3: -238882912
+      Data4: 2041543200
+    Path: event:/Items/Drop

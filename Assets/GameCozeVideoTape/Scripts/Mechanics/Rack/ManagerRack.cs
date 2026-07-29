@@ -1,7 +1,5 @@
-using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 public class ManagerRack : IInitializable, IDisposable
@@ -10,20 +8,24 @@ public class ManagerRack : IInitializable, IDisposable
     private List<TestRack> _racks;
     private RackHolder _rackHolder;
     private ManagerCassette _managerCassette;
+    private AudioRack _audioRack;
+
     private int _maxRack;
 
-    public ManagerRack(int maxRack, RackHolder rackHolder, ManagerCassette managerCassette)
+    public ManagerRack(int maxRack, RackHolder rackHolder, ManagerCassette managerCassette, AudioRack audioRack)
     {
         _racks = new List<TestRack>();
         _managerCassette = managerCassette;
         _maxRack = maxRack;
         _rackHolder = rackHolder;
+        _audioRack = audioRack;
     }
 
     public void Dispose()
     {
         _rackHolder.OnSave -= Save;
         _rackHolder.OnUpdateItems -= UpdateItems;
+        _audioRack.UnSubAudio(_racks);
     }
 
     public void Initialize()
@@ -32,13 +34,10 @@ public class ManagerRack : IInitializable, IDisposable
         _rackHolder.OnUpdateItems += UpdateItems;
     }
 
-   
+
     public void AddRack(TestRack rack)
     {
         _racks.Add(rack);
-
-        //Debug.Log($"PRE racks: {_racks.Count}");
-
         CheckMaxRack();
     }
 
@@ -74,7 +73,7 @@ public class ManagerRack : IInitializable, IDisposable
 
     private void UpdateItems()
     {
-        _rackHolder.SetUpdate(_managerCassette.CassetsDictionary,_racksDictionary);
+        _rackHolder.SetUpdate(_managerCassette.CassetsDictionary, _racksDictionary);
     }
 
     private void Save()
@@ -88,6 +87,7 @@ public class ManagerRack : IInitializable, IDisposable
         {
             SetDictionary();
             _rackHolder.AddRack(_racksDictionary);
+            _audioRack.SubAudio(_racks);
         }
     }
 
