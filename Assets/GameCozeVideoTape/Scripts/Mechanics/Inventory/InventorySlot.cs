@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,6 +18,8 @@ public class InventorySlot
     private int _countSlotInventory;
     private readonly int _SlotInventoryMax;
     private int _countCassette => _countSlotInventory - 1;
+
+    public event Action<CassetteObject[]> OnChangeSlot;
 
     public InventorySlot(SettingsPlayer settingsPlayer, Transform hand, Transform[] _inventorySlot)
     {
@@ -120,6 +122,7 @@ public class InventorySlot
         }
         _currentCassette = null;
         _countSlotInventory = 0;
+        OnChangeSlot?.Invoke(_activeCassets);
     }
 
 
@@ -127,7 +130,12 @@ public class InventorySlot
     private void NextCurrentCassette()
     {
         CassetteObject tempCassette = _activeCassets[_countCassette];
-        if (tempCassette == null) { return; }
+        if (tempCassette == null)
+        {
+            Debug.Log($"NextCurrentCassette, tempCassette == null");
+            OnChangeSlot?.Invoke(_activeCassets);
+            return;
+        }
         tempCassette.Scroll(_cassets[0].Position);
         _cassets[0].CassetteObject = _activeCassets[_countCassette];
         _cassets[_countCassette].CassetteObject = null;
@@ -172,6 +180,7 @@ public class InventorySlot
         tempCassette.CassetteObject = cassetteObject;
         tempCassette.CassetteObject.gameObject.name = $"Cassette {_countSlotInventory}";
         transform = tempCassette.Position;
+        OnChangeSlot?.Invoke(_activeCassets);
     }
 
     private InventoryData[] CreateInventoryData(int slotInventoryMax, Transform[] _inventorySlot)
@@ -198,11 +207,14 @@ public class InventorySlot
         for (int i = 0; i < _countSlotInventory; i++)
         {
             _activeCassets[i] = _cassets[i].CassetteObject;
-            if (_activeCassets[i] != null)
-            {
-                //_activeCassets[i].textMeshPro.SetText(i.ToString());
-            }
+            //if (_activeCassets[i] != null)
+            //{
+            //    //_activeCassets[i].textMeshPro.SetText(i.ToString());
+            //}
         }
+
+        Debug.Log($"FindCasset, _countSlotInventory: {_countSlotInventory}");
+        OnChangeSlot?.Invoke(_activeCassets);
     }
 
     private void MoveSlot(bool direction, int index)

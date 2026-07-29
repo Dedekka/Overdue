@@ -9,7 +9,9 @@ public class PlayerInteracteble : ITickable
     private LayerMask _layerInteracteble;
     private float _distance;
     private string _description;
+
     public event Action<string> OnChangeCurrentInteracteble;
+    public event Action<bool> OnShowPanelUse;
 
     public PlayerInteracteble(SettingsPlayer settingsPlayer, Transform head)
     {
@@ -48,15 +50,17 @@ public class PlayerInteracteble : ITickable
         //    //_playerPickUp.PickUp(cassett);
         //}
     }
-
+    //Press E To Action
     private void ChangeCurrentInteracteble(IInteracteble interacteble)
     {
         if (interacteble == _currentInteracteble) { return; }
         ControlView(_currentInteracteble, false);
         _currentInteracteble = interacteble;
         ControlView(_currentInteracteble, true);
-        _description = _currentInteracteble == null ? string.Empty : _currentInteracteble.Description;
+        bool isShowPanelUse = _currentInteracteble == null;
+        _description = isShowPanelUse ? string.Empty : _currentInteracteble.Description;
         OnChangeCurrentInteracteble?.Invoke(_description);
+        OnShowPanelUse?.Invoke(isShowPanelUse);
     }
 
     private void ControlView(IInteracteble interacteble, bool isView)

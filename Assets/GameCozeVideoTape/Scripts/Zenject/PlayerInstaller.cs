@@ -61,6 +61,9 @@ public class PlayerInstaller : MonoInstaller
         Container.Bind<InventorySlot>()
             .AsSingle()
             .WithArguments(_settingsPlayer, _handSlot, _inventorySlot);
+
+        Container.Bind<InventoryView>()
+            .AsSingle();
     }
 
     private void BindInput()
@@ -92,5 +95,9 @@ public class PlayerInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ImporterInteractebleUI>()
            .AsSingle()
            .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<ImporterInventoryUI>()
+         .AsSingle()
+         .NonLazy();
     }
 }

@@ -1,21 +1,39 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerUi : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _textDescription;
-    [SerializeField] private Image _cursor;
+    [SerializeField] private GameObject _panelUse;
 
-    public void UpdateText(string text)
+    [SerializeField] private GameObject _panelDescription;
+    [SerializeField] private TextMeshProUGUI _textDescription;
+
+
+    [SerializeField] private GameObject _panelHand;
+    [SerializeField] private TextMeshProUGUI _textPanelHand;
+
+    public void UpdateTextDescription(string text)
     {
         if (_textDescription == null) return;
         if (_textDescription.text == text) return;
         _textDescription.text = text;
+        bool isVisible = text != string.Empty;
+        _panelDescription.SetActive(isVisible);
     }
 
-    public void ControlVisibleCursor(bool visible)
+    public void ShowPanelUse(bool isVisible)
     {
-        _cursor.enabled = visible;
+        if (_panelUse.activeSelf == isVisible) { return; }
+        _panelUse.SetActive(isVisible);
+    }
+
+    public void UpdateTextInventory(string text)
+    {
+        if (_textPanelHand == null) return;
+        if (_textPanelHand.text == text) return;
+        Debug.Log($"UpdateTextInventory: {text}");
+        _textPanelHand.text = text;
+        bool isVisible = text != string.Empty;
+        _panelHand.SetActive(isVisible);
     }
 }

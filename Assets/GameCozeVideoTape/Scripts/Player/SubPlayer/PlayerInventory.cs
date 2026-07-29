@@ -5,20 +5,22 @@ using Zenject;
 public class PlayerInventory : IDisposable, IInitializable
 {
     private readonly InventorySlot _inventorySlot;
+    //private readonly InventoryView _inventoryView;
 
-    public PlayerInventory(InventorySlot inventorySlot)
+    public PlayerInventory(InventorySlot inventorySlot)//, InventoryView inventoryView)
     {
         _inventorySlot = inventorySlot;
+        //_inventoryView = inventoryView;
     }
 
     public void Initialize()
     {
-
+        _inventorySlot.OnChangeSlot += OnChangeSlot;
     }
 
     public void Dispose()
     {
-
+        _inventorySlot.OnChangeSlot -= OnChangeSlot;
     }
 
     public bool CheckActiveCassette(out CassetteObject currentCassette)
@@ -52,5 +54,10 @@ public class PlayerInventory : IDisposable, IInitializable
     public void Load()
     {
         _inventorySlot.Load();
+    }
+
+    private void OnChangeSlot(CassetteObject[] cassettes)
+    {
+        //_inventoryView.OnChangeSlot(cassettes);
     }
 }

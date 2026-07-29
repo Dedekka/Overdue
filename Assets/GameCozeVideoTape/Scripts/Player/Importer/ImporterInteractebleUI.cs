@@ -15,15 +15,22 @@ public class ImporterInteractebleUI : IDisposable, IInitializable
     public void Dispose()
     {
         _playerInteracteble.OnChangeCurrentInteracteble -= OnChangeCurrentInteracteble;
+        _playerInteracteble.OnShowPanelUse -= OnShowPanelUse;
     }
 
     public void Initialize()
     {
         _playerInteracteble.OnChangeCurrentInteracteble += OnChangeCurrentInteracteble;
+        _playerInteracteble.OnShowPanelUse += OnShowPanelUse;
     }
 
     private void OnChangeCurrentInteracteble(string description)
     {
-        _playerUi.UpdateText(description);
+        _playerUi.UpdateTextDescription(description);
+    }
+
+    private void OnShowPanelUse(bool isShowPanelUse)
+    {
+        _playerUi.ShowPanelUse(!isShowPanelUse);
     }
 }
