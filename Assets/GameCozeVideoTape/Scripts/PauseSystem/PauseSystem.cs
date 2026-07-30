@@ -32,7 +32,5 @@ public class PauseSystem
         }
 
         _pausePanel.SetActive( isPause );
-
-        Debug.Log($"ChangeState, Time.timeScale:{Time.timeScale} ");
     }
 }

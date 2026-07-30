@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SaveRack : ISaveLoadObject
@@ -12,6 +13,12 @@ public class SaveRack : ISaveLoadObject
 
     public SaveRack( params RackData[] rackData)
     {
+        Items.AddRange(rackData);
+    }
+
+    public void SetSave(params RackData[] rackData)
+    {
+        Items.Clear();
         Items.AddRange(rackData);
     }
 

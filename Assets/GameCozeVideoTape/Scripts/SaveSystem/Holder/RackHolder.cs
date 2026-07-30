@@ -14,7 +14,14 @@ public class RackHolder
     public void AddRack(Dictionary<int, RackGenre> racksDictionary)
     {
         GetCassetteItems(racksDictionary, out List<RackData> items);
-        SaveRack = new SaveRack(items.ToArray());
+        if (SaveRack == null)
+        {
+            SaveRack = new SaveRack(items.ToArray());
+        }
+        else
+        {
+            SaveRack.SetSave(items.ToArray());
+        }
     }
 
     public void SetUpdate(Dictionary<int, CassetteObject> _cassetsDictionary, Dictionary<int, RackGenre> racksDictionary)

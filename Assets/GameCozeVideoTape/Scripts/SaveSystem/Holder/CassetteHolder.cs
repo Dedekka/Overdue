@@ -19,7 +19,15 @@ namespace SaveLoadSystem
         {
             GetCassetteItems(cassetteObject, out List<CassetteItem> items);
             GetCassetteItems(handCassette, out List<CassetteItem> handItems);
-            SaveCassette = new SaveCassette(items.ToArray(), handItems.ToArray());
+
+            if (SaveCassette == null)
+            {
+                SaveCassette = new SaveCassette(items.ToArray(), handItems.ToArray());
+            }
+            else
+            {
+                SaveCassette.SetSave(items.ToArray(), handItems.ToArray());
+            }
         }
 
         public void SetUpdate(List<CassetteObject> cassetteObject)
@@ -79,7 +87,12 @@ namespace SaveLoadSystem
             for (int i = 0; i < cassetteObjects.Count; i++)
             {
                 tempCassette = cassetteObjects[i];
-                if (tempCassette == null) { break; }
+                if (tempCassette == null)
+                {
+                    Debug.Log($"I: {i},cassetteObjects{cassetteObjects.Count}");
+                    break;
+                }
+
                 items.Add(new CassetteItem()
                 {
                     Id = tempCassette.Id,

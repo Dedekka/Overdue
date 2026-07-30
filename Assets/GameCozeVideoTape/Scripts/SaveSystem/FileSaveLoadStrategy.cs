@@ -51,7 +51,7 @@ namespace SaveLoadSystem
                 throw;
             }
 
-            Debug.Log("Save Success");
+            //Debug.Log("Save Success");
         }
 
         public SaveLoadData[] Load()

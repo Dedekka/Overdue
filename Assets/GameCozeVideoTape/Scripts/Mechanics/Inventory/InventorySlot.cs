@@ -132,7 +132,6 @@ public class InventorySlot
         CassetteObject tempCassette = _activeCassets[_countCassette];
         if (tempCassette == null)
         {
-            Debug.Log($"NextCurrentCassette, tempCassette == null");
             OnChangeSlot?.Invoke(_activeCassets);
             return;
         }
@@ -207,13 +206,7 @@ public class InventorySlot
         for (int i = 0; i < _countSlotInventory; i++)
         {
             _activeCassets[i] = _cassets[i].CassetteObject;
-            //if (_activeCassets[i] != null)
-            //{
-            //    //_activeCassets[i].textMeshPro.SetText(i.ToString());
-            //}
         }
-
-        Debug.Log($"FindCasset, _countSlotInventory: {_countSlotInventory}");
         OnChangeSlot?.Invoke(_activeCassets);
     }
 

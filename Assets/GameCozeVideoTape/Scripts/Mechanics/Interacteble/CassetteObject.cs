@@ -15,7 +15,7 @@ public class CassetteObject : BazeInteracteble
     private InstallItem _installItem;
 
     private Rigidbody _rigidbody;
-    private ItemSettings _itemSettings;
+   [SerializeField] private ItemSettings _itemSettings;
     private CassetteRenderer _cassetteRenderer;
     private ManagerCassette _managerCassette;
 

@@ -19,17 +19,36 @@ namespace SaveLoadSystem
             HandItems.AddRange(handItems);
         }
 
+        public void SetSave(CassetteItem[] initialItems, params CassetteItem[] handItems)
+        {
+            Items.Clear();
+            HandItems.Clear();
+
+            Items.AddRange(initialItems);
+            HandItems.AddRange(handItems);
+        }
+
         public SaveLoadData GetSaveLoadData()
         {
-            // Ќужно сюда передать и сохранить кассеты из руки 
+            CassetteItem tempCassette;
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (Items[i].Id == 53)
+                {
+                    tempCassette = Items[i];
+                    Debug.Log($"SaveCassette_Id: {tempCassette.Id},Position:{tempCassette.Position.Y} ,Rotation: {tempCassette.Rotation.X} ");
+                }
+            }
+
             return new CassetteSaveLoadData(ComponentSaveId, Items, HandItems);
         }
 
         public void RestoreValues(SaveLoadData loadData)
         {
             Items.Clear();
+            HandItems.Clear();
 
-            if (loadData?.Data == null || loadData.Data.Length < 1)
+            if (loadData?.Data == null || loadData.Data.Length < 2)
             {
                 Debug.LogError($"Can't restore values. Length :{loadData.Data.Length}");
                 return;
@@ -40,7 +59,9 @@ namespace SaveLoadSystem
             // [2] - (int) equippedArmor
 
             var items = ((JArray)loadData.Data[0]).ToObject<List<CassetteItem>>();
+            var handItems = ((JArray)loadData.Data[1]).ToObject<List<CassetteItem>>();
             Items.AddRange(items);
+            HandItems.AddRange(handItems);
         }
     }
 

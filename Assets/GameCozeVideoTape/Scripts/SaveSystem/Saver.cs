@@ -6,8 +6,8 @@ namespace SaveLoadSystem
 {
     public class Saver : IInitializable
     {
-        [SerializeField] private CassetteHolder _cassetteHolder;
-        [SerializeField] private RackHolder _rackHolder;
+        private CassetteHolder _cassetteHolder;
+        private RackHolder _rackHolder;
 
         private SaveLoadStrategy _saveLoadSystem;
         public event Action OnSave;
@@ -29,6 +29,7 @@ namespace SaveLoadSystem
         [ContextMenu("Save")]
         public void Save()
         {
+            Debug.Log("Saver _ Save");
             OnSave?.Invoke();
             _cassetteHolder.Save();
             _rackHolder.Save();

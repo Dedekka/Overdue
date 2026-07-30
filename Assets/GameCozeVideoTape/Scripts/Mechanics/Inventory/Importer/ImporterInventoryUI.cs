@@ -26,7 +26,6 @@ public class ImporterInventoryUI : IDisposable, IInitializable
     private void OnChangeSlot(CassetteObject[] Cassettes)
     {
         string newText = string.Empty;
-        Debug.Log($"ImporterInventoryUI, PRE newText: {newText}");
         for (int i = 0; i < Cassettes.Length; i++)
         {
             if (Cassettes[i] != null)
@@ -34,7 +33,6 @@ public class ImporterInventoryUI : IDisposable, IInitializable
                 newText += $"*{Cassettes[i].Description} \n";
             }
         }
-        Debug.Log($"ImporterInventoryUI, Last newText: {newText}");
         _playerUi.UpdateTextInventory(newText);
     }
 

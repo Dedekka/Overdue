@@ -31,7 +31,7 @@ public class PlayerUi : MonoBehaviour
     {
         if (_textPanelHand == null) return;
         if (_textPanelHand.text == text) return;
-        Debug.Log($"UpdateTextInventory: {text}");
+        //Debug.Log($"UpdateTextInventory: {text}");
         _textPanelHand.text = text;
         bool isVisible = text != string.Empty;
         _panelHand.SetActive(isVisible);
