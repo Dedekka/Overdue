@@ -15,7 +15,6 @@ public class CassetteRenderer
 
     public void Initialization(CassetteObject cassetteObject, int MaterialIndex)
     {
-
         _renderer = cassetteObject.GetComponent<Renderer>();
         _renderer.material = _material;
         _propertyBlock = new MaterialPropertyBlock();
