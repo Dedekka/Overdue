@@ -62,6 +62,7 @@ public class CassetteObject : BazeInteracteble
 
     public void Scroll(Transform transform)
     {
+        _pickUpItem.StopMove();
         _pickUpItem.Scroll(transform);
     }
 
@@ -79,7 +80,7 @@ public class CassetteObject : BazeInteracteble
         {
             _stateItem.ControlHand(true);
             OnPickUp?.Invoke(this);
-            _pickUpItem.PickUp();
+            //_pickUpItem.PickUp();
             _stateItem.Control(false);
         }
     }

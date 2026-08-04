@@ -9,8 +9,8 @@ public class PlayerUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textDescription;
 
 
-    [SerializeField] private GameObject _panelHand;
-    [SerializeField] private TextMeshProUGUI _textPanelHand;
+   [SerializeField] private InventoryView _inventoryView;
+
 
     public void UpdateTextDescription(string text)
     {
@@ -29,11 +29,11 @@ public class PlayerUi : MonoBehaviour
 
     public void UpdateTextInventory(string text)
     {
-        if (_textPanelHand == null) return;
-        if (_textPanelHand.text == text) return;
-        //Debug.Log($"UpdateTextInventory: {text}");
-        _textPanelHand.text = text;
-        bool isVisible = text != string.Empty;
-        _panelHand.SetActive(isVisible);
+        _inventoryView.UpdateTextInventory(text);
+    }
+
+    public void InventoryView()
+    {
+        _inventoryView.Show();
     }
 }

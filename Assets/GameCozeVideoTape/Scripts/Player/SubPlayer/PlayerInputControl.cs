@@ -5,6 +5,7 @@ using Zenject;
 
 public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILateTickable,
 {
+    private EventInputSystem _eventInputSystem;
     private PauseSystem _pause;
     private PlayerMove _playerMover;
     private PlayerLook _playerLook;
@@ -14,7 +15,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
     private PlayerSystemActions.PlayerActions _playerActions;
     private bool _isPause;
 
-    public PlayerInputControl(Player testPlayerCharacter, PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory, PauseSystem pauseSystem)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
+    public PlayerInputControl(Player testPlayerCharacter, PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory, PauseSystem pauseSystem, EventInputSystem eventInputSystem)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
     {
         _pause = pauseSystem;
         _playerInteracteble = testPlayerInteracteble;
@@ -23,6 +24,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerAim = testPlayerCharacter.PlayerAim;
         _playerActions = inputActions.Player;
         _playerInventory = playerInventory;
+        _eventInputSystem = eventInputSystem;
     }
 
     public void Dispose()
@@ -32,6 +34,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Interact.started -= OnInteracteble;
         _playerActions.Drop.started -= OnDrop;
         _playerActions.Scroll.started -= OnScroll;
+        _playerActions.Inventory.started -= OnInventory;
         _playerActions.Disable();
     }
 
@@ -45,17 +48,9 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Drop.started += OnDrop;
         _playerActions.Scroll.started += OnScroll;
         _playerActions.Pause.started += OnPause;
+        _playerActions.Inventory.started += OnInventory;
         //_playerActions.Pause.started += OnPause;
     }
-
-    private void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            _isPause = _pause.Pause();
-        }
-    }
-
 
     public void Tick()
     {
@@ -66,11 +61,23 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
     }
 
-    //public void LateTick()
-    //{
-    //    //if (!_isPlayerControl) { return; }
-    //    //_playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
-    //}
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _isPause = _pause.Pause();
+        }
+    }
+
+    private void OnInventory(InputAction.CallbackContext context)
+    {
+        if (_isPause) { return; }
+        if (context.phase == InputActionPhase.Started)
+        {
+            _eventInputSystem.InventoryView();
+        }
+    }
+
 
     private void OnInteracteble(InputAction.CallbackContext context)
     {

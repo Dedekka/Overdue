@@ -27,7 +27,6 @@ public class InventorySlot
         _hand = hand;
         _offsetSlotY = settingsPlayer.HeightSlotY;
         _offsetHandY = settingsPlayer.OffsetHandY;
-        //_rotationOffset = settingsPlayer.RotationOffset;
         _forceDrop = settingsPlayer.ForceDrop;
         _activeCassets = new CassetteObject[_SlotInventoryMax];
         _cassets = CreateInventoryData(_SlotInventoryMax, _inventorySlot);
@@ -94,12 +93,6 @@ public class InventorySlot
         NextCurrentCassette();
         _countSlotInventory--;
         return temp;
-
-        //Debug.Log("InventorySlot_Install");
-        //Debug.Log("InventorySlot_currentCassette != Null");
-        //CassetteObject _tempCurrentCassette = _currentCassette;
-        //Drop();
-        //_tempCurrentCassette.Scroll(pos);
     }
 
     public void Scroll(bool duration)
@@ -109,8 +102,6 @@ public class InventorySlot
 
     public void Load()
     {
-        // Здесь нужно выбрасывать кассеты
-        // И опустошать инвентарь
         for (int i = 0; i < _cassets.Length; i++)
         {
             if (_activeCassets[i] != null)
@@ -157,48 +148,17 @@ public class InventorySlot
         _currentCassette = _countSlotInventory == 0 ? null : _cassets[0].CassetteObject;
     }
 
-    private InventoryData GetCassetteForIndex(int index)
-    {
-        InventoryData tempCassetteObject = null;
-        foreach (var _cassets in _cassets)
-        {
-            if (_cassets.Index == index)
-            {
-                tempCassetteObject = _cassets;
-                break;
-            }
-        }
-        return tempCassetteObject;
-    }
-
     private void AddCassette(CassetteObject cassetteObject, ref Transform transform)
     {
-        InventoryData tempCassette = GetCassetteForIndex(_countCassette);
-        _activeCassets[_countCassette] = cassetteObject;
-        //cassetteObject.textMeshPro.SetText(_countCassette.ToString());
-        tempCassette.CassetteObject = cassetteObject;
-        tempCassette.CassetteObject.gameObject.name = $"Cassette {_countSlotInventory}";
-        transform = tempCassette.Position;
-        OnChangeSlot?.Invoke(_activeCassets);
-    }
-
-    private InventoryData[] CreateInventoryData(int slotInventoryMax, Transform[] _inventorySlot)
-    {
-        InventoryData[] tempInventoryDataArray = new InventoryData[slotInventoryMax];
-        tempInventoryDataArray[0] = new InventoryData();
-        tempInventoryDataArray[0].Index = 0;
-        tempInventoryDataArray[0].Position = _inventorySlot[0];
-        for (int i = 1; i < tempInventoryDataArray.Length; i++)
+        _cassets[0].CassetteObject = cassetteObject;
+        cassetteObject.Scroll(_cassets[0].Position);
+        for (int i = 0; i < _countCassette; i++)
         {
-            tempInventoryDataArray[i] = new InventoryData();
-            tempInventoryDataArray[i].Index = i;
+            _cassets[i + 1].CassetteObject = _activeCassets[i];
+            _activeCassets[i].Scroll(_cassets[i + 1].Position);
 
-            Vector3 pos = _hand.position;
-            pos.y += i * _offsetSlotY;
-            _inventorySlot[i].position = pos;
-            tempInventoryDataArray[i].Position = _inventorySlot[i];
         }
-        return tempInventoryDataArray;
+        FindCasset();
     }
 
     private void FindCasset()
@@ -261,6 +221,7 @@ public class InventorySlot
         return _activeCassets[index] != null;
     }
 
+
     private void RevertFirstSlot(int index)
     {
         if (CheckDropCassette(index))
@@ -268,6 +229,25 @@ public class InventorySlot
             _activeCassets[index].Scroll(_cassets[0].Position);
             _cassets[0].CassetteObject = _activeCassets[index];
         }
+    }
+
+    private InventoryData[] CreateInventoryData(int slotInventoryMax, Transform[] _inventorySlot)
+    {
+        InventoryData[] tempInventoryDataArray = new InventoryData[slotInventoryMax];
+        tempInventoryDataArray[0] = new InventoryData();
+        tempInventoryDataArray[0].Index = 0;
+        tempInventoryDataArray[0].Position = _inventorySlot[0];
+        for (int i = 1; i < tempInventoryDataArray.Length; i++)
+        {
+            tempInventoryDataArray[i] = new InventoryData();
+            tempInventoryDataArray[i].Index = i;
+
+            Vector3 pos = _hand.position;
+            pos.y += i * _offsetSlotY;
+            _inventorySlot[i].position = pos;
+            tempInventoryDataArray[i].Position = _inventorySlot[i];
+        }
+        return tempInventoryDataArray;
     }
 }
 

@@ -61,9 +61,6 @@ public class PlayerInstaller : MonoInstaller
         Container.Bind<InventorySlot>()
             .AsSingle()
             .WithArguments(_settingsPlayer, _handSlot, _inventorySlot);
-
-        Container.Bind<InventoryView>()
-            .AsSingle();
     }
 
     private void BindInput()
@@ -71,6 +68,9 @@ public class PlayerInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<PlayerInputControl>()
            .AsSingle()
            .NonLazy();
+
+        Container.Bind<EventInputSystem>()
+           .AsSingle();
 
         Container.Bind<PlayerSystemActions>()
            .AsSingle()

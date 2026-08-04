@@ -32,11 +32,6 @@ public class PickUpItem
         _body = _cassette.transform;
     }
 
-    public void PickUp()
-    {
-        _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
-    }
-
     public void Scroll(Transform transform)
     {
         _hand = transform;

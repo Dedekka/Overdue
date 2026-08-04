@@ -20,6 +20,14 @@ public class InstallItem
         _body = _cassette.transform;
     }
 
+    public void StopInstall()
+    {
+        if(_sequence != null)
+        {
+            _sequence.Complete(true);
+        }
+    }
+
     public void Install(Transform transform, Ease Ease, float _time,Action action)
     {
         _body.SetParent(null);

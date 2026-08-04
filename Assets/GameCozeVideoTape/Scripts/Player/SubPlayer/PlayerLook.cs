@@ -29,7 +29,7 @@ public class PlayerLook
         mouseX *= _coefficientSensitivityAim * _sensitivity;
         mouseY *= _coefficientSensitivityAim * _sensitivity;
         _xRotation -= mouseY * _sensitivityY;// * _sensitivity;
-        _xRotation = Mathf.Clamp(_xRotation, -85, 85);
+        _xRotation = Mathf.Clamp(_xRotation, -90, 90);
         _headSlot.transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
         _body.Rotate(mouseX * _sensitivityX * Vector3.up); // * _sensitivity);
     }
