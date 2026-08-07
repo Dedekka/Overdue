@@ -61,6 +61,9 @@ public class PlayerInstaller : MonoInstaller
         Container.Bind<InventorySlot>()
             .AsSingle()
             .WithArguments(_settingsPlayer, _handSlot, _inventorySlot);
+
+        Container.BindInterfacesAndSelfTo<PlayerStateControl>()
+           .AsSingle();
     }
 
     private void BindInput()
@@ -88,6 +91,12 @@ public class PlayerInstaller : MonoInstaller
             .AsSingle()
             .WithArguments(_settingsPlayer)
             .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<ImporterPlayerStatePlayerInput>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterPlayerStateDialogSystem>()
+            .AsSingle();
     }
 
     private void BindUI()
@@ -99,5 +108,8 @@ public class PlayerInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ImporterInventoryUI>()
          .AsSingle()
          .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<ImporterPhonePlayerStateControl>()
+       .AsSingle();
     }
 }

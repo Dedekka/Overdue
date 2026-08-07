@@ -72,7 +72,7 @@ public class GoogleImporter
                 {
                     var cell = row[j];
                     var header = _headers[j];
-                    Debug.Log($"Header: {header}, Value: {cell}");
+                    //Debug.Log($"Header: {header}, Value: {cell}");
 
                     googleParser.Parse(header, cell.ToString());
                 }

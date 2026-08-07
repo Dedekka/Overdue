@@ -1,11 +1,19 @@
+using FMOD.Studio;
 using FMODUnity;
+using System;
+using UnityEngine;
 
-public class AudioManager
+public class AudioManager : IDisposable
 {
+    [Header("OtherSound")]
     private EventReference _pickUp;
     private EventReference _snapCorrect;
     private EventReference _snapWrong;
     private EventReference _drop;
+
+    [Header("VoiceSound")]
+    private EventInstance _eventInstance;
+    private EventReference _tempVoice;
 
     public AudioManager(AudioSettings audioSettings)
     {
@@ -13,6 +21,28 @@ public class AudioManager
         _snapCorrect = audioSettings.SnapCorrect;
         _snapWrong = audioSettings.SnapWrong;
         _drop = audioSettings.Drop;
+    }
+
+    public void Dispose()
+    {
+        StopVoice();
+    }
+
+    public void PauseVoise(bool isPause)
+    {
+        if (!CheckEvent()) { return; }
+
+        _eventInstance.setPaused(isPause);
+    }
+
+    public void SetVoice(EventReference eventReference)
+    {
+        _tempVoice = eventReference;
+    }
+
+    public void PlayVoice()
+    {
+        PlayVoise(_tempVoice);
     }
 
     public void PlayPickUp()
@@ -35,6 +65,15 @@ public class AudioManager
         Play(_drop);
     }
 
+    public void StopVoice()
+    {
+        if (CheckEvent())
+        {
+            _eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+        _eventInstance.release();
+    }
+
     private void Play(EventReference eventReference)
     {
         if (!eventReference.IsNull)
@@ -42,6 +81,36 @@ public class AudioManager
             RuntimeManager.PlayOneShot(eventReference);
         }
     }
+
+    private void PlayVoise(EventReference eventReference)
+    {
+        if (eventReference.IsNull) { return; }
+        CheckPlayingVoise(eventReference);
+        _eventInstance.start();
+    }
+
+    private void CheckPlayingVoise(EventReference eventReference)
+    {
+        StopVoice();
+        _eventInstance = RuntimeManager.CreateInstance(eventReference);
+    }
+
+    private bool CheckEvent()
+    {
+        if (!_eventInstance.isValid())
+        {
+            return false;
+        }
+
+        _eventInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state);
+
+        return state == FMOD.Studio.PLAYBACK_STATE.PLAYING  // событие играет
+        || state == FMOD.Studio.PLAYBACK_STATE.STARTING  // событие начинает играть
+        || state == FMOD.Studio.PLAYBACK_STATE.SUSTAINING  // событие еще нельзя запустить
+        || state == FMOD.Studio.PLAYBACK_STATE.STOPPING;  // событие еще нельзя запустить
+    }
+
+   
 
     //public void Play()
     //{

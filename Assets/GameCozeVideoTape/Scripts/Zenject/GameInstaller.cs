@@ -1,4 +1,5 @@
 using SaveLoadSystem;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +20,8 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private float _timeWaitCheckPhysics;
     [Header("Rack")]
     [SerializeField] private int _maxRack;
+    [Header("Phone")]
+    [SerializeField] private Phone _phone;
 
     public override void InstallBindings()
     {
@@ -30,9 +33,15 @@ public class GameInstaller : MonoInstaller
         BindImporter();
         BindRack();
         BindPauseSystem();
+        BindPhone();
     }
 
-
+    private void BindPhone()
+    {
+        Container.Bind<Phone>()
+           .FromInstance(_phone)
+           .AsSingle();
+    }
 
     private void FindSub()
     {
@@ -105,6 +114,12 @@ public class GameInstaller : MonoInstaller
     private void BindImporter()
     {
         Container.BindInterfacesAndSelfTo<SaveInventoryImporter>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<PauseSystemPlayerStateImporter>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterImporterDialogSystem>()
          .AsSingle();
     }
 

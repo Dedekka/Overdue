@@ -1,21 +1,22 @@
+using System;
 using UnityEngine;
 
 public class PauseSystem 
 {
     private GameObject _pausePanel;
     private bool isPause;
-
+    public event Action<bool> OnChangeStatePause;
+  
     public  PauseSystem ( GameObject gameObject )
     {
         _pausePanel = gameObject;
         isPause = false;
     }
 
-    public bool Pause()
+    public void Pause()
     {
         isPause = !isPause;
         ChangeState(isPause);
-        return isPause;
     }
 
     private void ChangeState( bool isPause)
@@ -30,7 +31,7 @@ public class PauseSystem
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
         }
-
+        OnChangeStatePause?.Invoke( isPause );
         _pausePanel.SetActive( isPause );
     }
 }

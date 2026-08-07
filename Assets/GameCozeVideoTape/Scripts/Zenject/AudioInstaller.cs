@@ -30,11 +30,14 @@ public class AudioInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<AudioRackImporter>()
             .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<AudioPauseSystemImporter>()
+            .AsSingle();
     }
 
     private void BindSystem()
     {
-        Container.Bind<AudioManager>()
+        Container.BindInterfacesAndSelfTo<AudioManager>()
            .AsSingle()
            .WithArguments(_audioSettings);
     }
