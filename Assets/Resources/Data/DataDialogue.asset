@@ -49,8 +49,8 @@ MonoBehaviour:
     DialogueEventData:
       IdEvent: 1
       DialogueName: ChrisTurner_TheSilenceOfTheLambs
-      ID_Cassette: 1
-      ID_Present: 1
+      IDCassette: 55
+      IDPresent: 1
   - DialogueName: NancyParker_TheGodfather
     Id: 2
     NameCharacter: NancyParker
@@ -84,5 +84,45 @@ MonoBehaviour:
     DialogueEventData:
       IdEvent: 2
       DialogueName: NancyParker_TheGodfather
-      ID_Cassette: 2
-      ID_Present: -1
+      IDCassette: 25
+      IDPresent: 5
+  - DialogueName: "\u041F\u043E\u0441\u0442\u0435\u0440\u044B"
+    Id: 3
+    NameCharacter: NancyParker
+    Original_Title: The Godfather
+    Present: '-'
+    DialogLines:
+    - Character: Ray
+      IdNumber: 1
+      Line: "Hello! Give me \u041F\u043E\u0441\u0442\u0435\u0440\u044B "
+      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
+    - Character: Nancy
+      IdNumber: 2
+      Line: Ok
+      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
+    DialogueEventData:
+      IdEvent: 2
+      DialogueName: NancyParker_TheGodfather
+      IDCassette: 5
+      IDPresent: 2
+  - DialogueName: "\u0424\u0438\u0433\u0443\u0440\u043A\u0430 \u0441 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0435\u043C
+      \u0444\u0438\u043B\u044C\u043C\u0430"
+    Id: 4
+    NameCharacter: NancyParker
+    Original_Title: The Godfather
+    Present: '-'
+    DialogLines:
+    - Character: Ray
+      IdNumber: 1
+      Line: "Hello! Give me \u0424\u0438\u0433\u0443\u0440\u043A\u0430 \u0441 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0435\u043C
+        \u0444\u0438\u043B\u044C\u043C\u0430 "
+      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
+    - Character: Nancy
+      IdNumber: 2
+      Line: Ok
+      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
+    DialogueEventData:
+      IdEvent: 2
+      DialogueName: NancyParker_TheGodfather
+      IDCassette: 2
+      IDPresent: 3

@@ -21,7 +21,7 @@ public class GoogleMenu
 
     private const string LanguageDialogue_sheets_name = "LanguageDialogue";
 
-
+   
     private const string BazeDialogue_sheets_name = "BazeDialogue";
 
     #endregion
@@ -72,6 +72,10 @@ public class GoogleMenu
         DataDialogue dataDialogue = ScriptableObject.CreateInstance<DataDialogue>();
         dataDialogue.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataDialoguePath, dataDialogue);
+
+        DataPresent dataPresent = ScriptableObject.CreateInstance<DataPresent>();
+        dataPresent.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataPresentPath, dataPresent);
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
@@ -112,21 +116,5 @@ public class GoogleMenu
 
         DialogueParser dialogueParser = new DialogueParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(BazeDialogue_sheets_name, dialogueParser);
-
-        Debug.Log($"Dialogues: {gameSettings.Dialogues.Count}");
-        for (int i = 0; i < gameSettings.Dialogues.Count; i++)
-        {
-            DialogSettings dialogSettings = gameSettings.Dialogues[i];
-            Debug.Log($"Id: {dialogSettings.Id}, dialogSettings: {dialogSettings.DialogLines.Count}");
-            for (int j = 0; j < dialogSettings.DialogLines.Count; j++)
-            {
-                DialogLine dialogLine = dialogSettings.DialogLines[j];
-                Debug.Log($"Id: {dialogLine.IdNumber}, Character: {dialogLine.Character}, dialogLine: {dialogLine.Line}");
-            }
-
-        }
     }
-
-
-
 }

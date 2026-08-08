@@ -41,10 +41,10 @@ public class SoundLine
 }
 
 [Serializable]
-public class PresentData
+public class PresentSettings
 {
-    public int IdPresent;
     public string NamePresent;
+    public int IdPresent;
 }
 
 [Serializable]
@@ -52,6 +52,6 @@ public class DialogueEventData
 {
     public int IdEvent;
     public string DialogueName;
-    public int ID_Cassette;
-    public int ID_Present;
+    public int IDCassette;
+    public int IDPresent;
 }

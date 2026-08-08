@@ -1,5 +1,4 @@
 using SaveLoadSystem;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -22,6 +21,12 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private int _maxRack;
     [Header("Phone")]
     [SerializeField] private Phone _phone;
+    [Header("EventRealizer")]
+    [SerializeField] private PackageSystem _packageSystem;
+    [SerializeField] private Present _prefabPresent;
+    [SerializeField] private Transform _returnedPosition;
+    private DataPresent _presentData;
+
 
     public override void InstallBindings()
     {
@@ -34,6 +39,32 @@ public class GameInstaller : MonoInstaller
         BindRack();
         BindPauseSystem();
         BindPhone();
+        BindEventRealizer();
+
+    }
+
+    private void BindEventRealizer()
+    {
+        Container.Bind<RealizerReturned>()
+         .AsSingle();
+
+        Container.Bind<RealizerPresent>()
+        .AsSingle();
+
+        Container.Bind<PresentSpawner>()
+        .AsSingle();
+
+        Container.Bind<PackageSystem>()
+         .FromInstance(_packageSystem)
+           .AsSingle();
+
+        Container.Bind<FactoryPresent>()
+        .AsSingle()
+        .WithArguments(_prefabPresent, _presentData);
+
+        Container.Bind<ReturnedMover>()
+        .AsSingle()
+        .WithArguments(_returnedPosition); 
     }
 
     private void BindPhone()
@@ -47,6 +78,7 @@ public class GameInstaller : MonoInstaller
     {
         _dataCassets = Resources.Load<DataCassets>(PathConst.DataCassetsAsset);
         _dataLanguage = Resources.Load<DataLanguage>(PathConst.LanguageCassetsAsset);
+        _presentData = Resources.Load<DataPresent>(PathConst.DataPresentAsset);
     }
 
     private void BindUI()

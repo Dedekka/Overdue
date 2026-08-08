@@ -1,8 +1,16 @@
+using System;
 using UnityEngine;
 
 public class DialogEvent
 {
     private DialogueEventData _dialogueEventData;
+    public event Action<CallData> OnCallData;
+    private CallData _callData;
+
+    public DialogEvent()
+    {
+        _callData = new CallData();
+    }
 
     public void SetDialogSettings(DialogSettings dialogLine)
     {
@@ -11,20 +19,22 @@ public class DialogEvent
 
     public void StartEvent()
     {
-        if (_dialogueEventData.ID_Present > 0)
+        if (_dialogueEventData.IDPresent > 0)
         {
-            Debug.Log($"IdEvent: {_dialogueEventData.IdEvent}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.ID_Cassette}, ID_Present: {_dialogueEventData.ID_Present}");
+            Debug.Log($"IdEvent: {_dialogueEventData.IdEvent}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.IDCassette}, ID_Present: {_dialogueEventData.IDPresent}");
         }
         else
         {
-            Debug.Log($"IdEvent: {_dialogueEventData.IdEvent}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.ID_Cassette}, ID_Present: No");
+            Debug.Log($"IdEvent: {_dialogueEventData.IdEvent}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.IDCassette}, ID_Present: No");
         }
-
+        _callData.IdCassetts = _dialogueEventData.IDCassette;
+        _callData.IDPresent = _dialogueEventData.IDPresent;
+        OnCallData?.Invoke( _callData );
     }
 }
 
 public struct CallData
 {
     public int IdCassetts;
-    public int IdItem;
+    public int IDPresent;
 }

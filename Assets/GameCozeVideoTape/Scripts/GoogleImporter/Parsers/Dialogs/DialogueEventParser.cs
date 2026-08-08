@@ -5,7 +5,7 @@ public class DialogueEventParser : IGoogleParser
 {
     private readonly MainGoogleSettings _mainGoogleSettings;
     private DialogueEventData _currentDialogueEventData;
-    private PresentData _currentPresentData;
+    private PresentSettings _currentPresentData;
 
     public DialogueEventParser(MainGoogleSettings mainGoogleSettings)
     {
@@ -31,12 +31,12 @@ public class DialogueEventParser : IGoogleParser
                 break;
 
             case "ID_Cassette":
-                _currentDialogueEventData.ID_Cassette = Convert.ToInt32(token);
+                _currentDialogueEventData.IDCassette = Convert.ToInt32(token);
                 break;
             case "Present":
                 _currentPresentData = _mainGoogleSettings.Presents.Find((x) => x.NamePresent == token);
                 int IdPresent = _currentPresentData == null ? -1 : _currentPresentData.IdPresent;
-                _currentDialogueEventData.ID_Present = Convert.ToInt32(IdPresent);
+                _currentDialogueEventData.IDPresent = Convert.ToInt32(IdPresent);
                 break;
             default:
                 throw new Exception($"Invalid header: {headerName}");

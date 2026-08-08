@@ -28,6 +28,9 @@ public class DialogueInstaller : MonoInstaller
         Container.Bind<DialogSound>()
             .AsSingle();
 
+        Container.Bind<DialogEventManager>()
+            .AsSingle();
+
         Container.Bind<DialogEvent>()
             .AsSingle();
 
@@ -53,6 +56,9 @@ public class DialogueInstaller : MonoInstaller
             .AsSingle();
 
         Container.BindInterfacesAndSelfTo<AudioDialogSoundImporter>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterDialogEventManager>()
             .AsSingle();
     }
 }

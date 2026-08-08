@@ -5,12 +5,12 @@ using UnityEngine;
 public class PresentsParser : IGoogleParser
 {
     private readonly MainGoogleSettings _mainGoogleSettings;
-    private PresentData _currentGenreSettings;
+    private PresentSettings _currentGenreSettings;
   
     public PresentsParser(MainGoogleSettings mainGoogleSettings)
     {
         _mainGoogleSettings = mainGoogleSettings;
-        _mainGoogleSettings.Presents = new List<PresentData>();
+        _mainGoogleSettings.Presents = new List<PresentSettings>();
     }
 
     public void Parse(string headerName, string token)
@@ -18,7 +18,7 @@ public class PresentsParser : IGoogleParser
         switch (headerName)
         {
             case "ID":
-                _currentGenreSettings = new PresentData()
+                _currentGenreSettings = new PresentSettings()
                 {
                     IdPresent = Convert.ToInt32(token)
                 };

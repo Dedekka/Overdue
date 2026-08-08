@@ -11,7 +11,7 @@ public class MainGoogleSettings
     [Header("Items")]
     public List<ItemSettings> Items;
     [Header("Dialogue")]
-    public List<PresentData> Presents;
+    public List<PresentSettings> Presents;
     public List<DialogueEventData> DialogueEvent;
     public List<DialogSettings> Dialogues;
 }
