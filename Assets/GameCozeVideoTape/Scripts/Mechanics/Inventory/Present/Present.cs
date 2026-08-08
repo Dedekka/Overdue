@@ -1,11 +1,12 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Present : MonoBehaviour
+public class Present : BazeInteracteble
 {
     [SerializeField] private List<TextMeshPro> listText;
+    private PickUpItem _pickUpItem;
+    private StateItem _stateItem;
     private PresentSettings _presentSettings;
 
     public void SetPresentSettings(PresentSettings presentSettings)
@@ -20,5 +21,18 @@ public class Present : MonoBehaviour
         {
             listText[i].SetText(text);
         }
+    }
+
+    protected override void Interact()
+    {
+        //if (_stateItem.IsHandSlot) { return; }
+
+        //if (_pickUpItem.CheckFreeSlot())
+        //{
+        //    _stateItem.ControlHand(true);
+        //    OnPickUp?.Invoke(this);
+        //    //_pickUpItem.PickUp();
+        //    _stateItem.Control(false);
+        //}
     }
 }

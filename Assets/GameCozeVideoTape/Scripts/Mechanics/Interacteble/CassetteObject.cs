@@ -16,19 +16,19 @@ public class CassetteObject : BazeInteracteble
 
     private Rigidbody _rigidbody;
    [SerializeField] private ItemSettings _itemSettings;
-    private CassetteRenderer _cassetteRenderer;
+    //private CassetteRenderer _cassetteRenderer;
     private ManagerCassette _managerCassette;
 
     public event Action<CassetteObject> OnPickUp;
     public event Action OnDrop;
 
     [Inject]
-    private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, CassetteRenderer cassetteRenderer, StateItem stateItem)
+    private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, ViewRenderer cassetteRenderer, StateItem stateItem)
     {
         _stateItem = stateItem;
         _pickUpItem = PickUpItem;
         _installItem = installItem;
-        _cassetteRenderer = cassetteRenderer;
+        //_cassetteRenderer = cassetteRenderer;
         _managerCassette = managerCassette;
     }
 
@@ -44,7 +44,7 @@ public class CassetteObject : BazeInteracteble
     public void SetSettings(ItemSettings itemSettings)
     {
         _itemSettings = itemSettings;
-        _cassetteRenderer.Initialization(this, _itemSettings.MaterialIndex);
+        //_cassetteRenderer.Initialization(this, _itemSettings.MaterialIndex);
         Description = _itemSettings.Original_Title;
     }
 

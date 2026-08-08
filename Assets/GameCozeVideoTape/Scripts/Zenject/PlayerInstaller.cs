@@ -58,7 +58,7 @@ public class PlayerInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
 
-        Container.Bind<InventorySlot>()
+        Container.Bind<InventoryCassette>()
             .AsSingle()
             .WithArguments(_settingsPlayer, _handSlot, _inventorySlot);
 

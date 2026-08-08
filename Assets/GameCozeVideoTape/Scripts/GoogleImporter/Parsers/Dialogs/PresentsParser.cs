@@ -28,6 +28,12 @@ public class PresentsParser : IGoogleParser
 
             case "Name":
                 _currentGenreSettings.NamePresent = token;
+                Debug.Log($"PresentsParser, Name:{token}");
+                break;
+
+            case "MaterialIndex":
+                _currentGenreSettings.MaterialIndex = Convert.ToInt32(token);
+                
                 break;
             default:
                 throw new Exception($"Invalid header: {headerName}");

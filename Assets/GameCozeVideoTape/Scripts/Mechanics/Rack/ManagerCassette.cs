@@ -1,7 +1,6 @@
 using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -14,11 +13,12 @@ public class ManagerCassette : IInitializable, IDisposable
     private CassetteHolder _cassetteHolder;
     private DataCassets _dataCassets;
     private AudioCassette _audioCassette;
+    private CassetteRenderer _cassetteRenderer;
     //private DataLanguage _dataLanguage;
-    private InventorySlot _inventorySlot;
+    private InventoryCassette _inventorySlot;
     private int _maxCassette;
- 
-    public ManagerCassette(DataCassets dataCassets,  CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventorySlot inventorySlot, AudioCassette audioCassette)//DataLanguage dataLanguage,
+
+    public ManagerCassette(DataCassets dataCassets, CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventoryCassette inventorySlot, AudioCassette audioCassette, CassetteRenderer cassetteRenderer)//DataLanguage dataLanguage,
     {
         _audioCassette = audioCassette;
         _controlSleepCassette = controlSleepCassette;
@@ -26,9 +26,10 @@ public class ManagerCassette : IInitializable, IDisposable
         //_dataLanguage = dataLanguage;
         _cassetteHolder = cassetteHolder;
         _inventorySlot = inventorySlot;
+        _cassetteRenderer = cassetteRenderer;
         _listCassette = new List<CassetteObject>();
     }
-  
+
     public void Initialize()
     {
         _cassetteHolder.OnSave += Save;
@@ -65,6 +66,7 @@ public class ManagerCassette : IInitializable, IDisposable
             _cassetteHolder.AddCassette(_listCassette, _inventorySlot.GetActiveCassets());
             _controlSleepCassette.SetCassette(_listCassette);
             _audioCassette.SubAudio(_listCassette);
+            _cassetteRenderer.SetCassette(_listCassette);
         }
     }
 
