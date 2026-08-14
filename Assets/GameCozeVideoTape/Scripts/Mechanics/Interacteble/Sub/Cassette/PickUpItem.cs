@@ -70,7 +70,7 @@ public class PickUpItem
             _body.rotation = Quaternion.Lerp(_body.rotation, temptransform.rotation, _speedBlend2 * Time.deltaTime);
             _isActive = CheckEnd(temptransform);
         }
-        _body.transform.SetParent(_hand);
+        _body.transform.SetParent(_hand);   
     }
 
     private bool CheckEnd(Transform temptransform)
