@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PickUpItem
 {
-    public IItemble Item => item;
-    private IItemble item;
+    public IItemble Item => _item;
+    private IItemble _item;
     private Player _player;
     private Transform _body;
     private PlayerInventory _playerInventory;
@@ -31,10 +31,10 @@ public class PickUpItem
         _hand = hand;
     }
 
-    public void SetBody(IItemble transform)
+    public void SetBody(IItemble Item)
     {
-        item = transform;
-        _body = transform._body;
+        _item = Item;
+        _body = Item._body;
     }
 
     public void Scroll(Transform transform)
