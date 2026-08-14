@@ -37,7 +37,7 @@ public class CassetteObject : BazeInteracteble , IItemble
     {
         _rigidbody = GetComponent<Rigidbody>();
         _managerCassette.AddCassette(this);
-        _pickUpItem.SetBody(this, _rigidbody);
+        _pickUpItem.SetBody(this);
         _installItem.SetBody(this);
         _stateItem.Initialization(this, _rigidbody);
         _isShowPanelUse = true;

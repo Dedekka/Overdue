@@ -78,7 +78,7 @@ public class Present : BazeInteracteble, IItemble
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
-        _pickUpItem.SetBody(this, _rigidbody);
+        _pickUpItem.SetBody(this);
         _stateItem.Initialization(this, _rigidbody);
     }
 }
