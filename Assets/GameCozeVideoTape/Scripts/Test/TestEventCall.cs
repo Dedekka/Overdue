@@ -13,6 +13,7 @@ public class TestEventCall : BazeInteracteble
             DialogName.ChrisTurner,
             DialogName.NancyParker,
         };
+        _isShowPanelUse = true;
     }
 
     protected override void Interact()

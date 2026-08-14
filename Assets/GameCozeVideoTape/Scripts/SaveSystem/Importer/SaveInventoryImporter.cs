@@ -16,22 +16,22 @@ public class SaveInventoryImporter : IDisposable, IInitializable
     public void Initialize()
     {
         _saver.OnLoad += OnLoad;
-        _saver.OnSave += OnSave;
+        //_saver.OnSave += OnSave;
     }
 
     public void Dispose()
     {
         _saver.OnLoad -= OnLoad;
-        _saver.OnSave -= OnSave;
+        //_saver.OnSave -= OnSave;
     }
 
-    private void OnSave()
-    {
+    //private void OnSave()
+    //{
 
-    }
+    //}
 
     private void OnLoad()
     {
-        _playerInventory.Load();
+        _playerInventory.DropAllCassette();
     }
 }

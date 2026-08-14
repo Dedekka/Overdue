@@ -18,6 +18,9 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private PickUpSettings _pickUpSettings;
     [SerializeField] private ShelfSlotSettings _shelfSlotSettings;
     [SerializeField] private float _timeWaitCheckPhysics;
+    [Header("ItemsDecor")]
+    [SerializeField] private Material _decorMaterial;
+    [SerializeField] private Material _slotMaterial;
     [Header("Rack")]
     [SerializeField] private int _maxRack;
     [Header("Phone")]
@@ -41,6 +44,7 @@ public class GameInstaller : MonoInstaller
         BindPauseSystem();
         BindPhone();
         BindEventRealizer();
+        BindPresentDecor();
 
     }
 
@@ -65,7 +69,29 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<ReturnedMover>()
         .AsSingle()
-        .WithArguments(_returnedPosition); 
+        .WithArguments(_returnedPosition);
+    }
+
+    private void BindPresentDecor()
+    {
+        Container.Bind<DecorChecker>()
+           .AsSingle();
+
+        Container.Bind<Material>()
+            .WithId("SlotMaterial")
+            .FromInstance(_slotMaterial)
+            .AsCached();
+
+        Container.Bind<Material>()
+            .WithId("DecorMaterial")
+            .FromInstance(_decorMaterial)
+            .AsCached();
+
+
+
+        //Container.Bind<DecorRender>()
+        //   .AsTransient()
+        //   .WithArguments(_slotMaterial, _decorMaterial);
     }
 
     private void BindPhone()

@@ -3,9 +3,9 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class ContentSlot : BazeInteracteble
+public class ContentSlot : BazeInteracteble, ISloteble
 {
-    private Player _player;
+    private PlayerInventory _playerInventory;
     private Ease _ease;
     private float _time;
     private MeshRenderer _meshRenderer;
@@ -14,9 +14,9 @@ public class ContentSlot : BazeInteracteble
     public event Action<bool> OnEnterCursor;
 
     [Inject]
-    public void Construct(Player player)
+    public void Construct(PlayerInventory playerInventory)
     {
-        _player = player;
+        _playerInventory = playerInventory;
     }
 
     private void Awake()
@@ -31,9 +31,16 @@ public class ContentSlot : BazeInteracteble
 
     protected override void Interact()
     {
-        if (_player.CheckActiveCassette(out CassetteObject currentCassette))
+        if (_playerInventory.CheckActiveItem(this, out IItemble currentCassette))
         {
-            OnInteract?.Invoke(currentCassette);
+            if (currentCassette is CassetteObject cassette)
+            {
+                OnInteract?.Invoke(cassette);
+            }
+            else
+            {
+                Debug.LogError("ContentSlot_CheckActiveItem_Not Found CassetteObject ");
+            }
         }
     }
 
@@ -47,6 +54,7 @@ public class ContentSlot : BazeInteracteble
     {
         if (_meshRenderer.enabled == isVisible) return;
         _meshRenderer.enabled = isVisible;
+        IsShowPanelUse = isVisible;
         //gameObject.SetActive(isVisible);
     }
 

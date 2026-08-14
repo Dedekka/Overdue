@@ -31,6 +31,6 @@ public class ImporterInteractebleUI : IDisposable, IInitializable
 
     private void OnShowPanelUse(bool isShowPanelUse)
     {
-        _playerUi.ShowPanelUse(!isShowPanelUse);
+        _playerUi.ShowPanelUse(isShowPanelUse);
     }
 }
