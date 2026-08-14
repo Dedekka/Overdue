@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DialogueEventParser : IGoogleParser
 {
@@ -36,6 +37,8 @@ public class DialogueEventParser : IGoogleParser
             case "Present":
                 _currentPresentData = _mainGoogleSettings.Presents.Find((x) => x.NamePresent == token);
                 int IdPresent = _currentPresentData == null ? -1 : _currentPresentData.IdPresent;
+                
+                Debug.Log($"DialogueEventParser, Present:{token}, id: {IdPresent}");
                 _currentDialogueEventData.IDPresent = Convert.ToInt32(IdPresent);
                 break;
             default:

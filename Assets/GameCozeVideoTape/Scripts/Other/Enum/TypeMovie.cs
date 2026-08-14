@@ -17,7 +17,6 @@ public enum Genre
     Порно = 13,
     Хит = 14,
     Опера = 15,
-    Возвращённые = 16,
 }
 
 public enum SubFantasy

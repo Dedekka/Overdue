@@ -1,14 +1,17 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 public class PickUpItem
 {
-    public CassetteObject CassetteObject => _cassette;
-    private CassetteObject _cassette;
+    public IItemble Item => _item;
+    private IItemble _item;
+    private Player _player;
     private Transform _body;
     private PlayerInventory _playerInventory;
-    private Transform _hand;
     private Coroutine _pickUp;
+    private Transform _hand;
     private float _speedBlend2;
     private readonly float _speedBlend;
     private readonly float _coeffBlend;
@@ -16,40 +19,42 @@ public class PickUpItem
     private readonly float _minRotation;
     private bool _isActive;
 
-    public PickUpItem(PickUpSettings PickUpSettings, PlayerInventory playerInventory, Transform hand)
+    public PickUpItem(PickUpSettings PickUpSettings, PlayerInventory playerInventory, Transform hand, Player player)
     {
         _speedBlend = PickUpSettings.SpeedBlend;
         _coeffBlend = PickUpSettings.CoeffBlend;
         _minDistance = PickUpSettings.MinDistance;
         _minRotation = PickUpSettings.MinRotation;
         _playerInventory = playerInventory;
+        _player = player;
         _hand = hand;
     }
 
-    public void SetBody(CassetteObject transform, Rigidbody rigidbody)
+    public void SetBody(IItemble Item)
     {
-        _cassette = transform;
-        _body = _cassette.transform;
+        _item = Item;
+        _body = Item._body;
     }
 
     public void Scroll(Transform transform)
     {
         _hand = transform;
         StopMove();
-        _pickUp = _cassette.StartCoroutine(FlyToHand(_hand));
+        _pickUp = _player.StartCoroutine(FlyToHand(_hand));
+
     }
 
     public void StopMove()
     {
         if (_pickUp != null)
         {
-            _cassette.StopCoroutine(_pickUp);
+            _player.StopCoroutine(_pickUp);
         }
     }
 
     public bool CheckFreeSlot()
     {
-        return _playerInventory.CheckFreeSlot(CassetteObject, out _hand);
+        return _playerInventory.CheckFreeSlot(Item);
     }
 
     private IEnumerator FlyToHand(Transform temptransform)
@@ -64,13 +69,13 @@ public class PickUpItem
             _body.rotation = Quaternion.Lerp(_body.rotation, temptransform.rotation, _speedBlend2 * Time.deltaTime);
             _isActive = CheckEnd(temptransform);
         }
-        _body.SetParent(_hand);
+        _body.transform.SetParent(_hand);   
     }
 
     private bool CheckEnd(Transform temptransform)
     {
-        bool isCurrentPos = _minDistance < Vector3.Distance(_body.position, temptransform.position);
-        bool isCurrentRotation = _minRotation < Quaternion.Angle(_body.rotation, temptransform.rotation);
+        bool isCurrentPos = _minDistance < Vector3.Distance(Item._body.position, temptransform.position);
+        bool isCurrentRotation = _minRotation < Quaternion.Angle(Item._body.rotation, temptransform.rotation);
         return isCurrentPos == true || isCurrentRotation == true;
     }
 }

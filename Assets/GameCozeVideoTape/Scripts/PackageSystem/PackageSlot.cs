@@ -18,7 +18,7 @@ public class PackageSlot : MonoBehaviour
         currentPresent.transform.position = transform.position;
         currentPresent.transform.rotation = transform.rotation;
 
-        //currentPresent.transform.SetParent(transform);
+        currentPresent.transform.SetParent(transform);
 
         _currentPresent = currentPresent;
         // Устанавливаем наш подарок

@@ -1,19 +1,19 @@
 using UnityEngine;
 using Zenject;
 
-public class ShelfSlot : MonoBehaviour
+public class ShelfSlot : MonoBehaviour, ISloteble
 {
     [SerializeField] private ContentSlot _slot;
     private SubGenreShelf _subGenreShelf;
-    private Player _player;
+    private PlayerInventory _playerInventory;
     private CassetteObject _cassetteObject;
     public bool IsEmpty => _cassetteObject == null;
     private ShelfSlotSettings _settings;
 
     [Inject]
-    public void Construct(Player player, ShelfSlotSettings settings)
+    public void Construct(PlayerInventory playerInventory, ShelfSlotSettings settings)
     {
-        _player = player;
+        _playerInventory = playerInventory;
         _settings = settings;
     }
 
@@ -59,16 +59,28 @@ public class ShelfSlot : MonoBehaviour
         {
             _slot.SetSettings(_settings.EaseNothing, _settings.TimeNothing);
         }
-        bool isNull = _slot.Install(_player.GetCassette(), out _cassetteObject);
-        SubPickUp(isNull);
-        _slot.gameObject.SetActive(isNull);
+
+        IItemble tempItem = _playerInventory.Install(this);
+
+        if (tempItem is CassetteObject present)
+        {
+            bool isNull = _slot.Install(present, out _cassetteObject);
+            SubPickUp(isNull);
+            _slot.gameObject.SetActive(isNull);
+        }
+        else
+        {
+            Debug.LogError("ShelfSlot_CheckEmptySlot Not Found Present ");
+        }
+
+
     }
 
     private void CheckEmptyHand(bool isHandCassette)
     {
         if (isHandCassette)
         {
-            if (_player.CheckActiveCassette(out CassetteObject currentCassette))
+            if (_playerInventory.CheckActiveItem(this, out IItemble currentCassette))
             {
                 _slot.ControlVisible(isHandCassette);
             }

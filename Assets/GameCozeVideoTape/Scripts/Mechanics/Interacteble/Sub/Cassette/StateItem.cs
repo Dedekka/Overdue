@@ -6,21 +6,21 @@ public class StateItem
 
     public Collider Collider => _collider;
     public bool IsHandSlot => _isHandSlot;
-    private CassetteObject _currentCassette;
+    private IItemble _currentCassette;
     private Collider _collider;
     private Rigidbody _rigidbody;
     private bool _isHandSlot;
 
-    public void Initialization(CassetteObject cassetteObject, Rigidbody rigidbody)
+    public void Initialization(IItemble cassetteObject, Rigidbody rigidbody)
     {
         _currentCassette = cassetteObject;
-        _collider = _currentCassette.GetComponent<Collider>();
+        _collider = _currentCassette._body.GetComponent<Collider>();
         _rigidbody = rigidbody;
     }
 
     public void Drop()
     {
-        _currentCassette.transform.SetParent(null);
+        _currentCassette._body.SetParent(null);
         Control(true);
         ControlHand(false);
     }

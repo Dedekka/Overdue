@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 public class DialogEventManager
@@ -51,9 +52,22 @@ public class DialogEventManager
     {
         await UniTask.Delay(3000);
         Debug.Log($"DialogEventManager: IdCassetts: {_callData.IdCassetts}, IDPresent: {_callData.IDPresent}");
-        _returnedMover.SetCallData(_callData);
-        if (_callData.IDPresent < 0) { return; }
-        _presentSpawner.SetCallData(_callData);
+
+
+        //_returnedMover.SetCallData(_callData);
+        //if (_callData.IDPresent < 0) { return; }
+        //_presentSpawner.SetCallData(_callData);
+
+        CheckCorrectID(_callData.IdCassetts, _returnedMover.SetCallData);
+        CheckCorrectID(_callData.IDPresent, _presentSpawner.SetCallData);
+
         Debug.Log("EndTimer");
+    }
+
+    private void CheckCorrectID(int id, Action<CallData> action)
+    {
+        if (id < 0) { return; }
+
+        action?.Invoke(_callData);
     }
 }
