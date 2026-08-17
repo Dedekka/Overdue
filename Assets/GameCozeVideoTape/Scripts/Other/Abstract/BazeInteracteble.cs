@@ -13,8 +13,22 @@ public abstract class BazeInteracteble : MonoBehaviour, IInteracteble
             _description = value;
         }
     }
+
+    public bool IsShowPanelUse
+    {
+        get
+        {
+            return _isShowPanelUse;
+        }
+        set
+        {
+            _isShowPanelUse = value;
+        }
+    }
+
     [SerializeField] private string _description;
 
+    protected bool _isShowPanelUse;
     /// <summary>
     /// Ѕазовое воспроизведение команты использовать
     /// </summary>

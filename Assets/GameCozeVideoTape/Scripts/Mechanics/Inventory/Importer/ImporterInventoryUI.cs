@@ -4,9 +4,9 @@ using Zenject;
 public class ImporterInventoryUI : IDisposable, IInitializable
 {
     private PlayerUi _playerUi;
-    private InventorySlot _inventorySlot;
+    private InventoryCassette _inventorySlot;
 
-    public ImporterInventoryUI(InventorySlot inventorySlot, PlayerUi playerUi)
+    public ImporterInventoryUI(InventoryCassette inventorySlot, PlayerUi playerUi)
     {
         _playerUi = playerUi;
         _inventorySlot = inventorySlot;

@@ -45,6 +45,7 @@ public class PresentSettings
 {
     public string NamePresent;
     public int IdPresent;
+    public int MaterialIndex;
 }
 
 [Serializable]

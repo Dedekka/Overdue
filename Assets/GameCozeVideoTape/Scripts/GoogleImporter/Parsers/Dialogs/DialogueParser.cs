@@ -35,13 +35,14 @@ public class DialogueParser : IGoogleParser
                 {
                     Id = Convert.ToInt32(token)
                 };
-
+                
+                _currentDialogueEventData.DialogueEventData = _mainGoogleSettings.DialogueEvent.Find((x) => x.IdEvent == _currentDialogueEventData.Id);
                 _mainGoogleSettings.Dialogues.Add(_currentDialogueEventData);
                 break;
 
             case "Dialogue_Name":
                 _currentDialogueEventData.DialogueName = token;
-                _currentDialogueEventData.DialogueEventData = _mainGoogleSettings.DialogueEvent.Find((x) => x.DialogueName == token);
+               
                 break;
             case "Ñharacter":
                 _currentDialogueEventData.NameCharacter = token;
@@ -77,14 +78,14 @@ public class DialogueParser : IGoogleParser
         {
             if (fmodPath[i] == _clearSound)
             {
-                Debug.Log($"ParserDialogSound, _clearLine tempText:{tempText}");
+                //Debug.Log($"ParserDialogSound, _clearLine tempText:{tempText}");
                 tempText = string.Empty;
                 continue;
             }
 
             if (fmodPath[i] == _findNumberSound)
             {
-                Debug.Log($"ParserDialogSound, _findCharacter tempText:{tempText}");
+                //Debug.Log($"ParserDialogSound, _findCharacter tempText:{tempText}");
                 soundLine = new SoundLine();
                 soundLine.IdLine = tempText;
                 soundLines.Add(soundLine);
@@ -94,7 +95,7 @@ public class DialogueParser : IGoogleParser
 
             if (fmodPath[i] == _findPath)
             {
-                Debug.Log($"ParserText, _findNumber tempText:{tempText}");
+                //Debug.Log($"ParserText, _findNumber tempText:{tempText}");
 
 
                 //EventReference tempEvent = RuntimeManager.PathToEventReference(tempText);

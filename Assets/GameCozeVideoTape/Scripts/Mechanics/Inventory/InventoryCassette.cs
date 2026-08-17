@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class InventorySlot
+public class InventoryCassette
 {
     private InventoryData[] _cassets;
     private CassetteObject[] _activeCassets;
@@ -20,8 +20,9 @@ public class InventorySlot
     private int _countCassette => _countSlotInventory - 1;
 
     public event Action<CassetteObject[]> OnChangeSlot;
+    public event Action OnPickUp;
 
-    public InventorySlot(SettingsPlayer settingsPlayer, Transform hand, Transform[] _inventorySlot)
+    public InventoryCassette(SettingsPlayer settingsPlayer, Transform hand, Transform[] _inventorySlot)
     {
         _SlotInventoryMax = settingsPlayer.CountSlotInventory;
         _hand = hand;
@@ -36,16 +37,16 @@ public class InventorySlot
         _endOffsetHand.y -= _offsetHandY;
     }
 
-    public bool CheckFreeSlot(CassetteObject CassetteObject, out Transform transform)
+    public bool CheckFreeSlot(CassetteObject CassetteObject)
     {
         bool isSucsses = false;
-        transform = null;
         isSucsses = _countSlotInventory < _SlotInventoryMax;
         if (isSucsses)
         {
             _countSlotInventory++;
-            AddCassette(CassetteObject, ref transform);
+            AddCassette(CassetteObject);
             MoveHand();
+            OnPickUp?.Invoke();
         }
         return isSucsses;
     }
@@ -74,8 +75,8 @@ public class InventorySlot
 
     public bool CheckActiveCassette(out CassetteObject cassetteObject)
     {
-        cassetteObject = _currentCassette;
         ChangeCurrentCassette();
+        cassetteObject = _currentCassette;
         return _currentCassette != null;
     }
 
@@ -97,10 +98,12 @@ public class InventorySlot
 
     public void Scroll(bool duration)
     {
+        if (_countSlotInventory <= 1) { return; }
+        Debug.Log($"Scroll CountSlotInventory: {_countSlotInventory}");
         ChangeSlot(duration, 0);
     }
 
-    public void Load()
+    public void DropAllCassette()
     {
         for (int i = 0; i < _cassets.Length; i++)
         {
@@ -148,7 +151,7 @@ public class InventorySlot
         _currentCassette = _countSlotInventory == 0 ? null : _cassets[0].CassetteObject;
     }
 
-    private void AddCassette(CassetteObject cassetteObject, ref Transform transform)
+    private void AddCassette(CassetteObject cassetteObject)
     {
         _cassets[0].CassetteObject = cassetteObject;
         cassetteObject.Scroll(_cassets[0].Position);

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace SaveLoadSystem
 {
-    public class Saver : IInitializable
+    public class Saver 
     {
         private CassetteHolder _cassetteHolder;
         private RackHolder _rackHolder;
@@ -26,7 +26,6 @@ namespace SaveLoadSystem
             _saveLoadSystem.AddToSaveLoad(_rackHolder.SaveRack);
         }
 
-        [ContextMenu("Save")]
         public void Save()
         {
             Debug.Log("Saver _ Save");
@@ -36,8 +35,6 @@ namespace SaveLoadSystem
             _saveLoadSystem.SaveGame(SaveType.File);
         }
 
-
-        [ContextMenu("Load")]
         public void Load()
         {
             OnLoad?.Invoke();

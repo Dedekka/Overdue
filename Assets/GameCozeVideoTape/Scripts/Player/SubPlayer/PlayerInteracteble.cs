@@ -59,6 +59,7 @@ public class PlayerInteracteble : ITickable
         ControlView(_currentInteracteble, true);
         bool isShowPanelUse = _currentInteracteble == null;
         _description = isShowPanelUse ? string.Empty : _currentInteracteble.Description;
+        isShowPanelUse = _currentInteracteble == null ? false: _currentInteracteble.IsShowPanelUse;
         OnChangeCurrentInteracteble?.Invoke(_description);
         OnShowPanelUse?.Invoke(isShowPanelUse);
     }

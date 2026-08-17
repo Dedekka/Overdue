@@ -1,22 +1,17 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CassetteRenderer 
+public class ViewRenderer 
 {
     private Renderer _renderer;
     private MaterialPropertyBlock _propertyBlock;
-    private Material _material;
     private static readonly int ArrayIndexProperty = Shader.PropertyToID("_IndexSlice");
 
-    public CassetteRenderer(Material material)
+    public void Initialization(Material material, GameObject gameObject, int MaterialIndex)
     {
-        _material = material;
-    }
-
-    public void Initialization(CassetteObject cassetteObject, int MaterialIndex)
-    {
-        _renderer = cassetteObject.GetComponent<Renderer>();
-        _renderer.material = _material;
+        TryGetRenderer(gameObject);
+        
+        _renderer.material = material;
         _propertyBlock = new MaterialPropertyBlock();
 
         // Получаем текущий блок свойств
@@ -29,5 +24,12 @@ public class CassetteRenderer
         _renderer.SetPropertyBlock(_propertyBlock);
     }
 
-
+    private void TryGetRenderer(GameObject gameObject)
+    {
+        _renderer = gameObject.GetComponent<Renderer>();
+        if (_renderer == null)
+        {
+            _renderer = gameObject.GetComponentInChildren<Renderer>();
+        }
+    }
 }
