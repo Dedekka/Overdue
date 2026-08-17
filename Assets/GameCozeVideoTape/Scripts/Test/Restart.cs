@@ -14,6 +14,11 @@ public class Restart : MonoBehaviour
         _saver = saver;
     }
 
+    private void Start()
+    {
+        _saver.Initialize();
+    }
+
     private void Update()
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
