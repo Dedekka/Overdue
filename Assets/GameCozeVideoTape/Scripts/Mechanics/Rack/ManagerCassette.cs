@@ -18,8 +18,9 @@ public class ManagerCassette : IInitializable, IDisposable
     private InventoryCassette _inventorySlot;
     private int _maxCassette;
 
-    public ManagerCassette(DataCassets dataCassets, CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventoryCassette inventorySlot, AudioCassette audioCassette, CassetteRenderer cassetteRenderer)//DataLanguage dataLanguage,
+    public ManagerCassette(DataCassets dataCassets, CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventoryCassette inventorySlot, AudioCassette audioCassette, CassetteRenderer cassetteRenderer, int maxCassette)//DataLanguage dataLanguage,
     {
+        _maxCassette = maxCassette;
         _audioCassette = audioCassette;
         _controlSleepCassette = controlSleepCassette;
         _dataCassets = dataCassets;
@@ -56,7 +57,7 @@ public class ManagerCassette : IInitializable, IDisposable
 
     private void CheckMaxCassetteObject()
     {
-        _maxCassette = _maxCassette > 0 ? _maxCassette : _dataCassets.GetMaxCassette();
+        //_maxCassette = _maxCassette > 0 ? _maxCassette : _dataCassets.GetMaxCassette();
 
         if (_listCassette.Count == _maxCassette)
         {

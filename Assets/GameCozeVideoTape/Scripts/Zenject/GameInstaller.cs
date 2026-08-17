@@ -23,6 +23,7 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private Material _slotMaterial;
     [Header("Rack")]
     [SerializeField] private int _maxRack;
+    [SerializeField] private int _maxCassette;
     [Header("Phone")]
     [SerializeField] private Phone _phone;
     [Header("EventRealizer")]
@@ -146,7 +147,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ManagerCassette>()
            .AsSingle()
-           .WithArguments(_dataCassets);//, _dataLanguage);
+           .WithArguments(_dataCassets, _maxCassette);//, _dataLanguage);
 
         Container.BindInterfacesAndSelfTo<ControlSleepCassette>()
           .AsSingle()
