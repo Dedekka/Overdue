@@ -25,7 +25,7 @@ public class ImporterDialogWaiterViewDialog : IDisposable, IInitializable
 
     private void OnUpdateDialogText(UpdateDialogText updateDialogText)
     {
-        _viewDialog.SetName(updateDialogText.CharacterName);
-        _viewDialog.SetDialog(updateDialogText.Text);
+        _viewDialog.SetName(updateDialogText.Character);
+        _viewDialog.SetDialog(updateDialogText.Line);
     }
 }

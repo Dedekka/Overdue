@@ -4,68 +4,92 @@ using UnityEngine;
 
 public class DialogSystem
 {
-    private DataDialogue _dataDialogue;
-    private DialogSettings _dialogSettings;
-    private DialogWaiter _dialogWaiter;
-    private DialogSound _dialogSound;
-    private DialogEvent _dialogEvent;
-    private float _timeWaitLine;
+    private DialogSystemCall _dialogSystemCall;
+    private DialogSystemSubtitles _dialogSystemSubtitles;
 
+    private IRealizerDialogueble _currentRealizer;
+
+    private DialogWaiter _dialogWaiter;
+    private float _timeWaitLine;
     // —оздать импортер и в момент когда диалог закачниваетс€ нужно возвращать управление игроку 
 
     public event Action<bool> OnStateDialog;
 
-    public DialogSystem(DataDialogue dataDialogue, DialogWaiter dialogWaiter, float timeWaitLine, DialogSound dialogSound, DialogEvent dialogEvent)
+    public DialogSystem(DialogSystemSubtitles dialogSystemSubtitles, DialogSystemCall dialogSystemCall, DialogWaiter dialogWaiter, float timeWaitLine)
     {
-        _dataDialogue = dataDialogue;
+        _dialogSystemCall = dialogSystemCall;
+        _dialogSystemSubtitles = dialogSystemSubtitles;
         _dialogWaiter = dialogWaiter;
         _timeWaitLine = timeWaitLine;
-        _dialogSound = dialogSound;
-        _dialogEvent = dialogEvent;
     }
-    
-    public void StartDialogue(int id)
+
+    public bool CheckDialogue(IStarterDialogueble starterDialogue, int id)
     {
-        ShowTest(_dataDialogue.GetDialog(id));
+        bool isRealizer = false;
+        if (starterDialogue is DialogCall)
+        {
+            _currentRealizer = _dialogSystemCall;
+        }
+        else if (starterDialogue is DialogSubtitles)
+        {
+            _currentRealizer = _dialogSystemSubtitles;
+        }
+        isRealizer = RealizerDialogue(_currentRealizer, id);
+        _currentRealizer = isRealizer ? _currentRealizer : null;
+        return isRealizer;
     }
 
-    private void ShowTest(DialogSettings dialogSettings)
+    public void StartDialogue()
     {
-        // ћы определ€ем что диалог существует
-        // ћы передаем по стройчно что диалог воспроизводитс€ по репликам
-        // ћы отдаем строку в DialogWaiter дл€ по символьного отображени€
-        // ћы получаем результат отображени€ из DialogWaiter
-        // передаем его в ViewDialog
-        // мы передаем команду на звук
-        // ћы отслеживаем событие завершени€ строк
-
-        // когда DialogLines.Count завершен вызываем событие срабатывани€ конца диалога
-
-
-        if (dialogSettings == null) { Debug.LogError("DialogSystem Not Found DialogSettings"); return; }
-
-        _dialogSettings = dialogSettings;
-        Debug.Log($"Id: {_dialogSettings.Id}, dialogSettings: {_dialogSettings.DialogLines.Count}");
-        ProgressShow().Forget();
+        if (_currentRealizer == null) { return; }
+        ProgressShow(_currentRealizer).Forget();
     }
 
-    private async UniTask ProgressShow()
+    private bool RealizerDialogue(IRealizerDialogueble realizer, int id)
+    {
+        if (realizer == null) { return false; }
+
+        return realizer.CheckId(id);
+    }
+
+    private async UniTask ProgressShow(IRealizerDialogueble realizerDialogueble)
+    {
+        int countDialogLine = PreDialog(realizerDialogueble);
+        Debug.Log($"ProgressShow, countDialogLine:{countDialogLine}");
+        for (int j = 0; j < countDialogLine; j++)
+        {
+            IDialoguebleLine dialogLine = realizerDialogueble.GetDialogLine(j);
+            if (dialogLine == null) { Debug.LogError("ProgressShow not found IDialoguebleLine"); }
+
+            SetDialogLine(realizerDialogueble, dialogLine);
+            await StartDialog(realizerDialogueble, dialogLine);
+            await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitLine));
+        }
+        EndDialog(realizerDialogueble);
+    }
+
+    private int PreDialog(IRealizerDialogueble realizer)
     {
         OnStateDialog?.Invoke(true);
-        for (int j = 0; j < _dialogSettings.DialogLines.Count; j++)
-        {
-            DialogLine dialogLine = _dialogSettings.DialogLines[j];
-            _dialogSound.SetFmodSound(dialogLine);
-            _dialogWaiter.SetDialogLine(dialogLine);
-            _dialogEvent.SetDialogSettings(_dialogSettings);
-            _dialogSound.StartSound();
-            await _dialogWaiter.StartShow();
-            await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitLine));
-            Debug.Log($"Id: {dialogLine.IdNumber}, Character: {dialogLine.Character}, dialogLine: {dialogLine.Line}");
-        }
-        _dialogEvent.StartEvent();
-        _dialogSound.StopSound();
+        return realizer.GetCountDialogLine();
+    }
+
+    private void SetDialogLine(IRealizerDialogueble realizer, IDialoguebleLine dialogLine)
+    {
+        realizer.SetDialogLine();
+        _dialogWaiter.SetDialogLine(dialogLine);
+    }
+
+    private async UniTask StartDialog(IRealizerDialogueble realizer, IDialoguebleLine dialogLine)
+    {
+        realizer.StartDialog();
+        await _dialogWaiter.StartShow();
+    }
+
+    private void EndDialog(IRealizerDialogueble realizer)
+    {
+        Debug.Log("EndDialog");
+        realizer.EndDialog();
         OnStateDialog?.Invoke(false);
     }
 }
-

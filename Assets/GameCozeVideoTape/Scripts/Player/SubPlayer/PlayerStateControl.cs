@@ -17,5 +17,4 @@ public class PlayerStateControl
         _isPlayerControlON = isPlayerControlON;
         OnChangeStateControlPlayer?.Invoke(_isPlayerControlON);
     }
-
 }

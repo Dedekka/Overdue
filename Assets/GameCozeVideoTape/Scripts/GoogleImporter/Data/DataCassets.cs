@@ -20,7 +20,7 @@ public class DataCassets : ScriptableObject
         for (int i = 0; i < cassettes.Count; i++)
         {
             tempCassette = cassettes[i];
-            tempCassette.SetSettings(itemSettings[i]);
+            tempCassette.SetSettings(GetItem(tempCassette.Id));
         }
     }
 

@@ -14,48 +14,48 @@ public class GoogleMenu
     private const string Language_sheets_name = "Language";
     private const string Genre_sheets_name = "Genre";
     private const string SubGenre_sheets_name = "SubGenre";
-
-
     private const string BazePresent_sheets_name = "BazePresent";
     private const string DialogueEvent_sheets_name = "DialogueEvent";
-
-    private const string LanguageDialogue_sheets_name = "LanguageDialogue";
-
-   
     private const string BazeDialogue_sheets_name = "BazeDialogue";
+    private const string CassetteOpera_sheets_name = "CassetteOpera";
+    //private const string LanguageDialogue_sheets_name = "LanguageDialogue";
+
+
+
 
     #endregion
 
-    private const string SettingFileName = "MainGoogleSettings";
+    //private const string SettingFileName = "MainGoogleSettings";
 
 
     [MenuItem("Google/LoadGoogleSheets")]
     private static async void LoadItemsSettings()
     {
         GoogleImporter sheetsImporter = new GoogleImporter(Credentials_path, SpreadSheet_id);
-        MainGoogleSettings gameSettings = LoadSettings();
+        MainGoogleSettings gameSettings = new MainGoogleSettings();
 
         await Genre(gameSettings, sheetsImporter);
         await Item(gameSettings, sheetsImporter);
         await Dialogs(gameSettings, sheetsImporter);
+        await Opera(gameSettings, sheetsImporter);
 
         SaveSettings(gameSettings);
     }
 
-    private static MainGoogleSettings LoadSettings()
-    {
-        string JsonLoader = PlayerPrefs.GetString(SettingFileName); // Здесь мы должны загружать из файла 
-        MainGoogleSettings gamesettings = !string.IsNullOrEmpty(JsonLoader)
-            ? JsonUtility.FromJson<MainGoogleSettings>(JsonLoader)
-            : new MainGoogleSettings();
-        return gamesettings;
-    }
+    //private static MainGoogleSettings LoadSettings()
+    //{
+    //    string JsonLoader = PlayerPrefs.GetString(SettingFileName); // Здесь мы должны загружать из файла 
+    //    MainGoogleSettings gamesettings = !string.IsNullOrEmpty(JsonLoader)
+    //        ? JsonUtility.FromJson<MainGoogleSettings>(JsonLoader)
+    //        : new MainGoogleSettings();
+    //    return gamesettings;
+    //}
 
     private static void SaveSettings(MainGoogleSettings mainGoogleSettings)
     {
-        string JsonSaver = JsonUtility.ToJson(mainGoogleSettings);
-        PlayerPrefs.SetString(SettingFileName, JsonSaver);
-        PlayerPrefs.Save();
+        //string JsonSaver = JsonUtility.ToJson(mainGoogleSettings);
+        //PlayerPrefs.SetString(SettingFileName, JsonSaver);
+        //PlayerPrefs.Save();
 
         DataCassets dataCassets = ScriptableObject.CreateInstance<DataCassets>();
         dataCassets.Initialization(mainGoogleSettings);
@@ -76,6 +76,10 @@ public class GoogleMenu
         DataPresent dataPresent = ScriptableObject.CreateInstance<DataPresent>();
         dataPresent.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataPresentPath, dataPresent);
+
+        DataOpera dataOpera = ScriptableObject.CreateInstance<DataOpera>();
+        dataOpera.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataOperaPath, dataOpera);
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
@@ -116,5 +120,11 @@ public class GoogleMenu
 
         DialogueParser dialogueParser = new DialogueParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(BazeDialogue_sheets_name, dialogueParser);
+    }
+
+    private static async UniTask Opera(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        OperaParser operaParser = new OperaParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(CassetteOpera_sheets_name, operaParser);
     }
 }

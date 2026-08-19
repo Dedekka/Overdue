@@ -1,10 +1,30 @@
 using UnityEngine;
+using Zenject;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PackageSlot : MonoBehaviour
 {
     private Present _currentPresent;
+    private Collider _collider;
+    private Player _player;
 
     private bool _isFree => _currentPresent == null;
+
+    [Inject]
+    private void Construct(Player player)
+    {
+        _player = player;
+    }
+
+    private void Awake()
+    {
+        _collider = GetComponent<Collider>();
+    }
+
+    //private void Start() Only horizontal Slot
+    //{
+    //    Physics.IgnoreCollision(_collider, _player.CharacterController);
+    //}
 
     public bool CheckSlot()
     {
@@ -21,8 +41,19 @@ public class PackageSlot : MonoBehaviour
         currentPresent.transform.SetParent(transform);
 
         _currentPresent = currentPresent;
+        SubPickUp();
         // Устанавливаем наш подарок
         // 
     }
 
+    private void SubPickUp()
+    {
+        _currentPresent.OnPickUp += OnPickUp;
+    }
+
+    private void OnPickUp(Present tempPresent)
+    {
+        tempPresent.OnPickUp -= OnPickUp;
+        _currentPresent = null;
+    }
 }

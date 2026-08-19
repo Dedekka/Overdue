@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class Present : BazeInteracteble, IItemble
     [SerializeField] private PresentSettings _presentSettings;
     private Rigidbody _rigidbody;
     private Collider _collider;
+
+    public event Action<Present> OnPickUp;
 
     [Inject]
     private void Construct(PickUpItem PickUpItem, ViewRenderer ViewRenderer, StateItem stateItem)
@@ -69,7 +72,7 @@ public class Present : BazeInteracteble, IItemble
         if (_pickUpItem.CheckFreeSlot())
         {
             _stateItem.ControlHand(true);
-            //OnPickUp?.Invoke(this);
+            OnPickUp?.Invoke(this);
             _stateItem.Control(false);
         }
     }

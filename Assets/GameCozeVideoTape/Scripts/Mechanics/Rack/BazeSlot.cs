@@ -1,20 +1,26 @@
 using UnityEngine;
 using Zenject;
 
-public class ShelfSlot : MonoBehaviour, ISloteble
+public class BazeSlot : MonoBehaviour, ISloteble
 {
-    [SerializeField] private ContentSlot _slot;
-    private SubGenreShelf _subGenreShelf;
-    private PlayerInventory _playerInventory;
-    private CassetteObject _cassetteObject;
     public bool IsEmpty => _cassetteObject == null;
-    private ShelfSlotSettings _settings;
-
+   [SerializeField] protected ContentSlot _slot;
+    protected SubGenreShelf _subGenreShelf;
+    protected PlayerInventory _playerInventory;
+    protected CassetteObject _cassetteObject;
+    protected ShelfSlotSettings _settings;
+    protected int _idSlot;
+    
     [Inject]
-    public void Construct(PlayerInventory playerInventory, ShelfSlotSettings settings)
+    public void Construct(ShelfSlotSettings settings,  PlayerInventory playerInventory)
     {
         _playerInventory = playerInventory;
         _settings = settings;
+    }
+
+    public void SetContentSlot(ContentSlot contentSlot)
+    {
+        _slot = contentSlot;
     }
 
     private void OnEnable()
@@ -36,9 +42,10 @@ public class ShelfSlot : MonoBehaviour, ISloteble
         _slot.gameObject.SetActive(IsEmpty);
     }
 
-    public void Initialization(SubGenreShelf subGenreShelf)
+    public void Initialization(SubGenreShelf subGenreShelf,int idSlot)
     {
         _subGenreShelf = subGenreShelf;
+        _idSlot = idSlot;
     }
 
     public bool TryGetIdCassette(out int id)
@@ -47,11 +54,11 @@ public class ShelfSlot : MonoBehaviour, ISloteble
         return IsEmpty;
     }
 
-    private void CheckEmptySlot(CassetteObject currentCassette)
+    protected virtual void CheckEmptySlot(CassetteObject currentCassette)
     {
         if (!IsEmpty) { return; }
 
-        if (_subGenreShelf.CheckGanre(currentCassette.ItemSettings))
+        if (_subGenreShelf.CheckCorrectSlot(currentCassette.ItemSettings))
         {
             _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess);
         }
@@ -72,8 +79,6 @@ public class ShelfSlot : MonoBehaviour, ISloteble
         {
             Debug.LogError("ShelfSlot_CheckEmptySlot Not Found Present ");
         }
-
-
     }
 
     private void CheckEmptyHand(bool isHandCassette)
@@ -91,7 +96,7 @@ public class ShelfSlot : MonoBehaviour, ISloteble
         }
     }
 
-    private void SubPickUp(bool isNull)
+    protected void SubPickUp(bool isNull)
     {
         if (isNull) { return; }
 

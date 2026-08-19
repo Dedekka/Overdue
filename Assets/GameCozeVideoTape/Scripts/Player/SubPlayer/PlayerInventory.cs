@@ -15,7 +15,7 @@ public class PlayerInventory
     {
         Item = null;
         bool result = false;
-        if (sloteble is DecorChecker decorChecker)
+        if (sloteble is DecorChecker)
         {
             result = _inventoryPresent.CheckActivePresent(out Present present);
             Item = present;
@@ -23,13 +23,12 @@ public class PlayerInventory
 
             //return _inventorySlot.CheckFreeSlot(cassette);
         }
-        else if (sloteble is ContentSlot contentSlot || sloteble is ShelfSlot shelfSlot)
+        else if (sloteble is ContentSlot || sloteble is BazeSlot || sloteble is OperaChecker)
         {
             result = _inventorySlot.CheckActiveCassette(out CassetteObject currentCassette);
             Item = currentCassette;
             return result;
         }
-
         Debug.LogError("CheckActiveIItemble not Found");
         return false;
     }
@@ -42,7 +41,7 @@ public class PlayerInventory
         {
             tempItem = _inventoryPresent.Install();
         }
-        else if (sloteble is ShelfSlot shelfSlot)
+        else if (sloteble is BazeSlot || sloteble is TV)
         {
             tempItem = _inventorySlot.Install();
         }
@@ -90,5 +89,5 @@ public class PlayerInventory
         _inventoryPresent.Drop();
     }
 
-  
+
 }
