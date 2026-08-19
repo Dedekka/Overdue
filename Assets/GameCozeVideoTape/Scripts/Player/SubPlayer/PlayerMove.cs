@@ -36,6 +36,7 @@ public class PlayerMove : IFixedTickable //ITickable,*/
 
     public void ProcessMove(Vector2 pos)
     {
+        if (!_controller.enabled) { return; }
         _moveDirection.x = pos.x;
         _moveDirection.z = pos.y;
         _moveDirection = _body.TransformDirection(_moveDirection);

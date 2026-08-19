@@ -15,18 +15,18 @@ public class TVCameraControl
     {
         _camera.gameObject.SetActive(true);
         _camera.Priority = 15;
-        ChangeFov(_OnFov);
+        //ChangeFov(_OnFov);
     }
 
     public void EndEpisode()
     {
         _camera.Priority = -1;
         _camera.gameObject.SetActive(false);
-        ChangeFov(_OffFov);
+        //ChangeFov(_OffFov);
     }
 
-    private void ChangeFov(float endFov)
-    {
-        _camera.Lens.FieldOfView = endFov;
-    }
+    //private void ChangeFov(float endFov)
+    //{
+    //    _camera.Lens.FieldOfView = endFov;
+    //}
 }

@@ -108,6 +108,9 @@ public class PlayerInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<ImporterPlayerUiTvManager>()
             .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterTvManagerPlayer>()
+            .AsSingle();
     }
 
     private void BindUI()

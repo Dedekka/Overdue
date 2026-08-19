@@ -149,7 +149,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
-            .WithArguments(_pickUpSettings, _hand);
+            .WithArguments(_pickUpSettings, _hand,this);
 
         Container.Bind<InstallItem>()
            .AsTransient();
