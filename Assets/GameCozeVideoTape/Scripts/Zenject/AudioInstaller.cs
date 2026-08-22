@@ -9,9 +9,17 @@ public class AudioInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        FindSub();
         BindSystem();
         BindImporter();
         BindEmitter();
+    }
+
+    private void FindSub()
+    {
+        Container.Bind<DataMusicCassets>()
+          .FromResource(PathConst.DataMusicCassetsAsset)
+          .AsSingle();
     }
 
     private void BindEmitter()
@@ -20,6 +28,9 @@ public class AudioInstaller : MonoInstaller
          .AsSingle();
 
         Container.Bind<AudioRack>()
+         .AsSingle();
+
+        Container.Bind<MusicControl>()
          .AsSingle();
     }
 
@@ -32,6 +43,9 @@ public class AudioInstaller : MonoInstaller
             .AsSingle();
 
         Container.BindInterfacesAndSelfTo<AudioPauseSystemImporter>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterMusicControlAudio>()
             .AsSingle();
     }
 
