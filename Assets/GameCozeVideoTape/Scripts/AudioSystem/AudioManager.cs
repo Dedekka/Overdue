@@ -42,8 +42,10 @@ public class AudioManager : IDisposable
 
     public void PauseMusic(bool isPause)
     {
+        Debug.Log($"AudioManager,Pre PauseMusic, isPause: {isPause} ");
         if (!CheckEvent(_musicInstance)) { return; }
 
+        Debug.Log($"AudioManager, POst PauseMusic, isPause: {isPause} ");
         _musicInstance.setPaused(isPause);
     }
 
@@ -55,6 +57,7 @@ public class AudioManager : IDisposable
     public void SetMusic(EventReference eventReference)
     {
         _tempMusic = eventReference;
+        StopSmartEvent(ref _musicInstance);
     }
 
     public void PlayVoice()
@@ -64,14 +67,15 @@ public class AudioManager : IDisposable
 
     public void PlayMusic(bool _isPlaying)
     {
-        //if (CheckEvent(_musicInstance))
-        //{
-        //    PauseMusic(_isPlaying);
-        //}
-        //else if (_isPlaying)
-        //{
-        PlaySmartEvent(ref _tempMusic, ref _musicInstance);
-        //}
+        Debug.Log($"AudioManager, PlayMusic, _isPlaying: {_isPlaying} ");
+        if (CheckEvent(_musicInstance))
+        {
+            PauseMusic(!_isPlaying);
+        }
+        else if (_isPlaying)
+        {
+            PlaySmartEvent(ref _tempMusic, ref _musicInstance);
+        }
     }
 
     public void PlayPickUp()

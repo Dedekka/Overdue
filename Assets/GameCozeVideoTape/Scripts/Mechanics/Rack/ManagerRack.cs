@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
+
+
 public class ManagerRack : IInitializable, IDisposable
 {
     private Dictionary<int, RackGenre> _racksDictionary;

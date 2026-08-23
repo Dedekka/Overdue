@@ -27,7 +27,7 @@ public class ImporterMusicControlAudio : IDisposable, IInitializable
 
     private void OnChangeState(bool _isPlaying)
     {
-        Debug.Log("OnChangeState");
+        Debug.Log($"OnChangeState, _isPlaying: {_isPlaying} ");
         _audioManager.PlayMusic(_isPlaying);
     }
 

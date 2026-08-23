@@ -9,6 +9,8 @@ public class MusicControl
     private DataMusicCassets _dataMusicCassets;
     private EventReference _tempMusic;
 
+    private bool _isPlaying;
+
     public event Action<EventReference> OnChangeMusic;
 
     public event Action<bool> OnChangeState;
@@ -16,6 +18,7 @@ public class MusicControl
     public MusicControl(DataMusicCassets dataMusicCassets)
     {
         _dataMusicCassets = dataMusicCassets;
+        _isPlaying = false;
     }
 
     public void SetMusic(int idMusic)
@@ -25,9 +28,12 @@ public class MusicControl
         SetFmodSound(audioPath);
     }
 
-    public void PlayMusic(bool _isPlaying)
+    public void PlayMusic()
     {
+        Debug.Log("MusicControl_PRE_PlayMusic");
         if (_currentMusicCassetteSettings == null) { return; }
+        Debug.Log("MusicControl_POST_PlayMusic");
+        ChangePlaying();
         OnChangeState?.Invoke(_isPlaying);
     }
 
@@ -36,11 +42,18 @@ public class MusicControl
         if (audioPath != null)
         {
             _tempMusic = RuntimeManager.PathToEventReference(audioPath);
+            _isPlaying = false;
             OnChangeMusic?.Invoke(_tempMusic);
         }
         else
         {
             Debug.LogError("Not Found SetFmodSound Music");
         }
+    }
+
+    private void ChangePlaying()
+    {
+        _isPlaying = !_isPlaying;
+        Debug.Log($"ChangePlaying: {_isPlaying}");
     }
 }

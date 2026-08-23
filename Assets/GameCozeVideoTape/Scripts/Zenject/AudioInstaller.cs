@@ -6,6 +6,9 @@ using Zenject;
 public class AudioInstaller : MonoInstaller
 {
     [SerializeField] private AudioSettings _audioSettings;
+    [SerializeField] private int _maxAudioItem;
+    [SerializeField] private Material _materialAudioItem;
+
 
     public override void InstallBindings()
     {
@@ -13,6 +16,21 @@ public class AudioInstaller : MonoInstaller
         BindSystem();
         BindImporter();
         BindEmitter();
+        BindAudioCassettsSystem();
+    }
+
+    private void BindAudioCassettsSystem()
+    {
+        Container.Bind<AudioCassettsSystem>()
+         .AsSingle();
+
+        Container.Bind<ManagerAudioItem>()
+         .AsSingle()
+         .WithArguments(_maxAudioItem);
+
+        Container.Bind<AudioItemRenderer>()
+         .AsSingle()
+         .WithArguments(_materialAudioItem);
     }
 
     private void FindSub()

@@ -5,14 +5,13 @@ public class AudioRecorder : MonoBehaviour
 {
     [SerializeField] private RecorderController _recorderController;
     private MusicControl _musicControl;
-    private bool _isPlaying;
 
     [Inject]
     public void Construct(MusicControl musicControl)
     {
         _musicControl = musicControl;
     }
-
+    
     private void OnEnable()
     {
         _recorderController.OnChangeState += OnChangeStatePlaying;
@@ -35,7 +34,7 @@ public class AudioRecorder : MonoBehaviour
 
     private void PlayMusic()
     {
-        _isPlaying = !_isPlaying;
-        _musicControl.PlayMusic(_isPlaying);
+        Debug.Log("AudioRecorder_PlayMusic");
+        _musicControl.PlayMusic();
     }
 }

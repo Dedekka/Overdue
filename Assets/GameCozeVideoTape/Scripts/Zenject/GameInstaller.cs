@@ -9,9 +9,6 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private Transform _hand;
-    [Header("DataCassets")]
-    //private DataCassets _dataCassets;
-    //private DataLanguage _dataLanguage;
     [Header("Materials")]
     [SerializeField] private Material _cassetteMaterial;
     [SerializeField] private Material _presentMaterial;
@@ -34,6 +31,9 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private PackageSystem _packageSystem;
     [SerializeField] private Present _prefabPresent;
     [SerializeField] private Transform _returnedPosition;
+    [Header("AudioCassettsSystem")]
+    [SerializeField] private AudioRecorder _audioRecorder;
+
     //private DataPresent _presentData;
 
 
@@ -51,6 +51,14 @@ public class GameInstaller : MonoInstaller
         BindEventRealizer();
         BindPresentDecor();
         BindTv();
+        BindRecorder();
+    }
+
+    private void BindRecorder()
+    {
+        Container.Bind<AudioRecorder>()
+       .FromInstance(_audioRecorder)
+       .AsSingle();
     }
 
     private void BindTv()
@@ -162,7 +170,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
-            .WithArguments(_pickUpSettings, _hand,this);
+            .WithArguments(_pickUpSettings, _hand, this);
 
         Container.Bind<InstallItem>()
            .AsTransient();
@@ -188,8 +196,8 @@ public class GameInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ManagerCassette>()
            .AsSingle()
-           .WithArguments( _maxCassette);//, _dataLanguage);
-           //.WithArguments(_dataCassets, _maxCassette);//, _dataLanguage);
+           .WithArguments(_maxCassette);//, _dataLanguage);
+                                        //.WithArguments(_dataCassets, _maxCassette);//, _dataLanguage);
 
         Container.BindInterfacesAndSelfTo<ControlSleepCassette>()
           .AsSingle()
