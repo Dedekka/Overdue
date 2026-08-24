@@ -1,7 +1,6 @@
 using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 public class ManagerCassette : IInitializable, IDisposable
@@ -59,9 +58,10 @@ public class ManagerCassette : IInitializable, IDisposable
     {
         //_maxCassette = _maxCassette > 0 ? _maxCassette : _dataCassets.GetMaxCassette();
 
+        //Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
         if (_listCassette.Count == _maxCassette)
         {
-            Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
+            //Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
             _dataCassets.GetSettings(_listCassette);
             SetDictionary();
             //_cassetteHolder.AddCassette(_listCassette, _inventorySlot.GetActiveCassets());
