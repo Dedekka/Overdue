@@ -25,9 +25,9 @@ public class PlayerUi : MonoBehaviour
         _panelUse.SetActive(isVisible);
     }
 
-    public void UpdateTextInventory(string text)
+    public void UpdateTextInventory(string textHeader, string textPanelHand)
     {
-        _inventoryView.UpdateTextInventory(text);
+        _inventoryView.UpdateTextInventory(textHeader, textPanelHand);
     }
 
     public void InventoryView()
