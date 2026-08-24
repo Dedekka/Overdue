@@ -126,7 +126,10 @@ MonoBehaviour:
   _decorMaterial: {fileID: 2100000, guid: d1a5903867c8f0a4a8a94c3fe36dad11, type: 2}
   _slotMaterial: {fileID: 2100000, guid: 840e2dd2dd27f564b87d12a2760eb365, type: 2}
   _maxRack: 62
+  _maxCassette: 40
   _phone: {fileID: 0}
+  _tvCamera: {fileID: 0}
+  _tv: {fileID: 0}
   _packageSystem: {fileID: 0}
   _prefabPresent: {fileID: 3761425653305267592, guid: af8470ce3165af0498b182943eafcc24, type: 3}
   _returnedPosition: {fileID: 0}
@@ -250,8 +253,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5777150591074028754}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: 0, w: -0.00000035762784}
-  m_LocalPosition: {x: 1.3882898, y: 1.3240001, z: -1.74239}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: -0.00000035762784}
+  m_LocalPosition: {x: 1.3882897, y: 1.3240001, z: -1.7423904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -296,7 +299,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -487,7 +490,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8752889859600553088}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.94629, y: 0.56, z: 0.04059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
