@@ -11,7 +11,6 @@ public class SpawnerCassette : MonoBehaviour
     [SerializeField] private float _coeffOfcetWidth = 0.5f;
     [SerializeField] private float _coeffOfcetLength = 0.5f;
 
-
     private Vector3 _position;
 
     [ContextMenu("Spawn")]

@@ -22,8 +22,8 @@ namespace SaveLoadSystem
 
         public void Initialize()
         {
-            _saveLoadSystem.AddToSaveLoad(_cassetteHolder.SaveCassette);
-            _saveLoadSystem.AddToSaveLoad(_rackHolder.SaveRack);
+            //_saveLoadSystem.AddToSaveLoad(_cassetteHolder.SaveCassette);
+            //_saveLoadSystem.AddToSaveLoad(_rackHolder.SaveRack);
         }
 
         public void Save()

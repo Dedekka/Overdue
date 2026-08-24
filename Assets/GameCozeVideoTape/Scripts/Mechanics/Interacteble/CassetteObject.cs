@@ -35,6 +35,11 @@ public class CassetteObject : BazeInteracteble , IItemble
 
     private void Awake()
     {
+        AwakePromo();
+    }
+
+    private void AwakePromo()
+    {
         _rigidbody = GetComponent<Rigidbody>();
         _managerCassette.AddCassette(this);
         _pickUpItem.SetBody(this);

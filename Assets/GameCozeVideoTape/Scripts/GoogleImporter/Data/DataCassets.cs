@@ -20,7 +20,14 @@ public class DataCassets : ScriptableObject
         for (int i = 0; i < cassettes.Count; i++)
         {
             tempCassette = cassettes[i];
+            if (tempCassette is CassetteObjectPromo)
+            {
+                //tempCassette.SetSettings(itemSettings[0]);
+            }
+            else
+            {
             tempCassette.SetSettings(itemSettings[i]);
+            }
         }
     }
 
