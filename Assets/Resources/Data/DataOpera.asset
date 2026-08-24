@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e865de55de2894abee30ebe54ee2e8, type: 3}
+  m_Name: DataOpera
+  m_EditorClassIdentifier: Assembly-CSharp::DataOpera
+  _dataOpera:
+  - OperaName: Episode_1
+    Id: 1
+    Id_Cassette: 1
+    Id_Slot: 1
+    Original_Title: Misery
+    Audio: event:/Opera/Episode_1
+    Video: {fileID: 32900000, guid: ecd911fe80b6c9043991595bdb7bdb46, type: 3}
+    Subtitles:
+      TimeStart: 1.5
+      DialogLine:
+        <Character>k__BackingField: Ray
+        <Line>k__BackingField: 'Video Rental, Ray speaking. '
+  - OperaName: Episode_2
+    Id: 2
+    Id_Cassette: 2
+    Id_Slot: 2
+    Original_Title: "Jacob\u2019s Ladder"
+    Audio: event:/Opera/Episode_2
+    Video: {fileID: 32900000, guid: 8427403b2b6ed3d49a2475a8585b4d1b, type: 3}
+    Subtitles:
+      TimeStart: 4
+      DialogLine:
+        <Character>k__BackingField: ' '
+        <Line>k__BackingField: 'Name! I''m bringing back The Codfather. '

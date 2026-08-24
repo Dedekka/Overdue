@@ -3,22 +3,22 @@ using Zenject;
 
 public class ImporterPlayerStateDialogSystem : IDisposable, IInitializable
 {
-    private DialogSystem _dialogSystem;
+    private DialogSystemCall _dialogSystemCall;
     private PlayerStateControl _playerStateControl;
 
-    public ImporterPlayerStateDialogSystem(DialogSystem dialogSystem, PlayerStateControl playerStateControl)
+    public ImporterPlayerStateDialogSystem(DialogSystemCall dialogSystem, PlayerStateControl playerStateControl)
     {
-        _dialogSystem = dialogSystem;
+        _dialogSystemCall = dialogSystem;
         _playerStateControl = playerStateControl;
     }
     public void Initialize()
     {
-        _dialogSystem.OnStateDialog += OnStateDialog;
+        _dialogSystemCall.OnStateDialog += OnStateDialog;
     }
 
     public void Dispose()
     {
-        _dialogSystem.OnStateDialog -= OnStateDialog;
+        _dialogSystemCall.OnStateDialog -= OnStateDialog;
     }
 
     private void OnStateDialog(bool isPlayerControlON)

@@ -9,12 +9,12 @@ public class AudioRackImporter
         _audioManager = audioManager;
     }
 
-    public void SubCassette(TestRack rack)
+    public void SubCassette(Rack rack)
     {
         rack.OnInstallState += OnInstallState;
     }
 
-    public void UnSubCassette(TestRack rack)
+    public void UnSubCassette(Rack rack)
     {
         rack.OnInstallState -= OnInstallState;
     }

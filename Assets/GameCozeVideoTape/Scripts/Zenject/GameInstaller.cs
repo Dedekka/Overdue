@@ -1,4 +1,5 @@
 using SaveLoadSystem;
+using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
@@ -26,6 +27,9 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private int _maxCassette;
     [Header("Phone")]
     [SerializeField] private Phone _phone;
+    [Header("TV")]
+    [SerializeField] private CinemachineCamera _tvCamera;
+    [SerializeField] private TV _tv;
     [Header("EventRealizer")]
     [SerializeField] private PackageSystem _packageSystem;
     [SerializeField] private Present _prefabPresent;
@@ -46,6 +50,30 @@ public class GameInstaller : MonoInstaller
         BindPhone();
         BindEventRealizer();
         BindPresentDecor();
+        BindTv();
+    }
+
+    private void BindTv()
+    {
+        Container.Bind<TV>()
+        .FromInstance(_tv)
+        .AsSingle();
+
+        Container.Bind<TVCameraControl>()
+         .AsSingle()
+         .WithArguments(_tvCamera);
+
+        Container.Bind<VideoControl>()
+         .AsSingle();
+
+        Container.Bind<CassetteOpera>()
+         .AsSingle();
+
+        Container.Bind<OperaChecker>()
+         .AsSingle();
+
+        //Container.Bind<TVAudio>()
+        //  .AsSingle();
 
     }
 
@@ -121,7 +149,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
-            .WithArguments(_pickUpSettings, _hand);
+            .WithArguments(_pickUpSettings, _hand,this);
 
         Container.Bind<InstallItem>()
            .AsTransient();
@@ -182,7 +210,13 @@ public class GameInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<PauseSystemPlayerStateImporter>()
          .AsSingle();
 
-        Container.BindInterfacesAndSelfTo<ImporterImporterDialogSystem>()
+        Container.BindInterfacesAndSelfTo<ImporterImporterDialogSystemCall>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterInventoryCassetteTv>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterTvManagerTV>()
          .AsSingle();
     }
 

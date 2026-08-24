@@ -1,13 +1,11 @@
-using Cysharp.Threading.Tasks;
 using System.Collections;
-using System.Threading;
 using UnityEngine;
 
 public class PickUpItem
 {
     public IItemble Item => _item;
     private IItemble _item;
-    private Player _player;
+    private MonoBehaviour _monoBehaviour;
     private Transform _body;
     private PlayerInventory _playerInventory;
     private Coroutine _pickUp;
@@ -19,14 +17,14 @@ public class PickUpItem
     private readonly float _minRotation;
     private bool _isActive;
 
-    public PickUpItem(PickUpSettings PickUpSettings, PlayerInventory playerInventory, Transform hand, Player player)
+    public PickUpItem(PickUpSettings PickUpSettings, PlayerInventory playerInventory, Transform hand, MonoBehaviour monoBehaviour)
     {
         _speedBlend = PickUpSettings.SpeedBlend;
         _coeffBlend = PickUpSettings.CoeffBlend;
         _minDistance = PickUpSettings.MinDistance;
         _minRotation = PickUpSettings.MinRotation;
         _playerInventory = playerInventory;
-        _player = player;
+        _monoBehaviour = monoBehaviour;
         _hand = hand;
     }
 
@@ -40,15 +38,14 @@ public class PickUpItem
     {
         _hand = transform;
         StopMove();
-        _pickUp = _player.StartCoroutine(FlyToHand(_hand));
-
+        _pickUp = _monoBehaviour.StartCoroutine(FlyToHand(_hand));
     }
 
     public void StopMove()
     {
         if (_pickUp != null)
         {
-            _player.StopCoroutine(_pickUp);
+            _monoBehaviour.StopCoroutine(_pickUp);
         }
     }
 
@@ -69,7 +66,7 @@ public class PickUpItem
             _body.rotation = Quaternion.Lerp(_body.rotation, temptransform.rotation, _speedBlend2 * Time.deltaTime);
             _isActive = CheckEnd(temptransform);
         }
-        _body.transform.SetParent(_hand);   
+        _body.transform.SetParent(_hand);
     }
 
     private bool CheckEnd(Transform temptransform)

@@ -56,7 +56,7 @@ public class DialogueParser : IGoogleParser
 
             case "Диалог":
 
-                _currentDialogueEventData.DialogLines = ParserDialogtext(token); ;
+                _currentDialogueEventData.DialogLines = ParserDialogtext(token);
                 break;
 
             case "Sound":

@@ -6,7 +6,7 @@ public class PresentsParser : IGoogleParser
 {
     private readonly MainGoogleSettings _mainGoogleSettings;
     private PresentSettings _currentGenreSettings;
-  
+
     public PresentsParser(MainGoogleSettings mainGoogleSettings)
     {
         _mainGoogleSettings = mainGoogleSettings;
@@ -33,7 +33,7 @@ public class PresentsParser : IGoogleParser
 
             case "MaterialIndex":
                 _currentGenreSettings.MaterialIndex = Convert.ToInt32(token);
-                
+
                 break;
             default:
                 throw new Exception($"Invalid header: {headerName}");

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Zenject;
 
 public class ManagerRack : IInitializable, IDisposable
 {
     private Dictionary<int, RackGenre> _racksDictionary;
-    private List<TestRack> _racks;
+    private List<Rack> _racks;
     private RackHolder _rackHolder;
     private ManagerCassette _managerCassette;
     private AudioRack _audioRack;
@@ -14,7 +15,7 @@ public class ManagerRack : IInitializable, IDisposable
 
     public ManagerRack(int maxRack, RackHolder rackHolder, ManagerCassette managerCassette, AudioRack audioRack)
     {
-        _racks = new List<TestRack>();
+        _racks = new List<Rack>();
         _managerCassette = managerCassette;
         _maxRack = maxRack;
         _rackHolder = rackHolder;
@@ -35,7 +36,7 @@ public class ManagerRack : IInitializable, IDisposable
     }
 
 
-    public void AddRack(TestRack rack)
+    public void AddRack(Rack rack)
     {
         _racks.Add(rack);
         CheckMaxRack();
@@ -83,8 +84,10 @@ public class ManagerRack : IInitializable, IDisposable
 
     private void CheckMaxRack()
     {
+        Debug.Log($"END: _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
         if (_racks.Count == _maxRack)
         {
+            Debug.Log($"END: _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
             SetDictionary();
             _rackHolder.AddRack(_racksDictionary);
             _audioRack.SubAudio(_racks);

@@ -19,32 +19,33 @@ MonoBehaviour:
     Original_Title: The Silence of the Lambs
     Present: "\u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0444\u043E\u043D"
     DialogLines:
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: 'Video Rental, Ray speaking. '
       IdNumber: 1
-      Line: 'Video Rental, Ray speaking. '
       SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
-    - Character: Chris
+    - <Character>k__BackingField: Chris
+      <Line>k__BackingField: 'Hey, Ray! Glad to hear you''re back. I was starting
+        to think this town had lost its last good video store. Anyway, I found your
+        copy of The Silence of the Lamps. '
       IdNumber: 2
-      Line: 'Hey, Ray! Glad to hear you''re back. I was starting to think this town
-        had lost its last good video store. Anyway, I found your copy of The Silence
-        of the Lamps. '
       SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: 'So... nobody turned the lights on? '
       IdNumber: 3
-      Line: 'So... nobody turned the lights on? '
       SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
-    - Character: Chris
+    - <Character>k__BackingField: Chris
+      <Line>k__BackingField: 'Pretty much. Three hours of people whispering in the
+        dark. I bought a new stereo yesterday, so I''ll leave my old boombox in the
+        return box too. '
       IdNumber: 4
-      Line: 'Pretty much. Three hours of people whispering in the dark. I bought
-        a new stereo yesterday, so I''ll leave my old boombox in the return box too. '
       SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: 'You replace electronics faster than I rewind tapes. '
       IdNumber: 5
-      Line: 'You replace electronics faster than I rewind tapes. '
       SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
-    - Character: Chris
+    - <Character>k__BackingField: Chris
+      <Line>k__BackingField: 'Technology waits for no one. '
       IdNumber: 6
-      Line: 'Technology waits for no one. '
       SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
     DialogueEventData:
       IdEvent: 1
@@ -57,29 +58,29 @@ MonoBehaviour:
     Original_Title: The Godfather
     Present: '-'
     DialogLines:
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: 'Hello! Video Renta. '
       IdNumber: 1
-      Line: 'Hello! Video Renta. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - Character: Nancy
+    - <Character>k__BackingField: Nancy
+      <Line>k__BackingField: 'Ray! I''m bringing back The Codfather. '
       IdNumber: 2
-      Line: 'Ray! I''m bringing back The Codfather. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: 'Fish mafia? '
       IdNumber: 3
-      Line: 'Fish mafia? '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - Character: Nancy
+    - <Character>k__BackingField: Nancy
+      <Line>k__BackingField: 'You''d better not sleep with the tuna. '
       IdNumber: 4
-      Line: 'You''d better not sleep with the tuna. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: 'Sounds... suspiciously familiar. '
       IdNumber: 5
-      Line: 'Sounds... suspiciously familiar. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - Character: Nancy
+    - <Character>k__BackingField: Nancy
+      <Line>k__BackingField: 'I''ll drop it in the return box in a few minutes. '
       IdNumber: 6
-      Line: 'I''ll drop it in the return box in a few minutes. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
     DialogueEventData:
       IdEvent: 2
@@ -92,13 +93,13 @@ MonoBehaviour:
     Original_Title: The Godfather
     Present: "\u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0444\u043E\u043D"
     DialogLines:
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: "Hello! Give me \u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0444\u043E\u043D.. "
       IdNumber: 1
-      Line: "Hello! Give me \u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0444\u043E\u043D.. "
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - Character: Npc_1
+    - <Character>k__BackingField: Npc_1
+      <Line>k__BackingField: 'Ok. '
       IdNumber: 2
-      Line: 'Ok. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
     DialogueEventData:
       IdEvent: 3
@@ -111,32 +112,32 @@ MonoBehaviour:
     Original_Title: The Godfather
     Present: "\u041A\u043E\u0432\u0435\u0440"
     DialogLines:
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: "Hello! Give me \u041A\u043E\u0432\u0435\u0440.. "
       IdNumber: 1
-      Line: "Hello! Give me \u041A\u043E\u0432\u0435\u0440.. "
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - Character: Npc_2
+    - <Character>k__BackingField: Npc_2
+      <Line>k__BackingField: 'Ok. '
       IdNumber: 2
-      Line: 'Ok. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
     DialogueEventData:
       IdEvent: 4
       DialogueName: NancyParker_TheGodfather
-      IDCassette: 1
-      IDPresent: 3
+      IDCassette: -1
+      IDPresent: -1
   - DialogueName: NancyParker_TheGodfather
     Id: 5
     NameCharacter: NancyParker
     Original_Title: The Godfather
     Present: "\u041A\u0430\u043A\u0442\u0443\u0441"
     DialogLines:
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: "Hello! Give me \u041A\u0430\u043A\u0442\u0443\u0441. "
       IdNumber: 1
-      Line: "Hello! Give me \u041A\u0430\u043A\u0442\u0443\u0441. "
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - Character: Npc_3
+    - <Character>k__BackingField: Npc_3
+      <Line>k__BackingField: 'Ok. '
       IdNumber: 2
-      Line: 'Ok. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
     DialogueEventData:
       IdEvent: 5
@@ -149,13 +150,13 @@ MonoBehaviour:
     Original_Title: The Godfather
     Present: "\u0410\u0443\u0434\u0438\u043E\u043A\u0430\u0441\u0441\u0435\u0442\u0430"
     DialogLines:
-    - Character: Ray
+    - <Character>k__BackingField: Ray
+      <Line>k__BackingField: "Hello! Give me \u0410\u0443\u0434\u0438\u043E\u043A\u0430\u0441\u0441\u0435\u0442\u0430.. "
       IdNumber: 1
-      Line: "Hello! Give me \u0410\u0443\u0434\u0438\u043E\u043A\u0430\u0441\u0441\u0435\u0442\u0430.. "
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - Character: Npc_4
+    - <Character>k__BackingField: Npc_4
+      <Line>k__BackingField: 'Ok. '
       IdNumber: 2
-      Line: 'Ok. '
       SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
     DialogueEventData:
       IdEvent: 6

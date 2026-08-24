@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryView : MonoBehaviour
 {
     [SerializeField] private GameObject _panelHand;
+    [SerializeField] private TextMeshProUGUI _textCurrent;
     [SerializeField] private TextMeshProUGUI _textPanelHand;
     [SerializeField] private float _duration;
 
@@ -24,22 +25,24 @@ public class InventoryView : MonoBehaviour
         _onSize = Vector2.zero;
     }
 
-    public void UpdateTextInventory(string text)
+    public void UpdateTextInventory(string textHeader, string textPanelHand)
     {
-        if (_textPanelHand == null) return;
-        if (_textPanelHand.text == text) return;
+        if (_textCurrent == null) return;
+        if (_textCurrent.text == textHeader) return;
         //Debug.Log($"UpdateTextInventory: {text}");
-        _textPanelHand.text = text;
-        bool isVisible = text != string.Empty;
+        _textCurrent.text = textHeader;
+        _textPanelHand.text = textPanelHand;
+
+        bool isVisible = textHeader != string.Empty;
         _panelHand.SetActive(isVisible);
     }
 
     public void Show()
     {
-        Debug.Log($"PRE_RectTransform.sizeDelta: {_rectTransform.sizeDelta}");
-        Debug.Log($"PRE_RectTransform.anchorMin: {_rectTransform.anchorMin}");
-        Debug.Log($"PRE_RectTransform.anchorMinX: {_rectTransform.anchorMin.x}");
-        Debug.Log($"PRE_RectTransform.anchorMinY: {_rectTransform.anchorMin.y}");
+        //Debug.Log($"PRE_RectTransform.sizeDelta: {_rectTransform.sizeDelta}");
+        //Debug.Log($"PRE_RectTransform.anchorMin: {_rectTransform.anchorMin}");
+        //Debug.Log($"PRE_RectTransform.anchorMinX: {_rectTransform.anchorMin.x}");
+        //Debug.Log($"PRE_RectTransform.anchorMinY: {_rectTransform.anchorMin.y}");
         _isVisible = !_isVisible;
         _tempMovePanel = _isVisible ? _onSize : _offSize;
 

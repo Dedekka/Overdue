@@ -4,15 +4,15 @@ using UnityEngine;
 using Zenject;
 
 [SelectionBase]
-public class TestRack : BazeInteracteble
+public abstract class Rack: MonoBehaviour
 {
     public Genre Genre => _genre;
     public List<DataShelf> SubGenreShelfs => _subGenreShelfs;
-    [SerializeField] private Genre _genre;
+    [SerializeField] protected Genre _genre;
     [SerializeField] private List<DataShelf> _subGenreShelfs;
     private ManagerRack _managerRack;
 
-    public event Action<bool> OnInstallState;
+    public Action<bool> OnInstallState;
 
     [Inject]
     private void Construct(ManagerRack managerRack)
@@ -30,11 +30,16 @@ public class TestRack : BazeInteracteble
         Initialization();
     }
 
-    public bool CheckGanre(int subGenreindex, ItemSettings itemSettings)
+    public virtual bool CheckCorrectSlot(int subGenreindex, ItemSettings itemSettings)
     {
         bool installState = itemSettings.IdGenre == (int)_genre && subGenreindex == itemSettings.IdSubGenre;
-        OnInstallState?.Invoke(installState);
+        OnChangeState(installState);
         return installState;
+    }
+
+    protected void OnChangeState( bool installState)
+    {
+        OnInstallState?.Invoke(installState);
     }
 
     private void Initialization()

@@ -7,12 +7,12 @@ public class PauseSystemPlayerStateImporter : IDisposable, IInitializable
     private PlayerStateControl _playerStateControl;
     private bool _isDialogGoing;
 
- 
     public PauseSystemPlayerStateImporter(PauseSystem pauseSystem, PlayerStateControl playerStateControl)
     {
         _pauseSystem = pauseSystem;
         _playerStateControl = playerStateControl;
     }
+
     public void Initialize()
     {
         _pauseSystem.OnChangeStatePause += OnChangeStatePause;
