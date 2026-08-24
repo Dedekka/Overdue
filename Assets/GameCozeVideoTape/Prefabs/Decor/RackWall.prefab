@@ -200,7 +200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3101824446907945300
 Transform:
   m_ObjectHideFlags: 0
@@ -2304,7 +2304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2876538486615724844
 Transform:
   m_ObjectHideFlags: 0
@@ -5422,7 +5422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3235250429986085002
 Transform:
   m_ObjectHideFlags: 0
@@ -15659,7 +15659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2889894379534558525
 Transform:
   m_ObjectHideFlags: 0
@@ -25612,6 +25612,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8593d783fa030884481ffee6f22c1f6f, type: 2}
+    - target: {fileID: -5754084199372789682, guid: cb856681ee725bb4c80f036d6829098f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1550514412580984892, guid: cb856681ee725bb4c80f036d6829098f, type: 3}
     - target: {fileID: 919132149155446097, guid: cb856681ee725bb4c80f036d6829098f, type: 3}
       propertyPath: m_Name
       value: SM_genre_plate
@@ -25824,7 +25828,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f2ebcdc3e07da4c49964a1b35875c346, type: 2}
     - target: {fileID: 919132149155446097, guid: 4ee533f232a6928498958a8b721f6b42, type: 3}
       propertyPath: m_Name
-      value: SM_stellaj_big 1
+      value: SM_stellaj_big
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ee533f232a6928498958a8b721f6b42, type: 3}
       propertyPath: m_StaticEditorFlags
