@@ -412604,7 +412604,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2101386496640527072}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d955c2da4ce036b4b9fbba86e5e4b25e, type: 3}
   m_Name: 
@@ -544987,6 +544987,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 404330479}
+    - target: {fileID: 69900956125374848, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69900956125374848, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 69964326776843709, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -545851,6 +545859,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1219482545}
+    - target: {fileID: 383084961617999219, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 383370550302774155, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -546155,6 +546167,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 227131426}
+    - target: {fileID: 500286257487499840, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 500970921056557894, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -546207,6 +546223,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 501853687}
+    - target: {fileID: 519839924089756782, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.434998
+      objectReference: {fileID: 0}
     - target: {fileID: 526849103158853671, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -556023,6 +556043,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 425247511}
+    - target: {fileID: 4061204368914655113, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4062456357803714665, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -569903,6 +569927,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1889289709}
+    - target: {fileID: 8981499461153261646, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8982574404805649479, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
       propertyPath: m_Mesh
       value: 
