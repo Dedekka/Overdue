@@ -14,4 +14,6 @@ public class MainGoogleSettings
     public List<PresentSettings> Presents;
     public List<DialogueEventData> DialogueEvent;
     public List<DialogSettings> Dialogues;
+    [Header("Opera")]
+    public List<OperaSettings> Opera;
 }

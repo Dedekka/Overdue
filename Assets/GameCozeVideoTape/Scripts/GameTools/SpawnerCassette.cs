@@ -5,17 +5,20 @@ public class SpawnerCassette : MonoBehaviour
     [SerializeField] private GameObject _poolCassette;
     [SerializeField] private CassetteObject _prepabCassette;
     //[SerializeField, Min(1)] private int _value;
-    //[SerializeField] private int _startId;
+    [SerializeField] private int _startId;
     [SerializeField, Min(1)] private int _width = 10;
     [SerializeField, Min(1)] private int _length = 45;
     [SerializeField] private float _coeffOfcetWidth = 0.5f;
     [SerializeField] private float _coeffOfcetLength = 0.5f;
+
+    private int _tempId;
 
     private Vector3 _position;
 
     [ContextMenu("Spawn")]
     public void Spawn()
     {
+        _tempId = _startId;
         _position = _poolCassette.transform.position;
         CassetteObject tempCassette;
         for (int i = 0; i < _width; i++)
@@ -28,8 +31,8 @@ public class SpawnerCassette : MonoBehaviour
                 //tempCassette.transform.forward = Vector3.down;
                 //tempCassette.transform.rotation = Quaternion.AngleAxis(90,Vector3.up);
                 tempCassette.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.left);
-                //tempCassette.SetId(_startId);
-                //_startId++;
+                tempCassette.SetId(_tempId);
+                _tempId++;
             }
             _position.z = i * _coeffOfcetWidth;
         }

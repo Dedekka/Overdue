@@ -81,7 +81,7 @@ public class RackHolder
         return saveSubs;
     }
 
-    private SaveSlot[] GetSaveSlot(int idSubGange, ShelfSlot[] ShelfSlot)
+    private SaveSlot[] GetSaveSlot(int idSubGange, BazeSlot[] ShelfSlot)
     {
         SaveSlot[] saveSlot = new SaveSlot[ShelfSlot.Length];
         for (int i = 0; i < ShelfSlot.Length; i++)
@@ -111,7 +111,7 @@ public class RackHolder
         }
     }
 
-    private void ChangeShelfSlot(ShelfSlot[] ShelfSlot, Dictionary<int, CassetteObject> _cassetsDictionary, SaveSlot[] SubGangeData)
+    private void ChangeShelfSlot(BazeSlot[] ShelfSlot, Dictionary<int, CassetteObject> _cassetsDictionary, SaveSlot[] SubGangeData)
     {
         CassetteObject tempCassette;
         for (int i = 0; i < SubGangeData.Length; i++)

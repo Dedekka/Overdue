@@ -9,9 +9,9 @@ public class DialogSound
     public event Action OnPlayVoice;
     public event Action OnStopPlayVoice;
 
-    public void SetFmodSound(DialogLine dialogLine)
+    public void SetFmodSound(string dialogLine)
     {
-        _tempVoice = RuntimeManager.PathToEventReference(dialogLine.SoundLine);
+        _tempVoice = RuntimeManager.PathToEventReference(dialogLine);
         OnChangeVoice?.Invoke(_tempVoice);
     }
 

@@ -9,9 +9,9 @@ public class AudioRack
         _audioRackImporter = audioCassetteImporter;
     }
 
-    public void SubAudio(List<TestRack> racks)
+    public void SubAudio(List<Rack> racks)
     {
-        TestRack testRack;
+        Rack testRack;
         for (int i = 0; i < racks.Count; i++)
         {
             testRack = racks[i];
@@ -19,9 +19,9 @@ public class AudioRack
         }
     }
 
-    public void UnSubAudio(List<TestRack> racks)
+    public void UnSubAudio(List<Rack> racks)
     {
-        TestRack testRack;
+        Rack testRack;
         for (int i = 0; i < racks.Count; i++)
         {
             testRack = racks[i];

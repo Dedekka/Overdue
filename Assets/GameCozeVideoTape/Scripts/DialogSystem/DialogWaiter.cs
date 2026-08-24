@@ -1,9 +1,10 @@
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEngine;
 
 public class DialogWaiter
 {
-    private DialogLine _dialogLine;
+    private IDialoguebleLine _dialogLine;
     private UpdateDialogText _updateDialogText;
     private float _timeWaitChar;
 
@@ -15,7 +16,7 @@ public class DialogWaiter
         _updateDialogText = new UpdateDialogText();
     }
 
-    public void SetDialogLine(DialogLine dialogLine)
+    public void SetDialogLine(IDialoguebleLine dialogLine)
     {
         _dialogLine = dialogLine;
     }
@@ -26,19 +27,21 @@ public class DialogWaiter
         string Text = _dialogLine.Line;
         string tempText = string.Empty;
 
-        _updateDialogText.CharacterName = characterName;
+        _updateDialogText.Character = characterName;
+
+        Debug.Log($"Name:{characterName}, Text:{Text}  ");
         for (int i = 0; i < Text.Length; i++)
         {
             tempText += Text[i];
-            _updateDialogText.Text = tempText;
+            _updateDialogText.Line = tempText;
             OnUpdateDialogText?.Invoke(_updateDialogText);
             await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitChar));
         }
     }
 }
 
-public class UpdateDialogText
+public class UpdateDialogText : IDialoguebleLine
 {
-    public string CharacterName;
-    public string Text;
+    public string Character { get; set; }
+    public string Line { get; set; }
 }

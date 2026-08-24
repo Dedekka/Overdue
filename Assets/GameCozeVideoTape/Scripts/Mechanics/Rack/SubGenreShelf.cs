@@ -2,29 +2,35 @@ using UnityEngine;
 
 public class SubGenreShelf : MonoBehaviour
 {
-    public ShelfSlot[] ShelfSlot => _shelfSlot;
-    [SerializeField] private ShelfSlot[] _shelfSlot;
-    private TestRack _rack;
+    public BazeSlot[] ShelfSlot => _shelfSlot;
+    [SerializeField] private BazeSlot[] _shelfSlot;
+    private Rack _rack;
     private int _subGenreindex;
 
-    public void Initialization(TestRack rack, int subGenreindex)
+    public void Initialization(Rack rack, int subGenreindex)
     {
         _subGenreindex = subGenreindex;
         _rack = rack;
         Initialization();
     }
 
-    public bool CheckGanre(ItemSettings itemSettings)
+    public bool CheckCorrectSlot(ItemSettings itemSettings, int idSlot)
     {
-        return _rack.CheckGanre(_subGenreindex, itemSettings);
+        return _rack.CheckCorrectSlot(idSlot, itemSettings);
+    }
+
+    public bool CheckCorrectSlot(ItemSettings itemSettings)
+    {
+        return _rack.CheckCorrectSlot(_subGenreindex, itemSettings);
     }
 
     private void Initialization()
     {
-        foreach (var shelf in _shelfSlot)
+        int idSlot = 1;
+        for (int i = 0; i < _shelfSlot.Length; i++)
         {
-            if (shelf == null) { return; }
-            shelf.Initialization(this);
+            _shelfSlot[i].Initialization(this, idSlot);
+            idSlot++;
         }
     }
 }

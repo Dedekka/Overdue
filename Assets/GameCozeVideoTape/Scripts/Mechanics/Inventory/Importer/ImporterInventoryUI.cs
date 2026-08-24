@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Zenject;
 
 public class ImporterInventoryUI : IDisposable, IInitializable
@@ -24,20 +25,20 @@ public class ImporterInventoryUI : IDisposable, IInitializable
 
     private void OnChangeSlot(CassetteObject[] Cassettes)
     {
-        string newText = string.Empty;
+        string textHeader = string.Empty;
+        string textPanelHand = string.Empty;
         CassetteObject cassette = Cassettes[0];
-
         if (cassette != null)
         {
-            newText = $"* {cassette.Description} \n\n";
+            textHeader = $"{cassette.Description}\n\n";
             for (int i = Cassettes.Length - 1; i > 0; i--)
             {
                 if (Cassettes[i] != null)
                 {
-                    newText += $"* {Cassettes[i].Description} \n";
+                    textPanelHand += $"{Cassettes[i].Description}\n";
                 }
             }
         }
-        _playerUi.UpdateTextInventory(newText);
+        _playerUi.UpdateTextInventory(textHeader, textPanelHand);
     }
 }

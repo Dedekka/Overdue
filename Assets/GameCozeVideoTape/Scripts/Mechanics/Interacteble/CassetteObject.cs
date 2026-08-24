@@ -4,22 +4,25 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-public class CassetteObject : BazeInteracteble , IItemble
+public class CassetteObject : BazeInteracteble, IItemble
 {
-    public int Id => ItemSettings.Id;
+    public int Id => _id;
+    public bool IsOpera => _isOpera;
     public Rigidbody Rigidbody => _rigidbody;
     public Collider Collider => _stateItem.Collider;
     public ItemSettings ItemSettings => _itemSettings;
 
-    public Transform _body { get => transform;}
+    public Transform _body { get => transform; }
 
-   [SerializeField] private ItemSettings _itemSettings;
+    [SerializeField] private int _id;
+    private ItemSettings _itemSettings;
     private PickUpItem _pickUpItem;
     private StateItem _stateItem;
     private InstallItem _installItem;
 
     private Rigidbody _rigidbody;
     private ManagerCassette _managerCassette;
+    [SerializeField] private bool _isOpera;
 
     public event Action<CassetteObject> OnPickUp;
     public event Action OnDrop;
@@ -35,11 +38,7 @@ public class CassetteObject : BazeInteracteble , IItemble
 
     private void Awake()
     {
-        AwakePromo();
-    }
-
-    private void AwakePromo()
-    {
+        _isOpera = false;
         _rigidbody = GetComponent<Rigidbody>();
         _managerCassette.AddCassette(this);
         _pickUpItem.SetBody(this);
@@ -48,10 +47,23 @@ public class CassetteObject : BazeInteracteble , IItemble
         _isShowPanelUse = true;
     }
 
+    #region Testing
+    public void SetId(int id)
+    {
+        _id = id;
+    }
+
+    #endregion
+
     public void SetSettings(ItemSettings itemSettings)
     {
         _itemSettings = itemSettings;
         Description = _itemSettings.Original_Title;
+    }
+
+    public void SetOpera()
+    {
+        _isOpera = true;
     }
 
     public void Drop()

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class DialogTest
+public class DialogCall : IStarterDialogueble
 {
     private DialogSystem _dialogSystem;
     private int _dialogIndex;
@@ -15,14 +15,14 @@ public class DialogTest
     public bool StartDialog(int dialogIndex)
     {
         bool SuccessStart = CheckCurrentDialogs(dialogIndex);
-
+        SuccessStart = SuccessStart ? _dialogSystem.CheckDialogue(this, dialogIndex) : false;
         if (SuccessStart)
         {
-            _dialogSystem.StartDialogue(dialogIndex);
+            _dialogSystem.StartDialogue();
         }
         else
         {
-            Debug.LogError("Dialog End ");
+            Debug.LogError("Dialog End");
         }
         return SuccessStart;
     }

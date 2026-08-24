@@ -1,6 +1,7 @@
 using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Zenject;
 
 public class ManagerCassette : IInitializable, IDisposable
@@ -10,6 +11,7 @@ public class ManagerCassette : IInitializable, IDisposable
     private Dictionary<int, CassetteObject> _cassetsDictionary;
     private ControlSleepCassette _controlSleepCassette;
     private CassetteHolder _cassetteHolder;
+    private CassetteOpera _cassetteOpera;
     private DataCassets _dataCassets;
     private AudioCassette _audioCassette;
     private CassetteRenderer _cassetteRenderer;
@@ -17,8 +19,9 @@ public class ManagerCassette : IInitializable, IDisposable
     private InventoryCassette _inventorySlot;
     private int _maxCassette;
 
-    public ManagerCassette(DataCassets dataCassets, CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventoryCassette inventorySlot, AudioCassette audioCassette, CassetteRenderer cassetteRenderer, int maxCassette)//DataLanguage dataLanguage,
+    public ManagerCassette(DataCassets dataCassets, CassetteOpera cassetteOpera, CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventoryCassette inventorySlot, AudioCassette audioCassette, CassetteRenderer cassetteRenderer, int maxCassette)//DataLanguage dataLanguage,
     {
+        _cassetteOpera = cassetteOpera;
         _maxCassette = maxCassette;
         _audioCassette = audioCassette;
         _controlSleepCassette = controlSleepCassette;
@@ -58,13 +61,13 @@ public class ManagerCassette : IInitializable, IDisposable
     {
         //_maxCassette = _maxCassette > 0 ? _maxCassette : _dataCassets.GetMaxCassette();
 
-        //Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
         if (_listCassette.Count == _maxCassette)
         {
-            //Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
+            Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
             _dataCassets.GetSettings(_listCassette);
             SetDictionary();
-            //_cassetteHolder.AddCassette(_listCassette, _inventorySlot.GetActiveCassets());
+            _cassetteOpera.GetOpera(_cassetsDictionary);
+            _cassetteHolder.AddCassette(_listCassette, _inventorySlot.GetActiveCassets());
             _controlSleepCassette.SetCassette(_listCassette);
             _audioCassette.SubAudio(_listCassette);
             _cassetteRenderer.SetCassette(_listCassette);
@@ -88,11 +91,6 @@ public class ManagerCassette : IInitializable, IDisposable
 
         for (int i = 0; i < _listCassette.Count; i++)
         {
-            if (_listCassette[i] is CassetteObjectPromo)
-            {
-                continue;
-            }
-
             _cassetsDictionary.Add(_listCassette[i].Id, _listCassette[i]);
         }
     }

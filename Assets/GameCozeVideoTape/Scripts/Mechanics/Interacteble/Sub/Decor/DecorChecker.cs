@@ -10,8 +10,6 @@ public class DecorChecker : ISloteble
         _playerInventory = playerInventory;
     }
 
-  
-
     public bool CheckEmptyHand(bool isHandCassette, int idItem)
     {
         if (isHandCassette)

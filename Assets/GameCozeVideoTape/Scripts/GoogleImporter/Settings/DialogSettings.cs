@@ -1,10 +1,9 @@
-using FMODUnity;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class DialogSettings 
+public class DialogSettings
 {
     public string DialogueName;
     public int Id;
@@ -16,20 +15,20 @@ public class DialogSettings
 }
 
 
-[Serializable]
-public class CharactersSettings
-{
-    public int Id;
-    public string OriginalName;
-    public string Ru;
-}
+//[Serializable]
+//public class CharactersSettings
+//{
+//    public int Id;
+//    public string OriginalName;
+//    public string Ru;
+//}
 
 [Serializable]
-public class DialogLine
+public class DialogLine : IDialoguebleLine
 {
-    public string Character;
+    [field: SerializeField] public string Character { get; set; }
+    [field: SerializeField] public string Line { get; set; }
     public int IdNumber;
-    public string Line;
     public string SoundLine;
 }
 

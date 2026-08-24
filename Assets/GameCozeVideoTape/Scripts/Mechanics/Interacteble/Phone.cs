@@ -5,13 +5,13 @@ using Zenject;
 public class Phone : MonoBehaviour
 {
     [SerializeField] private AnswerCall _answerCall;
-    private DialogTest _dialogTest;
+    private DialogCall _dialogTest;
     private int _dialogId;
 
     public event Action OnStartCall;
 
     [Inject]
-    public void Construct(DialogTest dialogTest)
+    public void Construct(DialogCall dialogTest)
     {
         _dialogTest = dialogTest;
     }
