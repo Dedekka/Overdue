@@ -6,7 +6,7 @@ public class TestEventCall : BazeInteracteble
     [SerializeField] private int _dialogId;
     //[SerializeField] private string[] _dialogName;
     private Phone _phone;
-
+    
     [Inject]
     private void Construct(Phone phone)
     {

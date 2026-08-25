@@ -16,4 +16,6 @@ public class MainGoogleSettings
     public List<DialogSettings> Dialogues;
     [Header("Opera")]
     public List<OperaSettings> Opera;
+    [Header("Music")]
+    public List<MusicCassetteSettings> Music;
 }
