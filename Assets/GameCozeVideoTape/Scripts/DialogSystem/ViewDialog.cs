@@ -15,7 +15,6 @@ public class ViewDialog : MonoBehaviour
 
     public void SetName(string name)
     {
-
         if (_characterName.text == name) { return; }
         _characterName.SetText(name);
     }
