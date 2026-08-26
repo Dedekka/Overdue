@@ -21,7 +21,7 @@ public class Restart : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.rKey.wasPressedThisFrame)
+        if (Keyboard.current.pKey.wasPressedThisFrame)
         {
             ResetLevel();
         }

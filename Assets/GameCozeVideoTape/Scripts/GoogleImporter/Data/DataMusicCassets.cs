@@ -14,15 +14,15 @@ public class DataMusicCassets : ScriptableObject
         _itemSettings = mainGoogleSettings.Music;
     }
 
-    //public void GetSettings(List<MusicCassetteSettings> cassettes)
-    //{
-    //    MusicCassetteSettings tempCassette;
-    //    for (int i = 0; i < cassettes.Count; i++)
-    //    {
-    //        tempCassette = cassettes[i];
-    //        //tempCassette.SetSettings(GetItem(tempCassette.Id));
-    //    }
-    //}
+    public void GetSettings(List<AudioItem> cassettes)
+    {
+        AudioItem tempCassette;
+        for (int i = 0; i < cassettes.Count; i++)
+        {
+            tempCassette = cassettes[i];
+            tempCassette.SetSettings(GetItem(tempCassette.Id));
+        }
+    }
 
     public MusicCassetteSettings GetItem(int id)
     {
