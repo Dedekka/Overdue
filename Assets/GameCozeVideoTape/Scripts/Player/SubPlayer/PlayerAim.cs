@@ -38,6 +38,11 @@ public class PlayerAim : IDisposable, IInitializable
         _cancellationToken = new CancellationTokenSource();
     }
 
+    public void ChangeActive(bool isActive)
+    {
+        _isActive = isActive;
+    }
+
     public void ProcessAim(bool isActive)
     {
         if (_isActive == isActive) { return; }

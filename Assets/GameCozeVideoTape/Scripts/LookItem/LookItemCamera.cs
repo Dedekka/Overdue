@@ -1,7 +1,6 @@
-using Unity.Cinemachine;
 using UnityEngine;
 
-public class LookItemCamera 
+public class LookItemCamera
 {
     private PlayerAim _playerAim;
     private float _maxFoV;
@@ -20,10 +19,11 @@ public class LookItemCamera
     {
         if (_isActive == isActive) { return; }
         _isActive = isActive;
-        
+
         if (!isActive)
         {
-        _playerAim.ProcessAim(false);
+            _playerAim.ChangeActive(true);
+            _playerAim.ProcessAim(false);
         }
     }
 
