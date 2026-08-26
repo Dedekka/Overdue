@@ -33,23 +33,17 @@ public abstract class AudioItem : MonoBehaviour
     {
         _body = transform.GetChild(0).gameObject;
         _managerAudioItem.AddAudioItem(this);
-        Debug.Log($"_gameObject: {_body.name}");
-    }
-
-    private void Start()
-    {
         Initialization();
     }
 
     protected abstract void OnInteract();
 
-    protected virtual void Initialization()
-    {
-        _music.SetDescription(MusicCassetteSettings.MusicName);
-    }
+    protected virtual void Initialization() { }
 
     public void SetSettings(MusicCassetteSettings musicCassetteSettings)
     {
         _musicCassetteSettings = musicCassetteSettings;
+        _music.SetDescription(MusicCassetteSettings.MusicName);
+        Debug.Log($"MusicCassetteSettings, MusicName {MusicCassetteSettings.MusicName}, Id:{MusicCassetteSettings.Id}");
     }
 }

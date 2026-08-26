@@ -8,11 +8,11 @@ public class AudioRecorder : MonoBehaviour
     // Мне нужно здесь использовать по аналогии с стелажами жанров
     // список классов кассет с написания на них ID
     // Кассеты которые подбираеются обращаются к этому классу и активируют
+    public bool IsReadyMusic => _recorderController.gameObject.activeSelf;
     [SerializeField] private RecorderController _recorderController;
     [SerializeField] private List<DataAudioSlot> _dataAudioSlotList;
     private AudioCassettsSystem _audioCassettsSystem;
     private MusicControl _musicControl;
-    private bool _isReadyMusic => _recorderController.gameObject.activeSelf;
 
     [Inject]
     public void Construct(MusicControl musicControl, AudioCassettsSystem audioCassettsSystem)
@@ -51,14 +51,14 @@ public class AudioRecorder : MonoBehaviour
 
     public void SetMusic(int idMusic)
     {
-        if (!_isReadyMusic) { return; }
+        if (!IsReadyMusic) { return; }
         Debug.Log("SetMusic");
         _musicControl.SetMusic(idMusic);
     }
 
     private void OnChangeStatePlaying()
     {
-        if (!_isReadyMusic) { return; }
+        if (!IsReadyMusic) { return; }
         PlayMusic();
     }
 

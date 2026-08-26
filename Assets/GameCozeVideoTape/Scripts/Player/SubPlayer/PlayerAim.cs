@@ -46,6 +46,16 @@ public class PlayerAim : IDisposable, IInitializable
         ControlAim();
     }
 
+    public void Zoom(float _tempFoV)
+    {
+        _cinemachineCamera.Lens.FieldOfView = _tempFoV;
+    }
+
+    public float GetFov()
+    {
+        return _cinemachineCamera.Lens.FieldOfView;
+    }
+
     private void ControlAim()
     {
         int modifier = _isActive ? _zoomOn : _zoomOFF;

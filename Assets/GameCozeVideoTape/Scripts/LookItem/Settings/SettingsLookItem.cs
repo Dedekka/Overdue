@@ -10,6 +10,10 @@ public class SettingsLookItem : ScriptableObject
     public float MaxFoVLookItem => _maxFoVLookItem;
     public float MinFoVLookItem => _minFoVLookItem;
     public float TimeMove => _timeMove;
+    public float PowerJumpAudioSlot => _powerJumpAudioSlot;
+    public float PowerJumpReturnAudioSlot => _powerJumpReturnAudioSlot;
+    public float TimeJumpAudioSlot => _timeJumpAudioSlot;
+    public float TimeJumpReturnAudioSlot => _timeJumpReturnAudioSlot;
     #endregion
 
     [Header("LookItem")]
@@ -19,4 +23,9 @@ public class SettingsLookItem : ScriptableObject
     [SerializeField] private float _mainSensitivityRotateItem = 0.1f;
     [SerializeField] private float _sensitivityRotateItemY = 1f;
     [SerializeField] private float _sensitivityRotateItemX = 1f;
+    [Header("AudioItemSlot")]
+    [SerializeField] private float _powerJumpAudioSlot;
+    [SerializeField] private float _powerJumpReturnAudioSlot;
+    [SerializeField] private float _timeJumpAudioSlot;
+    [SerializeField] private float _timeJumpReturnAudioSlot;
 }

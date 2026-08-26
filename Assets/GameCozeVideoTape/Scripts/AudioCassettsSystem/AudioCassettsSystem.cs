@@ -7,6 +7,7 @@ public class AudioCassettsSystem
     private AudioCassetteAnimation _audioCassetteAnimation;
     private List<DataAudioSlot> _dataAudioSlotList;
 
+    private AudioItemSlot _currentAudioItemSlot;
     // —писок всех аудио кассет на полках
 
     // ѕри взаимодействии открывать нывые кассеты 
@@ -15,9 +16,10 @@ public class AudioCassettsSystem
 
     // «апускать анимацию пролета кассеты 
 
-    public AudioCassettsSystem(AudioRecorder audioRecorder)
+    public AudioCassettsSystem(AudioRecorder audioRecorder, AudioCassetteAnimation audioCassetteAnimation)
     {
         _audioRecorder = audioRecorder;
+        _audioCassetteAnimation = audioCassetteAnimation;
     }
 
     public void SetDataAudioSlotList(List<DataAudioSlot> dataAudioSlotList)
@@ -25,9 +27,12 @@ public class AudioCassettsSystem
         _dataAudioSlotList = dataAudioSlotList;
     }
 
-    public void SetMusic(int idMusic)
+    public void SetMusic(AudioItemSlot currentAudioItemSlot)
     {
-        _audioRecorder.SetMusic(idMusic);
+        if (!_audioRecorder.IsReadyMusic) { return; }
+        _currentAudioItemSlot = currentAudioItemSlot;
+        _audioRecorder.SetMusic(_currentAudioItemSlot.Id);
+        _audioCassetteAnimation.SetItemSlot(currentAudioItemSlot);
     }
 
     public void CheckCurrectId(int id, AudioItem audioItem)

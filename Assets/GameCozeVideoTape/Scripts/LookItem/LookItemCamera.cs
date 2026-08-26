@@ -3,22 +3,28 @@ using UnityEngine;
 
 public class LookItemCamera 
 {
-    private CinemachineCamera _camera;
+    private PlayerAim _playerAim;
     private float _maxFoV;
     private float _minFoV;
     private float _tempFoV;
     private bool _isActive;
 
-    public LookItemCamera(SettingsLookItem settingsLookItem, CinemachineCamera camera)
+    public LookItemCamera(SettingsLookItem settingsLookItem, PlayerAim playerAim)
     {
-        _camera = camera;
+        _playerAim = playerAim;
         _maxFoV = settingsLookItem.MaxFoVLookItem;
         _minFoV = settingsLookItem.MinFoVLookItem;
     }
 
     public void ActiveZoom(bool isActive)
     {
+        if (_isActive == isActive) { return; }
         _isActive = isActive;
+        
+        if (!isActive)
+        {
+        _playerAim.ProcessAim(false);
+        }
     }
 
     public void Zoom(Vector2 vector)
@@ -26,12 +32,12 @@ public class LookItemCamera
         if (!_isActive) { return; }
 
         _tempFoV = CheckFov(vector.y);
-        _camera.Lens.FieldOfView = _tempFoV;
+        _playerAim.Zoom(_tempFoV);
     }
 
     private float CheckFov(float Fov)
     {
-        float tempFov = _camera.Lens.FieldOfView;
+        float tempFov = _playerAim.GetFov();
         tempFov += Fov;
 
         if (tempFov > _maxFoV)

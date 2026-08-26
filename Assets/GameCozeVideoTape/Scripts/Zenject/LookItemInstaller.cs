@@ -7,7 +7,7 @@ using Zenject;
 public class LookItemInstaller : MonoInstaller
 {
     [SerializeField] private SettingsLookItem _settingsLookItem;
-    [SerializeField] private CinemachineCamera _itemCamera;
+    //[SerializeField] private CinemachineCamera _itemCamera;
     [SerializeField] private LookItemUi _lookItemUi;
     [SerializeField] private Transform _lookItemSlot;
     [SerializeField] private Volume _lookItemEffects;
@@ -41,8 +41,7 @@ public class LookItemInstaller : MonoInstaller
             .WithArguments(_lookItemSlot);
 
         Container.Bind<LookItemCamera>()
-            .AsSingle()
-            .WithArguments(_itemCamera);
+            .AsSingle();
         
         Container.Bind<LookItemControlUi>()
             .AsSingle();

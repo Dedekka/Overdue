@@ -8,6 +8,7 @@ public class AudioInstaller : MonoInstaller
     [SerializeField] private AudioSettings _audioSettings;
     [SerializeField] private int _maxAudioItem;
     [SerializeField] private Material _materialAudioItem;
+    [SerializeField] private Transform _recorderSlotPosition;
 
 
     public override void InstallBindings()
@@ -23,6 +24,10 @@ public class AudioInstaller : MonoInstaller
     {
         Container.Bind<AudioCassettsSystem>()
          .AsSingle();
+
+        Container.Bind<AudioCassetteAnimation>()
+         .AsSingle()
+         .WithArguments(_recorderSlotPosition);
 
         Container.Bind<ManagerAudioItem>()
          .AsSingle()
