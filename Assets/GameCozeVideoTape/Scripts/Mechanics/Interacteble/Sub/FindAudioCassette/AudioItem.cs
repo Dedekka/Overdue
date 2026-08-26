@@ -28,6 +28,7 @@ public abstract class AudioItem : MonoBehaviour
     {
         _music.OnInteract -= OnInteract;
     }
+
     private void Awake()
     {
         _body = transform.GetChild(0).gameObject;

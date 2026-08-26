@@ -8,6 +8,7 @@ public class SettingsPlayer : ScriptableObject
     public LayerMask GroundLayer => _groundLayer;
     public LayerMask LayerInteracteble => _layerInteracteble;
     public float MovementSpeed => _movementSpeed;
+    public float TimeMove => _timeMove;
     public float GroundPointRadius => _groundPointRadius;
     public float Gravity => _gravity;
     public float SensitivityY => _sensitivityY;
@@ -58,6 +59,10 @@ public class SettingsPlayer : ScriptableObject
     [SerializeField] private float _offsetHandY = 3f;
     [SerializeField] private float _forceDrop = 3f;
     [SerializeField] private int _countSlotInventory = 10;
+
     [Header("InventoryPresent")]
     [SerializeField] private float _forceDropPresent = 10f;
+
+    [Header("LookItem")]
+    [SerializeField] private float _timeMove = 0.5f;
 }

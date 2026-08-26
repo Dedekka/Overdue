@@ -13,7 +13,7 @@ public class AudioItemDrop : AudioItem
 
     protected override void OnInteract()
     {
-        _audioRecorder.ActiveAudioSlot(Id);
-        gameObject.SetActive(false);
+        //_audioRecorder.ActiveAudioSlot(Id);
+        //gameObject.SetActive(false);
     }
 }

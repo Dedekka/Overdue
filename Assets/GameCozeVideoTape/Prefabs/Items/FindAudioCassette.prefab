@@ -30,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251159016261786668}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000000014901161, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.03794, y: 0.006835135, z: -0.0000052283917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436882651131858332}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1549479653151022056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3248
+  m_VersionIndex: 3275
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -354,8 +354,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.17989874, y: 0.09980392, z: 0.020000046}
-  m_Center: {x: -0.0379472, y: -0.006835907, z: -0.00000019685402}
+  m_Size: {x: 0.17989868, y: 0.099803925, z: 0.020000005}
+  m_Center: {x: -0.037947193, y: -0.0068359054, z: 0.000000035390265}
 --- !u!114 &783116618426967570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +382,7 @@ GameObject:
   m_Layer: 0
   m_Name: FindAudioCassette
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -395,7 +395,7 @@ Transform:
   m_GameObject: {fileID: 1913076726379525028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12832162, y: 1.4768343, z: -2.7387595}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -445,13 +445,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8349713303787357647}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000000014901161, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.03876, y: 0.006835135, z: -0.0000052283917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436882651131858332}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9209973993438049156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3011
+  m_VersionIndex: 3038
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

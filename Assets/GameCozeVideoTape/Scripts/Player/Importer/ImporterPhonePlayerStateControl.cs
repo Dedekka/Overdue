@@ -4,9 +4,6 @@ using Zenject;
 
 public class ImporterPhonePlayerStateControl : IDisposable, IInitializable
 {
-    // Зарегистрировать Phone
-    // Зарегистрировать ImporterPhonePlayerStateControl
-
     private Phone _phone;
     private TvManager _tvManager;
     private PlayerStateControl _playerStateControl;

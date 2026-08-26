@@ -6,7 +6,7 @@ using Zenject;
 public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILateTickable,
 {
     private EventInputSystem _eventInputSystem;
- 
+
     private PlayerMove _playerMover;
     private PlayerLook _playerLook;
     private PlayerAim _playerAim;
@@ -25,13 +25,14 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerInventory = playerInventory;
         _eventInputSystem = eventInputSystem;
     }
-    
+
     public void Dispose()
     {
         _playerActions.Aim.started -= AimControl;
         _playerActions.Aim.canceled -= AimControl;
         _playerActions.Interact.started -= OnInteracteble;
         _playerActions.Drop.started -= OnDrop;
+        _playerActions.Scroll.started -= OnZoomItem;
         _playerActions.Scroll.started -= OnScroll;
         _playerActions.Inventory.started -= OnInventory;
         _playerActions.Disable();
@@ -46,6 +47,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Interact.started += OnInteracteble;
         _playerActions.Drop.started += OnDrop;
         _playerActions.Scroll.started += OnScroll;
+        _playerActions.Scroll.started += OnZoomItem;
         _playerActions.Pause.started += OnPause;
         _playerActions.Inventory.started += OnInventory;
         //_playerActions.Pause.started += OnPause;
@@ -58,11 +60,21 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     public void Tick()
     {
+        _eventInputSystem.ProcessRotate(_playerActions.Look.ReadValue<Vector2>());
         if (!_isPlayerControlON) { return; }
         _playerMover.ProcessMove(_playerActions.Move.ReadValue<Vector2>());
 
         if (!_isPlayerControlON) { return; }
         _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
+
+    }
+
+    private void OnZoomItem(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _eventInputSystem.ZoomItem(context.ReadValue<Vector2>());
+        }
     }
 
     private void OnPause(InputAction.CallbackContext context)
@@ -109,6 +121,8 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
             _playerInventory.Scroll(context.ReadValue<Vector2>());
         }
     }
+
+   
 
     private void AimControl(InputAction.CallbackContext context)
     {
