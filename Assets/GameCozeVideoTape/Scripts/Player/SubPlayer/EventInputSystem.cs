@@ -4,15 +4,17 @@ public class EventInputSystem
 {
     private PauseSystem _pause;
     private PlayerUi _playerUi;
-    private TestMoveItem _testMoveItem;
-    //private DialogInput _dialogInput;
+    private LookItemRotate _lookItemRotate;
+    private LookItemCamera _lookItemCamera;
+    private PlayerLookItem _playerLookItem;
 
-    public EventInputSystem(PlayerUi playerUi, PauseSystem pause, TestMoveItem testMoveItem)//, DialogInput dialogInput)
+    public EventInputSystem(PlayerUi playerUi, PauseSystem pause, PlayerLookItem playerLookItem)
     {
         _playerUi = playerUi;
         _pause = pause;
-        _testMoveItem = testMoveItem;
-        //_dialogInput = dialogInput;
+        _lookItemRotate = playerLookItem.LookItemRotate;
+        _lookItemCamera = playerLookItem.LookItemCamera;
+        _playerLookItem = playerLookItem;
     }
 
     public void InventoryView()
@@ -22,18 +24,28 @@ public class EventInputSystem
 
     public void Pause()
     {
-        _pause.Pause();
+        if (_playerLookItem.IsActive)
+        {
+            _playerLookItem.EndLookItem();
+        }
+        else
+        {
+            _pause.Pause();
+        }
     }
 
     public void ProcessRotate(Vector2 rotate)
     {
-        _testMoveItem.ProcessRotate(rotate);
+        _lookItemRotate.ProcessRotate(rotate);
+    }
+
+    public void ResetLookItemRotate()
+    {
+        _lookItemRotate.ResetLookItemRotate();
     }
 
     public void ZoomItem(Vector2 rotate)
     {
-        _testMoveItem.Zoom(rotate);
-        //_testMoveItem.ProcessRotate(rotate);
-
+        _lookItemCamera.Zoom(rotate);
     }
 }

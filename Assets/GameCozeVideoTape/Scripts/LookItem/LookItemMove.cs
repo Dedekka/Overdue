@@ -7,70 +7,35 @@ using Zenject;
 public class LookItemMove 
 {
     private Transform _lookItemPos;
+    //private Vector3 _position;
+    //private Quaternion _rotation;
     private float _timeMove;
 
-    public LookItemMove(SettingsPlayer settingsPlayer, Transform lookItemPos)
+    public LookItemMove(SettingsLookItem settingsLookItem, Transform lookItemPos)
     {
-        _timeMove = settingsPlayer.TimeMove;
+        _timeMove = settingsLookItem.TimeMove;
         _lookItemPos = lookItemPos;
     }
 
-    //[SerializeField] private Volume _Volume;
-    //[SerializeField] private GameObject _item;
-    //[SerializeField] private CanvasGroup _uiPlayer;
-    //[SerializeField] private GameObject _lookItemCanvas;
-    //[SerializeField] private TestMoveItem _testMoveItem;
-
-    private Vector3 _position;
-    private Quaternion _rotation;
-
-    //private PlayerStateControl _playerStateControl;
-
-
-    //[Inject]
-    //public void Construct(PlayerStateControl playerStateControl)
-    //{
-    //    _playerStateControl = playerStateControl;
-    //}
-
-    //private void Update()
-    //{
-    //    if (Keyboard.current.digit8Key.wasPressedThisFrame)
-    //    {
-    //        //Move();
-    //    }
-
-    //    if (Keyboard.current.digit9Key.wasPressedThisFrame)
-    //    {
-    //        UnMove();
-    //    }
-
-    //}
-
-    public void Move(GameObject gameObject)
+    public void Move(AudioItemDrop gameObject)
     {
-        //_position = _item.transform.position;
-        //_rotation = _item.transform.rotation;
+        //_position = gameObject.transform.position;
+        //_rotation = gameObject.transform.rotation;
 
-        //_item.transform.parent = _lookItemPos;
-        //_item.transform.DOLocalMove(Vector3.zero, _timeMove).Play();
-        //_item.transform.DOLocalRotate(Vector3.zero, _timeMove).Play();
-        //_uiPlayer.alpha = 0;
-        //_playerStateControl.ChangeStateControlPlayer(false);
-        //_Volume.enabled = true;
-        //_lookItemCanvas.SetActive(true);
-        //_testMoveItem.ActiveRotate(true);
+        gameObject.transform.parent = _lookItemPos;
+        gameObject.transform.DOLocalMove(Vector3.zero, _timeMove).Play();
+        gameObject.transform.DOLocalRotate(Vector3.zero, _timeMove).Play();
     }
 
-    private void UnMove()
-    {
-        //_item.transform.parent = null;
-        //_item.transform.DOMove(_position, _timeMove).Play();
-        //_item.transform.DORotateQuaternion(_rotation, _timeMove).Play();
-        //_uiPlayer.alpha = 1;
-        //_playerStateControl.ChangeStateControlPlayer(true);
-        //_Volume.enabled = false;
-        //_lookItemCanvas.SetActive(false);
-        //_testMoveItem.ActiveRotate(false);
-    }
+    //private void UnMove()
+    //{
+    //    _item.transform.parent = null;
+    //    _item.transform.DOMove(_position, _timeMove).Play();
+    //    _item.transform.DORotateQuaternion(_rotation, _timeMove).Play();
+    //    _uiPlayer.alpha = 1;
+    //    _playerStateControl.ChangeStateControlPlayer(true);
+    //    _Volume.enabled = false;
+    //    _lookItemCanvas.SetActive(false);
+    //    _testMoveItem.ActiveRotate(false);
+    //}
 }

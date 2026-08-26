@@ -87,13 +87,14 @@ GameObject:
   - component: {fileID: 8558256617283564208}
   - component: {fileID: 2890313789765947665}
   - component: {fileID: 6213406701134617404}
+  - component: {fileID: 4270696561654114521}
   m_Layer: 5
   m_Name: LookItemCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5720917769788073138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -179,6 +180,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4270696561654114521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439044440354164193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988c2c01fe7b51e428fcac9c664ae2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookItemUi
+  _nameItem: {fileID: 2715921115514379116}
 --- !u!1 &2141237897755100769
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,10 +225,10 @@ RectTransform:
   - {fileID: 2196327972538121239}
   m_Father: {fileID: 5720917769788073138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25464588, y: 0.049740747}
-  m_AnchorMax: {x: 0.74452084, y: 0.12666665}
-  m_AnchoredPosition: {x: 0.020599365, y: 99}
-  m_SizeDelta: {x: -4.7199707, y: -7.0639954}
+  m_AnchorMin: {x: 0.2551667, y: 0.14277779}
+  m_AnchorMax: {x: 0.74452084, y: 0.21700001}
+  m_AnchoredPosition: {x: -0.47937012, y: 0.5}
+  m_SizeDelta: {x: -3.7199707, y: -4.0639954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2362908012514637435
 GameObject:
@@ -393,7 +407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.46552086, y: 0.0064814813}
   m_AnchorMax: {x: 0.98547924, y: 0.101}
-  m_AnchoredPosition: {x: -0.7799988, y: -1}
+  m_AnchoredPosition: {x: -0.7800293, y: -1}
   m_SizeDelta: {x: -1.5599976, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2907494408278390761
@@ -865,10 +879,10 @@ RectTransform:
   - {fileID: 5284628883501999785}
   m_Father: {fileID: 5720917769788073138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4104167, y: 0.3443343}
-  m_AnchorMax: {x: 0.5853959, y: 0.42966574}
-  m_AnchoredPosition: {x: 4.02, y: 501}
-  m_SizeDelta: {x: -1.8099976, y: -2.7701}
+  m_AnchorMin: {x: 0.41281256, y: 0.8426297}
+  m_AnchorMax: {x: 0.5885208, y: 0.9268888}
+  m_AnchoredPosition: {x: -1.5, y: 0.5}
+  m_SizeDelta: {x: -2.8099976, y: -1.7700806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6305687106563399282
 GameObject:

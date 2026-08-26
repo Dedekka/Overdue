@@ -50,6 +50,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Scroll.started += OnZoomItem;
         _playerActions.Pause.started += OnPause;
         _playerActions.Inventory.started += OnInventory;
+        _playerActions.ResetLookItemRotate.started += OnResetLookItemRotate;
         //_playerActions.Pause.started += OnPause;
     }
 
@@ -67,6 +68,14 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         if (!_isPlayerControlON) { return; }
         _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
 
+    }
+
+    private void OnResetLookItemRotate(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _eventInputSystem.ResetLookItemRotate();
+        }
     }
 
     private void OnZoomItem(InputAction.CallbackContext context)
