@@ -9,9 +9,6 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private Transform _hand;
-    [Header("DataCassets")]
-    private DataCassets _dataCassets;
-    private DataLanguage _dataLanguage;
     [Header("Materials")]
     [SerializeField] private Material _cassetteMaterial;
     [SerializeField] private Material _presentMaterial;
@@ -34,7 +31,13 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private PackageSystem _packageSystem;
     [SerializeField] private Present _prefabPresent;
     [SerializeField] private Transform _returnedPosition;
-    private DataPresent _presentData;
+    [Header("AudioCassettsSystem")]
+    [SerializeField] private AudioRecorder _audioRecorder;
+    [Header("LookItem")]
+    [SerializeField] private TestMoveItem _testMoveItem;
+
+
+    //private DataPresent _presentData;
 
 
     public override void InstallBindings()
@@ -51,6 +54,22 @@ public class GameInstaller : MonoInstaller
         BindEventRealizer();
         BindPresentDecor();
         BindTv();
+        BindRecorder();
+        BindLookItem();
+    }
+
+    private void BindLookItem()
+    {
+        Container.Bind<TestMoveItem>()
+        .FromInstance(_testMoveItem)
+        .AsSingle();
+    }
+
+    private void BindRecorder()
+    {
+        Container.Bind<AudioRecorder>()
+       .FromInstance(_audioRecorder)
+       .AsSingle();
     }
 
     private void BindTv()
@@ -94,7 +113,8 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<FactoryPresent>()
         .AsSingle()
-        .WithArguments(_prefabPresent, _presentData, _presentMaterial);
+        //.WithArguments(_prefabPresent, _presentData, _presentMaterial);
+        .WithArguments(_prefabPresent, _presentMaterial);
 
         Container.Bind<ReturnedMover>()
         .AsSingle()
@@ -132,9 +152,21 @@ public class GameInstaller : MonoInstaller
 
     private void FindSub()
     {
-        _dataCassets = Resources.Load<DataCassets>(PathConst.DataCassetsAsset);
-        _dataLanguage = Resources.Load<DataLanguage>(PathConst.LanguageCassetsAsset);
-        _presentData = Resources.Load<DataPresent>(PathConst.DataPresentAsset);
+        //_dataCassets = Resources.Load<DataCassets>(PathConst.DataCassetsAsset);
+        //_dataLanguage = Resources.Load<DataLanguage>(PathConst.LanguageCassetsAsset);
+        //_presentData = Resources.Load<DataPresent>(PathConst.DataPresentAsset);
+        Container.Bind<DataCassets>()
+           .FromResource(PathConst.DataCassetsAsset)
+           .AsSingle();
+
+        Container.Bind<DataLanguage>()
+           .FromResource(PathConst.LanguageCassetsAsset)
+           .AsSingle();
+
+        Container.Bind<DataPresent>()
+           .FromResource(PathConst.DataPresentAsset)
+           .AsSingle();
+
     }
 
     private void BindUI()
@@ -149,7 +181,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
-            .WithArguments(_pickUpSettings, _hand,this);
+            .WithArguments(_pickUpSettings, _hand, this);
 
         Container.Bind<InstallItem>()
            .AsTransient();
@@ -175,7 +207,8 @@ public class GameInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ManagerCassette>()
            .AsSingle()
-           .WithArguments(_dataCassets, _maxCassette);//, _dataLanguage);
+           .WithArguments(_maxCassette);//, _dataLanguage);
+                                        //.WithArguments(_dataCassets, _maxCassette);//, _dataLanguage);
 
         Container.BindInterfacesAndSelfTo<ControlSleepCassette>()
           .AsSingle()

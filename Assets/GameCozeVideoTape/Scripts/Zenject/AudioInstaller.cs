@@ -6,12 +6,43 @@ using Zenject;
 public class AudioInstaller : MonoInstaller
 {
     [SerializeField] private AudioSettings _audioSettings;
+    [SerializeField] private int _maxAudioItem;
+    [SerializeField] private Material _materialAudioItem;
+    [SerializeField] private Transform _recorderSlotPosition;
+
 
     public override void InstallBindings()
     {
+        FindSub();
         BindSystem();
         BindImporter();
         BindEmitter();
+        BindAudioCassettsSystem();
+    }
+
+    private void BindAudioCassettsSystem()
+    {
+        Container.Bind<AudioCassettsSystem>()
+         .AsSingle();
+
+        Container.Bind<AudioCassetteAnimation>()
+         .AsSingle()
+         .WithArguments(_recorderSlotPosition);
+
+        Container.Bind<ManagerAudioItem>()
+         .AsSingle()
+         .WithArguments(_maxAudioItem);
+
+        Container.Bind<AudioItemRenderer>()
+         .AsSingle()
+         .WithArguments(_materialAudioItem);
+    }
+
+    private void FindSub()
+    {
+        Container.Bind<DataMusicCassets>()
+          .FromResource(PathConst.DataMusicCassetsAsset)
+          .AsSingle();
     }
 
     private void BindEmitter()
@@ -20,6 +51,9 @@ public class AudioInstaller : MonoInstaller
          .AsSingle();
 
         Container.Bind<AudioRack>()
+         .AsSingle();
+
+        Container.Bind<MusicControl>()
          .AsSingle();
     }
 
@@ -32,6 +66,9 @@ public class AudioInstaller : MonoInstaller
             .AsSingle();
 
         Container.BindInterfacesAndSelfTo<AudioPauseSystemImporter>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterMusicControlAudio>()
             .AsSingle();
     }
 

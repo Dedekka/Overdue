@@ -16,7 +16,7 @@ public class DialogSystemSubtitles : IRealizerDialogueble
     public bool CheckId(int id)
     {
         bool isSuccess = false;
-        _operaSettings = _dataOpera.GetOperaSettings(id);
+        _operaSettings = _dataOpera.GetOperaSettingsForIdCassette(id);
         isSuccess = _operaSettings != null;
         Debug.Log($"CheckId, isSuccess: {isSuccess}");
         Debug.Log($"CheckId, _operaSettings, null: {_operaSettings.Subtitles == null}");

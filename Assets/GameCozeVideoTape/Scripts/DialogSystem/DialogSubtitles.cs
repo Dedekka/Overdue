@@ -6,7 +6,7 @@ public class DialogSubtitles : IStarterDialogueble, IDisposable, IInitializable
 {
     private DialogSystem _dialogSystem;
     private SubtitlesWaiter _subtitlesWaiter;
-    private int _dialogIndex;
+    //private int _dialogIndex;
 
     [Inject]
     public void Construct(DialogSystem dialogSystem, SubtitlesWaiter subtitlesWaiter)
@@ -29,7 +29,7 @@ public class DialogSubtitles : IStarterDialogueble, IDisposable, IInitializable
     {
         //bool SuccessStart = CheckCurrentDialogs(_currentEpisode.Id);
         //SuccessStart = SuccessStart ? _dialogSystem.CheckDialogue(this, _currentEpisode.Id) : false;
-        bool SuccessStart = _dialogSystem.CheckDialogue(this, _currentEpisode.Id);
+        bool SuccessStart = _dialogSystem.CheckDialogue(this, _currentEpisode.Id_Cassette);
         Debug.Log($"StartWaitSubtitles, SuccessStart:{SuccessStart}");
         if (SuccessStart)
         {
@@ -48,16 +48,16 @@ public class DialogSubtitles : IStarterDialogueble, IDisposable, IInitializable
         _dialogSystem.StartDialogue();
     }
 
-    private bool CheckCurrentDialogs(int dialogIndex)
-    {
-        bool isNewDialog = false;
+    //private bool CheckCurrentDialogs(int dialogIndex)
+    //{
+    //    bool isNewDialog = false;
 
-        if (dialogIndex < 0 || dialogIndex == _dialogIndex)
-        {
-            return isNewDialog;
-        }
-        _dialogIndex = dialogIndex;
-        isNewDialog = true;
-        return isNewDialog;
-    }
+    //    if (dialogIndex < 0 || dialogIndex == _dialogIndex)
+    //    {
+    //        return isNewDialog;
+    //    }
+    //    _dialogIndex = dialogIndex;
+    //    isNewDialog = true;
+    //    return isNewDialog;
+    //}
 }

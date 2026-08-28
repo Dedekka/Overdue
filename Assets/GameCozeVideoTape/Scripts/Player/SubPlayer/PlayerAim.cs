@@ -38,12 +38,27 @@ public class PlayerAim : IDisposable, IInitializable
         _cancellationToken = new CancellationTokenSource();
     }
 
+    public void ChangeActive(bool isActive)
+    {
+        _isActive = isActive;
+    }
+
     public void ProcessAim(bool isActive)
     {
         if (_isActive == isActive) { return; }
         _isActive = isActive;
         OnAim?.Invoke(_isActive);
         ControlAim();
+    }
+
+    public void Zoom(float _tempFoV)
+    {
+        _cinemachineCamera.Lens.FieldOfView = _tempFoV;
+    }
+
+    public float GetFov()
+    {
+        return _cinemachineCamera.Lens.FieldOfView;
     }
 
     private void ControlAim()

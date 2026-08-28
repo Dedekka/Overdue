@@ -16,7 +16,7 @@ public class OperaChecker : ISloteble
     public bool CheckEpisode(int idEpisode)
     {
         _operaSettings = null;
-        _operaSettings = _dataOpera.GetOperaSettings(idEpisode);
+        _operaSettings = _dataOpera.GetOperaSettingsForIdCassette(idEpisode);
         return _operaSettings != null;
     }
 

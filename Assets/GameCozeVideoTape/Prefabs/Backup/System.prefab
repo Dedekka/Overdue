@@ -34,6 +34,7 @@ Transform:
   - {fileID: 991295610738679664}
   - {fileID: 8350076953617183939}
   - {fileID: 227134925740425409}
+  - {fileID: 3923655984075960465}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -54,6 +55,7 @@ MonoBehaviour:
   - {fileID: 1329200960629484154}
   - {fileID: 7262617015194926083}
   - {fileID: 1982113508568584687}
+  - {fileID: 898953449600361464}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -71,6 +73,54 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+--- !u!1 &1744417151166176684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3923655984075960465}
+  - component: {fileID: 898953449600361464}
+  m_Layer: 0
+  m_Name: LookItemInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3923655984075960465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744417151166176684}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &898953449600361464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744417151166176684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e0ee14d878f3d4089a41d9845b58a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookItemInstaller
+  _settingsLookItem: {fileID: 11400000, guid: c0833e161dca66240b9a99f64fe7934a, type: 2}
+  _lookItemUi: {fileID: 0}
+  _lookItemSlot: {fileID: 0}
+  _lookItemEffects: {fileID: 0}
 --- !u!1 &2497494213716825598
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,13 +176,15 @@ MonoBehaviour:
   _decorMaterial: {fileID: 2100000, guid: d1a5903867c8f0a4a8a94c3fe36dad11, type: 2}
   _slotMaterial: {fileID: 2100000, guid: 840e2dd2dd27f564b87d12a2760eb365, type: 2}
   _maxRack: 62
-  _maxCassette: 40
+  _maxCassette: 300
   _phone: {fileID: 0}
   _tvCamera: {fileID: 0}
   _tv: {fileID: 0}
   _packageSystem: {fileID: 0}
   _prefabPresent: {fileID: 3761425653305267592, guid: af8470ce3165af0498b182943eafcc24, type: 3}
   _returnedPosition: {fileID: 0}
+  _audioRecorder: {fileID: 0}
+  _testMoveItem: {fileID: 0}
 --- !u!1 &3926910032552830590
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioInstaller
   _audioSettings: {fileID: 11400000, guid: d09315c17218b124b9b55d4e98fa2227, type: 2}
+  _maxAudioItem: 3
+  _materialAudioItem: {fileID: 2100000, guid: 6799478691227ef4f9f768e2e215fd37, type: 2}
+  _recorderSlotPosition: {fileID: 0}
 --- !u!1 &4182355753853103304
 GameObject:
   m_ObjectHideFlags: 0
