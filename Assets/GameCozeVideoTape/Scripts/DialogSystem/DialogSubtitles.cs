@@ -29,7 +29,7 @@ public class DialogSubtitles : IStarterDialogueble, IDisposable, IInitializable
     {
         //bool SuccessStart = CheckCurrentDialogs(_currentEpisode.Id);
         //SuccessStart = SuccessStart ? _dialogSystem.CheckDialogue(this, _currentEpisode.Id) : false;
-        bool SuccessStart = _dialogSystem.CheckDialogue(this, _currentEpisode.Id);
+        bool SuccessStart = _dialogSystem.CheckDialogue(this, _currentEpisode.Id_Cassette);
         Debug.Log($"StartWaitSubtitles, SuccessStart:{SuccessStart}");
         if (SuccessStart)
         {

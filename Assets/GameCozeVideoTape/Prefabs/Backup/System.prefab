@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookItemInstaller
   _settingsLookItem: {fileID: 11400000, guid: c0833e161dca66240b9a99f64fe7934a, type: 2}
-  _itemCamera: {fileID: 0}
   _lookItemUi: {fileID: 0}
   _lookItemSlot: {fileID: 0}
   _lookItemEffects: {fileID: 0}
@@ -177,7 +176,7 @@ MonoBehaviour:
   _decorMaterial: {fileID: 2100000, guid: d1a5903867c8f0a4a8a94c3fe36dad11, type: 2}
   _slotMaterial: {fileID: 2100000, guid: 840e2dd2dd27f564b87d12a2760eb365, type: 2}
   _maxRack: 62
-  _maxCassette: 40
+  _maxCassette: 300
   _phone: {fileID: 0}
   _tvCamera: {fileID: 0}
   _tv: {fileID: 0}
@@ -233,6 +232,7 @@ MonoBehaviour:
   _audioSettings: {fileID: 11400000, guid: d09315c17218b124b9b55d4e98fa2227, type: 2}
   _maxAudioItem: 3
   _materialAudioItem: {fileID: 2100000, guid: 6799478691227ef4f9f768e2e215fd37, type: 2}
+  _recorderSlotPosition: {fileID: 0}
 --- !u!1 &4182355753853103304
 GameObject:
   m_ObjectHideFlags: 0
