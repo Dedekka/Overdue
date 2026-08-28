@@ -41,6 +41,7 @@ public class MusicControl
     {
         if (audioPath != null)
         {
+            Debug.Log($"MusicControl_ SetFmodSound, audioPath:{audioPath}");
             _tempMusic = RuntimeManager.PathToEventReference(audioPath);
             _isPlaying = false;
             OnChangeMusic?.Invoke(_tempMusic);
