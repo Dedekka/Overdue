@@ -33,8 +33,6 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private Transform _returnedPosition;
     [Header("AudioCassettsSystem")]
     [SerializeField] private AudioRecorder _audioRecorder;
-    [Header("LookItem")]
-    [SerializeField] private TestMoveItem _testMoveItem;
 
 
     //private DataPresent _presentData;
@@ -55,14 +53,6 @@ public class GameInstaller : MonoInstaller
         BindPresentDecor();
         BindTv();
         BindRecorder();
-        BindLookItem();
-    }
-
-    private void BindLookItem()
-    {
-        Container.Bind<TestMoveItem>()
-        .FromInstance(_testMoveItem)
-        .AsSingle();
     }
 
     private void BindRecorder()

@@ -24,6 +24,7 @@ public class SettingsPlayer : ScriptableObject
     public float OffsetHandY => _offsetHandY;
     public float ForceDrop => _forceDrop;
     public float ForceDropPresent => _forceDropPresent;
+    public float SmoothForceLogic => _smoothForceLogic;
     public int CountSlotInventory => _countSlotInventory;
     #endregion
 
@@ -62,5 +63,8 @@ public class SettingsPlayer : ScriptableObject
     [Header("InventoryPresent")]
     [SerializeField] private float _forceDropPresent = 10f;
 
- 
+    [Header("PlayerSmoothLogic")]
+    [SerializeField] private float _smoothForceLogic = 15;
+
+
 }

@@ -19,7 +19,10 @@ public class PlayerInstaller : MonoInstaller
     [Header("PlayerInventory")]
     [SerializeField] private Transform _handSlot;
     [SerializeField] private Transform[] _inventorySlot;
-    [SerializeField] private Transform _inventorySlotItem;
+    [SerializeField] private Transform _slotItem_0;
+
+    [Header("PlayerSmoothLogic")]
+    [SerializeField] private Transform _bodyLogic;
 
     public override void InstallBindings()
     {
@@ -59,13 +62,17 @@ public class PlayerInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
 
+        Container.BindInterfacesAndSelfTo<PlayerSmoothLogic>()
+            .AsSingle()
+            .WithArguments(_settingsPlayer, _bodyLogic);
+
         Container.Bind<InventoryCassette>()
             .AsSingle()
             .WithArguments(_settingsPlayer, _handSlot, _inventorySlot);
 
         Container.Bind<InventoryPresent>()
             .AsSingle()
-            .WithArguments( _inventorySlotItem, _settingsPlayer);
+            .WithArguments( _slotItem_0, _settingsPlayer);
 
         Container.BindInterfacesAndSelfTo<PlayerStateControl>()
            .AsSingle();
