@@ -14,6 +14,12 @@ public class SettingsLookItem : ScriptableObject
     public float PowerJumpReturnAudioSlot => _powerJumpReturnAudioSlot;
     public float TimeJumpAudioSlot => _timeJumpAudioSlot;
     public float TimeJumpReturnAudioSlot => _timeJumpReturnAudioSlot;
+    public float TimeCoverPlate => _timeCoverPlate;
+    public float TimeButtonPlay => _timeButtonPlay;
+    public float DelayOpen => _delayOpen;
+    public Vector3 CoverPlateCloset => _coverPlateCloset;
+    public Vector3 CoverPlateOpen => _coverPlateOpen;
+    public Vector3 StatePlay => _statePlay;
     #endregion
 
     [Header("LookItem")]
@@ -28,4 +34,12 @@ public class SettingsLookItem : ScriptableObject
     [SerializeField] private float _powerJumpReturnAudioSlot;
     [SerializeField] private float _timeJumpAudioSlot;
     [SerializeField] private float _timeJumpReturnAudioSlot;
+    [Header("AudioRecorderAnimation")]
+    [SerializeField] private float _timeCoverPlate = 0.7f;
+    [SerializeField] private float _timeButtonPlay = 0.2f;
+    [SerializeField] private float _delayOpen = 0.3f;
+    [SerializeField] private Vector3 _coverPlateCloset = new Vector3(-90, 0, 0);
+    [SerializeField] private Vector3 _coverPlateOpen = new Vector3(-40, 0, 0);
+    [SerializeField] private Vector3 _statePlay = new Vector3(0, -0.007f, 0);
+
 }

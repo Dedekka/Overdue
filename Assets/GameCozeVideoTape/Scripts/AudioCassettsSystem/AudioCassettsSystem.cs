@@ -1,25 +1,23 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class AudioCassettsSystem
 {
+    
     private AudioRecorder _audioRecorder;
     private AudioCassetteAnimation _audioCassetteAnimation;
+    private AudioRecorderAnimation _audioRecorderAnimation;
     private List<DataAudioSlot> _dataAudioSlotList;
 
     private AudioItemSlot _currentAudioItemSlot;
-    // —писок всех аудио кассет на полках
-
-    // ѕри взаимодействии открывать нывые кассеты 
-
-    // ѕри установке кассеты в магнитофон отслеживать уже запущенную кассету возвращать на полку
-
-    // «апускать анимацию пролета кассеты 
-
-    public AudioCassettsSystem(AudioRecorder audioRecorder, AudioCassetteAnimation audioCassetteAnimation)
+    
+    public AudioCassettsSystem(AudioRecorder audioRecorder, AudioCassetteAnimation audioCassetteAnimation, AudioRecorderAnimation audioRecorderAnimation)
     {
         _audioRecorder = audioRecorder;
         _audioCassetteAnimation = audioCassetteAnimation;
+        _audioRecorderAnimation = audioRecorderAnimation;
     }
 
     public void SetDataAudioSlotList(List<DataAudioSlot> dataAudioSlotList)
@@ -32,6 +30,7 @@ public class AudioCassettsSystem
         if (!_audioRecorder.IsReadyMusic) { return; }
         _currentAudioItemSlot = currentAudioItemSlot;
         _audioRecorder.SetMusic(_currentAudioItemSlot.Id);
+        _audioRecorderAnimation.SetAudioCassette();
         _audioCassetteAnimation.SetItemSlot(currentAudioItemSlot);
     }
 
@@ -66,4 +65,6 @@ public class AudioCassettsSystem
         dataAudioSlot = _dataAudioSlotList.Find(x => x.IndexAudioCassette == idSlot);
         return dataAudioSlot != null;
     }
+
+   
 }

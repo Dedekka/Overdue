@@ -26,6 +26,6 @@ public class AudioPauseSystemImporter : IDisposable, IInitializable
     private void OnChangeStatePause(bool isPause)
     {
         _audioManager.PauseVoise(isPause);
-        _audioManager.PauseMusic(isPause);
+        //_audioManager.PauseMusic(isPause);
     }
 }

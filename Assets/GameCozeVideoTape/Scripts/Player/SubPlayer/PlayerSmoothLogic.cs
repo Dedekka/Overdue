@@ -18,10 +18,10 @@ public class PlayerSmoothLogic : ILateTickable
 
     public void LateTick()
     {
-        Debug.Log($"PlayerTransform:{_playerPos.position}");
+        //Debug.Log($"PlayerTransform:{_playerPos.position}");
         _tempPos = Vector3.Lerp(_tempPos, _playerPos.position, _smoothForce * Time.deltaTime);
         _tempPos.Set(_bodyLogic.position.x, _tempPos.y, _bodyLogic.position.z);
-        Debug.Log($"SmoothTransform:{_tempPos}");
+        //Debug.Log($"SmoothTransform:{_tempPos}");
         _bodyLogic.position = _tempPos;
     }
 }

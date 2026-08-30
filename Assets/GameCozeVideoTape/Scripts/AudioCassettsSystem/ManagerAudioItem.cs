@@ -43,7 +43,7 @@ public class ManagerAudioItem : IInitializable, IDisposable
         {
         Debug.Log($"FIn , _audioItems:{_audioItems.Count} , _maxAudioItem: {_maxAudioItem} ");
             _dataMusicCassets.GetSettings(_audioItems);
-            _audioItemRenderer.SetCassette(_audioItems);
+            //_audioItemRenderer.SetCassette(_audioItems);
         }
     }
 }
