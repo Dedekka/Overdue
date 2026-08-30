@@ -32,7 +32,7 @@ public class VideoControl
     public void ClearVideo()
     {
         Debug.Log("ClearVideo");
-        //ClearRenderTexture(Color.black);
+        ClearRenderTexture(Color.black);
     }
 
     private void ClearRenderTexture(Color color)

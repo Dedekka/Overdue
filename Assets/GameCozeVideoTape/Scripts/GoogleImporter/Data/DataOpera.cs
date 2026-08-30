@@ -4,37 +4,56 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataOpera", menuName = "Create/DataOpera")]
 public class DataOpera : ScriptableObject
 {
-    [SerializeField] private List<OperaSettings> _dataOpera;
-    private Dictionary<int, OperaSettings> _presentsData;
+    [SerializeField] private List<OperaSettings> _listDataOpera;
+    private Dictionary<int, OperaSettings> _operaDataDictionary;
 
-    private bool _checkDictionary => _presentsData == null;
+    private bool _checkDictionary => _operaDataDictionary == null;
 
     public void Initialization(MainGoogleSettings mainGoogleSettings)
     {
-        _dataOpera = mainGoogleSettings.Opera;
+        _listDataOpera = mainGoogleSettings.Opera;
     }
 
-    public int GetCountOpera()
+    public void GetOpera(Dictionary<int, CassetteObject> _cassetsDictionary)
     {
-        return _dataOpera.Count;
+        OperaSettings operaSettings;
+        for (int i = 0; i < _listDataOpera.Count; i++)
+        {
+            operaSettings = _listDataOpera[i];
+
+            if (_cassetsDictionary.TryGetValue(operaSettings.Id_Cassette, out CassetteObject cassetteObject))
+            {
+                cassetteObject.SetOpera();
+            }
+            else
+            {
+                Debug.LogError("NOT found opera CassetteObject");
+            }
+        }
     }
 
-    public OperaSettings GetOperaSettings(int id)
+    public OperaSettings GetOperaSettingsForIdCassette(int idCassette)
     {
         if (_checkDictionary)
         {
-            SetDictionary(_dataOpera);
+            SetDictionary(_listDataOpera);
         }
-        OperaSettings tempItem = _presentsData.TryGetValue(id, out OperaSettings item) ? item : null;
+        OperaSettings tempItem = _operaDataDictionary.TryGetValue(idCassette, out OperaSettings item) ? item : null;
         return tempItem;
     }
 
+    //public OperaSettings GetOperaSettingsForId(int idOpera)
+    //{
+    //    OperaSettings tempItem = _dataOpera.Find((x)=>x.Id == idOpera);
+    //    return tempItem;
+    //}
+
     private void SetDictionary(List<OperaSettings> itemSettings)
     {
-        _presentsData = new Dictionary<int, OperaSettings>();
+        _operaDataDictionary = new Dictionary<int, OperaSettings>();
         foreach (var item in itemSettings)
         {
-            _presentsData.Add(item.Id_Cassette, item);
+            _operaDataDictionary.Add(item.Id_Cassette, item);
         }
     }
 

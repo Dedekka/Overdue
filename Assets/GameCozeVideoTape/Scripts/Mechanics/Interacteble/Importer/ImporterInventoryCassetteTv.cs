@@ -24,6 +24,6 @@ public class ImporterInventoryCassetteTv : IDisposable, IInitializable
 
     private void OnChangeSlot(CassetteObject[] obj)
     {
-        //_tv.OnEnterCursor(true);
+        _tv.OnEnterCursor(true);
     }
 }

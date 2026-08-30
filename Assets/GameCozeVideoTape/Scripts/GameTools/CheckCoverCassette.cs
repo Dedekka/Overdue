@@ -25,7 +25,14 @@ public class CheckCoverCassette : MonoBehaviour
     {
         ChangeTexture();
         CheckPool();
-        CreateCover();
+        CreateCover(true);
+    }
+
+    [ContextMenu("SetBlankTape")]
+    private void SetBlankTape()
+    {
+        CheckPool();
+        CreateCover(false);
     }
 
     private void ChangeTexture()
@@ -33,7 +40,7 @@ public class CheckCoverCassette : MonoBehaviour
         _material.SetTexture(IndexTextureProperty, _cover);
     }
 
-    private void CreateCover()
+    private void CreateCover(bool isChangeMaterial)
     {
         for (int i = 0; i < _valueCover; i++)
         {
@@ -42,7 +49,11 @@ public class CheckCoverCassette : MonoBehaviour
             tempCover.transform.position = _position[i].position;
             tempCover.transform.rotation = _position[i].rotation;
             tempCover.transform.SetParent(_coverPool.transform);
+
+            if (isChangeMaterial)
+            {
             ChangeMaterial(tempCover, i);
+            }
         }
     }
 

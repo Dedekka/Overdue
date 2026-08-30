@@ -7,11 +7,12 @@ public class SettingsPlayer : ScriptableObject
     public Vector2 RotationOffset => _rotationOffset;
     public LayerMask GroundLayer => _groundLayer;
     public LayerMask LayerInteracteble => _layerInteracteble;
-    public float MovementSpeed => _movementSpeed;
+   
     public float GroundPointRadius => _groundPointRadius;
     public float Gravity => _gravity;
     public float SensitivityY => _sensitivityY;
     public float SensitivityX => _sensitivityX;
+    public float MovementSpeed => _movementSpeed;
     public float MainSensitivity => _sensitivity;
     public float CoefficientSensitivityAim => _coefficientSensitivityAim;
     public float CoefficientSpeedMoveForAim => _coefficientSpeedMoveForAim;
@@ -23,8 +24,8 @@ public class SettingsPlayer : ScriptableObject
     public float OffsetHandY => _offsetHandY;
     public float ForceDrop => _forceDrop;
     public float ForceDropPresent => _forceDropPresent;
+    public float SmoothForceLogic => _smoothForceLogic;
     public int CountSlotInventory => _countSlotInventory;
-
     #endregion
 
     [Header("Settings")]
@@ -58,6 +59,12 @@ public class SettingsPlayer : ScriptableObject
     [SerializeField] private float _offsetHandY = 3f;
     [SerializeField] private float _forceDrop = 3f;
     [SerializeField] private int _countSlotInventory = 10;
+
     [Header("InventoryPresent")]
     [SerializeField] private float _forceDropPresent = 10f;
+
+    [Header("PlayerSmoothLogic")]
+    [SerializeField] private float _smoothForceLogic = 15;
+
+
 }

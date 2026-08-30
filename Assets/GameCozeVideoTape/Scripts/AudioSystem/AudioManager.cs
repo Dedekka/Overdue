@@ -12,8 +12,12 @@ public class AudioManager : IDisposable
     private EventReference _drop;
 
     [Header("VoiceSound")]
-    private EventInstance _eventInstance;
+    private EventInstance _voiceInstance;
     private EventReference _tempVoice;
+
+    [Header("MusicSound")]
+    private EventInstance _musicInstance;
+    private EventReference _tempMusic;
 
     public AudioManager(AudioSettings audioSettings)
     {
@@ -25,14 +29,24 @@ public class AudioManager : IDisposable
 
     public void Dispose()
     {
-        StopVoice();
+        StopSmartEvent(ref _voiceInstance);
+        StopSmartEvent(ref _musicInstance);
     }
 
     public void PauseVoise(bool isPause)
     {
-        if (!CheckEvent()) { return; }
+        if (!CheckEvent(_voiceInstance)) { return; }
 
-        _eventInstance.setPaused(isPause);
+        _voiceInstance.setPaused(isPause);
+    }
+
+    public void PauseMusic(bool isPause)
+    {
+        Debug.Log($"AudioManager,Pre PauseMusic, isPause: {isPause} ");
+        if (!CheckEvent(_musicInstance)) { return; }
+
+        Debug.Log($"AudioManager, POst PauseMusic, isPause: {isPause} ");
+        _musicInstance.setPaused(isPause);
     }
 
     public void SetVoice(EventReference eventReference)
@@ -40,9 +54,28 @@ public class AudioManager : IDisposable
         _tempVoice = eventReference;
     }
 
+    public void SetMusic(EventReference eventReference)
+    {
+        _tempMusic = eventReference;
+        StopSmartEvent(ref _musicInstance);
+    }
+
     public void PlayVoice()
     {
-        PlayVoise(_tempVoice);
+        PlaySmartEvent(ref _tempVoice, ref _voiceInstance);
+    }
+
+    public void PlayMusic(bool _isPlaying)
+    {
+        Debug.Log($"AudioManager, PlayMusic, _isPlaying: {_isPlaying} ");
+        if (CheckEvent(_musicInstance))
+        {
+            PauseMusic(!_isPlaying);
+        }
+        else if (_isPlaying)
+        {
+            PlaySmartEvent(ref _tempMusic, ref _musicInstance);
+        }
     }
 
     public void PlayPickUp()
@@ -67,11 +100,16 @@ public class AudioManager : IDisposable
 
     public void StopVoice()
     {
-        if (CheckEvent())
+        StopSmartEvent(ref _voiceInstance);
+    }
+
+    public void StopSmartEvent(ref EventInstance eventInstance)
+    {
+        if (CheckEvent(eventInstance))
         {
-            _eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
-        _eventInstance.release();
+        eventInstance.release();
     }
 
     private void Play(EventReference eventReference)
@@ -82,54 +120,31 @@ public class AudioManager : IDisposable
         }
     }
 
-    private void PlayVoise(EventReference eventReference)
+    private void PlaySmartEvent(ref EventReference eventReference, ref EventInstance eventInstance)
     {
         if (eventReference.IsNull) { return; }
-        CheckPlayingVoise(eventReference);
-        _eventInstance.start();
+        CheckPlayingSmartEvent(ref eventReference, ref eventInstance);
+        eventInstance.start();
     }
 
-    private void CheckPlayingVoise(EventReference eventReference)
+    private void CheckPlayingSmartEvent(ref EventReference eventReference, ref EventInstance eventInstance)
     {
-        StopVoice();
-        _eventInstance = RuntimeManager.CreateInstance(eventReference);
+        StopSmartEvent(ref eventInstance);
+        eventInstance = RuntimeManager.CreateInstance(eventReference);
     }
 
-    private bool CheckEvent()
+    private bool CheckEvent(EventInstance eventInstance)
     {
-        if (!_eventInstance.isValid())
+        if (!eventInstance.isValid())
         {
             return false;
         }
 
-        _eventInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state);
+        eventInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state);
 
         return state == FMOD.Studio.PLAYBACK_STATE.PLAYING  // событие играет
         || state == FMOD.Studio.PLAYBACK_STATE.STARTING  // событие начинает играть
         || state == FMOD.Studio.PLAYBACK_STATE.SUSTAINING  // событие еще нельзя запустить
         || state == FMOD.Studio.PLAYBACK_STATE.STOPPING;  // событие еще нельзя запустить
     }
-
-   
-
-    //public void Play()
-    //{
-    //    if (!_sound.IsNull)
-    //    {
-    //        RuntimeManager.PlayOneShot(_sound);
-    //    }
-    //}
-
-    //public void PlayHit(Vector3 Pos = new Vector3()) // Вызов другого звука 
-    //{
-    //    FMOD.Studio.EventInstance playHit = RuntimeManager.CreateInstance(_sound); // Создаем событие Звука 
-
-    //    playHit.set3DAttributes(RuntimeUtils.To3DAttributes(Pos)); // Мы вводим информацию об положении в 3Д , а                       
-    //                                                               //(RuntimeUtils.To3DAttributes) переводит наш Vector3 В понятный для Код 
-
-    //    //playHit.setParameterByName("Size", transform.localScale.x);// Мы отправляем значение для параметра Size , по хорошему нужно 
-    //    // разобраться как использовать ID 
-    //    playHit.start(); // Запускаем воспроизведение 
-    //    playHit.release(); // освобождаем память от этого события 
-    //}
 }

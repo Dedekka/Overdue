@@ -32,8 +32,7 @@ public abstract class Rack: MonoBehaviour
 
     public virtual bool CheckCorrectSlot(int subGenreindex, ItemSettings itemSettings)
     {
-        //bool installState = itemSettings.IdGenre == (int)_genre && subGenreindex == itemSettings.IdSubGenre;
-        bool installState = true;
+        bool installState = itemSettings.IdGenre == (int)_genre && subGenreindex == itemSettings.IdSubGenre;
         OnChangeState(installState);
         return installState;
     }

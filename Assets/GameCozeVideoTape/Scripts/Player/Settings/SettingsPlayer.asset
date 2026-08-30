@@ -16,24 +16,24 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  _groundPointRadius: 2
+  _groundPointRadius: 1
   _gravity: -9.8
-  _speedLerp: 1
   _sensitivityY: 30
   _sensitivityX: 30
   _sensitivity: 0.01
   _coefficientSensitivityAim: 0.5
   _coefficientSpeedMoveForAim: 0.5
   _startFieldOfView: 60
-  _endFieldOfView: 30
+  _endFieldOfView: 35
   _speedChooseView: 100
   _layerInteracteble:
     serializedVersion: 2
     m_Bits: 129
-  _distanceInteracteble: 2.5
+  _distanceInteracteble: 3.5
   _rotationOffset: {x: 10, y: -20}
   _heightSlotY: 0.05
-  _offsetHandY: 0.1
+  _offsetHandY: 0.37
   _forceDrop: 3
   _countSlotInventory: 10
   _forceDropPresent: 1
+  _smoothForceLogic: 10

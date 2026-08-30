@@ -18,10 +18,6 @@ public class CassetteRenderer
         for (int i = 0; i < listCassette.Count; i++)
         {
             tempCassetteObject = listCassette[i];
-            if (tempCassetteObject is CassetteObjectPromo)
-            {
-                continue;
-            }
             _viewRenderer.Initialization(_material, tempCassetteObject.gameObject, tempCassetteObject.ItemSettings.MaterialIndex);
         }
     }
