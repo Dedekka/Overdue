@@ -91,6 +91,11 @@ public class ManagerCassette : IInitializable, IDisposable
 
         for (int i = 0; i < _listCassette.Count; i++)
         {
+            if (_listCassette[i] is CassetteObjectPromo)
+            {
+                continue;
+            }
+
             _cassetsDictionary.Add(_listCassette[i].Id, _listCassette[i]);
         }
     }
