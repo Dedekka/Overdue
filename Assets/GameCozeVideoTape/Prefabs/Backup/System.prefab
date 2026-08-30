@@ -184,6 +184,7 @@ MonoBehaviour:
   _prefabPresent: {fileID: 3761425653305267592, guid: af8470ce3165af0498b182943eafcc24, type: 3}
   _returnedPosition: {fileID: 0}
   _audioRecorder: {fileID: 0}
+  _testMoveItem: {fileID: 0}
 --- !u!1 &3926910032552830590
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 5777150591074028754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: -0.00000035762784}
-  m_LocalPosition: {x: 1.9937699, y: 1.5180001, z: -0.7223403}
+  m_LocalPosition: {x: 1.3882897, y: 1.3240001, z: -1.7423904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -517,8 +518,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _slotItem_0: {fileID: 0}
-  _bodyLogic: {fileID: 0}
+  _inventorySlotItem: {fileID: 0}
 --- !u!1 &8752889859600553088
 GameObject:
   m_ObjectHideFlags: 0
