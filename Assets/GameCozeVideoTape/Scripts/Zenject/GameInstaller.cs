@@ -121,10 +121,10 @@ public class GameInstaller : MonoInstaller
             .FromInstance(_slotMaterial)
             .AsCached();
 
-        Container.Bind<Material>()
-            .WithId("DecorMaterial")
-            .FromInstance(_decorMaterial)
-            .AsCached();
+        //Container.Bind<Material>()
+        //    .WithId("DecorMaterial")
+        //    .FromInstance(_decorMaterial)
+        //    .AsCached();
 
 
 
