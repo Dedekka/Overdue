@@ -226,6 +226,24 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UnLockLook"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee3801cb-a164-446b-8441-fe0821f6174c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Height"",
+                    ""type"": ""Value"",
+                    ""id"": ""6a696346-2226-4476-bb5e-b4a1a2584f5e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -679,6 +697,50 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""action"": ""ResetLookItemRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0694643b-6711-48a7-9e29-7a33ed0ba894"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UnLockLook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""2058c6b1-fcb7-40c0-98f4-2c05c75dbf17"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Height"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""050c7f7b-93e2-4c9e-8721-0e116d30b10d"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Height"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5b35eb76-f348-46d3-a1df-2798f3a1e77e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Height"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -1279,6 +1341,8 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_ResetLookItemRotate = m_Player.FindAction("ResetLookItemRotate", throwIfNotFound: true);
+        m_Player_UnLockLook = m_Player.FindAction("UnLockLook", throwIfNotFound: true);
+        m_Player_Height = m_Player.FindAction("Height", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1387,6 +1451,8 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_ResetLookItemRotate;
+    private readonly InputAction m_Player_UnLockLook;
+    private readonly InputAction m_Player_Height;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1459,6 +1525,14 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ResetLookItemRotate => m_Wrapper.m_Player_ResetLookItemRotate;
         /// <summary>
+        /// Provides access to the underlying input action "Player/UnLockLook".
+        /// </summary>
+        public InputAction @UnLockLook => m_Wrapper.m_Player_UnLockLook;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Height".
+        /// </summary>
+        public InputAction @Height => m_Wrapper.m_Player_Height;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1529,6 +1603,12 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
             @ResetLookItemRotate.started += instance.OnResetLookItemRotate;
             @ResetLookItemRotate.performed += instance.OnResetLookItemRotate;
             @ResetLookItemRotate.canceled += instance.OnResetLookItemRotate;
+            @UnLockLook.started += instance.OnUnLockLook;
+            @UnLockLook.performed += instance.OnUnLockLook;
+            @UnLockLook.canceled += instance.OnUnLockLook;
+            @Height.started += instance.OnHeight;
+            @Height.performed += instance.OnHeight;
+            @Height.canceled += instance.OnHeight;
         }
 
         /// <summary>
@@ -1585,6 +1665,12 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
             @ResetLookItemRotate.started -= instance.OnResetLookItemRotate;
             @ResetLookItemRotate.performed -= instance.OnResetLookItemRotate;
             @ResetLookItemRotate.canceled -= instance.OnResetLookItemRotate;
+            @UnLockLook.started -= instance.OnUnLockLook;
+            @UnLockLook.performed -= instance.OnUnLockLook;
+            @UnLockLook.canceled -= instance.OnUnLockLook;
+            @Height.started -= instance.OnHeight;
+            @Height.performed -= instance.OnHeight;
+            @Height.canceled -= instance.OnHeight;
         }
 
         /// <summary>
@@ -1990,6 +2076,20 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnResetLookItemRotate(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UnLockLook" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUnLockLook(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Height" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHeight(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
