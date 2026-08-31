@@ -26,7 +26,7 @@ public class FactoryPresent
        
         PresentSettings tempPresentSettings = _dataPresent.GetPresentSettings(id);
         tempPresent.SetPresentSettings(tempPresentSettings);
-        _viewRenderer.Initialization(_material, tempPresent.gameObject, tempPresentSettings.MaterialIndex);
+        //_viewRenderer.Initialization(_material, tempPresent.gameObject, tempPresentSettings.MaterialIndex);
         Physics.IgnoreCollision(tempPresent.Collider, _player.CharacterController);
         return tempPresent;
     }
