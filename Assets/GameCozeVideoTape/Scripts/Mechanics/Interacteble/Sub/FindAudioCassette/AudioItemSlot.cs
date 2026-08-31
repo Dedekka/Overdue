@@ -7,11 +7,19 @@ public class AudioItemSlot : AudioItem
     private AudioCassettsSystem _audioCassettsSystem;
     private Vector3 _startPosition;
     private Quaternion _startRotation;
+    private Sequence _currentSequence;
 
     [Inject]
     public void Construct(AudioCassettsSystem audioCassettsSystem)
     {
         _audioCassettsSystem = audioCassettsSystem;
+    }
+
+    public void SetSequence(Sequence currentSequence)
+    {
+        _currentSequence?.Kill();
+        _currentSequence = currentSequence;
+        _currentSequence.Play();
     }
 
     public void GetStartState(out Vector3 startPosition, out Quaternion startRotation)

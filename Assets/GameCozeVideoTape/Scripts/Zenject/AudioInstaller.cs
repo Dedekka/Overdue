@@ -8,7 +8,11 @@ public class AudioInstaller : MonoInstaller
     [SerializeField] private AudioSettings _audioSettings;
     [SerializeField] private int _maxAudioItem;
     [SerializeField] private Material _materialAudioItem;
+    [Header("AudioRecorderAnimation")]
+    [SerializeField] private Transform _buttonPlay;
+    [SerializeField] private Transform _coverPlate;
     [SerializeField] private Transform _recorderSlotPosition;
+    [SerializeField] private Transform _preRecorderSlotPosition;
 
 
     public override void InstallBindings()
@@ -22,12 +26,12 @@ public class AudioInstaller : MonoInstaller
 
     private void BindAudioCassettsSystem()
     {
-        Container.Bind<AudioCassettsSystem>()
+        Container.BindInterfacesAndSelfTo<AudioCassettsSystem>()
          .AsSingle();
 
         Container.Bind<AudioCassetteAnimation>()
          .AsSingle()
-         .WithArguments(_recorderSlotPosition);
+         .WithArguments(_recorderSlotPosition, _preRecorderSlotPosition);
 
         Container.Bind<ManagerAudioItem>()
          .AsSingle()
@@ -36,6 +40,10 @@ public class AudioInstaller : MonoInstaller
         Container.Bind<AudioItemRenderer>()
          .AsSingle()
          .WithArguments(_materialAudioItem);
+
+        Container.BindInterfacesAndSelfTo<AudioRecorderAnimation>()
+         .AsSingle()
+         .WithArguments(_buttonPlay, _coverPlate);
     }
 
     private void FindSub()
@@ -69,6 +77,9 @@ public class AudioInstaller : MonoInstaller
             .AsSingle();
 
         Container.BindInterfacesAndSelfTo<ImporterMusicControlAudio>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterRecorderAnimationMusicControl>()
             .AsSingle();
     }
 
