@@ -18,9 +18,6 @@ public class OperaRack : Rack
             OperaSettings operaSettings = _operaRack.GetOperaEpisode();
             installState = operaSettings.Id_Slot == slotndex;
         }
-        // опера ли это
-
-        // Сравнивать слот из оперы и занятый 
         OnChangeState(installState);
         return installState;
     }

@@ -24,6 +24,7 @@ public class CassetteObject : BazeInteracteble, IItemble
     private ManagerCassette _managerCassette;
     [SerializeField] private bool _isOpera;
 
+    private bool _isOpera;
     public event Action<CassetteObject> OnPickUp;
     public event Action OnDrop;
 

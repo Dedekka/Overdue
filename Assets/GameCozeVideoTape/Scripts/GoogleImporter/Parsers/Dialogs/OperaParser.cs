@@ -7,7 +7,7 @@ using UnityEngine.Video;
 public class OperaParser : IGoogleParser
 {
     private readonly MainGoogleSettings _mainGoogleSettings;
-    private OperaSettings _currentGenreSettings;
+    private OperaSettings _operaSettings;
 
     #region CharDialogs
     private const char _findCharacter = ':';
@@ -28,35 +28,36 @@ public class OperaParser : IGoogleParser
         {
             case "ID":
                 int id = Convert.ToInt32(token);
-                _currentGenreSettings = new OperaSettings()
+                _operaSettings = new OperaSettings()
                 {
                     Id = id,
                     OperaName = $"Episode_{id}"
                 };
-                _mainGoogleSettings.Opera.Add(_currentGenreSettings);
+                _mainGoogleSettings.Opera.Add(_operaSettings);
                 break;
 
             case "ID_Cassette":
-                _currentGenreSettings.Id_Cassette = Convert.ToInt32(token);
+                _operaSettings.Id_Cassette = Convert.ToInt32(token);
                 break;
+
             case "ID_Slot":
-                _currentGenreSettings.Id_Slot = Convert.ToInt32(token);
+                _operaSettings.Id_Slot = Convert.ToInt32(token);
                 break;
 
             case "Original_Title":
-                _currentGenreSettings.Original_Title = token;
+                _operaSettings.Original_Title = token;
                 break;
 
             case "Video":
-                _currentGenreSettings.Video = Resources.Load<VideoClip>(token);
+                _operaSettings.Video = Resources.Load<VideoClip>(token);
                 Debug.Log($"PresentsParser, Name:{token}");
                 break;
             case "Audio":
-                _currentGenreSettings.Audio = token;
+                _operaSettings.Audio = token;
                 Debug.Log($"PresentsParser, Name:{token}");
                 break;
             case "Subtitles":
-                _currentGenreSettings.Subtitles = GetSubtitles(token);
+                _operaSettings.Subtitles = GetSubtitles(token);
                 Debug.Log($"PresentsParser, Name:{token}");
                 break;
             default:

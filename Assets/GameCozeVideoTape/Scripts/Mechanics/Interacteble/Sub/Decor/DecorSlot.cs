@@ -4,10 +4,10 @@ using Zenject;
 
 public class DecorSlot : BazeInteracteble
 {
+    [SerializeField] private Material _decorMaterial;
     [SerializeField] private DecorRender _decorRender;
     private bool _isActiveSlot = false;
     [Inject(Id = "SlotMaterial")] private Material _slotMaterial;
-    [Inject(Id = "DecorMaterial")] private Material _decorMaterial;
 
     public event Action OnInteract;
     public event Action<bool> OnEnterCursor;
