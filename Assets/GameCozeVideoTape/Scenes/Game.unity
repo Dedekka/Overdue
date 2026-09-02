@@ -344292,6 +344292,17 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!114 &1346678389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9116683068512693662, guid: 991444ae678f27348b2e57f512b63587, type: 3}
+  m_PrefabInstance: {fileID: 6429075429885743445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f8d5376e876294480aeb804c4d7b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Restart
 --- !u!43 &1347888109
 Mesh:
   m_ObjectHideFlags: 0
@@ -566982,6 +566993,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2136346318}
+    - target: {fileID: 6359651198435313838, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1346678389}
+    - target: {fileID: 6359651198435313838, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
     - target: {fileID: 6361818564182822050, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
       propertyPath: m_Mesh
       value: 
