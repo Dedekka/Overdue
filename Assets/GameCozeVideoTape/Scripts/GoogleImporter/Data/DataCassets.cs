@@ -17,6 +17,8 @@ public class DataCassets : ScriptableObject
     public void GetSettings(List<CassetteObject> cassettes)
     {
         CassetteObject tempCassette;
+        int countcassettes;
+        int tempcountcassette = 1;
         for (int i = 0; i < cassettes.Count; i++)
         {
             tempCassette = cassettes[i];

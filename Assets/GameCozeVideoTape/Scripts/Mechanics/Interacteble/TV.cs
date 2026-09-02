@@ -36,6 +36,7 @@ public class TV : MonoBehaviour, ISloteble
         _tvSlot.OnPlayCasset -= OnPlayCasset;
     }
 
+
     //public void ActiveSlot(bool isActive)
     //{
     //    _tvSlot.gameObject.SetActive(isActive);
