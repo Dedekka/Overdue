@@ -43,7 +43,7 @@ public class Restart : MonoBehaviour
 
     private void ResetLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     private void SaveLevel()

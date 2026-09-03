@@ -1,6 +1,7 @@
 using SaveLoadSystem;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
@@ -9,6 +10,8 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private Transform _hand;
+    [SerializeField] private Button _buttonExit;
+    [SerializeField] private Button _buttonBackMenu;
     [Header("Materials")]
     [SerializeField] private Material _cassetteMaterial;
     [SerializeField] private Material _presentMaterial;
@@ -33,10 +36,6 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private Transform _returnedPosition;
     [Header("AudioCassettsSystem")]
     [SerializeField] private AudioRecorder _audioRecorder;
-
-
-    //private DataPresent _presentData;
-
 
     public override void InstallBindings()
     {
@@ -103,7 +102,6 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<FactoryPresent>()
         .AsSingle()
-        //.WithArguments(_prefabPresent, _presentData, _presentMaterial);
         .WithArguments(_prefabPresent, _presentMaterial);
 
         Container.Bind<ReturnedMover>()
@@ -142,9 +140,6 @@ public class GameInstaller : MonoInstaller
 
     private void FindSub()
     {
-        //_dataCassets = Resources.Load<DataCassets>(PathConst.DataCassetsAsset);
-        //_dataLanguage = Resources.Load<DataLanguage>(PathConst.LanguageCassetsAsset);
-        //_presentData = Resources.Load<DataPresent>(PathConst.DataPresentAsset);
         Container.Bind<DataCassets>()
            .FromResource(PathConst.DataCassetsAsset)
            .AsSingle();
@@ -165,6 +160,10 @@ public class GameInstaller : MonoInstaller
            .FromInstance(_playerUi)
            .AsSingle()
            .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<ImporterButtonPauseMenuControlLogic>()
+          .AsSingle()
+          .WithArguments(_buttonBackMenu, _buttonExit);
     }
 
     private void BindItem()
