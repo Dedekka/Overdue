@@ -1,5 +1,3 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -14,6 +12,12 @@ public class MenuInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindSub();
+        BindImporter();
+    }
+
+    private void BindImporter()
+    {
+       
     }
 
     private void BindSub()

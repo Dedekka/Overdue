@@ -4,14 +4,14 @@ using Zenject;
 public class ImporterAimSensitivity : IDisposable, IInitializable
 {
     private PlayerAim _testPlayerAim;
-    private PlayerLook _testPlayerLook;
+    private PlayerLook _playerLook;
     private float _coefficientSensitivityAim;
     private readonly float _normalCoefficientSensitivityAim;
 
     public ImporterAimSensitivity(PlayerAim testPlayerAim, PlayerLook testPlayerLook, SettingsPlayer settingsPlayer)
     {
         _testPlayerAim = testPlayerAim;
-        _testPlayerLook = testPlayerLook;
+        _playerLook = testPlayerLook;
         _normalCoefficientSensitivityAim = settingsPlayer.CoefficientSensitivityAim;
     }
 
@@ -28,6 +28,6 @@ public class ImporterAimSensitivity : IDisposable, IInitializable
     private void OnAim(bool isAim)
     {
         _coefficientSensitivityAim = isAim ? _normalCoefficientSensitivityAim : 1;
-        _testPlayerLook.ChangeCoefficientSensitivityForAim(_coefficientSensitivityAim);
+        _playerLook.ChangeCoefficientSensitivityForAim(_coefficientSensitivityAim);
     }
 }

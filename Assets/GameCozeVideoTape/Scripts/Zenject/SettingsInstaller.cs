@@ -34,6 +34,18 @@ public class SettingsInstaller : MonoInstaller
           .AsSingle()
           .WithArguments(_sliderMain, _sliderEffects, _sliderVoice, _sliderMusic);
 
+        Container.BindInterfacesAndSelfTo<ImporterSliderControlSensitivity>()
+          .AsSingle()
+          .WithArguments(_sliderSensitivity);
+
+        Container.BindInterfacesAndSelfTo<ControlSensitivity>()
+          .AsSingle();
+
+        
+
+
+        //ImporterSliderControlSensitivity
+        //ControlSensitivity
     }
 
     private void BindControlLogic()

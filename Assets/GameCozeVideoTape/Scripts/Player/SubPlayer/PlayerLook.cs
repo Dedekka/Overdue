@@ -9,7 +9,7 @@ public class PlayerLook
     private float _sensitivity;
     private float _xRotation = 0;
     private float _coefficientSensitivityAim;
-
+    
     public PlayerLook(SettingsPlayer settingsPlayer, Transform headSlot, Transform body)
     {
         _headSlot = headSlot;

@@ -28,12 +28,10 @@ public class ImporterSliderSoundSystem : IDisposable, IInitializable
         _soundSystem.OnLoadSoundSystem += UpdateSliderVolume;
     }
 
-
     public void Dispose()
     {
         _soundSystem.OnLoadSoundSystem -= UpdateSliderVolume;
     }
-
 
     private void UpdateSliderVolume()
     {
