@@ -58,7 +58,11 @@ public class CassetteObject : BazeInteracteble, IItemble
     public void SetSettings(ItemSettings itemSettings)
     {
         _itemSettings = itemSettings;
-        Description = _itemSettings.Original_Title;
+    }
+
+    public void SetLanguage(string nameTitle)
+    {
+        Description = nameTitle;
     }
 
     public void SetOpera()

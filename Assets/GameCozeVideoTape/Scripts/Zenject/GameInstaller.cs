@@ -15,6 +15,7 @@ public class GameInstaller : MonoInstaller
     [Header("Materials")]
     [SerializeField] private Material _cassetteMaterial;
     [SerializeField] private Material _presentMaterial;
+    [SerializeField] private ControlCassetteLanguage _controlCassetteLanguage;
     [Header("Items")]
     [SerializeField] private PickUpSettings _pickUpSettings;
     [SerializeField] private ShelfSlotSettings _shelfSlotSettings;
@@ -194,6 +195,14 @@ public class GameInstaller : MonoInstaller
 
     private void BindSystem()
     {
+        Container.Bind<ControlCassetteLanguage>()
+         .FromInstance( _controlCassetteLanguage)
+         .AsSingle();
+
+
+        Container.BindInterfacesAndSelfTo<ControlCassetteLanguage>()
+           .AsSingle();
+
         Container.BindInterfacesAndSelfTo<ManagerCassette>()
            .AsSingle()
            .WithArguments(_maxCassette);//, _dataLanguage);

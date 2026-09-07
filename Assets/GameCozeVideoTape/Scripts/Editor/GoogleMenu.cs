@@ -5,14 +5,15 @@ using UnityEngine;
 public class GoogleMenu
 {
     #region System
-    private const string SpreadSheet_id = "1E8nV_8KQ_zj8EQ3zbHRbxc3EquugKUKNG12jmPgthus";
+    private const string CassetteDataSheet_id = "1E8nV_8KQ_zj8EQ3zbHRbxc3EquugKUKNG12jmPgthus";
+    private const string CassetteLanguageSheet_id = "1v4cQrW74jHJX6wswTOJB2ghPB05at2QY9R5-65hnTJk";
     private const string Credentials_path = "H:/_WorkProject/Overdue/KeyGoogleSheets/overdue-503208-d39af501a561.json";
     //private const string Credentials_path = "overdue-503208-d39af501a561.json";
     #endregion
 
     #region Sheets Name
     private const string Items_sheets_name = "BazeCassette";
-    private const string Language_sheets_name = "Language";
+    private const string Language_sheets_name = "CassetteLanguage";
     private const string Genre_sheets_name = "Genre";
     private const string SubGenre_sheets_name = "SubGenre";
     private const string Present_sheets_name = "BazePresent";
@@ -33,7 +34,7 @@ public class GoogleMenu
     [MenuItem("Google/LoadGoogleSheets")]
     private static async void LoadItemsSettings()
     {
-        GoogleImporter sheetsImporter = new GoogleImporter(Credentials_path, SpreadSheet_id);
+        GoogleImporter sheetsImporter = new GoogleImporter(Credentials_path, CassetteDataSheet_id);
         MainGoogleSettings gameSettings = new MainGoogleSettings();
 
         await Genre(gameSettings, sheetsImporter);
@@ -41,6 +42,10 @@ public class GoogleMenu
         await Dialogs(gameSettings, sheetsImporter);
         await Opera(gameSettings, sheetsImporter);
         await MusicCassette(gameSettings, sheetsImporter);
+
+         sheetsImporter = new GoogleImporter(Credentials_path, CassetteLanguageSheet_id);
+        await ItemLanguage(gameSettings, sheetsImporter);
+
        
         SaveSettings(gameSettings);
     }
@@ -112,8 +117,12 @@ public class GoogleMenu
     private static async UniTask Item(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
     {
         ItemSettingsParser ItemParser = new ItemSettingsParser(gameSettings);
-        ItemLanguageParser LanguageParser = new ItemLanguageParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(Items_sheets_name, ItemParser);
+    }
+
+    private static async UniTask ItemLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        ItemLanguageParser LanguageParser = new ItemLanguageParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(Language_sheets_name, LanguageParser);
     }
 
