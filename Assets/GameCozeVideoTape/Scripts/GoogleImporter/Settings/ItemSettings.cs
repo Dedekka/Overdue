@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,21 @@ public class ItemLanguage
     public string ES;
     public string JPN;
     public string ZHCN;
+
+    public string GetLanguage(Language language)
+    {
+        string currentLanguage = language switch
+        {
+            Language.En => En,
+            Language.Ru => Ru,
+            Language.DE => DE,
+            Language.ES => ES,
+            Language.JPN => JPN,
+            Language.ZHCN => ZHCN,
+            _ => throw new NotImplementedException()
+        };
+        return currentLanguage;
+    }
 }
 
 [Serializable]

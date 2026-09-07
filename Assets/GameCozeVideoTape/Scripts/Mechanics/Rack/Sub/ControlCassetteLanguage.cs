@@ -4,16 +4,18 @@ public class ControlCassetteLanguage
 {
     private DataLanguage _dataLanguage;
     private Language _currentLanguage;
+    private ControlSettings _controlSettings;
 
-    public ControlCassetteLanguage(DataLanguage dataLanguage)
+    public ControlCassetteLanguage(DataLanguage dataLanguage, ControlSettings controlSettings)
     {
         _dataLanguage = dataLanguage;
-        _currentLanguage = Language.En;
+        _controlSettings = controlSettings;
     }
 
     public void GetLanguage(List<CassetteObject> cassettes)
     {
         CassetteObject tempCassette;
+        _currentLanguage = _controlSettings.Language;
         for (int i = 0; i < cassettes.Count; i++)
         {
             tempCassette = cassettes[i];
@@ -24,8 +26,8 @@ public class ControlCassetteLanguage
     private string SetLanguage(int id)
     {
         ItemLanguage ItemLanguage = _dataLanguage.GetItem(id);
-
-        return ItemLanguage.En;
+       return ItemLanguage.GetLanguage(_currentLanguage);
+        //return ItemLanguage.En;
     }
 }
 

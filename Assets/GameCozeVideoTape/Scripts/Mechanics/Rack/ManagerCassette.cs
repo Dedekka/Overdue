@@ -59,6 +59,11 @@ public class ManagerCassette : IInitializable, IDisposable
         return _dataCassets.GetItem(Id);
     }
 
+    public void ChangeLanguage()
+    {
+        _controlCassetteLanguage.GetLanguage(_listCassette);
+    }
+
     private void CheckMaxCassetteObject()
     {
         //_maxCassette = _maxCassette > 0 ? _maxCassette : _dataCassets.GetMaxCassette();

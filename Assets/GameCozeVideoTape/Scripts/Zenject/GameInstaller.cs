@@ -15,7 +15,7 @@ public class GameInstaller : MonoInstaller
     [Header("Materials")]
     [SerializeField] private Material _cassetteMaterial;
     [SerializeField] private Material _presentMaterial;
-    [SerializeField] private ControlCassetteLanguage _controlCassetteLanguage;
+    //[SerializeField] private ControlCassetteLanguage _controlCassetteLanguage;
     [Header("Items")]
     [SerializeField] private PickUpSettings _pickUpSettings;
     [SerializeField] private ShelfSlotSettings _shelfSlotSettings;
@@ -152,7 +152,6 @@ public class GameInstaller : MonoInstaller
         Container.Bind<DataPresent>()
            .FromResource(PathConst.DataPresentAsset)
            .AsSingle();
-
     }
 
     private void BindUI()
@@ -196,12 +195,7 @@ public class GameInstaller : MonoInstaller
     private void BindSystem()
     {
         Container.Bind<ControlCassetteLanguage>()
-         .FromInstance( _controlCassetteLanguage)
          .AsSingle();
-
-
-        Container.BindInterfacesAndSelfTo<ControlCassetteLanguage>()
-           .AsSingle();
 
         Container.BindInterfacesAndSelfTo<ManagerCassette>()
            .AsSingle()
@@ -236,6 +230,9 @@ public class GameInstaller : MonoInstaller
     private void BindImporter()
     {
         Container.BindInterfacesAndSelfTo<SaveInventoryImporter>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterControlLanguageCassette>()
          .AsSingle();
 
         Container.BindInterfacesAndSelfTo<PauseSystemPlayerStateImporter>()
