@@ -15,18 +15,18 @@ public class MenuInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindSub();
-        BindImporter();
+        //BindImporter();
     }
 
-    private void BindImporter()
-    {
-        LocalizationSettings.SelectedLocaleChanged += LocalizationSettings_SelectedLocaleChanged;
-    }
+    //private void BindImporter()
+    //{
+    //    LocalizationSettings.SelectedLocaleChanged += LocalizationSettings_SelectedLocaleChanged;
+    //}
 
-    private void LocalizationSettings_SelectedLocaleChanged(UnityEngine.Localization.Locale obj)
-    {
-        Debug.Log($"LocalizationSettings_SelectedLocaleChanged, obj.LocaleName:{obj.LocaleName}");
-    }
+    //private void LocalizationSettings_SelectedLocaleChanged(UnityEngine.Localization.Locale obj)
+    //{
+    //    Debug.Log($"LocalizationSettings_SelectedLocaleChanged, obj.LocaleName:{obj.LocaleName}");
+    //}
 
     private void BindSub()
     {

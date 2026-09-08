@@ -7,7 +7,7 @@ using Zenject;
 public class GameInstaller : MonoInstaller
 {
     [Header("PauseMenu")]
-    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _pauseCanvas;
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private Transform _hand;
     [SerializeField] private Button _buttonExit;
@@ -223,7 +223,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PauseSystem>()
          .AsSingle()
-          .WithArguments(_pauseMenu);
+          .WithArguments(_pauseCanvas);
 
     }
 
