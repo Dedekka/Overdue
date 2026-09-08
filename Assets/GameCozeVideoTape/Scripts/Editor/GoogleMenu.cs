@@ -16,6 +16,8 @@ public class GoogleMenu
     private const string Language_sheets_name = "CassetteLanguage";
     private const string MusicLanguage_sheets_name = "MusicCassetteLanguage";
     private const string DialogueLanguage_sheets_name = "DialogueLanguage";
+    private const string OperaLanguage_sheets_name = "OperaLanguage";
+    private const string PresentLanguage_sheets_name = "PresentLanguage";
     private const string Genre_sheets_name = "Genre";
     private const string SubGenre_sheets_name = "SubGenre";
     private const string Present_sheets_name = "BazePresent";
@@ -49,8 +51,8 @@ public class GoogleMenu
         await ItemLanguage(gameSettings, sheetsImporter);
         await MusicLanguage(gameSettings, sheetsImporter);
         await DialogsLanguage(gameSettings, sheetsImporter);
-
-        
+        await OperaLanguage(gameSettings, sheetsImporter);
+        await PresentLanguage(gameSettings, sheetsImporter);
 
         SaveSettings(gameSettings);
     }
@@ -102,10 +104,17 @@ public class GoogleMenu
         dataMusicLanguage.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataMusicLanguagePath, dataMusicLanguage);
 
-
         DataDialogLanguage dataDialogLanguage = ScriptableObject.CreateInstance<DataDialogLanguage>();
         dataDialogLanguage.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataDialogLanguagePath, dataDialogLanguage);
+
+        DataOperaLanguage dataOperaLanguage = ScriptableObject.CreateInstance<DataOperaLanguage>();
+        dataOperaLanguage.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataOperaLanguagePath, dataOperaLanguage);
+
+        DataPresentLanguage dataPresentLanguage = ScriptableObject.CreateInstance<DataPresentLanguage>();
+        dataPresentLanguage.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataPresentLanguagePath, dataPresentLanguage);
 
         
     }
@@ -152,6 +161,18 @@ public class GoogleMenu
     {
         DialogsLanguageParser LanguageParser = new DialogsLanguageParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(DialogueLanguage_sheets_name, LanguageParser);
+    }
+
+    private static async UniTask OperaLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        OperaLanguageParser operaLanguageParser = new OperaLanguageParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(OperaLanguage_sheets_name, operaLanguageParser);
+    }
+
+    private static async UniTask PresentLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        PresentLanguageParser operaLanguageParser = new PresentLanguageParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(PresentLanguage_sheets_name, operaLanguageParser);
     }
 
     private static async UniTask Dialogs(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)

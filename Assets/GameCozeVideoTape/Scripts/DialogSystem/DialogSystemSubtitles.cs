@@ -19,7 +19,7 @@ public class DialogSystemSubtitles : IRealizerDialogueble
         _operaSettings = _dataOpera.GetOperaSettingsForIdCassette(id);
         isSuccess = _operaSettings != null;
         Debug.Log($"CheckId, isSuccess: {isSuccess}");
-        Debug.Log($"CheckId, _operaSettings, null: {_operaSettings.Subtitles == null}");
+        //Debug.Log($"CheckId, _operaSettings, null: {_operaSettings.Subtitles == null}");
 
         return isSuccess;
     }
@@ -31,8 +31,8 @@ public class DialogSystemSubtitles : IRealizerDialogueble
 
     public IDialoguebleLine GetDialogLine(int index)
     {
-        Debug.Log($"_operaSettings.Subtitles, Null: {_operaSettings.Subtitles == null}");
-        _currentSubtitles = _operaSettings.Subtitles;
+        //Debug.Log($"_operaSettings.Subtitles, Null: {_operaSettings.Subtitles == null}");
+        //_currentSubtitles = _operaSettings.Subtitles;
 
         return _currentSubtitles.DialogLine;
     }

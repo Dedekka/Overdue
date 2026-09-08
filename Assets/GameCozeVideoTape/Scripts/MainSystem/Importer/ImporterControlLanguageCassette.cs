@@ -6,11 +6,13 @@ public class ImporterControlLanguageCassette: IInitializable, IDisposable
 {
     private ControlLanguage _controlLanguage;
     private ManagerCassette _managerCassette;
+    private ManagerAudioItem _managerAudioItem;
 
-    public ImporterControlLanguageCassette(ControlLanguage controlLanguage, ManagerCassette managerCassette)
+    public ImporterControlLanguageCassette(ControlLanguage controlLanguage, ManagerCassette managerCassette, ManagerAudioItem managerAudioItem)
     {
         _controlLanguage = controlLanguage;
         _managerCassette = managerCassette;
+        _managerAudioItem = managerAudioItem;
     }
 
     public void Initialize()
@@ -26,5 +28,6 @@ public class ImporterControlLanguageCassette: IInitializable, IDisposable
     private void OnChangeLanguage()
     {
         _managerCassette.ChangeLanguage();
+        _managerAudioItem.ChangeLanguage();
     }
 }

@@ -25,7 +25,7 @@ public class TvManager : IDisposable, IInitializable
         _operaChecker = operaChecker;
         //_dataOpera = dataOpera;
     }
-    
+
     public void Initialize()
     {
         _videoControl.ClearVideo();
@@ -43,10 +43,9 @@ public class TvManager : IDisposable, IInitializable
         _videoControl.Initialization(videoPlayer);
     }
 
-    public void OnPlayCasset(int currentIdOpera)
+    public void OnPlayCasset(int currentIdCassetteOpera)
     {
-        
-        bool isCorrectEpisode = CheckEpisode(currentIdOpera);
+        bool isCorrectEpisode = CheckEpisode(currentIdCassetteOpera);
         if (isCorrectEpisode)
         {
             bool successStartDialog = _dialogSubtitles.StartWaitSubtitles(_currentEpisode);

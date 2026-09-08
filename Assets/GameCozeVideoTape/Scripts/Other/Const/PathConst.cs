@@ -7,12 +7,16 @@ public static class PathConst
     public const string DataMusicCassetsPath = "Assets/Resources/Data/DataMusicCassets.asset";
     public const string DataMusicLanguagePath = "Assets/Resources/Data/DataMusicLanguage.asset";
     public const string DataDialogLanguagePath = "Assets/Resources/Data/DataDialogLanguage.asset";
+    public const string DataOperaLanguagePath = "Assets/Resources/Data/DataOperaLanguage.asset";
+    public const string DataPresentLanguagePath = "Assets/Resources/Data/DataPresentLanguage.asset";
     public const string LanguageCassetsPath = "Assets/Resources/Data/LanguageCassets.asset";
     public const string GenrePath = "Assets/Resources/Data/Genre.asset";
 
     public const string DataCassetsAsset = "Data/DataCassets";
     public const string DataMusicCassetsAsset = "Data/DataMusicCassets";
+    public const string DataMusicLanguageAsset = "Data/DataMusicLanguage";
     public const string DataDialogueAsset = "Data/DataDialogue";
+    public const string DataDialogLanguageAsset = "Data/DataDialogLanguage";
     public const string DataOperaAsset = "Data/DataOpera";
     public const string LanguageCassetsAsset ="Data/LanguageCassets";
     public const string DataPresentAsset = "Data/DataPresent";

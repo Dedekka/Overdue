@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -13,7 +12,17 @@ public class OperaSettings
     public string Original_Title;
     public string Audio;
     public VideoClip Video;
-    public Subtitles Subtitles;
+    //public Subtitles Subtitles;
+}
+
+[Serializable]
+public class OperaLanguageSettings
+{
+    public string OperaName; // "Episode_" + Id = OperaName
+    public int Id;
+    public int Id_Cassette;
+    public Subtitles En_Subtitles;
+    public Subtitles Rus_Subtitles;
 }
 
 [Serializable]

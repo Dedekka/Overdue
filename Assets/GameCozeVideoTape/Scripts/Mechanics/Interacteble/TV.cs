@@ -59,7 +59,7 @@ public class TV : MonoBehaviour, ISloteble
         if (!IsEmpty) { return; }
         if (_operatingChecker.CheckHand(true))
         {
-            _tvManager.OnPlayCasset(_operatingChecker.CurrentIdOpera);
+            _tvManager.OnPlayCasset(_operatingChecker.CurrentIdCassetteOpera);
             Install();
         }
     }

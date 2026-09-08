@@ -14,7 +14,7 @@ public class DialogEvent
 
     public void SetDialogSettings(DialogSettings dialogLine)
     {
-        _dialogueEventData = dialogLine.DialogueEventData;
+        //_dialogueEventData = dialogLine.DialogueEventData;
     }
 
     public void StartEvent()
