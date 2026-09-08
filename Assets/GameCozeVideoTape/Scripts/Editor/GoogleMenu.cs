@@ -14,6 +14,8 @@ public class GoogleMenu
     #region Sheets Name
     private const string Items_sheets_name = "BazeCassette";
     private const string Language_sheets_name = "CassetteLanguage";
+    private const string MusicLanguage_sheets_name = "MusicCassetteLanguage";
+    private const string DialogueLanguage_sheets_name = "DialogueLanguage";
     private const string Genre_sheets_name = "Genre";
     private const string SubGenre_sheets_name = "SubGenre";
     private const string Present_sheets_name = "BazePresent";
@@ -45,8 +47,11 @@ public class GoogleMenu
 
          sheetsImporter = new GoogleImporter(Credentials_path, CassetteLanguageSheet_id);
         await ItemLanguage(gameSettings, sheetsImporter);
+        await MusicLanguage(gameSettings, sheetsImporter);
+        await DialogsLanguage(gameSettings, sheetsImporter);
 
-       
+        
+
         SaveSettings(gameSettings);
     }
 
@@ -92,6 +97,17 @@ public class GoogleMenu
         DataMusicCassets dataMusicCassets = ScriptableObject.CreateInstance<DataMusicCassets>();
         dataMusicCassets.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataMusicCassetsPath, dataMusicCassets);
+
+        DataMusicLanguage dataMusicLanguage = ScriptableObject.CreateInstance<DataMusicLanguage>();
+        dataMusicLanguage.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataMusicLanguagePath, dataMusicLanguage);
+
+
+        DataDialogLanguage dataDialogLanguage = ScriptableObject.CreateInstance<DataDialogLanguage>();
+        dataDialogLanguage.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataDialogLanguagePath, dataDialogLanguage);
+
+        
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
@@ -124,6 +140,18 @@ public class GoogleMenu
     {
         ItemLanguageParser LanguageParser = new ItemLanguageParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(Language_sheets_name, LanguageParser);
+    }
+
+    private static async UniTask MusicLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        MusicLanguageParser LanguageParser = new MusicLanguageParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(MusicLanguage_sheets_name, LanguageParser);
+    }
+
+    private static async UniTask DialogsLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        DialogsLanguageParser LanguageParser = new DialogsLanguageParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(DialogueLanguage_sheets_name, LanguageParser);
     }
 
     private static async UniTask Dialogs(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)

@@ -15,13 +15,15 @@ public class DialogSettings
 }
 
 
-//[Serializable]
-//public class CharactersSettings
-//{
-//    public int Id;
-//    public string OriginalName;
-//    public string Ru;
-//}
+
+[Serializable]
+public class DialogLanguageSettings
+{
+    public string DialogueName;
+    public int Id;
+    public List<DialogLine> En_DialogLines;
+    public List<DialogLine> Rus_DialogLines;
+}
 
 [Serializable]
 public class DialogLine : IDialoguebleLine
