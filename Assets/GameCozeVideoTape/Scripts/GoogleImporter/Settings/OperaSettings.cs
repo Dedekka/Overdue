@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -11,7 +12,7 @@ public class OperaSettings
     public int Id_Slot;
     public string Original_Title;
     public string Audio;
-    public VideoClip Video;
+    //public VideoClip Video;
     //public Subtitles Subtitles;
 }
 
@@ -23,6 +24,21 @@ public class OperaLanguageSettings
     public int Id_Cassette;
     public Subtitles En_Subtitles;
     public Subtitles Rus_Subtitles;
+    //public VideoClip En_Video;
+    //public VideoClip Rus_Video;
+
+
+    public Subtitles GetLanguage(Language language)
+    {
+        Subtitles subtitles = language switch
+        {
+            Language.En => En_Subtitles,
+            Language.Ru => Rus_Subtitles,
+            _ => throw new NotImplementedException()
+        };
+        return subtitles;
+    }
+
 }
 
 [Serializable]
@@ -30,6 +46,7 @@ public class Subtitles
 {
     public float TimeStart;
     public SubtitlesLine DialogLine;
+    public VideoClip Video;
 }
 
 [Serializable]

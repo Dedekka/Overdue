@@ -43,9 +43,9 @@ public class TvManager : IDisposable, IInitializable
         _videoControl.Initialization(videoPlayer);
     }
 
-    public void OnPlayCasset(int currentIdCassetteOpera)
+    public void OnPlayCasset()
     {
-        bool isCorrectEpisode = CheckEpisode(currentIdCassetteOpera);
+        bool isCorrectEpisode = CheckEpisode();
         if (isCorrectEpisode)
         {
             bool successStartDialog = _dialogSubtitles.StartWaitSubtitles(_currentEpisode);
@@ -75,17 +75,19 @@ public class TvManager : IDisposable, IInitializable
         PlayEpisode();
     }
 
-    private bool CheckEpisode(int idEpisode)
+    private bool CheckEpisode()
     {
-        _operaChecker.CheckEpisode(idEpisode);
+        //_operaChecker.CheckEpisode(idEpisode);
         _currentEpisode = _operaChecker.GetOperaEpisode();
+        // МБ здесь же брать локализацию
+
         //_currentEpisode = _dataOpera.GetOperaSettings(idEpisode);
         return _currentEpisode != null;
     }
 
     private void SetEpisode()
     {
-        _videoControl.SetVideo(_currentEpisode);
+        _videoControl.SetVideo();
         _dialogSound.SetFmodSound(_currentEpisode.Audio);
     }
 

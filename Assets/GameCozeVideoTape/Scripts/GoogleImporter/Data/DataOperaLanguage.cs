@@ -29,7 +29,7 @@ public class DataOperaLanguage : ScriptableObject
         _cassetsData = new Dictionary<int, OperaLanguageSettings>();
         foreach (var item in itemSettings)
         {
-            _cassetsData.Add(item.Id, item);
+            _cassetsData.Add(item.Id_Cassette, item);
         }
     }
 }

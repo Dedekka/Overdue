@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class OperaLanguageParser : IGoogleParser
 {
@@ -45,6 +46,16 @@ public class OperaLanguageParser : IGoogleParser
                 break;
             case "Rus":
                 _operaSettings.Rus_Subtitles = GetSubtitles(token);
+                Debug.Log($"PresentsParser, Name:{token}");
+                break;
+
+            case "En_Video":
+                _operaSettings.En_Subtitles.Video = Resources.Load<VideoClip>(token);
+                Debug.Log($"PresentsParser, Name:{token}");
+                break;
+
+            case "Rus_Video":
+                _operaSettings.Rus_Subtitles.Video = Resources.Load<VideoClip>(token);
                 Debug.Log($"PresentsParser, Name:{token}");
                 break;
 

@@ -20,4 +20,6 @@ public static class PathConst
     public const string DataOperaAsset = "Data/DataOpera";
     public const string LanguageCassetsAsset ="Data/LanguageCassets";
     public const string DataPresentAsset = "Data/DataPresent";
+    public const string DataOperaLanguageAsset = "Data/DataOperaLanguage";
+    public const string DataPresentLanguageAsset = "Data/DataPresentLanguage";
 }

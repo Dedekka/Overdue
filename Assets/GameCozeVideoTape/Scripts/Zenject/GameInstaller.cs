@@ -81,6 +81,9 @@ public class GameInstaller : MonoInstaller
         Container.Bind<OperaChecker>()
          .AsSingle();
 
+        Container.Bind<ControlOperaLanguage>()
+         .AsSingle();
+
         //Container.Bind<TVAudio>()
         //  .AsSingle();
 
@@ -151,6 +154,14 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<DataPresent>()
            .FromResource(PathConst.DataPresentAsset)
+           .AsSingle();
+
+        Container.Bind<DataOperaLanguage>()
+           .FromResource(PathConst.DataOperaLanguageAsset)
+           .AsSingle();
+
+        Container.Bind<DataPresentLanguage>()
+           .FromResource(PathConst.DataPresentLanguageAsset)
            .AsSingle();
     }
 

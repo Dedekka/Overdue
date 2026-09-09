@@ -36,7 +36,6 @@ public class TV : MonoBehaviour, ISloteble
         _tvSlot.OnPlayCasset -= OnPlayCasset;
     }
 
-
     //public void ActiveSlot(bool isActive)
     //{
     //    _tvSlot.gameObject.SetActive(isActive);
@@ -59,7 +58,7 @@ public class TV : MonoBehaviour, ISloteble
         if (!IsEmpty) { return; }
         if (_operatingChecker.CheckHand(true))
         {
-            _tvManager.OnPlayCasset(_operatingChecker.CurrentIdCassetteOpera);
+            _tvManager.OnPlayCasset();
             Install();
         }
     }

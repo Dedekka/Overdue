@@ -48,10 +48,10 @@ public class OperaParser : IGoogleParser
                 _operaSettings.Original_Title = token;
                 break;
 
-            case "Video":
-                _operaSettings.Video = Resources.Load<VideoClip>(token);
-                Debug.Log($"PresentsParser, Name:{token}");
-                break;
+            //case "Video":
+            //    _operaSettings.Video = Resources.Load<VideoClip>(token);
+            //    Debug.Log($"PresentsParser, Name:{token}");
+            //    break;
             case "Audio":
                 _operaSettings.Audio = token;
                 Debug.Log($"PresentsParser, Name:{token}");

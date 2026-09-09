@@ -66,6 +66,17 @@ public class PresentLanguageSettings
     public string En_NamePresent;
     public string Rus_NamePresent;
     public int IdPresent;
+
+    public string GetLanguage(Language language)
+    {
+        string currentLanguage = language switch
+        {
+            Language.En => En_NamePresent,
+            Language.Ru => Rus_NamePresent,
+            _ => throw new NotImplementedException()
+        };
+        return currentLanguage;
+    }
 }
 
 [Serializable]

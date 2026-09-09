@@ -6,20 +6,26 @@ public class OperaChecker : ISloteble
     private PlayerInventory _playerInventory;
     private DataOpera _dataOpera;
     private OperaSettings _operaSettings;
-    private ControlOperaLanguage _controlOperaLanguage;
+   
 
     public OperaChecker(PlayerInventory playerInventory, DataOpera dataOpera, ControlOperaLanguage controlOperaLanguage)
     {
         _playerInventory = playerInventory;
         _dataOpera = dataOpera;
-        _controlOperaLanguage = controlOperaLanguage;
+       
     }
 
     public bool CheckEpisode(int idEpisode)
     {
         _operaSettings = null;
         _operaSettings = _dataOpera.GetOperaSettingsForIdCassette(idEpisode);
-        _controlOperaLanguage.GetOperaLanguage(idEpisode);
+        
+        // МБ здесь брать локализацию
+        return _operaSettings != null;
+    }
+
+    public bool CheckEpisode()
+    {
         return _operaSettings != null;
     }
 
@@ -54,6 +60,8 @@ public class OperaChecker : ISloteble
     {
         bool IsOpera = cassette.IsOpera;
         CurrentIdCassetteOpera = IsOpera ? cassette.Id : -1;
+        CheckEpisode(CurrentIdCassetteOpera);
+
         return IsOpera;
     }
 }

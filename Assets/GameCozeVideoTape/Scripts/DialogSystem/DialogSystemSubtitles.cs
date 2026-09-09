@@ -7,16 +7,19 @@ public class DialogSystemSubtitles : IRealizerDialogueble
     private DataOpera _dataOpera;
     private OperaSettings _operaSettings;
     private Subtitles _currentSubtitles;
+    private ControlOperaLanguage _controlOperaLanguage;
 
-    public DialogSystemSubtitles ( DataOpera dataOpera )
+    public DialogSystemSubtitles ( DataOpera dataOpera, ControlOperaLanguage controlOperaLanguage )
     {
         _dataOpera = dataOpera;
+        _controlOperaLanguage = controlOperaLanguage;
     }
 
     public bool CheckId(int id)
     {
         bool isSuccess = false;
         _operaSettings = _dataOpera.GetOperaSettingsForIdCassette(id);
+        _controlOperaLanguage.GetOperaLanguage(id);
         isSuccess = _operaSettings != null;
         Debug.Log($"CheckId, isSuccess: {isSuccess}");
         //Debug.Log($"CheckId, _operaSettings, null: {_operaSettings.Subtitles == null}");
@@ -33,7 +36,7 @@ public class DialogSystemSubtitles : IRealizerDialogueble
     {
         //Debug.Log($"_operaSettings.Subtitles, Null: {_operaSettings.Subtitles == null}");
         //_currentSubtitles = _operaSettings.Subtitles;
-
+        _currentSubtitles = _controlOperaLanguage.GetSubtitles();
         return _currentSubtitles.DialogLine;
     }
 
