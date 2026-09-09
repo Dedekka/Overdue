@@ -28,25 +28,25 @@ public class ItemLanguageParser : IGoogleParser
                 _currentitemSettings.Original_Title = token;
                 break;
 
+            case "Zh":
+                _currentitemSettings.ZHCN = token;
+                break;
+
             case "En":
                 _currentitemSettings.En = token;
                 break;
 
-            case "Ru":
-                _currentitemSettings.Ru = token;
-                break;
-
-            case "DE":
+            case "De":
                 _currentitemSettings.DE = token;
                 break;
-            case "ES":
+            case "Es":
                 _currentitemSettings.ES = token;
                 break;
-            case "JPN":
-                _currentitemSettings.JPN = token;
+            case "Rus":
+                _currentitemSettings.Ru = token;
                 break;
-            case "ZH-CN":
-                _currentitemSettings.ZHCN = token;
+            case "Ja":
+                _currentitemSettings.JPN = token;
                 break;
 
             default:
