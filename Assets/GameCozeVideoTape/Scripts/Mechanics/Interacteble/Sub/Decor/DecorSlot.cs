@@ -10,7 +10,7 @@ public class DecorSlot : BazeInteracteble
     [Inject(Id = "SlotMaterial")] private Material _slotMaterial;
 
     public event Action OnInteract;
-    public event Action<bool> OnEnterCursor;
+    //public event Action<bool> OnEnterCursor;
 
     private void Awake()
     {
@@ -40,9 +40,9 @@ public class DecorSlot : BazeInteracteble
         //_item.SetActive(isVisible);
     }
 
-    public override void EnterCursor(bool isVisible)
-    {
-        if (_isActiveSlot) { return; }
-        OnEnterCursor?.Invoke(isVisible);
-    }
+    //public override void EnterCursor(bool isVisible)
+    //{
+    //    if (_isActiveSlot) { return; }
+    //    OnEnterCursor?.Invoke(isVisible);
+    //}
 }

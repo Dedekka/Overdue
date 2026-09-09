@@ -36,6 +36,7 @@ Transform:
   - {fileID: 227134925740425409}
   - {fileID: 3923655984075960465}
   - {fileID: 8582702575688853264}
+  - {fileID: 5907974536509172007}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -58,6 +59,7 @@ MonoBehaviour:
   - {fileID: 1982113508568584687}
   - {fileID: 898953449600361464}
   - {fileID: 6067873494011791856}
+  - {fileID: 8281377416745533498}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -169,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameInstaller
   _pauseCanvas: {fileID: 0}
   _playerUi: {fileID: 0}
-  _hand: {fileID: 0}
+  _handSlot: {fileID: 0}
   _buttonExit: {fileID: 0}
   _buttonBackMenu: {fileID: 0}
   _cassetteMaterial: {fileID: 2100000, guid: f3ac4eadba2f9184ebb6f98354eb977b, type: 2}
@@ -180,7 +182,7 @@ MonoBehaviour:
   _decorMaterial: {fileID: 2100000, guid: c6ca8123eb88d2e4ebcfb346e068eae7, type: 2}
   _slotMaterial: {fileID: 2100000, guid: 840e2dd2dd27f564b87d12a2760eb365, type: 2}
   _maxRack: 65
-  _maxCassette: 300
+  _maxCassette: 136
   _phone: {fileID: 0}
   _tvCamera: {fileID: 0}
   _tv: {fileID: 0}
@@ -636,3 +638,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f8d5376e876294480aeb804c4d7b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Restart
+--- !u!1 &9124665383793111631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5907974536509172007}
+  - component: {fileID: 8281377416745533498}
+  m_Layer: 0
+  m_Name: DecorInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5907974536509172007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124665383793111631}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8281377416745533498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124665383793111631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97accb498f76394c9f7116edfebfff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DecorInstaller
+  _decorPresentSystem: {fileID: 0}

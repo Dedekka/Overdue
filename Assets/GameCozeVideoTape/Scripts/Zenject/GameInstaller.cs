@@ -9,7 +9,7 @@ public class GameInstaller : MonoInstaller
     [Header("PauseMenu")]
     [SerializeField] private GameObject _pauseCanvas;
     [SerializeField] private PlayerUi _playerUi;
-    [SerializeField] private Transform _hand;
+    [SerializeField] private Transform _handSlot;
     [SerializeField] private Button _buttonExit;
     [SerializeField] private Button _buttonBackMenu;
     [Header("Materials")]
@@ -181,7 +181,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
-            .WithArguments(_pickUpSettings, _hand, this);
+            .WithArguments(_pickUpSettings, _handSlot, this);
 
         Container.Bind<InstallItem>()
            .AsTransient();

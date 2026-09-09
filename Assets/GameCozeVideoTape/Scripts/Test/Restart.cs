@@ -51,7 +51,7 @@ public class Restart : MonoBehaviour
             _realizerPresent.SetCallData(new CallData()
             {
                 IdCassetts = 0,
-                IDPresent = 2
+                IDPresent = 3
             });
         }
 
@@ -60,7 +60,7 @@ public class Restart : MonoBehaviour
             _realizerPresent.SetCallData(new CallData()
             {
                 IdCassetts = 0,
-                IDPresent = 3
+                IDPresent = 6
             });
         }
 
@@ -69,7 +69,7 @@ public class Restart : MonoBehaviour
             _realizerPresent.SetCallData(new CallData()
             {
                 IdCassetts = 0,
-                IDPresent = 4
+                IDPresent = 7
             });
         }
     }

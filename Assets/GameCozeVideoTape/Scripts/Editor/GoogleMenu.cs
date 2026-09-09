@@ -12,8 +12,8 @@ public class GoogleMenu
     #endregion
 
     #region Sheets Name
-    private const string Items_sheets_name = "BazeCassette";
-    private const string Language_sheets_name = "CassetteLanguage";
+    private const string Items_sheets_name = "BazeCassettePress";
+    private const string Language_sheets_name = "CassetteLanguagePress";
     private const string MusicLanguage_sheets_name = "MusicCassetteLanguage";
     private const string DialogueLanguage_sheets_name = "DialogueLanguage";
     private const string OperaLanguage_sheets_name = "OperaLanguage";
