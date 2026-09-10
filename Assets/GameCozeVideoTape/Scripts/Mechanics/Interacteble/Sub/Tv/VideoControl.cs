@@ -1,21 +1,26 @@
 using System;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Video;
 
 public class VideoControl
 {
+    private ControlOperaLanguage _controlOperaLanguage;
     private VideoPlayer _videoPlayer;
     public event Action OnEndEpisode;
+
+    public VideoControl(ControlOperaLanguage controlOperaLanguage)
+    {
+        _controlOperaLanguage = controlOperaLanguage;
+    }
 
     public void Initialization(VideoPlayer videoPlayer)
     {
         _videoPlayer = videoPlayer;
     }
 
-    public void SetVideo(OperaSettings currentEpisode)
+    public void SetVideo()
     {
-        _videoPlayer.clip = currentEpisode.Video;
+        _videoPlayer.clip = _controlOperaLanguage.GetSubtitles().Video;
     }
 
     public void StartEpisode()

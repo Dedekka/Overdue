@@ -7,11 +7,13 @@ using Zenject;
 public class Restart : MonoBehaviour
 {
     private Saver _saver;
+    private RealizerPresent _realizerPresent;
 
     [Inject]
-    private void Construct(Saver saver)
+    private void Construct(Saver saver, RealizerPresent realizerPresent)
     {
         _saver = saver;
+        _realizerPresent = realizerPresent;
     }
 
     private void Start()
@@ -33,6 +35,42 @@ public class Restart : MonoBehaviour
         if (Keyboard.current.lKey.wasPressedThisFrame)
         {
             LoadLevel();
+        }
+
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new CallData()
+            {
+                IdCassetts = 0,
+                IDPresent = 1
+            });
+        }
+
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new CallData()
+            {
+                IdCassetts = 0,
+                IDPresent = 3
+            });
+        }
+
+        if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new CallData()
+            {
+                IdCassetts = 0,
+                IDPresent = 6
+            });
+        }
+
+        if (Keyboard.current.digit4Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new CallData()
+            {
+                IdCassetts = 0,
+                IDPresent = 7
+            });
         }
     }
 

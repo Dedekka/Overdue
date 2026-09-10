@@ -7,14 +7,15 @@ using Zenject;
 public class GameInstaller : MonoInstaller
 {
     [Header("PauseMenu")]
-    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _pauseCanvas;
     [SerializeField] private PlayerUi _playerUi;
-    [SerializeField] private Transform _hand;
+    [SerializeField] private Transform _handSlot;
     [SerializeField] private Button _buttonExit;
     [SerializeField] private Button _buttonBackMenu;
     [Header("Materials")]
     [SerializeField] private Material _cassetteMaterial;
     [SerializeField] private Material _presentMaterial;
+    //[SerializeField] private ControlCassetteLanguage _controlCassetteLanguage;
     [Header("Items")]
     [SerializeField] private PickUpSettings _pickUpSettings;
     [SerializeField] private ShelfSlotSettings _shelfSlotSettings;
@@ -78,6 +79,9 @@ public class GameInstaller : MonoInstaller
          .AsSingle();
 
         Container.Bind<OperaChecker>()
+         .AsSingle();
+
+        Container.Bind<ControlOperaLanguage>()
          .AsSingle();
 
         //Container.Bind<TVAudio>()
@@ -152,6 +156,13 @@ public class GameInstaller : MonoInstaller
            .FromResource(PathConst.DataPresentAsset)
            .AsSingle();
 
+        Container.Bind<DataOperaLanguage>()
+           .FromResource(PathConst.DataOperaLanguageAsset)
+           .AsSingle();
+
+        Container.Bind<DataPresentLanguage>()
+           .FromResource(PathConst.DataPresentLanguageAsset)
+           .AsSingle();
     }
 
     private void BindUI()
@@ -170,7 +181,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PickUpItem>()
             .AsTransient()
-            .WithArguments(_pickUpSettings, _hand, this);
+            .WithArguments(_pickUpSettings, _handSlot, this);
 
         Container.Bind<InstallItem>()
            .AsTransient();
@@ -194,6 +205,9 @@ public class GameInstaller : MonoInstaller
 
     private void BindSystem()
     {
+        Container.Bind<ControlCassetteLanguage>()
+         .AsSingle();
+
         Container.BindInterfacesAndSelfTo<ManagerCassette>()
            .AsSingle()
            .WithArguments(_maxCassette);//, _dataLanguage);
@@ -220,13 +234,16 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PauseSystem>()
          .AsSingle()
-          .WithArguments(_pauseMenu);
+          .WithArguments(_pauseCanvas);
 
     }
 
     private void BindImporter()
     {
         Container.BindInterfacesAndSelfTo<SaveInventoryImporter>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterControlLanguageCassette>()
          .AsSingle();
 
         Container.BindInterfacesAndSelfTo<PauseSystemPlayerStateImporter>()

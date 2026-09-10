@@ -48,7 +48,7 @@ public class PlayerLookItem
     {
         _isActive = true;
         _lookItemMove.Move(_currentItem);
-        _lookItemUi.SetText(_currentItem.MusicCassetteSettings.MusicName);
+        _lookItemUi.SetText(_currentItem.Description);
         ChangeState();
     }
 

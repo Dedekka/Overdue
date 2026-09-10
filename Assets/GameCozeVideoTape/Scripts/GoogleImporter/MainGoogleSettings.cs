@@ -12,10 +12,14 @@ public class MainGoogleSettings
     public List<ItemSettings> Items;
     [Header("Dialogue")]
     public List<PresentSettings> Presents;
+    public List<PresentLanguageSettings> PresentLanguage;
     public List<DialogueEventData> DialogueEvent;
     public List<DialogSettings> Dialogues;
+    public List<DialogLanguageSettings> DialogLanguage;
     [Header("Opera")]
     public List<OperaSettings> Opera;
+    public List<OperaLanguageSettings> OperaLanguage;
     [Header("Music")]
     public List<MusicCassetteSettings> Music;
+    public List<MusicLanguage> MusicLanguage;
 }

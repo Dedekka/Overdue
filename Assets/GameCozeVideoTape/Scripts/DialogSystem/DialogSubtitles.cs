@@ -33,7 +33,7 @@ public class DialogSubtitles : IStarterDialogueble, IDisposable, IInitializable
         Debug.Log($"StartWaitSubtitles, SuccessStart:{SuccessStart}");
         if (SuccessStart)
         {
-            _subtitlesWaiter.StartWait(_currentEpisode.Subtitles);
+            _subtitlesWaiter.StartWait();
         }
         else
         {

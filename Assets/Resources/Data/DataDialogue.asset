@@ -13,156 +13,51 @@ MonoBehaviour:
   m_Name: DataDialogue
   m_EditorClassIdentifier: Assembly-CSharp::DataDialogue
   _dialogues:
-  - DialogueName: ChrisTurner_TheSilenceOfTheLambs
+  - DialogueName: ChrisTurner_The Goodfather
     Id: 1
-    NameCharacter: ChrisTurner
-    Original_Title: The Silence of the Lambs
-    Present: "\u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0444\u043E\u043D"
-    DialogLines:
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: 'Video Rental, Ray speaking. '
-      IdNumber: 1
-      SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
-    - <Character>k__BackingField: Chris
-      <Line>k__BackingField: 'Hey, Ray! Glad to hear you''re back. I was starting
-        to think this town had lost its last good video store. Anyway, I found your
-        copy of The Silence of the Lamps. '
-      IdNumber: 2
-      SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: 'So... nobody turned the lights on? '
-      IdNumber: 3
-      SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
-    - <Character>k__BackingField: Chris
-      <Line>k__BackingField: 'Pretty much. Three hours of people whispering in the
-        dark. I bought a new stereo yesterday, so I''ll leave my old boombox in the
-        return box too. '
-      IdNumber: 4
-      SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: 'You replace electronics faster than I rewind tapes. '
-      IdNumber: 5
-      SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
-    - <Character>k__BackingField: Chris
-      <Line>k__BackingField: 'Technology waits for no one. '
-      IdNumber: 6
-      SoundLine: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
-    DialogueEventData:
-      IdEvent: 1
-      DialogueName: ChrisTurner_TheSilenceOfTheLambs
-      IDCassette: 1
-      IDPresent: 1
-  - DialogueName: NancyParker_TheGodfather
+    NameCharacter: Chris Turner
+    SoundLine:
+    - IdLine: 1
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
+    - IdLine: 2
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
+    - IdLine: 3
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
+    - IdLine: 4
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
+    - IdLine: 5
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
+    - IdLine: 6
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
+    - IdLine: 7
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
+  - DialogueName: NancyParker_The Announcement
     Id: 2
-    NameCharacter: NancyParker
-    Original_Title: The Godfather
-    Present: '-'
-    DialogLines:
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: 'Hello! Video Renta. '
-      IdNumber: 1
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - <Character>k__BackingField: Nancy
-      <Line>k__BackingField: 'Ray! I''m bringing back The Codfather. '
-      IdNumber: 2
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: 'Fish mafia? '
-      IdNumber: 3
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - <Character>k__BackingField: Nancy
-      <Line>k__BackingField: 'You''d better not sleep with the tuna. '
-      IdNumber: 4
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: 'Sounds... suspiciously familiar. '
-      IdNumber: 5
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - <Character>k__BackingField: Nancy
-      <Line>k__BackingField: 'I''ll drop it in the return box in a few minutes. '
-      IdNumber: 6
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    DialogueEventData:
-      IdEvent: 2
-      DialogueName: NancyParker_TheGodfather
-      IDCassette: 2
-      IDPresent: -1
-  - DialogueName: NancyParker_TheGodfather
+    NameCharacter: Nancy Parker
+    SoundLine:
+    - IdLine: 1
+      PathFmod: event:/Dialogs/NancyParker_TheGodfather/1
+    - IdLine: 2
+      PathFmod: event:/Dialogs/NancyParker_TheGodfather/2
+    - IdLine: 3
+      PathFmod: event:/Dialogs/NancyParker_TheGodfather/1
+    - IdLine: 4
+      PathFmod: event:/Dialogs/NancyParker_TheGodfather/2
+    - IdLine: 5
+      PathFmod: event:/Dialogs/NancyParker_TheGodfather/1
+  - DialogueName: Danny Collins_Big Trouble in Little China
     Id: 3
-    NameCharacter: NancyParker
-    Original_Title: The Godfather
-    Present: "\u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0444\u043E\u043D"
-    DialogLines:
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: "Hello! Give me \u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0444\u043E\u043D.. "
-      IdNumber: 1
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - <Character>k__BackingField: Npc_1
-      <Line>k__BackingField: 'Ok. '
-      IdNumber: 2
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    DialogueEventData:
-      IdEvent: 3
-      DialogueName: NancyParker_TheGodfather
-      IDCassette: 5
-      IDPresent: 1
-  - DialogueName: NancyParker_TheGodfather
-    Id: 4
-    NameCharacter: NancyParker
-    Original_Title: The Godfather
-    Present: "\u041A\u043E\u0432\u0435\u0440"
-    DialogLines:
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: "Hello! Give me \u041A\u043E\u0432\u0435\u0440.. "
-      IdNumber: 1
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - <Character>k__BackingField: Npc_2
-      <Line>k__BackingField: 'Ok. '
-      IdNumber: 2
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    DialogueEventData:
-      IdEvent: 4
-      DialogueName: NancyParker_TheGodfather
-      IDCassette: -1
-      IDPresent: 3
-  - DialogueName: NancyParker_TheGodfather
-    Id: 5
-    NameCharacter: NancyParker
-    Original_Title: The Godfather
-    Present: "\u041A\u0430\u043A\u0442\u0443\u0441"
-    DialogLines:
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: "Hello! Give me \u041A\u0430\u043A\u0442\u0443\u0441. "
-      IdNumber: 1
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - <Character>k__BackingField: Npc_3
-      <Line>k__BackingField: 'Ok. '
-      IdNumber: 2
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    DialogueEventData:
-      IdEvent: 5
-      DialogueName: NancyParker_TheGodfather
-      IDCassette: 3
-      IDPresent: 7
-  - DialogueName: NancyParker_TheGodfather
-    Id: 6
-    NameCharacter: NancyParker
-    Original_Title: The Godfather
-    Present: "\u041A\u0430\u0440\u0442\u043E\u043D\u043D\u0430\u044F \u0440\u043E\u0441\u0442\u043E\u0432\u0430\u044F
-      \u0444\u0438\u0433\u0443\u0440\u0430 Exterminator"
-    DialogLines:
-    - <Character>k__BackingField: Ray
-      <Line>k__BackingField: "Hello! Give me \u041A\u0430\u0440\u0442\u043E\u043D\u043D\u0430\u044F
-        \u0440\u043E\u0441\u0442\u043E\u0432\u0430\u044F \u0444\u0438\u0433\u0443\u0440\u0430
-        Exterminator.. "
-      IdNumber: 1
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/1
-    - <Character>k__BackingField: Npc_4
-      <Line>k__BackingField: 'Ok. '
-      IdNumber: 2
-      SoundLine: event:/Dialogs/NancyParker_TheGodfather/2
-    DialogueEventData:
-      IdEvent: 6
-      DialogueName: NancyParker_TheGodfather
-      IDCassette: 65
-      IDPresent: 6
+    NameCharacter: Danny Collins
+    SoundLine:
+    - IdLine: 1
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
+    - IdLine: 2
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
+    - IdLine: 3
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
+    - IdLine: 4
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2
+    - IdLine: 5
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/1
+    - IdLine: 6
+      PathFmod: event:/Dialogs/ChrisTurner_TheSilenceOfTheLambs/2

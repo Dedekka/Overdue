@@ -15,10 +15,12 @@ public class SettingsInstaller : MonoInstaller
     [SerializeField] private Slider _sliderMusic;
     [Header("Sliders sensitivity")]
     [SerializeField] private Slider _sliderSensitivity;
-    [Header("DropDown Language")]
-    [SerializeField] private TMP_Dropdown _dropDownLanguage;
+    [Header("Language")]
+    [SerializeField] private Button _buttonLanguageR;
+    [SerializeField] private Button _buttonLanguageL;
+    //[SerializeField] private TMP_Dropdown _dropDownLanguage;
 
-    
+
     public override void InstallBindings()
     {
         BindSub();
@@ -73,6 +75,11 @@ public class SettingsInstaller : MonoInstaller
 
     private void BindLanguage()
     {
+        Container.BindInterfacesAndSelfTo<ControlLanguage>()
+         .AsSingle()
+         .WithArguments(_buttonLanguageR, _buttonLanguageL);
+
+
 
     }
 }
