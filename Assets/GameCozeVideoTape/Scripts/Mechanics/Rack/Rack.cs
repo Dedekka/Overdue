@@ -8,9 +8,13 @@ public abstract class Rack: MonoBehaviour
 {
     public Genre Genre => _genre;
     public List<DataShelf> SubGenreShelfs => _subGenreShelfs;
+    public int CountSuccessInstall => _countSuccessInstall;
+
     [SerializeField] protected Genre _genre;
     [SerializeField] private List<DataShelf> _subGenreShelfs;
     private ManagerRack _managerRack;
+    private int _countSuccessInstall;
+    public event Action OnChanheCountSuccessInstall;
 
     public Action<bool> OnInstallState;
 
@@ -30,11 +34,12 @@ public abstract class Rack: MonoBehaviour
         Initialization();
     }
 
-    public virtual bool CheckCorrectSlot(int subGenreindex, ItemSettings itemSettings)
+    public virtual bool CheckCorrectSlot(int subGenreindex, CassetteObject cassetteObject)
     {
-
-        bool installState = itemSettings.IdGenre == (int)_genre && subGenreindex == itemSettings.IdSubGenre;
+        ItemSettings ItemSettings = cassetteObject.ItemSettings;
+        bool installState = ItemSettings.IdGenre == (int)_genre && subGenreindex == ItemSettings.IdSubGenre;
         OnChangeState(installState);
+        SubPickUp(cassetteObject, installState);
         return installState;
     }
 
@@ -51,6 +56,23 @@ public abstract class Rack: MonoBehaviour
             shelf.SubGenreShelfs.Initialization(this, shelf.SubGenreindex);
         }
     }
+
+    private void SubPickUp(CassetteObject cassetteObject, bool installState)
+    {
+        if (!installState) {  return; }
+        cassetteObject.OnPickUp += OnPickUp;
+        _countSuccessInstall++;
+        OnChanheCountSuccessInstall?.Invoke();
+    }
+
+    private void OnPickUp(CassetteObject cassetteObject)
+    {
+        cassetteObject.OnPickUp -= OnPickUp;
+        _countSuccessInstall--;
+        OnChanheCountSuccessInstall?.Invoke();
+    }
+
+
 }
 
 [Serializable]

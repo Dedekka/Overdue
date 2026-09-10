@@ -6,7 +6,7 @@ public class ShelfOperaSlot : BazeSlot
     {
         if (!IsEmpty) { return; }
 
-        if (_subGenreShelf.CheckCorrectSlot(currentCassette.ItemSettings, _idSlot))
+        if (_subGenreShelf.CheckCorrectSlot(currentCassette, _idSlot))
         {
             _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess);
         }
