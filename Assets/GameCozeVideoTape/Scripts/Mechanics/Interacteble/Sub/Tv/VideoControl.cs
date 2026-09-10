@@ -18,9 +18,23 @@ public class VideoControl
         _videoPlayer = videoPlayer;
     }
 
-    public void SetVideo()
+    public void SetVideo(VideoClip video = null)
     {
+        if (video == null)
+        {
         _videoPlayer.clip = _controlOperaLanguage.GetSubtitles().Video;
+        }
+        else
+        {
+            _videoPlayer.clip = video;
+        }
+        StopVideo();
+    }
+
+    public void StopVideo()
+    {
+        _videoPlayer.Stop();
+        ClearVideo();
     }
 
     public void StartEpisode()

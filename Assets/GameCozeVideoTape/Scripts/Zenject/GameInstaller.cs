@@ -84,6 +84,9 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ControlOperaLanguage>()
          .AsSingle();
 
+        Container.Bind<ControlGenreVideo>()
+         .AsSingle();
+
         //Container.Bind<TVAudio>()
         //  .AsSingle();
 
@@ -162,6 +165,10 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<DataPresentLanguage>()
            .FromResource(PathConst.DataPresentLanguageAsset)
+           .AsSingle();
+
+        Container.Bind<DataGenre>()
+           .FromResource(PathConst.DataGenreAsset)
            .AsSingle();
     }
 
@@ -252,8 +259,8 @@ public class GameInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ImporterImporterDialogSystemCall>()
          .AsSingle();
 
-        Container.BindInterfacesAndSelfTo<ImporterInventoryCassetteTv>()
-         .AsSingle();
+        //Container.BindInterfacesAndSelfTo<ImporterInventoryCassetteTv>()
+        // .AsSingle();
 
         Container.BindInterfacesAndSelfTo<ImporterTvManagerTV>()
          .AsSingle();

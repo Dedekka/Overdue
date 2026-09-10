@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GenreParser : IGoogleParser
 {
@@ -30,6 +31,21 @@ public class GenreParser : IGoogleParser
             case "Genre":
                 _currentGenreSettings.GenreName = token;
                 break;
+
+            case "Audio":
+                _currentGenreSettings.GenreVideo = new()
+                {
+                    IdGenre = _currentGenreSettings.IdGenre,
+                    Audio = token
+                };
+                Debug.Log($"PresentsParser, Name:{token}");
+                break;
+
+            case "Video":
+                _currentGenreSettings.GenreVideo.Video = Resources.Load<VideoClip>(token);
+                Debug.Log($"PresentsParser, Name:{token}");
+                break;
+
             default:
                 throw new Exception($"Invalid header: {headerName}");
         }

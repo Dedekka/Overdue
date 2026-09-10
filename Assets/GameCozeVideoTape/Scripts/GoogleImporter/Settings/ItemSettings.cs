@@ -3,6 +3,7 @@ using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 [Serializable]
 public class ItemSettings 
@@ -48,6 +49,7 @@ public class GenreSettings
 {
     public string GenreName;
     public int IdGenre;
+    public GenreVideo GenreVideo;
     public List<SubGenreSettings> SubGenreList;
 }
 
@@ -56,4 +58,12 @@ public class SubGenreSettings
 {
     public string SubGenreName;
     public int IdSubGenre;
+}
+
+[Serializable]
+public class GenreVideo
+{
+    public VideoClip Video;
+    public string Audio;
+    public int IdGenre;
 }
