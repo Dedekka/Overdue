@@ -10,7 +10,7 @@ public class OperaRack : Rack
         _operaRack = operaRack;
     }
 
-    public override bool CheckCorrectSlot(int slotndex, ItemSettings itemSettings)
+    public override bool CheckCorrectSlot(int slotndex, CassetteObject itemSettings)
     {
         bool installState = false;
         if (_operaRack.CheckEpisode(itemSettings.Id))

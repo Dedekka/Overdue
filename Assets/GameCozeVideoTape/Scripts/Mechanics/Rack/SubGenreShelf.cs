@@ -14,14 +14,14 @@ public class SubGenreShelf : MonoBehaviour
         Initialization();
     }
 
-    public bool CheckCorrectSlot(ItemSettings itemSettings, int idSlot)
+    public bool CheckCorrectSlot(CassetteObject cassetteObject, int idSlot)
     {
-        return _rack.CheckCorrectSlot(idSlot, itemSettings);
+        return _rack.CheckCorrectSlot(idSlot, cassetteObject);
     }
 
-    public bool CheckCorrectSlot(ItemSettings itemSettings)
+    public bool CheckCorrectSlot(CassetteObject cassetteObject)
     {
-        return _rack.CheckCorrectSlot(_subGenreindex, itemSettings);
+        return _rack.CheckCorrectSlot(_subGenreindex, cassetteObject);
     }
 
     private void Initialization()

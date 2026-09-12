@@ -82,7 +82,7 @@ public class GoogleMenu
 
         DataGenre dataGenre = ScriptableObject.CreateInstance<DataGenre>();
         dataGenre.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.GenrePath, dataGenre);
+        SaveAssets(PathConst.DataGenrePath, dataGenre);
 
         DataDialogue dataDialogue = ScriptableObject.CreateInstance<DataDialogue>();
         dataDialogue.Initialization(mainGoogleSettings);

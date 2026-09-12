@@ -58,7 +58,7 @@ public class BazeSlot : MonoBehaviour, ISloteble
     {
         if (!IsEmpty) { return; }
 
-        if (_subGenreShelf.CheckCorrectSlot(currentCassette.ItemSettings))
+        if (_subGenreShelf.CheckCorrectSlot(currentCassette))
         {
             _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess);
         }

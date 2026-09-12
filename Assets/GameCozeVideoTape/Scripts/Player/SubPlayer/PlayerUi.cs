@@ -7,7 +7,7 @@ public class PlayerUi : MonoBehaviour
     [SerializeField] private GameObject _panelUse;
     [SerializeField] private GameObject _panelDescription;
     [SerializeField] private TextMeshProUGUI _textDescription;
-
+    
     [SerializeField] private InventoryView _inventoryView;
 
     public void UpdateTextDescription(string text)

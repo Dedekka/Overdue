@@ -10,19 +10,23 @@ public class TvManager : IDisposable, IInitializable
     private TVCameraControl _tvCameraControl;
     private DialogSound _dialogSound;
     private OperaChecker _operaChecker;
+    private ControlGenreVideo _controlGenreVideo;
+
     //private DataOpera _dataOpera;
 
     private OperaSettings _currentEpisode;
+    private GenreVideo _currentGanreVideo;
 
     public event Action<bool> OnPlayEpisode;
 
-    public TvManager(DialogSubtitles dialogSubtitles, VideoControl videoControl, TVCameraControl tvCameraControl, DialogSound dialogSound, OperaChecker operaChecker)//, DataOpera dataOpera)
+    public TvManager(DialogSubtitles dialogSubtitles, VideoControl videoControl, TVCameraControl tvCameraControl, DialogSound dialogSound, OperaChecker operaChecker, ControlGenreVideo controlGenreVideo)//, DataOpera dataOpera)
     {
         _dialogSubtitles = dialogSubtitles;
         _videoControl = videoControl;
         _tvCameraControl = tvCameraControl;
         _dialogSound = dialogSound;
         _operaChecker = operaChecker;
+        _controlGenreVideo = controlGenreVideo;
         //_dataOpera = dataOpera;
     }
 
@@ -51,6 +55,17 @@ public class TvManager : IDisposable, IInitializable
             bool successStartDialog = _dialogSubtitles.StartWaitSubtitles(_currentEpisode);
             CheckSuccessCall(successStartDialog);
         }
+        else
+        {
+            // Запустить жанровое видео
+            StartGanreVideo();
+        }
+    }
+
+    public void StopPlay()
+    {
+        _videoControl.StopVideo();
+        _dialogSound.StopSound();
     }
 
     private void OnEndEpisode()
@@ -75,20 +90,47 @@ public class TvManager : IDisposable, IInitializable
         PlayEpisode();
     }
 
+    private void StartGanreVideo()
+    {
+        SetEpisode(_currentGanreVideo.Video, _currentGanreVideo.Audio);
+        PlayGanreVideo();
+    }
+
+
+
     private bool CheckEpisode()
     {
-        //_operaChecker.CheckEpisode(idEpisode);
+        bool isOpera;
+
         _currentEpisode = _operaChecker.GetOperaEpisode();
-        // МБ здесь же брать локализацию
+        isOpera = _currentEpisode != null;
+
+        if (!isOpera)
+        {
+            _currentGanreVideo = _controlGenreVideo.GetGenreVideo();
+        }
+
 
         //_currentEpisode = _dataOpera.GetOperaSettings(idEpisode);
-        return _currentEpisode != null;
+        return isOpera;
     }
 
     private void SetEpisode()
     {
         _videoControl.SetVideo();
         _dialogSound.SetFmodSound(_currentEpisode.Audio);
+    }
+
+    private void SetEpisode(VideoClip video, string Audio)
+    {
+        _videoControl.SetVideo(video);
+        _dialogSound.SetFmodSound(Audio);
+    }
+
+    private void PlayGanreVideo()
+    {
+        _videoControl.StartEpisode();
+        _dialogSound.StartSound();
     }
 
     private void PlayEpisode()

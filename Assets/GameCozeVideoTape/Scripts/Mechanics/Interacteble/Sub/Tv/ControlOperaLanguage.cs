@@ -1,5 +1,6 @@
 public class ControlOperaLanguage
 {
+    
     private DataOperaLanguage _dataOperaLanguage;
     private OperaLanguageSettings _operaLanguageSettings;
     private ControlSettings _controlSettings;

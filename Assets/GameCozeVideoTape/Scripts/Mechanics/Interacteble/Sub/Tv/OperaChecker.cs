@@ -1,26 +1,25 @@
-using UnityEngine;
-
 public class OperaChecker : ISloteble
 {
-    public int CurrentIdCassetteOpera {  get; private set; }
+    public int CurrentIdCassetteOpera { get; private set; }
     private PlayerInventory _playerInventory;
     private DataOpera _dataOpera;
     private OperaSettings _operaSettings;
-   
+    
+    private ControlGenreVideo _controlGenreVideo;
 
-    public OperaChecker(PlayerInventory playerInventory, DataOpera dataOpera, ControlOperaLanguage controlOperaLanguage)
+
+    public OperaChecker(PlayerInventory playerInventory, DataOpera dataOpera, ControlOperaLanguage controlOperaLanguage, ControlGenreVideo controlGenreVideo)
     {
         _playerInventory = playerInventory;
         _dataOpera = dataOpera;
-       
+        _controlGenreVideo = controlGenreVideo;
     }
 
     public bool CheckEpisode(int idEpisode)
     {
         _operaSettings = null;
         _operaSettings = _dataOpera.GetOperaSettingsForIdCassette(idEpisode);
-        
-        // МБ здесь брать локализацию
+
         return _operaSettings != null;
     }
 
@@ -38,30 +37,35 @@ public class OperaChecker : ISloteble
     {
         if (isVisible)
         {
-            return CheckItem();
+            return CheckCassette();
         }
         return false;
     }
 
-    private bool CheckItem()
+    public bool CheckCassette()
     {
         bool isVisible = false;
         if (_playerInventory.CheckActiveItem(this, out IItemble item))
         {
             if (item is CassetteObject cassette)
             {
-                isVisible = CheckId(cassette);
+                isVisible = true;
+                CheckId(cassette);
             }
         }
         return isVisible;
     }
 
-    private bool CheckId(CassetteObject cassette)
+    private void CheckId(CassetteObject cassette)
     {
         bool IsOpera = cassette.IsOpera;
         CurrentIdCassetteOpera = IsOpera ? cassette.Id : -1;
-        CheckEpisode(CurrentIdCassetteOpera);
 
-        return IsOpera;
+        CheckEpisode(CurrentIdCassetteOpera);
+        if (!IsOpera)
+        {
+            _controlGenreVideo.CheckGenreVideo(cassette.ItemSettings.IdGenre);
+        }
+        //return IsOpera;
     }
 }

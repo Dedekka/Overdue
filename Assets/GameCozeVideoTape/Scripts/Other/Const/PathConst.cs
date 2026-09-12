@@ -10,7 +10,7 @@ public static class PathConst
     public const string DataOperaLanguagePath = "Assets/Resources/Data/DataOperaLanguage.asset";
     public const string DataPresentLanguagePath = "Assets/Resources/Data/DataPresentLanguage.asset";
     public const string LanguageCassetsPath = "Assets/Resources/Data/LanguageCassets.asset";
-    public const string GenrePath = "Assets/Resources/Data/Genre.asset";
+    public const string DataGenrePath = "Assets/Resources/Data/DataGenre.asset";
 
     public const string DataCassetsAsset = "Data/DataCassets";
     public const string DataMusicCassetsAsset = "Data/DataMusicCassets";
@@ -22,4 +22,5 @@ public static class PathConst
     public const string DataPresentAsset = "Data/DataPresent";
     public const string DataOperaLanguageAsset = "Data/DataOperaLanguage";
     public const string DataPresentLanguageAsset = "Data/DataPresentLanguage";
+    public const string DataGenreAsset = "Data/DataGenre";
 }

@@ -37,6 +37,7 @@ Transform:
   - {fileID: 3923655984075960465}
   - {fileID: 8582702575688853264}
   - {fileID: 5907974536509172007}
+  - {fileID: 6349840925213360901}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -60,6 +61,7 @@ MonoBehaviour:
   - {fileID: 898953449600361464}
   - {fileID: 6067873494011791856}
   - {fileID: 8281377416745533498}
+  - {fileID: 2579344386331613978}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -181,7 +183,7 @@ MonoBehaviour:
   _timeWaitCheckPhysics: 0.5
   _decorMaterial: {fileID: 2100000, guid: c6ca8123eb88d2e4ebcfb346e068eae7, type: 2}
   _slotMaterial: {fileID: 2100000, guid: 840e2dd2dd27f564b87d12a2760eb365, type: 2}
-  _maxRack: 65
+  _maxRack: 66
   _maxCassette: 136
   _phone: {fileID: 0}
   _tvCamera: {fileID: 0}
@@ -288,6 +290,51 @@ MonoBehaviour:
   _viewDialog: {fileID: 0}
   _timeWaitChar: 0.03
   _timeWaitLine: 1
+--- !u!1 &5286014337423541928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6349840925213360901}
+  - component: {fileID: 2579344386331613978}
+  m_Layer: 0
+  m_Name: CounterInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6349840925213360901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286014337423541928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2579344386331613978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286014337423541928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1205888df75294dbc76581786224c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CounterInstaller
+  _scoreText: {fileID: 0}
 --- !u!1 &5777150591074028754
 GameObject:
   m_ObjectHideFlags: 0
