@@ -190,8 +190,8 @@ public class GoogleMenu
         PresentsParser presentsParser = new PresentsParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(Present_sheets_name, presentsParser);
 
-        DialogueEventParser dialogueEventParser = new DialogueEventParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(DialogueEvent_sheets_name, dialogueEventParser);
+        //DialogueEventParser dialogueEventParser = new DialogueEventParser(gameSettings);
+        //await sheetsImporter.DownloandAndParseSheet(DialogueEvent_sheets_name, dialogueEventParser);
 
         DialogueParser dialogueParser = new DialogueParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(BazeDialogue_sheets_name, dialogueParser);

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using UnityEngine;
 using Zenject;
@@ -5,6 +6,7 @@ using Zenject;
 public class Phone : MonoBehaviour
 {
     [SerializeField] private AnswerCall _answerCall;
+    [SerializeField] private StudioEventEmitter _eventEmitter;
     private DialogCall _dialogTest;
     private int _dialogId;
 
@@ -35,6 +37,7 @@ public class Phone : MonoBehaviour
 
     private void StartDialog()
     {
+        _eventEmitter.Stop();
         bool successStartDialog = _dialogTest.StartDialog(_dialogId);
         CheckSuccessCall(successStartDialog);
     }
