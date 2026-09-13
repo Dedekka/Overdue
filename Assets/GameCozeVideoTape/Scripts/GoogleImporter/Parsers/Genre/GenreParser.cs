@@ -46,6 +46,11 @@ public class GenreParser : IGoogleParser
                 Debug.Log($"PresentsParser, Name:{token}");
                 break;
 
+            case "MaterialIndex":
+                _currentGenreSettings.MaterialIndex = Convert.ToInt32(token);
+                Debug.Log($"PresentsParser, Name:{token}");
+                break;
+
             default:
                 throw new Exception($"Invalid header: {headerName}");
         }
