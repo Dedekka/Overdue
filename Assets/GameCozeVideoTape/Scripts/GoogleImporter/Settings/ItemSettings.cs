@@ -49,6 +49,7 @@ public class GenreSettings
 {
     public string GenreName;
     public int IdGenre;
+    public int MaterialIndex;
     public GenreVideo GenreVideo;
     public List<SubGenreSettings> SubGenreList;
 }
@@ -58,6 +59,7 @@ public class SubGenreSettings
 {
     public string SubGenreName;
     public int IdSubGenre;
+    public int MaterialIndex;
 }
 
 [Serializable]

@@ -36,6 +36,9 @@ public class SubGenreParser : IGoogleParser
             case "Поджанр":
                 _currentSubGenreSettings.SubGenreName = token;
                 break;
+            case "MaterialIndex":
+                _currentSubGenreSettings.MaterialIndex = Convert.ToInt32(token);
+                break;
             default:
                 throw new Exception($"Invalid header: {headerName}");
         }

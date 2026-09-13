@@ -24,11 +24,21 @@ public class DataGenre : ScriptableObject
         return tempItem;
     }
 
-    //public OperaSettings GetOperaSettingsForId(int idOpera)
-    //{
-    //    OperaSettings tempItem = _dataOpera.Find((x)=>x.Id == idOpera);
-    //    return tempItem;
-    //}
+    public GenreSettings GetGenreSettingsForId(int idGenre)
+    {
+        GenreSettings tempItem = _genreSettings.Find((x) => x.IdGenre == idGenre);
+        return tempItem;
+    }
+
+    public SubGenreSettings GetSubGenreSettingsForId(int idGenre, int idSubGenre)
+    {
+        GenreSettings tempGenre = _genreSettings.Find((x) => x.IdGenre == idGenre);
+        SubGenreSettings tempSubGenre = tempGenre.SubGenreList.Find((x) => x.IdSubGenre == idSubGenre);
+        return tempSubGenre;
+    }
+
+
+
 
     private void SetDictionary(List<GenreSettings> itemSettings)
     {

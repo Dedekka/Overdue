@@ -27,12 +27,12 @@ public abstract class Rack: MonoBehaviour
     private void Awake()
     {
         _managerRack.AddRack(this);
-    }
-
-    private void Start()
-    {
         Initialization();
     }
+
+    //private void Start()
+    //{
+    //}
 
     public virtual bool CheckCorrectSlot(int subGenreindex, CassetteObject cassetteObject)
     {
