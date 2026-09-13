@@ -170,6 +170,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<DataGenre>()
            .FromResource(PathConst.DataGenreAsset)
            .AsSingle();
+
+        Container.Bind<DataGenreLanguage>()
+           .FromResource(PathConst.DataGenreLanguageAsset)
+           .AsSingle();
     }
 
     private void BindUI()

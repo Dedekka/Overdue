@@ -39,5 +39,6 @@ public class ImporterCounterSlotCassetteUi : IDisposable, IInitializable
     {
         Debug.Log($"ImporterCounterSlotCassetteUi, OnUpdateMaxCountSlot: {maxCountSlot}");
         _maxCountSlot = maxCountSlot;
+        _maxCountSlot -= 29;
     }
 }

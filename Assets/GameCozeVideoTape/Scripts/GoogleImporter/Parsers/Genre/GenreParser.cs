@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 
 public class GenreParser : IGoogleParser
 {
@@ -33,18 +32,14 @@ public class GenreParser : IGoogleParser
                 break;
 
             case "Audio":
-                _currentGenreSettings.GenreVideo = new()
-                {
-                    IdGenre = _currentGenreSettings.IdGenre,
-                    Audio = token
-                };
+                _currentGenreSettings.Audio = token;
                 Debug.Log($"PresentsParser, Name:{token}");
                 break;
 
-            case "Video":
-                _currentGenreSettings.GenreVideo.Video = Resources.Load<VideoClip>(token);
-                Debug.Log($"PresentsParser, Name:{token}");
-                break;
+            //case "Video":
+            //    _currentGenreSettings.GenreVideo.Video = Resources.Load<VideoClip>(token);
+            //    Debug.Log($"PresentsParser, Name:{token}");
+            //    break;
 
             case "MaterialIndex":
                 _currentGenreSettings.MaterialIndex = Convert.ToInt32(token);

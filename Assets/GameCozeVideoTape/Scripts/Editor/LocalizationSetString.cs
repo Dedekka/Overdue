@@ -14,7 +14,7 @@ public class LocalizationSetString : EditorWindow
         GameObject selectedObject = Selection.activeGameObject as GameObject;
         if (selectedObject == null) return;
 
-        TextMeshProUGUI tmpText = selectedObject.GetComponent<TextMeshProUGUI>();
+        TMP_Text tmpText = selectedObject.GetComponent<TMP_Text>();
         if (tmpText == null)
         {
             Debug.LogWarning("Выбранный объект не содержит TMP_Text");
@@ -32,7 +32,7 @@ public class LocalizationSetString : EditorWindow
         }
 
         localizeString.OnUpdateString.RemoveAllListeners();
-
+        
         UnityAction<string> updateAction = new UnityAction<string>((string value) =>
         {
             tmpText.text = value;

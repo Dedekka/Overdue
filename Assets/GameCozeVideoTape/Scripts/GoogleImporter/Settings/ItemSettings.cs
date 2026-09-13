@@ -50,8 +50,29 @@ public class GenreSettings
     public string GenreName;
     public int IdGenre;
     public int MaterialIndex;
-    public GenreVideo GenreVideo;
+    public string Audio;
+    //public GenreVideo GenreVideo;
     public List<SubGenreSettings> SubGenreList;
+}
+
+[Serializable]
+public class GenreLanguage
+{
+    public string GenreName;
+    public int IdGenre;
+    public VideoClip En_Video;
+    public VideoClip Rus_Video;
+
+    public VideoClip GetLanguage(Language language)
+    {
+        VideoClip currentLanguage = language switch
+        {
+            Language.En => En_Video,
+            Language.Ru => Rus_Video,
+            _ => throw new NotImplementedException()
+        };
+        return currentLanguage;
+    }
 }
 
 [Serializable]
@@ -68,4 +89,11 @@ public class GenreVideo
     public VideoClip Video;
     public string Audio;
     public int IdGenre;
+
+    public void Set(int idGenre,VideoClip videoClip, string audio)
+    {
+        Video = videoClip;
+        Audio = audio;
+        IdGenre = idGenre;
+    }
 }
