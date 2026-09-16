@@ -18,6 +18,7 @@ public class GoogleMenu
     private const string DialogueLanguage_sheets_name = "DialogueLanguage";
     private const string OperaLanguage_sheets_name = "OperaLanguage";
     private const string PresentLanguage_sheets_name = "PresentLanguage";
+    private const string GenreLanguage_sheets_name = "GenreLanguage";
     private const string Genre_sheets_name = "Genre";
     private const string SubGenre_sheets_name = "SubGenre";
     private const string Present_sheets_name = "BazePresent";
@@ -53,7 +54,8 @@ public class GoogleMenu
         await DialogsLanguage(gameSettings, sheetsImporter);
         await OperaLanguage(gameSettings, sheetsImporter);
         await PresentLanguage(gameSettings, sheetsImporter);
-
+        await GenreLanguage(gameSettings, sheetsImporter);
+       
         SaveSettings(gameSettings);
     }
 
@@ -116,7 +118,9 @@ public class GoogleMenu
         dataPresentLanguage.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataPresentLanguagePath, dataPresentLanguage);
 
-        
+        DataGenreLanguage dataGenreLanguage = ScriptableObject.CreateInstance<DataGenreLanguage>();
+        dataGenreLanguage.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataGenreLanguagePath, dataGenreLanguage);
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
@@ -175,13 +179,19 @@ public class GoogleMenu
         await sheetsImporter.DownloandAndParseSheet(PresentLanguage_sheets_name, operaLanguageParser);
     }
 
+    private static async UniTask GenreLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        GenreLanguageParser genreLanguageParser = new GenreLanguageParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(GenreLanguage_sheets_name, genreLanguageParser);
+    }
+
     private static async UniTask Dialogs(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
     {
         PresentsParser presentsParser = new PresentsParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(Present_sheets_name, presentsParser);
 
-        DialogueEventParser dialogueEventParser = new DialogueEventParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(DialogueEvent_sheets_name, dialogueEventParser);
+        //DialogueEventParser dialogueEventParser = new DialogueEventParser(gameSettings);
+        //await sheetsImporter.DownloandAndParseSheet(DialogueEvent_sheets_name, dialogueEventParser);
 
         DialogueParser dialogueParser = new DialogueParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(BazeDialogue_sheets_name, dialogueParser);

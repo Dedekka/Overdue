@@ -7,6 +7,7 @@ public class MainGoogleSettings
 {
     [Header("Genre")]
     public List<GenreSettings> Genre;
+    public List<GenreLanguage> GenreLanguage;
     public List<ItemLanguage> Language;
     [Header("Items")]
     public List<ItemSettings> Items;

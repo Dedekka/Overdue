@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using Zenject;
-using static UnityEngine.InputManagerEntry;
 
 public class RackInstaller : MonoInstaller
 {
@@ -32,7 +30,5 @@ public class RackInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<RackPlateControl>()
         .AsSingle();
-
-
     }
 }

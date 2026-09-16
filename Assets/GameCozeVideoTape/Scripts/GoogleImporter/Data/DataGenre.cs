@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataGenre : ScriptableObject
 {
     [SerializeField] private List<GenreSettings> _genreSettings;
-    private Dictionary<int, GenreVideo> _genreVideoDictionary;
+    private Dictionary<int, GenreSettings> _genreVideoDictionary;
 
     private bool _checkDictionary => _genreVideoDictionary == null;
 
@@ -14,13 +14,13 @@ public class DataGenre : ScriptableObject
         _genreSettings = mainGoogleSettings.Genre;
     }
 
-    public GenreVideo GetGenreVideo(int idCassette)
+    public GenreSettings GetGenreVideo(int idCassette)
     {
         if (_checkDictionary)
         {
             SetDictionary(_genreSettings);
         }
-        GenreVideo tempItem = _genreVideoDictionary.TryGetValue(idCassette, out GenreVideo item) ? item : null;
+        GenreSettings tempItem = _genreVideoDictionary.TryGetValue(idCassette, out GenreSettings item) ? item : null;
         return tempItem;
     }
 
@@ -37,15 +37,12 @@ public class DataGenre : ScriptableObject
         return tempSubGenre;
     }
 
-
-
-
     private void SetDictionary(List<GenreSettings> itemSettings)
     {
-        _genreVideoDictionary = new Dictionary<int, GenreVideo>();
+        _genreVideoDictionary = new Dictionary<int, GenreSettings>();
         foreach (var item in itemSettings)
         {
-            _genreVideoDictionary.Add(item.IdGenre, item.GenreVideo);
+            _genreVideoDictionary.Add(item.IdGenre, item);
         }
     }
 }

@@ -34,15 +34,11 @@ public class CounterInstaller : MonoInstaller
 
         Container.Bind<FinderFreeSlot>()
         .AsSingle();
-
-
-
     }
 
     private void BindImporter()
     {
         Container.BindInterfacesAndSelfTo<ImporterCounterSlotCassetteUi>()
         .AsSingle();
-
     }
 }

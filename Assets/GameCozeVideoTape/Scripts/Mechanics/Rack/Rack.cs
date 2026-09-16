@@ -57,7 +57,7 @@ public abstract class Rack: MonoBehaviour
         }
     }
 
-    private void SubPickUp(CassetteObject cassetteObject, bool installState)
+    protected void SubPickUp(CassetteObject cassetteObject, bool installState)
     {
         if (!installState) {  return; }
         cassetteObject.OnPickUp += OnPickUp;
