@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DialogEvent
 {
-    private DialogueEventData _dialogueEventData;
+    private HistoryEventSettings _dialogueEventData;
     public event Action<CallData> OnCallData;
     private CallData _callData;
 
@@ -21,11 +21,11 @@ public class DialogEvent
     {
         if (_dialogueEventData.IDPresent > 0)
         {
-            Debug.Log($"IdEvent: {_dialogueEventData.IdEvent}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.IDCassette}, ID_Present: {_dialogueEventData.IDPresent}");
+            //Debug.Log($"IdEvent: {_dialogueEventData.IdEventHistory}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.IDCassette}, ID_Present: {_dialogueEventData.IDPresent}");
         }
         else
         {
-            Debug.Log($"IdEvent: {_dialogueEventData.IdEvent}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.IDCassette}, ID_Present: No");
+            //Debug.Log($"IdEvent: {_dialogueEventData.IdEventHistory}, DialogueName: {_dialogueEventData.DialogueName}, ID_Cassette: {_dialogueEventData.IDCassette}, ID_Present: No");
         }
         _callData.IdCassetts = _dialogueEventData.IDCassette;
         _callData.IDPresent = _dialogueEventData.IDPresent;

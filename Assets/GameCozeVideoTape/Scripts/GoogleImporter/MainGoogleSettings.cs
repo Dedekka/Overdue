@@ -14,7 +14,7 @@ public class MainGoogleSettings
     [Header("Dialogue")]
     public List<PresentSettings> Presents;
     public List<PresentLanguageSettings> PresentLanguage;
-    public List<DialogueEventData> DialogueEvent;
+    public List<HistoryEventSettings> HistoryEvent;
     public List<DialogSettings> Dialogues;
     public List<DialogLanguageSettings> DialogLanguage;
     [Header("Opera")]

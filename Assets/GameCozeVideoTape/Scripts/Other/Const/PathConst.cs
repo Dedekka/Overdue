@@ -4,6 +4,7 @@ public static class PathConst
     public const string DataDialoguePath = "Assets/Resources/Data/DataDialogue.asset";
     public const string DataPresentPath = "Assets/Resources/Data/DataPresent.asset";
     public const string DataOperaPath = "Assets/Resources/Data/DataOpera.asset";
+    public const string DataHistoryEventPath = "Assets/Resources/Data/DataHistoryEvent.asset";
     public const string DataMusicCassetsPath = "Assets/Resources/Data/DataMusicCassets.asset";
     public const string DataMusicLanguagePath = "Assets/Resources/Data/DataMusicLanguage.asset";
     public const string DataDialogLanguagePath = "Assets/Resources/Data/DataDialogLanguage.asset";

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b84b1ccba483b41bb848bb648903ff, type: 3}
+  m_Name: DataHistoryEvent
+  m_EditorClassIdentifier: Assembly-CSharp::DataHistoryEvent
+  _historyEvent:
+  - NameEvent: "\u0417\u0432\u043E\u043D\u043E\u043A\u21161"
+    IdEventHistory: 1
+    CountCassette: 10
+    IDDialogue: 1
+    IDCassette: 0
+    IDPresent: 0
+  - NameEvent: "\u0412\u043E\u0437\u0432\u0440\u0430\u0442\u21161"
+    IdEventHistory: 2
+    CountCassette: 20
+    IDDialogue: 0
+    IDCassette: 1
+    IDPresent: 1
+  - NameEvent: "\u0417\u0432\u043E\u043D\u043E\u043A\u21162"
+    IdEventHistory: 3
+    CountCassette: 110
+    IDDialogue: 2
+    IDCassette: 0
+    IDPresent: 0
+  - NameEvent: "\u0412\u043E\u0437\u0432\u0440\u0430\u0442\u21162"
+    IdEventHistory: 4
+    CountCassette: 120
+    IDDialogue: 0
+    IDCassette: 2
+    IDPresent: 2
+  - NameEvent: "\u0417\u0432\u043E\u043D\u043E\u043A\u21163"
+    IdEventHistory: 5
+    CountCassette: 210
+    IDDialogue: 3
+    IDCassette: 0
+    IDPresent: 0
+  - NameEvent: "\u0412\u043E\u0437\u0432\u0440\u0430\u0442\u21161"
+    IdEventHistory: 6
+    CountCassette: 220
+    IDDialogue: 0
+    IDCassette: 3
+    IDPresent: 3
+  - NameEvent: "\u0424\u0438\u043D\u0430\u043B"
+    IdEventHistory: 7
+    CountCassette: 300
+    IDDialogue: 0
+    IDCassette: 0
+    IDPresent: 0

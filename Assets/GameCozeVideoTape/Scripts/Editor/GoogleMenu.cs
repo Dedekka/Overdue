@@ -22,7 +22,7 @@ public class GoogleMenu
     private const string Genre_sheets_name = "Genre";
     private const string SubGenre_sheets_name = "SubGenre";
     private const string Present_sheets_name = "BazePresent";
-    private const string DialogueEvent_sheets_name = "DialogueEvent";
+    private const string HistoryEvent_sheets_name = "HistoryEvent";
     private const string BazeDialogue_sheets_name = "BazeDialogue";
     private const string CassetteOpera_sheets_name = "CassetteOpera";
     private const string MusicCassette_sheets_name = "BazeMusicCassette";
@@ -45,6 +45,8 @@ public class GoogleMenu
         await Genre(gameSettings, sheetsImporter);
         await Item(gameSettings, sheetsImporter);
         await Dialogs(gameSettings, sheetsImporter);
+        await Events(gameSettings, sheetsImporter);
+
         await Opera(gameSettings, sheetsImporter);
         await MusicCassette(gameSettings, sheetsImporter);
 
@@ -97,6 +99,10 @@ public class GoogleMenu
         DataOpera dataOpera = ScriptableObject.CreateInstance<DataOpera>();
         dataOpera.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataOperaPath, dataOpera);
+
+        DataHistoryEvent dataHistoryEvent = ScriptableObject.CreateInstance<DataHistoryEvent>();
+        dataHistoryEvent.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataHistoryEventPath, dataHistoryEvent);
 
         DataMusicCassets dataMusicCassets = ScriptableObject.CreateInstance<DataMusicCassets>();
         dataMusicCassets.Initialization(mainGoogleSettings);
@@ -190,11 +196,14 @@ public class GoogleMenu
         PresentsParser presentsParser = new PresentsParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(Present_sheets_name, presentsParser);
 
-        //DialogueEventParser dialogueEventParser = new DialogueEventParser(gameSettings);
-        //await sheetsImporter.DownloandAndParseSheet(DialogueEvent_sheets_name, dialogueEventParser);
-
         DialogueParser dialogueParser = new DialogueParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(BazeDialogue_sheets_name, dialogueParser);
+    }
+
+    private static async UniTask Events(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        HistoryEventParser dialogueEventParser = new HistoryEventParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(HistoryEvent_sheets_name, dialogueEventParser);
     }
 
     private static async UniTask Opera(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
