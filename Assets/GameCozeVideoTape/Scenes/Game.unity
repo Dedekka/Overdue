@@ -417827,6 +417827,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 586922188287063264, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: _tv
+      value: 
+      objectReference: {fileID: 386770281}
     - target: {fileID: 2069864965035749909, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -417867,6 +417871,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337077179386071695, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: 'audioItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1832876672}
+    - target: {fileID: 4337077179386071695, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: 'audioItems.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1832876671}
+    - target: {fileID: 4337077179386071695, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: 'audioItems.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1832876670}
+    - target: {fileID: 7416526658363876049, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: _body
+      value: 
+      objectReference: {fileID: 7069099183218747427}
+    - target: {fileID: 7416526658363876049, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: _presentItem
+      value: 
+      objectReference: {fileID: 7069099183218747431}
+    - target: {fileID: 7416526658363876049, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: _musicTrigger
+      value: 
+      objectReference: {fileID: 7069099183218747426}
+    - target: {fileID: 7416526658363876049, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: audioItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416526658363876049, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: 'audioItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7069099183218747430}
+    - target: {fileID: 7416526658363876049, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: 'audioItems.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7069099183218747429}
+    - target: {fileID: 7416526658363876049, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
+      propertyPath: 'audioItems.Array.data[2]'
+      value: 
+      objectReference: {fileID: 7069099183218747428}
     - target: {fileID: 7526593059243224454, guid: a781fdae1d7b11f488dcea30c22fd723, type: 3}
       propertyPath: m_Name
       value: PromoScene
@@ -461529,6 +461573,39 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!114 &1832876670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4499911510109958448, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3afc35474a475469939c9351133b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioCassetteInteract
+--- !u!114 &1832876671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4006173566020899328, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3afc35474a475469939c9351133b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioCassetteInteract
+--- !u!114 &1832876672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 62952467113070253, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3afc35474a475469939c9351133b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioCassetteInteract
 --- !u!43 &1833030096
 Mesh:
   m_ObjectHideFlags: 0
@@ -577819,6 +577896,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &7069099183218747426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 253792290882916361, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7069099183218747427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7635480492954703802, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7069099183218747428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5389211571754387361, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825a101cc32040f42959a9afa6606443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioItemSlot
+--- !u!114 &7069099183218747429 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4837005997311501457, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825a101cc32040f42959a9afa6606443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioItemSlot
+--- !u!114 &7069099183218747430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8387690548564179004, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825a101cc32040f42959a9afa6606443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioItemSlot
+--- !u!1 &7069099183218747431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7940268707336941816, guid: 882eb69ccdc2f7142a279083cf0e4e4d, type: 3}
+  m_PrefabInstance: {fileID: 7069099183218747423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
