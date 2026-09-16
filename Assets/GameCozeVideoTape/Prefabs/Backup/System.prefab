@@ -39,6 +39,7 @@ Transform:
   - {fileID: 5907974536509172007}
   - {fileID: 6349840925213360901}
   - {fileID: 4769793369031392052}
+  - {fileID: 326453783236694335}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -64,6 +65,7 @@ MonoBehaviour:
   - {fileID: 8281377416745533498}
   - {fileID: 2579344386331613978}
   - {fileID: 9101171084716804086}
+  - {fileID: 4251091040562387880}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -292,6 +294,80 @@ MonoBehaviour:
   _viewDialog: {fileID: 0}
   _timeWaitChar: 0.03
   _timeWaitLine: 1
+--- !u!1 &4485493663572995381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 326453783236694335}
+  - component: {fileID: 4251091040562387880}
+  - component: {fileID: 1077467440924473381}
+  - component: {fileID: 337568869744856703}
+  m_Layer: 0
+  m_Name: HistoryInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &326453783236694335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485493663572995381}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4251091040562387880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485493663572995381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849f181df7183494fbb257d4f172baf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HistoryInstaller
+  _eventOne: {fileID: 1077467440924473381}
+  _eventTwo: {fileID: 337568869744856703}
+--- !u!114 &1077467440924473381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485493663572995381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c634d7f6b5d7047b62cb55e9dd3ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventOne
+  _eventEmitter: {fileID: 0}
+--- !u!114 &337568869744856703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485493663572995381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a074dc0d24bb254d9b9bd58e15210bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventTwo
+  _eventEmitter: {fileID: 0}
 --- !u!1 &5286014337423541928
 GameObject:
   m_ObjectHideFlags: 0

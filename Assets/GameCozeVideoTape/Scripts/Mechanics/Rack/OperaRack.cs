@@ -19,6 +19,7 @@ public class OperaRack : Rack
             installState = operaSettings.Id_Slot == slotndex;
         }
         OnChangeState(installState);
+        SubPickUp(itemSettings, installState);
         return installState;
     }
 }
