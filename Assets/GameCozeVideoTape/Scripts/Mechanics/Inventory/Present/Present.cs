@@ -49,20 +49,11 @@ public class Present : BazeInteracteble, IItemble
         _stateItem.Drop();
     }
 
-    public void SetPresentSettings(PresentSettings presentSettings)
+    public void SetPresentSettings(PresentSettings presentSettings,string currentNamePresent)
     {
         _presentSettings = presentSettings;
-        SetId(_presentSettings.NamePresent);
+        Description = currentNamePresent;
         Initialization();
-    }
-
-    private void SetId(string text)
-    {
-        for (int i = 0; i < listText.Count; i++)
-        {
-            listText[i].SetText(text);
-            Description = text;
-        }
     }
 
     protected override void Interact()

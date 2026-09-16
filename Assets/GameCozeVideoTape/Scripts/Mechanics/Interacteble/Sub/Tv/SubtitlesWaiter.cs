@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class SubtitlesWaiter
 {
-    public event Action OnEndWait;
+    private ControlOperaLanguage _controlOperaLanguage;
     private bool _isWait;
+    public event Action OnEndWait;
 
-    public SubtitlesWaiter()
+    public SubtitlesWaiter(ControlOperaLanguage controlOperaLanguage)
     {
+        _controlOperaLanguage = controlOperaLanguage;
         _isWait = false;
     }
 
-    public void StartWait(Subtitles Subtitles)
+    public void StartWait()
     {
+        Subtitles subtitles = _controlOperaLanguage.GetSubtitles();
         if (_isWait) { return; }
         Debug.Log($"StartWait, _isWait:{_isWait}");
-        ProgressShow(Subtitles.TimeStart).Forget();
+        ProgressShow(subtitles.TimeStart).Forget();
     }
 
     private async UniTask ProgressShow(float time)

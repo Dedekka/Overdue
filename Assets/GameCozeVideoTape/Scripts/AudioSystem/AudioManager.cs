@@ -19,6 +19,10 @@ public class AudioManager : IDisposable
     private EventInstance _musicInstance;
     private EventReference _tempMusic;
 
+    [Header("EventSound")]
+    private EventReference _doorOpen;
+    private EventReference _callPhone;
+
     public AudioManager(AudioSettings audioSettings)
     {
         _pickUp = audioSettings.PickUp;

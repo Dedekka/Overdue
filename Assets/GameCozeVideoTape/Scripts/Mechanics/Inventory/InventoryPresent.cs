@@ -9,7 +9,8 @@ public class InventoryPresent
     private bool _isFreeSlot => _currentPresent == null;
 
     public event Action OnPickUp;
-
+    public event Action<Present> OnChangeSlotPresent;
+    
     public InventoryPresent(Transform inventorySlot, SettingsPlayer settingsPlayer)
     {
         _inventorySlot = inventorySlot;
@@ -21,6 +22,7 @@ public class InventoryPresent
         if (_currentPresent == null) { return null; }
         Present temp = _currentPresent;
         _currentPresent = null;
+        OnChangeSlotPresent?.Invoke(_currentPresent);
         return temp;
     }
 
@@ -40,6 +42,7 @@ public class InventoryPresent
             present.transform.SetParent(null);
             present.Scroll(_inventorySlot);
             OnPickUp?.Invoke();
+            OnChangeSlotPresent?.Invoke(_currentPresent);
         }
         return isSucsses;
     }
@@ -54,5 +57,6 @@ public class InventoryPresent
         _currentPresent.Rigidbody.AddForce(direction * _forceDropPresent, ForceMode.VelocityChange);
 
         _currentPresent = null;
+        OnChangeSlotPresent?.Invoke(_currentPresent);
     }
 }

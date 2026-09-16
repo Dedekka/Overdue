@@ -6,11 +6,13 @@ public abstract class AudioItem : MonoBehaviour
 {
     public GameObject Body => _body;
     public int Id => _id;
+    public string Description => _music.Description;
     public MusicCassetteSettings MusicCassetteSettings => _musicCassetteSettings;
     [SerializeField] private int _id;
     [SerializeField] private AudioCassetteInteract _music;
     private ManagerAudioItem _managerAudioItem;
     private MusicCassetteSettings _musicCassetteSettings;
+    private MusicLanguage _dataMusicLanguage;
     private GameObject _body;
 
     [Inject]
@@ -44,6 +46,12 @@ public abstract class AudioItem : MonoBehaviour
     {
         _musicCassetteSettings = musicCassetteSettings;
         _music.SetDescription(MusicCassetteSettings.MusicName);
+        Debug.Log($"MusicCassetteSettings, MusicName {MusicCassetteSettings.MusicName}, Id:{MusicCassetteSettings.Id}");
+    }
+
+    public void SetLanguage(string Description)
+    {
+        _music.SetDescription(Description);
         Debug.Log($"MusicCassetteSettings, MusicName {MusicCassetteSettings.MusicName}, Id:{MusicCassetteSettings.Id}");
     }
 }

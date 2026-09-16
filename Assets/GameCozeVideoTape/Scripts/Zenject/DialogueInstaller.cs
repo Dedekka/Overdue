@@ -35,6 +35,10 @@ public class DialogueInstaller : MonoInstaller
         Container.Bind<DataDialogue>()
             .FromResource(PathConst.DataDialogueAsset)
             .AsSingle();
+
+        Container.Bind<DataDialogLanguage>()
+            .FromResource(PathConst.DataDialogLanguageAsset)
+            .AsSingle();
     }
 
     private void BindDialogue()

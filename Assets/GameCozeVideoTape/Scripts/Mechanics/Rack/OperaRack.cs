@@ -10,18 +10,16 @@ public class OperaRack : Rack
         _operaRack = operaRack;
     }
 
-    public override bool CheckCorrectSlot(int slotndex, ItemSettings itemSettings)
+    public override bool CheckCorrectSlot(int slotndex, CassetteObject itemSettings)
     {
-        bool installState = true;
-        //if (_operaRack.CheckEpisode(itemSettings.Id))
-        //{
-        //    OperaSettings operaSettings = _operaRack.GetOperaEpisode();
-        //    installState = operaSettings.Id_Slot == slotndex;
-        //}
-        // опера ли это
-
-        // Сравнивать слот из оперы и занятый 
+        bool installState = false;
+        if (_operaRack.CheckEpisode(itemSettings.Id))
+        {
+            OperaSettings operaSettings = _operaRack.GetOperaEpisode();
+            installState = operaSettings.Id_Slot == slotndex;
+        }
         OnChangeState(installState);
+        SubPickUp(itemSettings, installState);
         return installState;
     }
 }

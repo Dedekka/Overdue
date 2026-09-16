@@ -6,7 +6,6 @@ public class PlayerInstaller : MonoInstaller
 {
     [Header("Continue")]
     [SerializeField] private Player _playerCharecter;
-    [SerializeField] private SettingsPlayer _settingsPlayer;
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private Transform _groundPoint;
 
@@ -40,22 +39,22 @@ public class PlayerInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<PlayerMove>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, _characterController, _groundPoint)
+            .WithArguments( _characterController, _groundPoint)
             .NonLazy();
 
         Container.Bind<PlayerLook>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, _headSlot, _playerCharecter.transform)
+            .WithArguments( _headSlot, _playerCharecter.transform)
             .NonLazy();
 
         Container.BindInterfacesAndSelfTo<PlayerInteracteble>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, _headSlot)
+            .WithArguments( _headSlot)
             .NonLazy();
 
         Container.BindInterfacesAndSelfTo<PlayerAim>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, cinemachineCamera)
+            .WithArguments( cinemachineCamera)
             .NonLazy();
 
         Container.BindInterfacesAndSelfTo<PlayerInventory>()
@@ -64,15 +63,15 @@ public class PlayerInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<PlayerSmoothLogic>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, _bodyLogic);
+            .WithArguments( _bodyLogic);
 
         Container.Bind<InventoryCassette>()
             .AsSingle()
-            .WithArguments(_settingsPlayer, _handSlot, _inventorySlot);
+            .WithArguments( _handSlot, _inventorySlot);
 
         Container.Bind<InventoryPresent>()
             .AsSingle()
-            .WithArguments( _slotItem_0, _settingsPlayer);
+            .WithArguments( _slotItem_0);
 
         Container.BindInterfacesAndSelfTo<PlayerStateControl>()
            .AsSingle();
@@ -96,13 +95,14 @@ public class PlayerInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ImporterAimMove>()
             .AsSingle()
-            .WithArguments(_settingsPlayer)
             .NonLazy();
 
         Container.BindInterfacesAndSelfTo<ImporterAimSensitivity>()
             .AsSingle()
-            .WithArguments(_settingsPlayer)
             .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<ImporterMainLookSensitivity>()
+            .AsSingle();
 
         Container.BindInterfacesAndSelfTo<ImporterPlayerStatePlayerInput>()
             .AsSingle();

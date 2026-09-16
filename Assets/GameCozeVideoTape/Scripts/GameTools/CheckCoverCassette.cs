@@ -4,6 +4,7 @@ public class CheckCoverCassette : MonoBehaviour
 {
     [Header("DebugTexture")]
     [SerializeField, Tooltip("Тестируемая текстура")] private Texture2DArray _cover;
+    [SerializeField, Tooltip("Начальный materialIndex"),] private int _startId;
     [SerializeField, Range(1, 60), Tooltip("Кол-во тестируемых обложек")] private int _valueCover;
 
     [Header("System")]
@@ -42,6 +43,7 @@ public class CheckCoverCassette : MonoBehaviour
 
     private void CreateCover(bool isChangeMaterial)
     {
+        int tempId = _startId;
         for (int i = 0; i < _valueCover; i++)
         {
             GameObject tempCover = GameObject.Instantiate(_prefabCover);
@@ -52,7 +54,8 @@ public class CheckCoverCassette : MonoBehaviour
 
             if (isChangeMaterial)
             {
-            ChangeMaterial(tempCover, i);
+                ChangeMaterial(tempCover, tempId);
+                tempId++;
             }
         }
     }

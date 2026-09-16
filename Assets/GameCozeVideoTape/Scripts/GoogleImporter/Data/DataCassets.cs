@@ -22,9 +22,9 @@ public class DataCassets : ScriptableObject
         for (int i = 0; i < cassettes.Count; i++)
         {
             tempCassette = cassettes[i];
-                countcassettes = tempCassette.Id;
-          
-            if (tempCassette.Id>= itemSettings.Count)
+            countcassettes = tempCassette.Id;
+
+            if (tempCassette.Id >= itemSettings.Count)
             {
                 countcassettes = tempcountcassette;
                 tempcountcassette++;
@@ -37,7 +37,7 @@ public class DataCassets : ScriptableObject
             }
             Debug.Log($"tempCassette.Id:{tempCassette.Id}, countcassettes:{countcassettes}, tempcountcassette:{tempcountcassette},  cassettes.Count:{cassettes.Count}");
 
-                tempCassette.SetSettings(GetItem(countcassettes));
+            tempCassette.SetSettings(GetItem(countcassettes));
         }
     }
 

@@ -1,5 +1,3 @@
-using FMODUnity;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -44,12 +42,22 @@ public class AudioInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<AudioRecorderAnimation>()
          .AsSingle()
          .WithArguments(_buttonPlay, _coverPlate);
+
+        Container.Bind<ControlMusicLanguage>()
+         .AsSingle();
+
+        Container.Bind<ControlDialogLanguage>()
+         .AsSingle();
     }
 
     private void FindSub()
     {
         Container.Bind<DataMusicCassets>()
           .FromResource(PathConst.DataMusicCassetsAsset)
+          .AsSingle();
+
+        Container.Bind<DataMusicLanguage>()
+          .FromResource(PathConst.DataMusicLanguageAsset)
           .AsSingle();
     }
 

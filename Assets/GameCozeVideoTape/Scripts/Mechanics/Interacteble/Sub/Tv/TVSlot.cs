@@ -17,8 +17,8 @@ public class TVSlot : BazeInteracteble
     public void Construct(PlayerInventory playerInventory, ShelfSlotSettings settings)
     {
         //_playerInventory = playerInventory;
-        _ease = settings.EaseSuccess;
-        _time = settings.TimeSuccess;
+        _ease = settings.EaseTv;
+        _time = settings.TimeTv;
     }
 
     private void Awake()

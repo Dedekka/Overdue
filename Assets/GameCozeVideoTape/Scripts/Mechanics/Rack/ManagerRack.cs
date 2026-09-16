@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-
-
 public class ManagerRack : IInitializable, IDisposable
 {
+    public List<Rack> Racks => _racks;
     private Dictionary<int, RackGenre> _racksDictionary;
     private List<Rack> _racks;
     private RackHolder _rackHolder;
     private ManagerCassette _managerCassette;
     private AudioRack _audioRack;
-
+    private CounterRackSlot _counterRackSlot;
+    private CounterSlotCassette _counterSlotCassette;
+    
     private int _maxRack;
 
-    public ManagerRack(int maxRack, RackHolder rackHolder, ManagerCassette managerCassette, AudioRack audioRack)
+    public ManagerRack(int maxRack, RackHolder rackHolder, ManagerCassette managerCassette, AudioRack audioRack, CounterRackSlot counterRackSlot, CounterSlotCassette counterSlotCassette)
     {
         _racks = new List<Rack>();
         _managerCassette = managerCassette;
         _maxRack = maxRack;
         _rackHolder = rackHolder;
         _audioRack = audioRack;
+        _counterRackSlot = counterRackSlot;
+        _counterSlotCassette = counterSlotCassette;
     }
 
     public void Dispose()
@@ -29,10 +32,12 @@ public class ManagerRack : IInitializable, IDisposable
         _rackHolder.OnSave -= Save;
         _rackHolder.OnUpdateItems -= UpdateItems;
         _audioRack.UnSubAudio(_racks);
+        _counterRackSlot.UnSubCounter(_racks);
     }
 
     public void Initialize()
     {
+        Debug.Log($"ManagerRack!!!!!!!!!!!!!!!");
         _rackHolder.OnSave += Save;
         _rackHolder.OnUpdateItems += UpdateItems;
     }
@@ -86,13 +91,15 @@ public class ManagerRack : IInitializable, IDisposable
 
     private void CheckMaxRack()
     {
-        Debug.Log($"END: _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
+        Debug.Log($"Progress _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
         if (_racks.Count == _maxRack)
         {
             Debug.Log($"END: _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
             SetDictionary();
             _rackHolder.AddRack(_racksDictionary);
             _audioRack.SubAudio(_racks);
+            _counterSlotCassette.Initialize(this);
+            _counterRackSlot.SubCounter(_racks);
         }
     }
 

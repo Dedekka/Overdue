@@ -32,9 +32,9 @@ public class MusicCassetteParser : IGoogleParser
                 _currentGenreSettings.Audio = token;
                 break;
 
-            case "Description":
-                _currentGenreSettings.Description = token;
-                break;
+            //case "Description":
+            //    _currentGenreSettings.Description = token;
+            //    break;
 
             case "MaterialIndex":
                 _currentGenreSettings.MaterialIndex = Convert.ToInt32(token);

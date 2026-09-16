@@ -22,8 +22,8 @@ public class CassetteObject : BazeInteracteble, IItemble
 
     private Rigidbody _rigidbody;
     private ManagerCassette _managerCassette;
-    private bool _isOpera;
 
+    private bool _isOpera;
     public event Action<CassetteObject> OnPickUp;
     public event Action OnDrop;
 
@@ -58,7 +58,11 @@ public class CassetteObject : BazeInteracteble, IItemble
     public void SetSettings(ItemSettings itemSettings)
     {
         _itemSettings = itemSettings;
-        Description = _itemSettings.Original_Title;
+    }
+
+    public void SetLanguage(string nameTitle)
+    {
+        Description = nameTitle;
     }
 
     public void SetOpera()

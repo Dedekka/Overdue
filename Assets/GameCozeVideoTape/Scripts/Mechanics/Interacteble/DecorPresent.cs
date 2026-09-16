@@ -4,7 +4,7 @@ using Zenject;
 public class DecorPresent : MonoBehaviour
 {
     [SerializeField] private DecorSlot _decorSlot;
-    [SerializeField] private int _idItem;
+    private int _idItem;
 
     private DecorChecker _decorChecker;
 
@@ -14,16 +14,29 @@ public class DecorPresent : MonoBehaviour
         _decorChecker = decorChecker;
     }
 
-    private void Awake()
+    public void Initialization(int idItem)
     {
-        _decorSlot.OnEnterCursor += OnEnterCursor;
+        _idItem = idItem;
+        //_decorSlot.OnEnterCursor += OnEnterCursor;
         _decorSlot.OnInteract += OnInteract;
     }
 
     private void OnDisable()
     {
-        _decorSlot.OnEnterCursor -= OnEnterCursor;
+        //_decorSlot.OnEnterCursor -= OnEnterCursor;
         _decorSlot.OnInteract -= OnInteract;
+    }
+
+    public void OnControlVisible(bool isVisible)
+    {
+        if (_decorChecker.CheckEmptyHand(isVisible, _idItem))
+        {
+            _decorSlot.ControlVisible(true);
+        }
+        else
+        {
+            _decorSlot.ControlVisible(false);
+        }
     }
 
     private void OnInteract()
@@ -35,15 +48,5 @@ public class DecorPresent : MonoBehaviour
         }
     }
 
-    private void OnEnterCursor(bool isVisible)
-    {
-        if (_decorChecker.CheckEmptyHand(isVisible, _idItem))
-        {
-            _decorSlot.ControlVisible(true);
-        }
-        else
-        {
-            _decorSlot.ControlVisible(false);
-        }
-    }
+  
 }

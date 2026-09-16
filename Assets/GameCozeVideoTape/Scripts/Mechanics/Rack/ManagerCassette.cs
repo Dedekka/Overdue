@@ -15,11 +15,12 @@ public class ManagerCassette : IInitializable, IDisposable
     private DataCassets _dataCassets;
     private AudioCassette _audioCassette;
     private CassetteRenderer _cassetteRenderer;
+    private ControlCassetteLanguage _controlCassetteLanguage;
     //private DataLanguage _dataLanguage;
     private InventoryCassette _inventorySlot;
     private int _maxCassette;
 
-    public ManagerCassette(DataCassets dataCassets, CassetteOpera cassetteOpera, CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventoryCassette inventorySlot, AudioCassette audioCassette, CassetteRenderer cassetteRenderer, int maxCassette)//DataLanguage dataLanguage,
+    public ManagerCassette(ControlCassetteLanguage controlCassetteLanguage, DataCassets dataCassets, CassetteOpera cassetteOpera, CassetteHolder cassetteHolder, ControlSleepCassette controlSleepCassette, InventoryCassette inventorySlot, AudioCassette audioCassette, CassetteRenderer cassetteRenderer, int maxCassette)//DataLanguage dataLanguage,
     {
         _cassetteOpera = cassetteOpera;
         _maxCassette = maxCassette;
@@ -30,6 +31,7 @@ public class ManagerCassette : IInitializable, IDisposable
         _cassetteHolder = cassetteHolder;
         _inventorySlot = inventorySlot;
         _cassetteRenderer = cassetteRenderer;
+        _controlCassetteLanguage = controlCassetteLanguage;
         _listCassette = new List<CassetteObject>();
     }
 
@@ -57,6 +59,11 @@ public class ManagerCassette : IInitializable, IDisposable
         return _dataCassets.GetItem(Id);
     }
 
+    public void ChangeLanguage()
+    {
+        _controlCassetteLanguage.GetLanguage(_listCassette);
+    }
+
     private void CheckMaxCassetteObject()
     {
         //_maxCassette = _maxCassette > 0 ? _maxCassette : _dataCassets.GetMaxCassette();
@@ -66,6 +73,7 @@ public class ManagerCassette : IInitializable, IDisposable
             Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
             _dataCassets.GetSettings(_listCassette);
             SetDictionary();
+            _controlCassetteLanguage.GetLanguage(_listCassette);
             _cassetteOpera.GetOpera(_cassetsDictionary);
             _cassetteHolder.AddCassette(_listCassette, _inventorySlot.GetActiveCassets());
             _controlSleepCassette.SetCassette(_listCassette);
