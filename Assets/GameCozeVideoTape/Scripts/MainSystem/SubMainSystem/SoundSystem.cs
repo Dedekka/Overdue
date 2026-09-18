@@ -96,7 +96,7 @@ public class SoundSystem : IInitializable
         //}
         bus.getPath(out string path);
 
-        Debug.Log($"Bus_Path:{path}, Volume:{Volume} ");
+        //Debug.Log($"Bus_Path:{path}, Volume:{Volume} ");
         bus.setVolume(Volume);
     }
 

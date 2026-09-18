@@ -67,4 +67,10 @@ public class CounterSlotCassette : IDisposable
         OnUpdateCountSuccessInstall?.Invoke(countSuccessInstall);
     }
 
+    public void CountingSuccessInstall(int SuccessInstall)
+    {
+        _countSuccessInstall = SuccessInstall;
+        OnUpdateCountSuccessInstall?.Invoke(SuccessInstall);
+    }
+
 }

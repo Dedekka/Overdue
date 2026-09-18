@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 
-public class DialogEventManager
+public class PresentEventManager
 {
     // Создать класс спавнер в котороый мы передадим CallData и он реализует спавн Когда сработает отложенное событие
 
@@ -29,45 +29,33 @@ public class DialogEventManager
 
     private RealizerPresent _presentSpawner;
     private RealizerReturned _returnedMover;
-    private CallData _callData;
+    private PresentEvent _presentEvent;
 
-    public DialogEventManager(RealizerPresent presentSpawner, RealizerReturned returnedMover)
+    public event Action OnEventComplited;
+
+
+    public PresentEventManager(RealizerPresent presentSpawner, RealizerReturned returnedMover)
     {
         _presentSpawner = presentSpawner;
         _returnedMover = returnedMover;
     }
 
-    public void SetCallData(CallData callData)
+    public void SetCallData(PresentEvent presentEvent)
     {
-        _callData = callData;
+        _presentEvent = presentEvent;
     }
 
     public void ActiveEvent()
     {
-        Wait().Forget();
+        CheckCorrectID(_presentEvent.IDCassette, _returnedMover.SetCallData);
+        CheckCorrectID(_presentEvent.IDPresent, _presentSpawner.SetCallData);
+        OnEventComplited?.Invoke();
     }
 
-
-    private async UniTaskVoid Wait()
+    private void CheckCorrectID(int id, Action<PresentEvent> action)
     {
-        await UniTask.Delay(3000);
-        Debug.Log($"DialogEventManager: IdCassetts: {_callData.IdCassetts}, IDPresent: {_callData.IDPresent}");
+        if (id <= 0) { return; }
 
-
-        //_returnedMover.SetCallData(_callData);
-        //if (_callData.IDPresent < 0) { return; }
-        //_presentSpawner.SetCallData(_callData);
-
-        CheckCorrectID(_callData.IdCassetts, _returnedMover.SetCallData);
-        CheckCorrectID(_callData.IDPresent, _presentSpawner.SetCallData);
-
-        Debug.Log("EndTimer");
-    }
-
-    private void CheckCorrectID(int id, Action<CallData> action)
-    {
-        if (id < 0) { return; }
-
-        action?.Invoke(_callData);
+        action?.Invoke(_presentEvent);
     }
 }

@@ -99,7 +99,7 @@ public class InventoryCassette
     public void Scroll(bool duration)
     {
         if (_countSlotInventory <= 1) { return; }
-        Debug.Log($"Scroll CountSlotInventory: {_countSlotInventory}");
+        //Debug.Log($"Scroll CountSlotInventory: {_countSlotInventory}");
         ChangeSlot(duration, 0);
     }
 

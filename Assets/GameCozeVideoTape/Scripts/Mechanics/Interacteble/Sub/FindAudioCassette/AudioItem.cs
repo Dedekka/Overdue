@@ -46,12 +46,12 @@ public abstract class AudioItem : MonoBehaviour
     {
         _musicCassetteSettings = musicCassetteSettings;
         _music.SetDescription(MusicCassetteSettings.MusicName);
-        Debug.Log($"MusicCassetteSettings, MusicName {MusicCassetteSettings.MusicName}, Id:{MusicCassetteSettings.Id}");
+        //Debug.Log($"MusicCassetteSettings, MusicName {MusicCassetteSettings.MusicName}, Id:{MusicCassetteSettings.Id}");
     }
 
     public void SetLanguage(string Description)
     {
         _music.SetDescription(Description);
-        Debug.Log($"MusicCassetteSettings, MusicName {MusicCassetteSettings.MusicName}, Id:{MusicCassetteSettings.Id}");
+        //Debug.Log($"MusicCassetteSettings, MusicName {MusicCassetteSettings.MusicName}, Id:{MusicCassetteSettings.Id}");
     }
 }

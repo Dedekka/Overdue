@@ -45,10 +45,10 @@ public class ManagerAudioItem : IInitializable, IDisposable
 
     private void CheckMaxAudioItem()
     {
-        Debug.Log($"ManagerAudioItem_CheckMaxAudioItem, _audioItems:{_audioItems.Count} , _maxAudioItem: {_maxAudioItem} ");
+        //Debug.Log($"ManagerAudioItem_CheckMaxAudioItem, _audioItems:{_audioItems.Count} , _maxAudioItem: {_maxAudioItem} ");
         if (_audioItems.Count == _maxAudioItem)
         {
-            Debug.Log($"FIn , _audioItems:{_audioItems.Count} , _maxAudioItem: {_maxAudioItem} ");
+            //Debug.Log($"FIn , _audioItems:{_audioItems.Count} , _maxAudioItem: {_maxAudioItem} ");
             _dataMusicCassets.GetSettings(_audioItems);
             _controlMusicLanguage.GetLanguage(_audioItems);
             //_audioItemRenderer.SetCassette(_audioItems);

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using UnityEngine;
 
 public class DialogSystemCall : IRealizerDialogueble
 {
@@ -7,16 +8,14 @@ public class DialogSystemCall : IRealizerDialogueble
     private DialogSettings _dialogSettings;
     private ControlDialogLanguage _controlDialogLanguage;
     private DialogSound _dialogSound;
-    private DialogEvent _dialogEvent;
     private DialogLine _currentDialogLine;
     private SoundLine _soundLine;
 
     public event Action<bool> OnStateDialog;
 
-    public DialogSystemCall(DataDialogue dataDialogue, DialogSound dialogSound, DialogEvent dialogEvent, ControlDialogLanguage controlDialogLanguage)
+    public DialogSystemCall(DataDialogue dataDialogue, DialogSound dialogSound , ControlDialogLanguage controlDialogLanguage)
     {
         _dialogSound = dialogSound;
-        _dialogEvent = dialogEvent;
         _dataDialogue = dataDialogue;
         _controlDialogLanguage = controlDialogLanguage;
     }
@@ -46,7 +45,6 @@ public class DialogSystemCall : IRealizerDialogueble
     public void SetDialogLine()
     {
         _dialogSound.SetFmodSound(_soundLine.PathFmod);
-        //_dialogEvent.SetDialogSettings(_dialogSettings);
     }
 
     public void StartDialog()
@@ -56,7 +54,7 @@ public class DialogSystemCall : IRealizerDialogueble
 
     public void EndDialog()
     {
-        //_dialogEvent.StartEvent();
+        Debug.Log($"EndDialog_ DialogSystemCall");
         _dialogSound.StopSound();
         OnStateDialog?.Invoke(false);
     }

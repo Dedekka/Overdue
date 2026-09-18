@@ -6,7 +6,7 @@ using Zenject;
 public class Phone : MonoBehaviour
 {
     [SerializeField] private AnswerCall _answerCall;
-    [SerializeField] private StudioEventEmitter _eventEmitter;
+    //[SerializeField] private StudioEventEmitter _eventEmitter;
     private DialogCall _dialogTest;
     private int _dialogId;
 
@@ -29,6 +29,14 @@ public class Phone : MonoBehaviour
         _answerCall.OnCall -= StartDialog;
     }
 
+    public void ActiveCallEffect()
+    {
+        Debug.Log("Phone, ActiveCallEffect");
+        // Класс отвечающий за эфекты телефона 
+        // Вкл эффекты
+
+    }
+
     public void SetDialogName(int dialogId)
     {
         _answerCall.gameObject.SetActive(true);
@@ -37,7 +45,9 @@ public class Phone : MonoBehaviour
 
     private void StartDialog()
     {
-        _eventEmitter.Stop();
+        // Класс отвечающий за эфекты телефона 
+        // Выкл эффектыы
+
         bool successStartDialog = _dialogTest.StartDialog(_dialogId);
         CheckSuccessCall(successStartDialog);
     }

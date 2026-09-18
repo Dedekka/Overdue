@@ -1,14 +1,14 @@
 public class RealizerReturned
 {
     private ReturnedMover _returnedMover;
-    private CallData _callData;
+    private PresentEvent _callData;
 
     public RealizerReturned(ReturnedMover returnedMover)
     {
         _returnedMover = returnedMover;
     }
 
-    public void SetCallData(CallData callData)
+    public void SetCallData(PresentEvent callData)
     {
         _callData = callData;
         ActiveEvent();
@@ -16,6 +16,6 @@ public class RealizerReturned
 
     private void ActiveEvent()
     {
-        _returnedMover.Returned(_callData.IdCassetts);
+        _returnedMover.Returned(_callData.IDCassette);
     }
 }

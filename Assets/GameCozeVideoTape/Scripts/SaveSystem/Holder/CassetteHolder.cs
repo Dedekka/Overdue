@@ -89,7 +89,7 @@ namespace SaveLoadSystem
                 tempCassette = cassetteObjects[i];
                 if (tempCassette == null)
                 {
-                    Debug.Log($"I: {i},cassetteObjects{cassetteObjects.Count}");
+                    //Debug.Log($"I: {i},cassetteObjects{cassetteObjects.Count}");
                     break;
                 }
 

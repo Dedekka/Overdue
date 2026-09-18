@@ -10,7 +10,7 @@ public class RealizerPresent
     private PresentSpawner _presentSpawner;
     private PackageSystem _packageSystem;
     private Present _currentPresent;
-    private CallData _callData;
+    private PresentEvent _callData;
 
     public RealizerPresent(PresentSpawner presentSpawner, PackageSystem packageSystem)
     {
@@ -18,7 +18,7 @@ public class RealizerPresent
         _packageSystem = packageSystem;
     }
 
-    public void SetCallData(CallData callData)
+    public void SetCallData(PresentEvent callData)
     {
         _callData = callData;
         ActiveEvent();

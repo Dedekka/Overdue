@@ -21,7 +21,7 @@ public class ImporterMainLookSensitivity : IDisposable, IInitializable
 
     public void Initialize()
     {
-        Debug.Log($"ImporterMainLookSensitivity, Sensitivity:{_controlSensitivity.Sensitivity}");
+        //Debug.Log($"ImporterMainLookSensitivity, Sensitivity:{_controlSensitivity.Sensitivity}");
         ChangeSensitivity(_controlSensitivity.Sensitivity);
         _controlSensitivity.OnChangeSensitivity += ChangeSensitivity;
         _controlSensitivity.OnLoadSensitivity += ChangeSensitivity;
@@ -29,7 +29,7 @@ public class ImporterMainLookSensitivity : IDisposable, IInitializable
 
     private void ChangeSensitivity(float coefficientSpeed)
     {
-        Debug.Log($"ImporterMainLookSensitivity, coefficientSpeed:{coefficientSpeed}");
+        //Debug.Log($"ImporterMainLookSensitivity, coefficientSpeed:{coefficientSpeed}");
         _playerLook.ChangeSensitivity(coefficientSpeed);
     }
 }

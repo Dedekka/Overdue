@@ -6,16 +6,14 @@ public class ImporterCounterSlotCassetteUi : IDisposable, IInitializable
 {
     private CounterSlotCassette _counterSlotCassette;
     private CounterSlotCassetteUi _counterSlotCassetteUi;
-    private HistorySystem _historySystem;
 
     private int _maxCountSlot;
 
-    public ImporterCounterSlotCassetteUi(CounterSlotCassette counterSlotCassette, CounterSlotCassetteUi counterSlotCassetteUi, HistorySystem historySystem)
+    public ImporterCounterSlotCassetteUi(CounterSlotCassette counterSlotCassette, CounterSlotCassetteUi counterSlotCassetteUi)
     {
         _counterSlotCassette = counterSlotCassette;
         _counterSlotCassetteUi = counterSlotCassetteUi;
         _maxCountSlot = 0;
-        _historySystem = historySystem;
     }
 
     public void Initialize()
@@ -35,7 +33,6 @@ public class ImporterCounterSlotCassetteUi : IDisposable, IInitializable
     {
         Debug.Log($"ImporterCounterSlotCassetteUi, OnUpdateCountSuccessInstall: {successInstall}");
         string text = $"{successInstall}/{_maxCountSlot}";
-        _historySystem.ProgressHistory(successInstall);
         _counterSlotCassetteUi.UpdateTextCounter(text);
     }
 
@@ -43,6 +40,6 @@ public class ImporterCounterSlotCassetteUi : IDisposable, IInitializable
     {
         Debug.Log($"ImporterCounterSlotCassetteUi, OnUpdateMaxCountSlot: {maxCountSlot}");
         _maxCountSlot = maxCountSlot;
-        _maxCountSlot -= 29;
+        _maxCountSlot -= 27;
     }
 }
