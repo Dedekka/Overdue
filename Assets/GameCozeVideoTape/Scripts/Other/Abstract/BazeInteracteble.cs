@@ -26,7 +26,7 @@ public abstract class BazeInteracteble : MonoBehaviour, IInteracteble
         }
     }
 
-    [SerializeField] private string _description;
+    private string _description;
 
     protected bool _isShowPanelUse;
     /// <summary>

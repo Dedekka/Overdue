@@ -70,6 +70,12 @@ public class CassetteObject : BazeInteracteble, IItemble
         _isOpera = true;
     }
 
+    public void OffInteracteble()
+    {
+        _isShowPanelUse = false;
+        _stateItem.OffInteracteble();
+    }
+
     public void Drop()
     {
         OnDrop?.Invoke();

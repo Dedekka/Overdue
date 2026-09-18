@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class StateItem
 {
-    // Должен быть таймер включающий выключающий физику
-
     public Collider Collider => _collider;
     public bool IsHandSlot => _isHandSlot;
     private IItemble _currentCassette;
     private Collider _collider;
     private Rigidbody _rigidbody;
     private bool _isHandSlot;
+    private bool _isOffInteracteble;
 
     public void Initialization(IItemble cassetteObject, Rigidbody rigidbody)
     {
         _currentCassette = cassetteObject;
         _collider = _currentCassette._body.GetComponent<Collider>();
         _rigidbody = rigidbody;
+        _isOffInteracteble = false;
     }
 
     public void Drop()
@@ -30,8 +30,16 @@ public class StateItem
         Timer();
     }
 
+    public void OffInteracteble()
+    {
+        ControlHand(true);
+        Control(true, true);
+        _isOffInteracteble = true;
+    }
+
     public void Install()
     {
+        if (_isOffInteracteble) { return; }
         ControlHand(false);
         Control(true, true);
     }

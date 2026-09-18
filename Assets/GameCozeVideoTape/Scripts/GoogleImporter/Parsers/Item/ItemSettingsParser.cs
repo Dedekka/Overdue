@@ -46,7 +46,7 @@ public class ItemSettingsParser : IGoogleParser
             case "SubGenre":
                 _currentSubGenreSettings = _currentGenreSettings.SubGenreList.Find((x) => x.SubGenreName == token);
 
-                if (_currentGenreSettings == null)
+                if (_currentSubGenreSettings == null)
                 {
                     Debug.LogError($"Not Found SubGenre for Item, {token}");
                     return;

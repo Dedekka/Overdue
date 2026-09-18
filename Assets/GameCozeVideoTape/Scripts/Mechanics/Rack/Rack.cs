@@ -60,17 +60,18 @@ public abstract class Rack: MonoBehaviour
     protected void SubPickUp(CassetteObject cassetteObject, bool installState)
     {
         if (!installState) {  return; }
-        cassetteObject.OnPickUp += OnPickUp;
+        //cassetteObject.OnPickUp += OnPickUp;
+        cassetteObject.OffInteracteble();
         _countSuccessInstall++;
         OnChanheCountSuccessInstall?.Invoke();
     }
 
-    private void OnPickUp(CassetteObject cassetteObject)
-    {
-        cassetteObject.OnPickUp -= OnPickUp;
-        _countSuccessInstall--;
-        OnChanheCountSuccessInstall?.Invoke();
-    }
+    //private void OnPickUp(CassetteObject cassetteObject)
+    //{
+    //    //cassetteObject.OnPickUp -= OnPickUp;
+    //    _countSuccessInstall--;
+    //    OnChanheCountSuccessInstall?.Invoke();
+    //}
 
 
 }

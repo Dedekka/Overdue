@@ -15,7 +15,7 @@ public class PlayerUi : MonoBehaviour
         if (_textDescription == null) return;
         if (_textDescription.text == text) return;
         _textDescription.text = text;
-        bool isVisible = text != string.Empty;
+        bool isVisible = !string.IsNullOrEmpty(text);
         _panelDescription.SetActive(isVisible);
     }
 
