@@ -18,7 +18,7 @@ public class FinderFreeSlot
             if (!dataShelf.SubGenreShelfs.gameObject.activeSelf) { continue; }
             tempCountSlot += CheckRack(rack, dataShelf);
         }
-        Debug.Log($"CountFreeSlot: {tempCountSlot}, Name:{rack.gameObject.name}");
+        //Debug.Log($"CountFreeSlot: {tempCountSlot}, Name:{rack.gameObject.name}");
         return tempCountSlot;
     }
 

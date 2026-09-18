@@ -80,10 +80,12 @@ public class PresentLanguageSettings
 }
 
 [Serializable]
-public class DialogueEventData
+public class HistoryEventSettings
 {
-    public int IdEvent;
-    public string DialogueName;
+    public string NameEvent;
+    public int IdEventHistory;
+    public int CountCassette;
+    public int IDDialogue;
     public int IDCassette;
     public int IDPresent;
 }

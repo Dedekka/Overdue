@@ -22,7 +22,7 @@ public class ControlSensitivity : IInitializable
 
     public void Initialize()
     {
-        Debug.Log($"ControlSensitivity, Sensitivity:{Sensitivity}");
+        //Debug.Log($"ControlSensitivity, Sensitivity:{Sensitivity}");
         OnLoadSensitivity?.Invoke(_controlSettings.Sensitivity);
     }
 }

@@ -13,13 +13,13 @@ public class ControlSettings
 
     public void ChangeSensitivity(float sensitivity)
     {
-        Debug.Log($"Sensitivity:{Sensitivity}");
+        //Debug.Log($"Sensitivity:{Sensitivity}");
         Sensitivity = sensitivity;
     }
 
     public void ChangeLanguage(Language language)
     {
-        Debug.Log($"ControlSettings,  Language:{language}, index:{(int)language}");
+        //Debug.Log($"ControlSettings,  Language:{language}, index:{(int)language}");
         Language = language;
     }
 }

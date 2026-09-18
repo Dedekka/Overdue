@@ -70,7 +70,7 @@ public class ManagerCassette : IInitializable, IDisposable
 
         if (_listCassette.Count == _maxCassette)
         {
-            Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
+            //Debug.Log($"END: _listCassette.Count = {_listCassette.Count} ,_maxCassette = {_maxCassette} ");
             _dataCassets.GetSettings(_listCassette);
             SetDictionary();
             _controlCassetteLanguage.GetLanguage(_listCassette);

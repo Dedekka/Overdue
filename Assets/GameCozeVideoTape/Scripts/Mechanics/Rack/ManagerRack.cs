@@ -37,7 +37,7 @@ public class ManagerRack : IInitializable, IDisposable
 
     public void Initialize()
     {
-        Debug.Log($"ManagerRack!!!!!!!!!!!!!!!");
+        //Debug.Log($"ManagerRack!!!!!!!!!!!!!!!");
         _rackHolder.OnSave += Save;
         _rackHolder.OnUpdateItems += UpdateItems;
     }
@@ -91,10 +91,10 @@ public class ManagerRack : IInitializable, IDisposable
 
     private void CheckMaxRack()
     {
-        Debug.Log($"Progress _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
+        //Debug.Log($"Progress _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
         if (_racks.Count == _maxRack)
         {
-            Debug.Log($"END: _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
+            //Debug.Log($"END: _racks.Count = {_racks.Count} ,_maxRack = {_maxRack} ");
             SetDictionary();
             _rackHolder.AddRack(_racksDictionary);
             _audioRack.SubAudio(_racks);

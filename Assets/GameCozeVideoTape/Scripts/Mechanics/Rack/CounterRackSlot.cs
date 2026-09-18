@@ -25,7 +25,7 @@ public class CounterRackSlot
             _finderFreeSlot.SubCounter(testRack);
             //_audioRackImporter.SubCassette(testRack);
         }
-        Debug.Log($"CounterRackSlot: {tempCountSlot}");
+        //Debug.Log($"CounterRackSlot: {tempCountSlot}");
         
         _countSlot = tempCountSlot;
         OnFinderMaxCountSlot?.Invoke( _countSlot );

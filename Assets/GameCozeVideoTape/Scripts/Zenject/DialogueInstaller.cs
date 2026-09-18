@@ -52,11 +52,11 @@ public class DialogueInstaller : MonoInstaller
         Container.Bind<DialogSound>()
             .AsSingle();
 
-        Container.Bind<DialogEventManager>()
+        Container.Bind<PresentEventManager>()
             .AsSingle();
 
-        Container.Bind<DialogEvent>()
-            .AsSingle();
+        //Container.Bind<DialogEvent>()
+        //    .AsSingle();
 
 
         Container.Bind<DialogSystem>()

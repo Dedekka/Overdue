@@ -24,9 +24,9 @@ public class SettingsLocalization : ScriptableObject
 
     public void SetLocalizationMaterial(Language language)
     {
-        Debug.Log($"SetLocalizationMaterial, Language:{language}");
-        Debug.Log($"MaterialGanre:{_materialGanre.GetTexture(_colorTexture).name}");
-        Debug.Log($"MaterialSubGanre:{_materialSubGanre.GetTexture(_colorTexture).name}");
+        //Debug.Log($"SetLocalizationMaterial, Language:{language}");
+        //Debug.Log($"MaterialGanre:{_materialGanre.GetTexture(_colorTexture).name}");
+        //Debug.Log($"MaterialSubGanre:{_materialSubGanre.GetTexture(_colorTexture).name}");
         switch (language)
         {
             case Language.En:
@@ -49,7 +49,7 @@ public class SettingsLocalization : ScriptableObject
                 break;
         }
 
-        Debug.Log($"MaterialGanre:{_materialGanre.GetTexture(_colorTexture).name}");
-        Debug.Log($"MaterialSubGanre:{_materialSubGanre.GetTexture(_colorTexture).name}");
+        //Debug.Log($"MaterialGanre:{_materialGanre.GetTexture(_colorTexture).name}");
+        //Debug.Log($"MaterialSubGanre:{_materialSubGanre.GetTexture(_colorTexture).name}");
     }
 }
