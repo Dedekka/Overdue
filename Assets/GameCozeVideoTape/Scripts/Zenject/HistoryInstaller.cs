@@ -21,6 +21,7 @@ public class HistoryInstaller : MonoInstaller
     }
 
 
+
     private void FindSub()
     {
         Container.Bind<DataHistoryEvent>()

@@ -26,8 +26,7 @@ public class GameInstaller : MonoInstaller
     [Header("Rack")]
     [SerializeField] private int _maxRack;
     [SerializeField] private int _maxCassette;
-    [Header("Phone")]
-    [SerializeField] private Phone _phone;
+    
     [Header("TV")]
     [SerializeField] private CinemachineCamera _tvCamera;
     [SerializeField] private TV _tv;
@@ -48,7 +47,6 @@ public class GameInstaller : MonoInstaller
         BindImporter();
         BindRack();
         BindPauseSystem();
-        BindPhone();
         BindEventRealizer();
         BindPresentDecor();
         BindTv();
@@ -138,12 +136,7 @@ public class GameInstaller : MonoInstaller
         //   .WithArguments(_slotMaterial, _decorMaterial);
     }
 
-    private void BindPhone()
-    {
-        Container.Bind<Phone>()
-           .FromInstance(_phone)
-           .AsSingle();
-    }
+   
 
     private void FindSub()
     {

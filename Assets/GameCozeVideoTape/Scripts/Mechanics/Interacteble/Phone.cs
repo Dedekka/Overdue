@@ -1,4 +1,3 @@
-using FMODUnity;
 using System;
 using UnityEngine;
 using Zenject;
@@ -8,14 +7,16 @@ public class Phone : MonoBehaviour
     [SerializeField] private AnswerCall _answerCall;
     //[SerializeField] private StudioEventEmitter _eventEmitter;
     private DialogCall _dialogTest;
+    private PhoneEffect _phoneEffect;
     private int _dialogId;
 
     public event Action OnStartCall;
 
     [Inject]
-    public void Construct(DialogCall dialogTest)
+    public void Construct(DialogCall dialogTest, PhoneEffect phoneEffect)
     {
         _dialogTest = dialogTest;
+        _phoneEffect = phoneEffect;
     }
 
     private void OnEnable()
@@ -31,6 +32,7 @@ public class Phone : MonoBehaviour
 
     public void ActiveCallEffect()
     {
+        _phoneEffect.ActivationRingEffect();
         Debug.Log("Phone, ActiveCallEffect");
         // Класс отвечающий за эфекты телефона 
         // Вкл эффекты
@@ -56,6 +58,7 @@ public class Phone : MonoBehaviour
     {
         if (successStartDialog)
         {
+            _phoneEffect.DeactivationRingEffect();
             OnStartCall?.Invoke();
             _answerCall.gameObject.SetActive(false);
         }

@@ -20,8 +20,10 @@ public class AudioManager : IDisposable
     private EventReference _tempMusic;
 
     [Header("EventSound")]
+    private EventInstance _doorInstance;
     private EventReference _doorOpen;
-    private EventReference _callPhone;
+    private EventInstance _ringInstance;
+    private EventReference _ringPhone;
 
     public AudioManager(AudioSettings audioSettings)
     {
@@ -29,19 +31,34 @@ public class AudioManager : IDisposable
         _snapCorrect = audioSettings.SnapCorrect;
         _snapWrong = audioSettings.SnapWrong;
         _drop = audioSettings.Drop;
+        _ringPhone = audioSettings.CallPhone;
+        _doorOpen = audioSettings.DoorOpen;
     }
 
     public void Dispose()
     {
         StopSmartEvent(ref _voiceInstance);
         StopSmartEvent(ref _musicInstance);
+        StopSmartEvent(ref _ringInstance);
+        StopSmartEvent(ref _doorInstance);
     }
 
     public void PauseVoise(bool isPause)
     {
-        if (!CheckEvent(_voiceInstance)) { return; }
+        if (CheckEvent(_voiceInstance))
+        {
+            _voiceInstance.setPaused(isPause);
+        }
 
-        _voiceInstance.setPaused(isPause);
+        if (CheckEvent(_ringInstance))
+        {
+            _ringInstance.setPaused(isPause);
+        }
+
+        if (CheckEvent(_doorInstance))
+        {
+            _doorInstance.setPaused(isPause);
+        }
     }
 
     public void PauseMusic(bool isPause)
@@ -67,6 +84,21 @@ public class AudioManager : IDisposable
     public void PlayVoice()
     {
         PlaySmartEvent(ref _tempVoice, ref _voiceInstance);
+    }
+
+    public void PlayRing(Vector3 pos)
+    {
+        PlayPositionEvent(ref _ringPhone, ref _ringInstance, pos);
+    }
+
+    public void PlayDoor(Vector3 pos)
+    {
+        PlayPositionEvent(ref _doorOpen, ref _doorInstance, pos);
+    }
+
+    public void StopRing()
+    {
+        StopSmartEvent(ref _ringInstance);
     }
 
     public void PlayMusic(bool _isPlaying)
@@ -130,6 +162,16 @@ public class AudioManager : IDisposable
         CheckPlayingSmartEvent(ref eventReference, ref eventInstance);
         eventInstance.start();
     }
+
+    private void PlayPositionEvent(ref EventReference eventReference, ref EventInstance playHit, Vector3 Pos)
+    {
+        playHit = RuntimeManager.CreateInstance(eventReference); // Создаем событие Звука 
+
+        playHit.set3DAttributes(RuntimeUtils.To3DAttributes(Pos)); // Мы вводим информацию об положении в 3Д , а                       
+                                                                   //(RuntimeUtils.To3DAttributes) переводит наш Vector3 В понятный для Код 
+        playHit.start(); // Запускаем воспроизведение 
+    }
+
 
     private void CheckPlayingSmartEvent(ref EventReference eventReference, ref EventInstance eventInstance)
     {
