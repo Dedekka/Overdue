@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_New Shader Graph
+  m_Name: M_CorrectPosition
   m_Shader: {fileID: -6465566751694194690, guid: daa897a5be0b1504bb86b2f6c99b5283, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -43,7 +43,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Softness: 0.09
-    - _SweepPos: 0.094
+    - _SweepPos: -0.5
     m_Colors:
     - _GlowColor: {r: 0.72327036, g: 0.54806817, b: 0, a: 1}
   m_BuildTextureStacks: []
