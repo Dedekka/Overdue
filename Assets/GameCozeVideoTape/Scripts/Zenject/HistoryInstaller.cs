@@ -3,24 +3,13 @@ using Zenject;
 
 public class HistoryInstaller : MonoInstaller
 {
-    //[SerializeField] private EventOne _eventOne;
-    //[SerializeField] private EventTwo _eventTwo;
-
     public override void InstallBindings()
     {
-        // Container.Bind<EventOne>()
-        //.FromInstance(_eventOne)
-        //.AsSingle();
-
-        // Container.Bind<EventTwo>()
-        //.FromInstance(_eventTwo)
-        //.AsSingle();
         FindSub();
         BindHistorySystem();
+      
         BindImporter();
     }
-
-
 
     private void FindSub()
     {
@@ -42,8 +31,6 @@ public class HistoryInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<ControlHistoryEvent>()
        .AsSingle();
-
-
     }
 
     private void BindImporter()
@@ -52,6 +39,4 @@ public class HistoryInstaller : MonoInstaller
       .AsSingle();
         
     }
-
-
 }

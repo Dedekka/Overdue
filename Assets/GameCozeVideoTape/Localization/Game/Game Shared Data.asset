@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: GamePause Shared Data
+  m_Name: Game Shared Data
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
-  m_TableCollectionName: GamePause
-  m_TableCollectionNameGuidString: b1aea056058c12541bf95899f9f7b9f9
+  m_TableCollectionName: Game
+  m_TableCollectionNameGuidString: 9d344e6f33b648c46b03523188c6966e
   m_Entries:
-  - m_Id: 534898532352
+  - m_Id: 444913934336
     m_Key: '#Game.SunsetCreek'
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 99524804698179748
+    rid: 4993320439767105630
   references:
     version: 2
     RefIds:
-    - rid: 99524804698179748
+    - rid: 4993320439767105630
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1789319958967
+        m_CustomEpoch: 1790171671510

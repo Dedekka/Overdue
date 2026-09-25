@@ -11,6 +11,7 @@ public static class PathConst
     public const string DataOperaLanguagePath = "Assets/Resources/Data/DataOperaLanguage.asset";
     public const string DataPresentLanguagePath = "Assets/Resources/Data/DataPresentLanguage.asset";
     public const string DataGenreLanguagePath = "Assets/Resources/Data/DataGenreLanguage.asset";
+    public const string DataTutorialEventSettingsPath = "Assets/Resources/Data/DataTutorialEventSettings.asset";
     public const string LanguageCassetsPath = "Assets/Resources/Data/LanguageCassets.asset";
     public const string DataGenrePath = "Assets/Resources/Data/DataGenre.asset";
 

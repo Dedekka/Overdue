@@ -8,7 +8,7 @@ public class GenreLanguageParser : IGoogleParser
     private readonly MainGoogleSettings _mainGoogleSettings;
     private GenreLanguage _currentGenreSettings;
 
-
+    
     public GenreLanguageParser(MainGoogleSettings mainGoogleSettings)
     {
         _mainGoogleSettings = mainGoogleSettings;

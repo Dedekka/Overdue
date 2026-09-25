@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
+
 public class HistorySystem : IInitializable, IDisposable
 {
     private List<BazeEvent> _bazeEvents;
@@ -13,21 +14,6 @@ public class HistorySystem : IInitializable, IDisposable
 
     private BazeEvent _currentEvent;
     private int _countHistoryEvent;
-
-    // ”станавливаетс€ диалог что будет играть при воспроизведении
-    // если прошлый диалог еще не отиграл то новый встает в очередь на воспроизведение
-    // мы не запускаем следующее событие если не было использовано предыдущее 
-
-    //private EventOne _eventHistoryOne;
-    //private EventTwo _eventHistoryTwo;
-
-    //private int countEventOne = 5;
-    //private bool _eventOne = false; // «вонок «вук телефон доступен дл€ активации
-
-    //private int countEventTwo = 10;
-    //private bool _eventTwo = false; // ѕришел магнитофон
-
-    //private int CurrentCountCassette = 0;
 
     public HistorySystem(ControlPhoneAnswer controlPhoneAnswer, DataHistoryEvent dataHistoryEvent, ControlPresentEvent controlPresentEvent, ControlHistoryEvent controlHistoryEvent)
     {
@@ -57,24 +43,6 @@ public class HistorySystem : IInitializable, IDisposable
 
         _controlPhoneAnswer.OnEventComplited += ComplitedHistoryEvent;
         _controlPresentEvent.OnEventComplited += ComplitedHistoryEvent;
-
-        //BazeEvent tempBazeEvent;
-        //Debug.Log($"HistorySystem, CountEvent:{_bazeEvents.Count}");
-        //for (int i = 0; i < _bazeEvents.Count; i++)
-        //{
-        //    tempBazeEvent = _bazeEvents[i];
-        //    Debug.Log($"IdEventHistory: {tempBazeEvent.IdEventHistory}, CountCassette: {tempBazeEvent.CountCassette}");
-        //    if (tempBazeEvent is PresentEvent presentEvent)
-        //    {
-        //        tempBazeEvent = presentEvent;
-        //        Debug.Log($"SetBazeEvent Type:{presentEvent.GetType()}, IDPresent: {presentEvent.IDPresent}");
-        //    }
-
-        //    if (tempBazeEvent is PhoneEvent PhoneEvent)
-        //    {
-        //        Debug.Log($"SetBazeEvent Type:{PhoneEvent.GetType()}, IDDialogue: {PhoneEvent.IDDialogue}");
-        //    }
-        //}
     }
 
     private void ChangeCurrentEvent()
@@ -125,26 +93,4 @@ public class HistorySystem : IInitializable, IDisposable
         }
         _controlHistoryEvent.SetEvent(bazeEvent);
     }
-
-    //private void CheckEvent(int countEvent, Action action)
-    //{
-    //    if (CurrentCountCassette >= countEvent)
-    //    {
-    //        action?.Invoke();
-    //    }
-    //}
-
-    //private void EventOne()
-    //{
-    //    _eventOne = true;
-    //    Debug.LogWarning("EventOne");
-    //    _eventHistoryOne.Active();
-    //}
-
-    //private void EventTwo()
-    //{
-    //    _eventTwo = true;
-    //    Debug.LogWarning("EventTwo");
-    //    _eventHistoryTwo.Active();
-    //}
 }

@@ -63,8 +63,9 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
     {
         _eventInputSystem.ProcessRotate(_playerActions.Look.ReadValue<Vector2>());
         if (!_isPlayerControlON) { return; }
-        _playerMover.ProcessMove(_playerActions.Move.ReadValue<Vector2>());
 
+        Vector2 inputMove = _playerActions.Move.ReadValue<Vector2>();
+        _playerMover.ProcessMove(inputMove);
         if (!_isPlayerControlON) { return; }
         _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
 

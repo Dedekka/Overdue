@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35203c50109728f469df9663a835e357, type: 3}
+  m_Name: DataTutorialEventSettings
+  m_EditorClassIdentifier: Assembly-CSharp::DataTutorialEventSettings
+  itemSettings:
+  - En: 'Use W, A, S, D to move around.
+
+      Use the MOUSE to look around.
+
+'
+    Id: 1
+    Ru: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 W, A,
+      S, D \u0434\u043B\u044F \u043F\u0435\u0440\u0435\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F.\r\n\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435
+      \u041C\u042B\u0428\u042C \u0434\u043B\u044F \u043E\u0431\u0437\u043E\u0440\u0430."
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Press E to interact.
+    Id: 2
+    Ru: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 E, \u0447\u0442\u043E\u0431\u044B
+      \u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C."
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: "Kassettenbrosch\xFCre auf \u201EQ\u201C"
+    Id: 3
+    Ru: "\u0411\u0440\u043E\u0441\u043E\u043A \u043A\u0430\u0441\u0441\u0435\u0442\u044B
+      \u043D\u0430 \"Q\""
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Scrollen Sie mit der Maus
+    Id: 4
+    Ru: "\u0421\u043A\u0440\u043E\u043B\u043B \u0441\u0442\u043E\u043F\u043A\u0438
+      MOUSE"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: "Mehrsprachige Kassetten\xFCbersicht in der K\xFCche \u201ER\u201C ansehen"
+    Id: 5
+    Ru: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043F\u043E\u043B\u043D\u044B\u0439
+      \u0441\u043F\u0438\u0441\u043E\u043A \u043A\u0430\u0441\u0441\u0435\u0442 \u0432
+      \u043A\u0443\u043A\u0430\u0445 \"R\""
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Stellen Sie die Kassette im Fernsehen ab
+    Id: 6
+    Ru: "\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443
+      \u0432 \u0442\u0435\u043B\u0435\u0432\u0438\u0437\u043E\u0440"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Pick up the phone
+    Id: 7
+    Ru: "\u041F\u043E\u0434\u043D\u044F\u0442\u044C \u0442\u0440\u0443\u0431\u043A\u0438
+      \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0430"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Raise the gift
+    Id: 8
+    Ru: "\u041F\u043E\u0434\u043D\u044F\u0442\u044C \u043F\u043E\u0434\u0430\u0440\u043E\u043A"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Lift the cassette out of the return box
+    Id: 9
+    Ru: "\u041F\u043E\u0434\u043D\u044F\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443
+      \u0438\u0437 \u043A\u043E\u0440\u043E\u0431\u043A\u0438 \u0432\u043E\u0437\u0432\u0440\u0430\u0442\u043E\u0432"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Gift installation
+    Id: 10
+    Ru: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430 \u043F\u043E\u0434\u0430\u0440\u043A\u0430"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Switching audio cassettes
+    Id: 11
+    Ru: "\u041F\u0435\u0440\u0435\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435
+      \u0430\u0443\u0434\u0438\u043E \u043A\u0430\u0441\u0441\u0435\u0442"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'
+  - En: Watching an opera
+    Id: 12
+    Ru: "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u043E\u043F\u0435\u0440\u044B"
+    DE: '#REF!'
+    ES: '#REF!'
+    JPN: '#REF!'
+    ZHCN: '#REF!'

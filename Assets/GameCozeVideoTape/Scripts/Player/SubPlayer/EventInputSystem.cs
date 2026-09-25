@@ -48,4 +48,9 @@ public class EventInputSystem
     {
         _lookItemCamera.Zoom(-rotate);
     }
+
+    //public void ListenerInputMove(Vector2 move)
+    //{
+
+    //}
 }

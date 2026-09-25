@@ -26,6 +26,7 @@ public class GoogleMenu
     private const string BazeDialogue_sheets_name = "BazeDialogue";
     private const string CassetteOpera_sheets_name = "CassetteOpera";
     private const string MusicCassette_sheets_name = "BazeMusicCassette";
+    private const string TutorialEventLanguage_sheets_name = "TutorialEventLanguage";
     //private const string LanguageDialogue_sheets_name = "LanguageDialogue";
 
 
@@ -57,7 +58,8 @@ public class GoogleMenu
         await OperaLanguage(gameSettings, sheetsImporter);
         await PresentLanguage(gameSettings, sheetsImporter);
         await GenreLanguage(gameSettings, sheetsImporter);
-       
+        await TutorialEventLanguage(gameSettings, sheetsImporter);
+        
         SaveSettings(gameSettings);
     }
 
@@ -127,6 +129,10 @@ public class GoogleMenu
         DataGenreLanguage dataGenreLanguage = ScriptableObject.CreateInstance<DataGenreLanguage>();
         dataGenreLanguage.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataGenreLanguagePath, dataGenreLanguage);
+
+        DataTutorialEventSettings dataTutorialEventSettings = ScriptableObject.CreateInstance<DataTutorialEventSettings>();
+        dataTutorialEventSettings.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataTutorialEventSettingsPath, dataTutorialEventSettings);
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
@@ -189,6 +195,12 @@ public class GoogleMenu
     {
         GenreLanguageParser genreLanguageParser = new GenreLanguageParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(GenreLanguage_sheets_name, genreLanguageParser);
+    }
+
+    private static async UniTask TutorialEventLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        TutorialEventLanguageParser tutorialEventLanguageParser = new TutorialEventLanguageParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(TutorialEventLanguage_sheets_name, tutorialEventLanguageParser);
     }
 
     private static async UniTask Dialogs(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)

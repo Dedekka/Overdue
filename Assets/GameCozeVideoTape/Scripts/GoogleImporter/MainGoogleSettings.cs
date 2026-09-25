@@ -23,4 +23,7 @@ public class MainGoogleSettings
     [Header("Music")]
     public List<MusicCassetteSettings> Music;
     public List<MusicLanguage> MusicLanguage;
+
+    [Header("TutorialEvent")]
+    public List<TutorialEventSettings> TutorialEventLanguage;
 }

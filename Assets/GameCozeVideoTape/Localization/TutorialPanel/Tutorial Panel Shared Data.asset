@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Tutorial Panel Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Tutorial Panel
+  m_TableCollectionNameGuidString: 0de040b7d7397744b9dfca391e313b5e
+  m_Entries:
+  - m_Id: 459586355200
+    m_Key: '#TutorialPanel.Sorting.Header'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715328
+    m_Key: '#TutorialPanel.Sorting.Body'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715329
+    m_Key: '#TutorialPanel.VCR.Header'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715330
+    m_Key: '#TutorialPanel.VCR.Body'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715331
+    m_Key: '#TutorialPanel.Phone.Header'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715332
+    m_Key: '#TutorialPanel.Phone.Body'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715333
+    m_Key: '#TutorialPanel.Returns.Header'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715334
+    m_Key: '#TutorialPanel.Returns.Body'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715335
+    m_Key: '#TutorialPanel.Decorating.Header'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715336
+    m_Key: '#TutorialPanel.Decorating.Body'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715337
+    m_Key: '#TutorialPanel.Music.Header'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459615715338
+    m_Key: '#TutorialPanel.Music.Body'
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4993320439767105536
+  references:
+    version: 2
+    RefIds:
+    - rid: 4993320439767105536
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1790165377865

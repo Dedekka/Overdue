@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Game
+  m_EditorClassIdentifier: Unity.Localization.Editor::UnityEditor.Localization.StringTableCollection
+  m_SharedTableData: {fileID: 11400000, guid: 9d344e6f33b648c46b03523188c6966e, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 73f3c06760750fd4fab8ea692f5c0586, type: 2}
+  - {fileID: 11400000, guid: aeda4d0a668042e44a3da69dc4edb98e, type: 2}
+  m_Extensions:
+  - rid: 4993320439767105631
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds:
+    - rid: 4993320439767105631
+      type: {class: GoogleSheetsExtension, ns: UnityEditor.Localization.Plugins.Google, asm: Unity.Localization.Editor}
+      data:
+        m_Collection: {fileID: 11400000}
+        m_SheetsServiceProvider: {fileID: 11400000, guid: 90744aa37d04c344fb92e85096c3e933, type: 2}
+        m_SpreadsheetId: 1v4cQrW74jHJX6wswTOJB2ghPB05at2QY9R5-65hnTJk
+        m_SheetId: 1074468436
+        m_Columns:
+        - rid: 4993320439767105633
+        - rid: 4993320439767105634
+        - rid: 4993320439767105635
+        m_RemoveMissingPulledKeys: 1
+    - rid: 4993320439767105633
+      type: {class: KeyColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: A
+    - rid: 4993320439767105634
+      type: {class: LocaleColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: B
+        m_LocaleIdentifier:
+          m_Code: en
+        m_IncludeComments: 0
+    - rid: 4993320439767105635
+      type: {class: LocaleColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: C
+        m_LocaleIdentifier:
+          m_Code: ru
+        m_IncludeComments: 0
