@@ -8,11 +8,11 @@ public class ShelfOperaSlot : BazeSlot
 
         if (_subGenreShelf.CheckCorrectSlot(currentCassette, _idSlot))
         {
-            _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess);
+            _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess, StateInstal.SuccessInstall);
         }
         else
         {
-            _slot.SetSettings(_settings.EaseNothing, _settings.TimeNothing);
+            _slot.SetSettings(_settings.EaseNothing, _settings.TimeNothing, StateInstal.Nothing);
         }
 
         IItemble tempItem = _playerInventory.Install(this);

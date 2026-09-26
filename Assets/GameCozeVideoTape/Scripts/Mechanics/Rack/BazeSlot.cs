@@ -60,18 +60,18 @@ public class BazeSlot : MonoBehaviour, ISloteble
 
         if (_subGenreShelf.CheckCorrectSlot(currentCassette))
         {
-            _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess);
+            _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess, StateInstal.SuccessInstall);
         }
         else
         {
-            _slot.SetSettings(_settings.EaseNothing, _settings.TimeNothing);
+            _slot.SetSettings(_settings.EaseNothing, _settings.TimeNothing, StateInstal.Nothing);
         }
 
         IItemble tempItem = _playerInventory.Install(this);
 
-        if (tempItem is CassetteObject present)
+        if (tempItem is CassetteObject cassette)
         {
-            bool isNull = _slot.Install(present, out _cassetteObject);
+            bool isNull = _slot.Install(cassette, out _cassetteObject);
             SubPickUp(isNull);
             _slot.gameObject.SetActive(isNull);
         }

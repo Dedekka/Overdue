@@ -46,7 +46,7 @@ public class TVSlot : BazeInteracteble
 
         if (isSuccessful) { return isSuccessful; }
 
-        cassetteObject.Install(_bodySlot.transform, _ease, _time);
+        cassetteObject.Install(_bodySlot.transform, _ease, _time, StateInstal.SuccessInstall);
 
         return isSuccessful;
     }

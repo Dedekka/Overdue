@@ -23,27 +23,33 @@ public class CassetteObject : BazeInteracteble, IItemble
     private Rigidbody _rigidbody;
     private ManagerCassette _managerCassette;
 
+    private CassetteEffects _cassetteEffects;
+
     private bool _isOpera;
     public event Action<CassetteObject> OnPickUp;
     public event Action OnDrop;
 
     [Inject]
-    private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, StateItem stateItem)
+    private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, StateItem stateItem, CassetteEffects cassetteEffects)
     {
         _stateItem = stateItem;
         _pickUpItem = PickUpItem;
         _installItem = installItem;
         _managerCassette = managerCassette;
+        _cassetteEffects = cassetteEffects;
+
     }
 
     private void Awake()
     {
         _isOpera = false;
         _rigidbody = GetComponent<Rigidbody>();
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         _managerCassette.AddCassette(this);
         _pickUpItem.SetBody(this);
         _installItem.SetBody(this);
         _stateItem.Initialization(this, _rigidbody);
+        _cassetteEffects.Initialization(meshRenderer);
         _isShowPanelUse = true;
     }
 
@@ -81,6 +87,7 @@ public class CassetteObject : BazeInteracteble, IItemble
         OnDrop?.Invoke();
         _pickUpItem.StopMove();
         _stateItem.Drop();
+        _cassetteEffects.SetSettings(StateInstal.None);
     }
 
     public void OnFixed()
@@ -94,10 +101,22 @@ public class CassetteObject : BazeInteracteble, IItemble
         _pickUpItem.Scroll(transform);
     }
 
-    public void Install(Transform transform, Ease Ease, float _time)
+    public void Install(Transform transform, Ease Ease, float _time, StateInstal stateInstal)
     {
         _pickUpItem.StopMove();
-        _installItem.Install(transform, Ease, _time, _stateItem.Install);
+        _installItem.Install(transform, Ease, _time, EndInstall);
+        _cassetteEffects.SetSettings(stateInstal);
+    }
+
+    public override void EnterCursor(bool isVisible)
+    {
+        _cassetteEffects.ControlSelectedOutline(isVisible);
+    }
+
+    private void EndInstall()
+    {
+        _stateItem.Install();
+        _cassetteEffects.Install();
     }
 
     protected override void Interact()
@@ -106,6 +125,7 @@ public class CassetteObject : BazeInteracteble, IItemble
 
         if (_pickUpItem.CheckFreeSlot())
         {
+            _cassetteEffects.ClearEffects();
             _stateItem.ControlHand(true);
             OnPickUp?.Invoke(this);
             _stateItem.Control(false);

@@ -8,6 +8,7 @@ public class ContentSlot : BazeInteracteble, ISloteble
     private PlayerInventory _playerInventory;
     private Ease _ease;
     private float _time;
+    private StateInstal _stateInstal;
     private MeshRenderer _meshRenderer;
 
     public event Action<CassetteObject> OnInteract;
@@ -44,10 +45,11 @@ public class ContentSlot : BazeInteracteble, ISloteble
         }
     }
 
-    public void SetSettings(Ease ease, float time)
+    public void SetSettings(Ease ease, float time, StateInstal stateInstal)
     {
         _ease = ease;
         _time = time;
+        _stateInstal = stateInstal;
     }
 
     public void ControlVisible(bool isVisible)
@@ -65,7 +67,7 @@ public class ContentSlot : BazeInteracteble, ISloteble
 
         if (isSuccessful) { return isSuccessful; }
 
-        cassetteObject.Install(transform, _ease, _time);
+        cassetteObject.Install(transform, _ease, _time, _stateInstal);
         //Debug.Log($"isSuccessful {isSuccessful}");
 
         return isSuccessful;
