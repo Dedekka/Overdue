@@ -62,6 +62,16 @@ public class TvManager : IDisposable, IInitializable
         }
     }
 
+    public void OnPlayCasset(int currentIdOpera)
+    {
+        bool isCorrectEpisode = CheckEpisode(currentIdOpera);
+        if (isCorrectEpisode)
+        {
+            bool successStartDialog = _dialogSubtitles.StartWaitSubtitles(_currentEpisode);
+            CheckSuccessCall(successStartDialog);
+        }
+    }
+
     public void StopPlay()
     {
         _videoControl.StopVideo();
@@ -96,7 +106,13 @@ public class TvManager : IDisposable, IInitializable
         PlayGanreVideo();
     }
 
-
+    private bool CheckEpisode(int idEpisode)
+    {
+        _operaChecker.CheckEpisode(idEpisode);
+        _currentEpisode = _operaChecker.GetOperaEpisode();
+        //_currentEpisode = _dataOpera.GetOperaSettings(idEpisode);
+        return _currentEpisode != null;
+    }
 
     private bool CheckEpisode()
     {

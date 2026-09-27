@@ -26,7 +26,7 @@ public class RacoonTeamActive : MonoBehaviour
         {
             _racoons[i].gameObject.SetActive(true);
             _racoons[i].Play("Scene");
-            _racoons[i].transform.DOMoveZ(_distance, _time).Play();
+            _racoons[i].transform.DOMoveZ(_distance, _time).From(_startPos[i].position).Play();
         }
     }
 

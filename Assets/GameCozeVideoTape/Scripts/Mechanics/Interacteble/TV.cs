@@ -69,9 +69,19 @@ public class TV : MonoBehaviour, ISloteble
         //}
     }
 
-    public void TESTPROMOOnPlayCasset(CassetteObject cassetteObject)
+    public void TESTPROMOOnPlayCasset(IItemble cassetteObject)
     {
-
+        if (cassetteObject is CassetteObject cassette)
+        {
+        _tvManager.OnPlayCasset(cassette.ItemSettings.Id);
+            bool isNull = _tvSlot.Install(cassette, out _cassetteObject);
+            SubPickUp(isNull);
+            _tvSlot.gameObject.SetActive(isNull);
+        }
+        else
+        {
+            Debug.LogError("ShelfSlot_CheckEmptySlot Not Found Present ");
+        }
     }
 
     private void OnPlayCasset()

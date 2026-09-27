@@ -8,7 +8,7 @@ using UnityEngine.Localization.PropertyVariants;
 
 public class LocalizationSetString : EditorWindow
 {
-    [MenuItem("GameObject/Set Localization _a")]
+    [MenuItem("GameObject/Set Localization ")]
     public static void SetAsDebug()
     {
         GameObject selectedObject = Selection.activeGameObject as GameObject;

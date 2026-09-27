@@ -38,41 +38,45 @@ public class Restart : MonoBehaviour
         //}
 
 
-        //if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        //{
-        //    _realizerPresent.SetCallData(new CallData()
-        //    {
-        //        IdCassetts = 0,
-        //        IDPresent = 1
-        //    });
-        //}
+        if (Keyboard.current.digit4Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new PresentEvent()
+            {
+                CountCassette = 0,
+                IDCassette = 0,
+                IDPresent = 1
+            });
+        }
 
-        //if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        //{
-        //    _realizerPresent.SetCallData(new CallData()
-        //    {
-        //        IdCassetts = 0,
-        //        IDPresent = 3
-        //    });
-        //}
+        if (Keyboard.current.digit5Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new PresentEvent()
+            {
+                CountCassette = 0,
+                IDCassette = 0,
+                IDPresent = 3
+            });
+        }
 
-        //if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        //{
-        //    _realizerPresent.SetCallData(new CallData()
-        //    {
-        //        IdCassetts = 0,
-        //        IDPresent = 6
-        //    });
-        //}
+        if (Keyboard.current.digit6Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new PresentEvent()
+            {
+                CountCassette = 0,
+                IDCassette = 0,
+                IDPresent = 6
+            });
+        }
 
-        //if (Keyboard.current.digit4Key.wasPressedThisFrame)
-        //{
-        //    _realizerPresent.SetCallData(new CallData()
-        //    {
-        //        IdCassetts = 0,
-        //        IDPresent = 7
-        //    });
-        //}
+        if (Keyboard.current.digit7Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new PresentEvent()
+            {
+                CountCassette = 0,
+                IDCassette = 0,
+                IDPresent = 7
+            });
+        }
     }
 
     public void Exit()
