@@ -69,6 +69,11 @@ public class TV : MonoBehaviour, ISloteble
         //}
     }
 
+    public void TESTPROMOOnPlayCasset(CassetteObject cassetteObject)
+    {
+
+    }
+
     private void OnPlayCasset()
     {
         if (!IsEmpty) { return; }
