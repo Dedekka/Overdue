@@ -31,5 +31,10 @@ public class CassetteOpera
         // С помощью словоря я должен найти кассету и отметить что она оперная в кассете 
     }
 
+    public void GetOpera(List<CassetteObject>  _listCassette)
+    {
+        _dataOpera.GetOpera(_listCassette);
+    }
+
    
 }

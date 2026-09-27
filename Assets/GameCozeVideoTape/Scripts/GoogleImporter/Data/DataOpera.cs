@@ -27,6 +27,27 @@ public class DataOpera : ScriptableObject
             }
             else
             {
+                //Debug.LogError("NOT found opera CassetteObject");
+            }
+        }
+    }
+
+    public void GetOpera(List<CassetteObject> _listCassette)
+    {
+        OperaSettings operaSettings;
+        CassetteObject cassette;
+        for (int i = 0; i < _listDataOpera.Count; i++)
+        {
+            operaSettings = _listDataOpera[i];
+
+            cassette = _listCassette.Find((x) => x.Id == operaSettings.Id_Cassette);
+
+            if (cassette != null)
+            {
+                cassette.SetOpera();
+            }
+            else
+            {
                 Debug.LogError("NOT found opera CassetteObject");
             }
         }

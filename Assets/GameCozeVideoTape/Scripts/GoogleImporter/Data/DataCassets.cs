@@ -17,10 +17,20 @@ public class DataCassets : ScriptableObject
     public void GetSettings(List<CassetteObject> cassettes)
     {
         CassetteObject tempCassette;
+        int tempindex = 1;
         for (int i = 0; i < cassettes.Count; i++)
         {
             tempCassette = cassettes[i];
-            tempCassette.SetSettings(GetItem(tempCassette.Id));
+
+            if (tempindex >= itemSettings.Count)
+            {
+                tempindex = 1;
+            }
+
+            tempCassette.SetId(tempindex);
+            tempCassette.SetSettings(itemSettings[tempindex]);
+            tempindex++;
+            //tempCassette.SetSettings(GetItem(tempCassette.Id));
         }
     }
 

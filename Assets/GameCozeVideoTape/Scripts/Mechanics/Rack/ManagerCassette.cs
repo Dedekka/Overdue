@@ -74,7 +74,8 @@ public class ManagerCassette : IInitializable, IDisposable
             _dataCassets.GetSettings(_listCassette);
             SetDictionary();
             _controlCassetteLanguage.GetLanguage(_listCassette);
-            _cassetteOpera.GetOpera(_cassetsDictionary);
+            //_cassetteOpera.GetOpera(_cassetsDictionary);
+            _cassetteOpera.GetOpera(_listCassette);
             _cassetteHolder.AddCassette(_listCassette, _inventorySlot.GetActiveCassets());
             _controlSleepCassette.SetCassette(_listCassette);
             _audioCassette.SubAudio(_listCassette);
@@ -104,7 +105,7 @@ public class ManagerCassette : IInitializable, IDisposable
                 continue;
             }
 
-            _cassetsDictionary.Add(_listCassette[i].Id, _listCassette[i]);
+            //_cassetsDictionary.Add(_listCassette[i].Id, _listCassette[i]);
         }
     }
 }
