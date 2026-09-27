@@ -59,6 +59,7 @@ public class DialogueInstaller : MonoInstaller
         //    .AsSingle();
 
 
+
         Container.Bind<DialogSystem>()
             .AsSingle()
             .WithArguments(_timeWaitLine);
