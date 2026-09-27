@@ -22,13 +22,13 @@ public class DataCassets : ScriptableObject
         {
             tempCassette = cassettes[i];
 
-            if (tempindex >= itemSettings.Count)
+            if (tempindex > itemSettings.Count)
             {
                 tempindex = 1;
             }
-
+            Debug.Log($"GetSettings tempindex: {tempindex}");
             tempCassette.SetId(tempindex);
-            tempCassette.SetSettings(itemSettings[tempindex]);
+            tempCassette.SetSettings(GetItem(tempindex));
             tempindex++;
             //tempCassette.SetSettings(GetItem(tempCassette.Id));
         }

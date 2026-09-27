@@ -48,7 +48,7 @@ public class DataOpera : ScriptableObject
             }
             else
             {
-                Debug.LogError("NOT found opera CassetteObject");
+                Debug.LogError($"NOT found opera CassetteObject, Id_Cassette{operaSettings.Id_Cassette} , List count:{_listCassette.Count} ");
             }
         }
     }
