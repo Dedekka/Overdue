@@ -9,23 +9,20 @@ public class EffectSettings : ScriptableObject
     public Material SelectionOutline => _selectionOutline;
     public Material WrongShelfOutline => _wrongShelfOutline;
     public Material CorrectPosition => _correctPosition;
+    public Vector2 SweepPosRange => _sweepPosRange;
+    public float SweepMoveSpeed => _sweepMoveSpeed;
 
     #endregion
     [Header("Outline")]
     [SerializeField] private Material _selectionOutline;
-    [Space(20)]
-    [SerializeField] private Color _selectionOutlineColor;
-    [SerializeField, Range(1, 1.1f)] private float _selectionOutlineThickness;
 
     [Space(20)]
     [SerializeField] private Material _wrongShelfOutline;
-    [SerializeField] private Color _WrongShelfOutlineColor;
-    [SerializeField, Range(1, 1.1f)] private float _WrongShelfOutlineThickness;
-    [SerializeField] private float _WrongShelfOutlineSpeed;
 
     [Header("CorrectPosition")]
     [SerializeField] private Material _correctPosition;
-    [SerializeField, Range(-0.5f, 0.5f)] private float SweepPos;
+    [SerializeField] private Vector2 _sweepPosRange = new Vector2(-0.5f,0.5f);
+    [SerializeField] private float _sweepMoveSpeed = 1;
 
 
 

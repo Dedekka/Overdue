@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: EffectSettings
   m_EditorClassIdentifier: Assembly-CSharp::EffectSettings
   _selectionOutline: {fileID: 2100000, guid: ffc8f36cc9b6c3d40b5a5620cb8b27bc, type: 2}
-  _selectionOutlineColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectionOutlineThickness: 1.1
   _wrongShelfOutline: {fileID: 2100000, guid: ea8dee6bd072bc04d8817028303a6c08, type: 2}
-  _WrongShelfOutlineColor: {r: 0.9254902, g: 0.47843137, b: 0.3647059, a: 1}
-  _WrongShelfOutlineThickness: 1
-  _WrongShelfOutlineSpeed: 0
   _correctPosition: {fileID: 2100000, guid: 3fc72a97f266e8047ad3a968535745bb, type: 2}
-  SweepPos: 0.5
+  _sweepPosRange: {x: -0.5, y: 0.5}
+  _sweepMoveSpeed: 1

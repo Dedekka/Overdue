@@ -42,12 +42,12 @@ public class CassetteEffects
     {
         var materials = _meshRenderer.materials;
         _meshRenderer.materials = _effectSettings.ControlInstallEffect(materials, _stateInstal);
-
+        
         if (_stateInstal == StateInstal.SuccessInstall)
         {
-            float time = 0.5f;
-            DOTween.To(() => time, x => time = x, -0.5f, 1)
-                .OnUpdate(() => AnimationSuccessInstall(time))
+            float sweepPos = _effectSettings.SweepPosRange.y;
+            DOTween.To(() => sweepPos, x => sweepPos = x, _effectSettings.SweepPosRange.x, _effectSettings.SweepMoveSpeed)
+                .OnUpdate(() => AnimationSuccessInstall(sweepPos))
                 .OnComplete(() => ClearEffects())
                 .Play();
         }
