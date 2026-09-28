@@ -5,6 +5,7 @@ public class SettingsLookItem : ScriptableObject
 {
     #region PublicField
     public float MainSensitivityRotateItem => _mainSensitivityRotateItem;
+    public float CoefficientGamepadSensitivity => _coefficientGamepadSensitivity;
     public float SensitivityRotateItemY => _sensitivityRotateItemY;
     public float SensitivityRotateItemX => _sensitivityRotateItemX;
     public float MaxFoVLookItem => _maxFoVLookItem;
@@ -27,6 +28,7 @@ public class SettingsLookItem : ScriptableObject
     [SerializeField] private float _maxFoVLookItem = 60f;
     [SerializeField] private float _minFoVLookItem = 35f;
     [SerializeField] private float _mainSensitivityRotateItem = 0.1f;
+    [SerializeField] private float _coefficientGamepadSensitivity = 0.1f;
     [SerializeField] private float _sensitivityRotateItemY = 1f;
     [SerializeField] private float _sensitivityRotateItemX = 1f;
     [Header("AudioItemSlot")]

@@ -18,9 +18,11 @@ MonoBehaviour:
     m_Bits: 1
   _groundPointRadius: 1
   _gravity: -9.8
+  _rangeSliderSensitivity: {x: 0, y: 0.02}
   _sensitivityY: 30
   _sensitivityX: 30
   _sensitivity: 0.01
+  _coefficientGamepadSensitivity: 8
   _coefficientSensitivityAim: 0.5
   _coefficientSpeedMoveForAim: 0.5
   _startFieldOfView: 60

@@ -14,6 +14,7 @@ public class HistorySystem : IInitializable, IDisposable
 
     private BazeEvent _currentEvent;
     private int _countHistoryEvent;
+    private bool _waitCompliteEvent;
 
     public HistorySystem(ControlPhoneAnswer controlPhoneAnswer, DataHistoryEvent dataHistoryEvent, ControlPresentEvent controlPresentEvent, ControlHistoryEvent controlHistoryEvent)
     {
@@ -23,6 +24,7 @@ public class HistorySystem : IInitializable, IDisposable
         _bazeEvents = new List<BazeEvent>();
         _controlPresentEvent = controlPresentEvent;
         _countHistoryEvent = 0;
+        _waitCompliteEvent = false;
     }
 
     public void Initialize()
@@ -61,6 +63,7 @@ public class HistorySystem : IInitializable, IDisposable
         }
 
         if (_currentEvent == null) { return; }
+        if (_waitCompliteEvent) { return; }
         if (_currentEvent.CountCassette <= successInstall)
         {
             FindEvent(_currentEvent);
@@ -70,6 +73,7 @@ public class HistorySystem : IInitializable, IDisposable
     public void ComplitedHistoryEvent()
     {
         Debug.Log($"Complited_CountHistoryEvent:{_countHistoryEvent}");
+        _waitCompliteEvent = false;
         _countHistoryEvent++;
         Debug.Log($"UP_CountHistoryEvent:{_countHistoryEvent}");
         ChangeCurrentEvent();
@@ -77,6 +81,7 @@ public class HistorySystem : IInitializable, IDisposable
 
     private void FindEvent(BazeEvent bazeEvent)
     {
+        _waitCompliteEvent = true;
         Debug.Log($"FindEvent IdEventHistory:{bazeEvent.IdEventHistory}");
         if (bazeEvent is PresentEvent presentEvent)
         {
@@ -92,5 +97,6 @@ public class HistorySystem : IInitializable, IDisposable
             return;
         }
         _controlHistoryEvent.SetEvent(bazeEvent);
+
     }
 }

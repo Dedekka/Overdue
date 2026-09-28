@@ -24,29 +24,43 @@ public class EventInputSystem
 
     public void Pause()
     {
-        if (_playerLookItem.IsActive)
-        {
-            _playerLookItem.EndLookItem();
-        }
-        else
+        if (!_playerLookItem.IsActive)
         {
             _pause.Pause();
         }
     }
 
-    public void ProcessRotate(Vector2 rotate)
+    public void EndLookItem()
     {
-        _lookItemRotate.ProcessRotate(rotate);
+        if (_playerLookItem.IsActive)
+        {
+            _playerLookItem.EndLookItem();
+        }
+    }
+
+
+    public void ProcessRotate(Vector2 rotate, DeviceType deviceType)
+    {
+        if (_playerLookItem.IsActive)
+        {
+            _lookItemRotate.ProcessRotate(rotate, deviceType);
+        }
     }
 
     public void ResetLookItemRotate()
     {
-        _lookItemRotate.ResetLookItemRotate();
+        if (_playerLookItem.IsActive)
+        {
+            _lookItemRotate.ResetLookItemRotate();
+        }
     }
 
     public void ZoomItem(Vector2 rotate)
     {
-        _lookItemCamera.Zoom(-rotate);
+        if (_playerLookItem.IsActive)
+        {
+            _lookItemCamera.Zoom(-rotate);
+        }
     }
 
     //public void ListenerInputMove(Vector2 move)

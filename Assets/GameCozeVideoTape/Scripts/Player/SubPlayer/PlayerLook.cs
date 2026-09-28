@@ -9,6 +9,7 @@ public class PlayerLook
     private float _sensitivity;
     private float _xRotation = 0;
     private float _coefficientSensitivityAim;
+    private float _coefficientGamepadSensitivity;
     
     public PlayerLook(SettingsPlayer settingsPlayer, Transform headSlot, Transform body)
     {
@@ -16,18 +17,18 @@ public class PlayerLook
         _body = body;
         _sensitivityY = settingsPlayer.SensitivityY;
         _sensitivityX = settingsPlayer.SensitivityX;
+        _coefficientGamepadSensitivity = settingsPlayer.CoefficientGamepadSensitivity;
         _coefficientSensitivityAim = 1;
         _sensitivity = settingsPlayer.MainSensitivity;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void ProcessLook(Vector2 vector2)
+    public void ProcessLook(Vector2 vector2, DeviceType deviceType)
     {
         float mouseX = vector2.x;
         float mouseY = vector2.y;
 
-        mouseX *= _coefficientSensitivityAim * _sensitivity;
-        mouseY *= _coefficientSensitivityAim * _sensitivity;
+        CheckDevice(ref mouseX, ref mouseY, deviceType);
         _xRotation -= mouseY * _sensitivityY;// * _sensitivity;
         _xRotation = Mathf.Clamp(_xRotation, -90, 90);
         _headSlot.transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
@@ -56,5 +57,19 @@ public class PlayerLook
     {
         tempCoefficientSpeed = Mathf.Abs(tempCoefficientSpeed);
         coefficient = tempCoefficientSpeed > 1 ? 1 : tempCoefficientSpeed;
+    }
+
+    private void CheckDevice(ref float mouseX, ref float mouseY, DeviceType deviceType)
+    {
+        if (deviceType == DeviceType.KeyboardMouse)
+        {
+        mouseX *= _coefficientSensitivityAim * _sensitivity;
+        mouseY *= _coefficientSensitivityAim * _sensitivity;
+        }
+        else
+        {
+            mouseX *= _coefficientSensitivityAim * _sensitivity * _coefficientGamepadSensitivity;
+            mouseY *= _coefficientSensitivityAim * _sensitivity * _coefficientGamepadSensitivity;
+        }
     }
 }

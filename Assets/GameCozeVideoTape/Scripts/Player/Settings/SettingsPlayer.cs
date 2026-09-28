@@ -14,6 +14,8 @@ public class SettingsPlayer : ScriptableObject
     public float SensitivityX => _sensitivityX;
     public float MovementSpeed => _movementSpeed;
     public float MainSensitivity => _sensitivity;
+    public float CoefficientGamepadSensitivity => _coefficientGamepadSensitivity;
+    public Vector2 RangeSliderSensitivity => _rangeSliderSensitivity;
     public float CoefficientSensitivityAim => _coefficientSensitivityAim;
     public float CoefficientSpeedMoveForAim => _coefficientSpeedMoveForAim;
     public float StartFieldOfView => _startFieldOfView;
@@ -38,9 +40,11 @@ public class SettingsPlayer : ScriptableObject
     [SerializeField] private float _gravity = -9.8f;
 
     [Header("PlayerLook")]
+    [SerializeField] private Vector2 _rangeSliderSensitivity;
     [SerializeField] private float _sensitivityY = 30f;
     [SerializeField] private float _sensitivityX = 30f;
-    [Range(0, 2)][SerializeField] private float _sensitivity;
+    [Range(0, 0.1f)][SerializeField] private float _sensitivity;
+    [Range(1, 10)][SerializeField] private float _coefficientGamepadSensitivity;
 
     [Header("PlayerAim")]
     [SerializeField, Range(0, 1)] private float _coefficientSensitivityAim = 0.5f;

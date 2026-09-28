@@ -5,6 +5,7 @@ using Zenject;
 
 public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILateTickable,
 {
+    public DeviceType CurrentDevice { get; private set; }
     private EventInputSystem _eventInputSystem;
 
     private PlayerMove _playerMover;
@@ -13,6 +14,8 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
     private PlayerInteracteble _playerInteracteble;
     private PlayerInventory _playerInventory;
     private PlayerSystemActions.PlayerActions _playerActions;
+
+
     private bool _isPlayerControlON;
 
     public PlayerInputControl(Player testPlayerCharacter, PlayerSystemActions inputActions, PlayerInteracteble testPlayerInteracteble, PlayerInventory playerInventory, EventInputSystem eventInputSystem)//, TestWeaponSystem testWeaponSystem, SystemBuss systemBuss)
@@ -28,31 +31,34 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     public void Dispose()
     {
+        InputSystem.onActionChange -= InputSystem_onActionChange;
         _playerActions.Aim.started -= AimControl;
         _playerActions.Aim.canceled -= AimControl;
         _playerActions.Interact.started -= OnInteracteble;
         _playerActions.Drop.started -= OnDrop;
-        _playerActions.Scroll.started -= OnZoomItem;
         _playerActions.Scroll.started -= OnScroll;
         _playerActions.Inventory.started -= OnInventory;
         _playerActions.Disable();
     }
 
+
     public void Initialize()
     {
         _playerActions.Enable();
         _isPlayerControlON = true;
+        InputSystem.onActionChange += InputSystem_onActionChange;
         _playerActions.Aim.started += AimControl;
         _playerActions.Aim.canceled += AimControl;
         _playerActions.Interact.started += OnInteracteble;
         _playerActions.Drop.started += OnDrop;
         _playerActions.Scroll.started += OnScroll;
-        _playerActions.Scroll.started += OnZoomItem;
         _playerActions.Pause.started += OnPause;
         _playerActions.Inventory.started += OnInventory;
         _playerActions.ResetLookItemRotate.started += OnResetLookItemRotate;
-        //_playerActions.Pause.started += OnPause;
     }
+
+
+
 
     public void ChangePlayerControl(bool _isControlON)
     {
@@ -61,13 +67,17 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     public void Tick()
     {
-        _eventInputSystem.ProcessRotate(_playerActions.Look.ReadValue<Vector2>());
+        //_playerActions.Scroll.
+
+        _eventInputSystem.ZoomItem(_playerActions.Scroll.ReadValue<Vector2>());
+
+        _eventInputSystem.ProcessRotate(_playerActions.Look.ReadValue<Vector2>(), CurrentDevice);
         if (!_isPlayerControlON) { return; }
 
         Vector2 inputMove = _playerActions.Move.ReadValue<Vector2>();
         _playerMover.ProcessMove(inputMove);
         if (!_isPlayerControlON) { return; }
-        _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>());
+        _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>(), CurrentDevice);
 
     }
 
@@ -79,19 +89,18 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         }
     }
 
-    private void OnZoomItem(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            _eventInputSystem.ZoomItem(context.ReadValue<Vector2>());
-        }
-    }
+    //private void OnZoomItem(InputAction.CallbackContext context)
+    //{
+    //        _eventInputSystem.ZoomItem(context.ReadValue<Vector2>());
+    //}
 
     private void OnPause(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
             _eventInputSystem.Pause();
+            _eventInputSystem.EndLookItem();
+
         }
     }
 
@@ -116,6 +125,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     private void OnDrop(InputAction.CallbackContext context)
     {
+        _eventInputSystem.EndLookItem();
         if (!_isPlayerControlON) { return; }
         if (context.phase == InputActionPhase.Started)
         {
@@ -132,8 +142,6 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         }
     }
 
-   
-
     private void AimControl(InputAction.CallbackContext context)
     {
         if (!_isPlayerControlON) { return; }
@@ -146,4 +154,37 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
             _playerAim.ProcessAim(false);
         }
     }
+
+    private void InputSystem_onActionChange(object obj, InputActionChange change)
+    {
+        if (change != InputActionChange.ActionStarted) return;
+
+        var action = obj as InputAction;
+        if (action == null || action.activeControl == null) return;
+
+        var device = action.activeControl.device;
+
+        if (device is Gamepad)
+        {
+            if (CurrentDevice != DeviceType.Gamepad)
+            {
+                CurrentDevice = DeviceType.Gamepad;
+                Debug.Log("Переключение на геймпад");
+            }
+        }
+        else if (device is Keyboard || device is Mouse)
+        {
+            if (CurrentDevice != DeviceType.KeyboardMouse)
+            {
+                CurrentDevice = DeviceType.KeyboardMouse;
+                Debug.Log("Переключение на клавиатуру/мышь");
+            }
+        }
+    }
+}
+
+public enum DeviceType
+{
+    KeyboardMouse,
+    Gamepad
 }
