@@ -25,8 +25,7 @@ public class HistorySystem : IInitializable, IDisposable
         _controlHistoryEvent = controlHistoryEvent;
         _bazeEvents = new List<BazeEvent>();
         _controlPresentEvent = controlPresentEvent;
-        //_countHistoryEvent = 0;
-        _countHistoryEvent = 1;
+        _countHistoryEvent = 0;
         _waitCompliteEvent = false;
     }
 
