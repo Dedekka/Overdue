@@ -14,6 +14,11 @@ public class DataOpera : ScriptableObject
         _listDataOpera = mainGoogleSettings.Opera;
     }
 
+    public List<OperaSettings> GetOperaSettings()
+    {
+        return _listDataOpera;
+    }
+
     public void GetOpera(Dictionary<int, CassetteObject> _cassetsDictionary)
     {
         OperaSettings operaSettings;

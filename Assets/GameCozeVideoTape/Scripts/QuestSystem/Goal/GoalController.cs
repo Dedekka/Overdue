@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 public class GoalController : IInitializable, IDisposable
@@ -30,7 +29,7 @@ public class GoalController : IInitializable, IDisposable
 
     public void Dispose()
     {
-        
+
     }
 
     public void ActiveGoal(TutorialEventType type)
@@ -44,6 +43,11 @@ public class GoalController : IInitializable, IDisposable
     public void ClearGoal(TutorialEventType type)
     {
         _questViewUi.ClearPanel(((int)type));
+    }
+
+    public void ChangeComplitedEvents()
+    {
+        _controlComplited.ChangeComplitedEvents();
     }
 
     private void Initialization()

@@ -1,4 +1,3 @@
-using System;
 using Zenject;
 
 public class HistoryInstaller : MonoInstaller
@@ -7,8 +6,14 @@ public class HistoryInstaller : MonoInstaller
     {
         FindSub();
         BindHistorySystem();
-      
+        BindControlOpera();
         BindImporter();
+    }
+
+    private void BindControlOpera()
+    {
+        Container.BindInterfacesAndSelfTo<ControlOpera>()
+      .AsSingle();
     }
 
     private void FindSub()
@@ -37,6 +42,6 @@ public class HistoryInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ImporterCounterSlotHistorySystem>()
       .AsSingle();
-        
+
     }
 }

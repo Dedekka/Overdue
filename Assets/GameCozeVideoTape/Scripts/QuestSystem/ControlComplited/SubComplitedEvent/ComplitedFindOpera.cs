@@ -32,6 +32,7 @@ public class ComplitedFindOpera : ComplitedHistoryEvent
 
     private void SetSub()
     {
+        _goalController.ChangeComplitedEvents();
         _listenerInventory.OnChangeSlot += OnChangeSlot;
     }
 

@@ -60,7 +60,7 @@ public class ControlComplited
         }
     }
 
-    private void ChangeComplitedEvents()
+    public void ChangeComplitedEvents()
     {
         _currentComplitedEvents++;
         _currentComplitedEvent = _complitedEvents.Find((x) => x.Id == _currentComplitedEvents);

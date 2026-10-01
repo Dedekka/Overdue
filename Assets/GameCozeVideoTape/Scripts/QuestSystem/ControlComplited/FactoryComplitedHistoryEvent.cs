@@ -22,6 +22,7 @@ public class FactoryComplitedHistoryEvent
             _container.Instantiate<ComplitedCallOne>(new object[] { 1, 1 }),
             _container.Instantiate<ComplitedReturnedOne>(new object[] { 2, 2 }),
             _container.Instantiate<ComplitedFindOpera>(new object[] { 3, -1, new List<int>(){ 301,302,303 }}),
+            _container.Instantiate<ComplitedReturnedTwo>(new object[] { 4, 4 })
         };
 
         return tempComplitedEvents;
