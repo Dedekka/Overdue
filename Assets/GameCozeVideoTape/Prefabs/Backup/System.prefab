@@ -818,6 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a8845c2c4d26f489d2258822bca3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialInstaller
+  _questViewUi: {fileID: 0}
   _buttonTutorialSorting: {fileID: 0}
   _buttonTutorialVCR: {fileID: 0}
   _buttonTutorialPhone: {fileID: 0}
@@ -841,7 +842,6 @@ GameObject:
   - component: {fileID: 5469793838121500178}
   - component: {fileID: 5046376293097500885}
   - component: {fileID: 9116683068512693662}
-  - component: {fileID: 8879567718790667539}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -891,20 +891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f8d5376e876294480aeb804c4d7b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Restart
---- !u!114 &8879567718790667539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8752889859600553088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b27148e1103b42744a2c696c60cb1c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RackLocalization
-  _dataGenre: {fileID: 11400000, guid: acc78a74fc6c8c64aa1d8a4a5bb9ec19, type: 2}
-  _settingsLocalization: {fileID: 11400000, guid: 641d1666655969f46a4a71ccb16ef14c, type: 2}
 --- !u!1 &9072158615315262365
 GameObject:
   m_ObjectHideFlags: 0

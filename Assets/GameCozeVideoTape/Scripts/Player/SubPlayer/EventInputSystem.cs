@@ -19,7 +19,7 @@ public class EventInputSystem
 
     public void InventoryView()
     {
-        _playerUi.InventoryView();
+        _playerUi.InventoryShow();
     }
 
     public void Pause()
@@ -62,9 +62,4 @@ public class EventInputSystem
             _lookItemCamera.Zoom(-rotate);
         }
     }
-
-    //public void ListenerInputMove(Vector2 move)
-    //{
-
-    //}
 }

@@ -7,9 +7,20 @@ public class DecorPresentSystem : MonoBehaviour
     [SerializeField] private List<DataDecorSlot> _listDataDecorSlot;
     private DataDecorSlot _currentDataDecorSlot;
 
+    public event Action<int> OnInstall;
+
     private void Start()
     {
         Initialization();
+    }
+
+    private void OnDisable()
+    {
+        foreach (var shelf in _listDataDecorSlot)
+        {
+            if (shelf.DecorPresent == null) { return; }
+            shelf.DecorPresent.OnInstall -= OnInstallDecor;
+        }
     }
 
     public void ControlVisible(int id)
@@ -26,6 +37,7 @@ public class DecorPresentSystem : MonoBehaviour
         {
             if (shelf.DecorPresent == null) { return; }
             shelf.DecorPresent.Initialization(shelf.IdItem);
+            shelf.DecorPresent.OnInstall += OnInstallDecor;
         }
     }
 
@@ -64,9 +76,14 @@ public class DecorPresentSystem : MonoBehaviour
         {
             if (_currentDataDecorSlot.IdItem == id) { isBlocked = true; }
         }
-
         return isBlocked;
     }
+
+    private void OnInstallDecor(int idItem)
+    {
+        OnInstall?.Invoke(idItem);
+    }
+
 }
 
 [Serializable]

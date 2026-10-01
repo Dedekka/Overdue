@@ -5,24 +5,25 @@ using Zenject;
 
 public class AudioCassettsSystem
 {
-    
     private AudioRecorder _audioRecorder;
     private AudioCassetteAnimation _audioCassetteAnimation;
     private AudioRecorderAnimation _audioRecorderAnimation;
     private List<DataAudioSlot> _dataAudioSlotList;
 
     private AudioItemSlot _currentAudioItemSlot;
+
+    public event Action OnChangeAudio;
     
-    public AudioCassettsSystem(AudioRecorder audioRecorder, AudioCassetteAnimation audioCassetteAnimation, AudioRecorderAnimation audioRecorderAnimation)
+    public AudioCassettsSystem( AudioCassetteAnimation audioCassetteAnimation, AudioRecorderAnimation audioRecorderAnimation)
     {
-        _audioRecorder = audioRecorder;
         _audioCassetteAnimation = audioCassetteAnimation;
         _audioRecorderAnimation = audioRecorderAnimation;
     }
 
-    public void SetDataAudioSlotList(List<DataAudioSlot> dataAudioSlotList)
+    public void Initialization(List<DataAudioSlot> dataAudioSlotList, AudioRecorder audioRecorder)
     {
         _dataAudioSlotList = dataAudioSlotList;
+        _audioRecorder = audioRecorder;
     }
 
     public void SetMusic(AudioItemSlot currentAudioItemSlot)
@@ -32,6 +33,7 @@ public class AudioCassettsSystem
         _audioRecorder.SetMusic(_currentAudioItemSlot.Id);
         _audioRecorderAnimation.SetAudioCassette();
         _audioCassetteAnimation.SetItemSlot(currentAudioItemSlot);
+        OnChangeAudio?.Invoke();
     }
 
     public void CheckCurrectId(int id, AudioItem audioItem)

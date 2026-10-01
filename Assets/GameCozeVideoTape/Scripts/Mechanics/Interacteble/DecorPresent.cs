@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -8,6 +9,8 @@ public class DecorPresent : MonoBehaviour
 
     private DecorChecker _decorChecker;
 
+    public event Action<int> OnInstall;
+
     [Inject]
     private void Construct(DecorChecker decorChecker)
     {
@@ -17,13 +20,11 @@ public class DecorPresent : MonoBehaviour
     public void Initialization(int idItem)
     {
         _idItem = idItem;
-        //_decorSlot.OnEnterCursor += OnEnterCursor;
         _decorSlot.OnInteract += OnInteract;
     }
 
     private void OnDisable()
     {
-        //_decorSlot.OnEnterCursor -= OnEnterCursor;
         _decorSlot.OnInteract -= OnInteract;
     }
 
@@ -41,12 +42,15 @@ public class DecorPresent : MonoBehaviour
 
     private void OnInteract()
     {
+        Debug.Log($"DecorPresent:{gameObject.name}, idItem:{_idItem}, OnInteract");
         if (_decorChecker.CheckEmptyHand(true, _idItem))
         {
+            Debug.Log($"DecorPresent:{gameObject.name}, _decorChecker.CheckEmptyHand true");
             _decorSlot.ActiveSlot();
             _decorChecker.DestroyPresent();
+            OnInstall?.Invoke(_idItem);
         }
     }
 
-  
+
 }

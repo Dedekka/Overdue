@@ -7,8 +7,8 @@ public class GoogleMenu
     #region System
     private const string CassetteDataSheet_id = "1E8nV_8KQ_zj8EQ3zbHRbxc3EquugKUKNG12jmPgthus";
     private const string CassetteLanguageSheet_id = "1v4cQrW74jHJX6wswTOJB2ghPB05at2QY9R5-65hnTJk";
-    private const string Credentials_path = "W:/_WorkSpace/Overdue/KeyGoogle/overdue-503208-623ff1e581e7.json";
-    //private const string Credentials_path = "H:/_WorkProject/Overdue/KeyGoogleSheets/overdue-503208-d39af501a561.json";
+    //private const string Credentials_path = "W:/_WorkSpace/Overdue/KeyGoogle/overdue-503208-623ff1e581e7.json";
+    private const string Credentials_path = "H:/_WorkProject/Overdue/KeyGoogleSheets/overdue-503208-d39af501a561.json";
     #endregion
 
     #region Sheets Name
@@ -26,6 +26,7 @@ public class GoogleMenu
     private const string BazeDialogue_sheets_name = "BazeDialogue";
     private const string CassetteOpera_sheets_name = "CassetteOpera";
     private const string MusicCassette_sheets_name = "BazeMusicCassette";
+    private const string TutorialEvent_sheets_name = "TutorialEvent";
     private const string TutorialEventLanguage_sheets_name = "TutorialEventLanguage";
     //private const string LanguageDialogue_sheets_name = "LanguageDialogue";
 
@@ -50,6 +51,8 @@ public class GoogleMenu
 
         await Opera(gameSettings, sheetsImporter);
         await MusicCassette(gameSettings, sheetsImporter);
+
+        await TutorialEvent(gameSettings, sheetsImporter);
 
          sheetsImporter = new GoogleImporter(Credentials_path, CassetteLanguageSheet_id);
         await ItemLanguage(gameSettings, sheetsImporter);
@@ -77,15 +80,11 @@ public class GoogleMenu
         //string JsonSaver = JsonUtility.ToJson(mainGoogleSettings);
         //PlayerPrefs.SetString(SettingFileName, JsonSaver);
         //PlayerPrefs.Save();
-
+        #region Game
         DataCassets dataCassets = ScriptableObject.CreateInstance<DataCassets>();
         dataCassets.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataCassetsPath, dataCassets);
-
-        DataLanguage dataLanguage = ScriptableObject.CreateInstance<DataLanguage>();
-        dataLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.LanguageCassetsPath, dataLanguage);
-
+        
         DataGenre dataGenre = ScriptableObject.CreateInstance<DataGenre>();
         dataGenre.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataGenrePath, dataGenre);
@@ -110,6 +109,25 @@ public class GoogleMenu
         dataMusicCassets.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataMusicCassetsPath, dataMusicCassets);
 
+        DataTutorialEvent dataTutorialEvent = ScriptableObject.CreateInstance<DataTutorialEvent>();
+        dataTutorialEvent.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataTutorialEventPath, dataTutorialEvent);
+
+        
+
+
+        #endregion
+
+        #region GameLanguage
+
+        DataTutorialEventLanguage dataTutorialEventSettings = ScriptableObject.CreateInstance<DataTutorialEventLanguage>();
+        dataTutorialEventSettings.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataTutorialEventLanguagePath, dataTutorialEventSettings);
+
+        DataLanguage dataLanguage = ScriptableObject.CreateInstance<DataLanguage>();
+        dataLanguage.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.LanguageCassetsPath, dataLanguage);
+
         DataMusicLanguage dataMusicLanguage = ScriptableObject.CreateInstance<DataMusicLanguage>();
         dataMusicLanguage.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataMusicLanguagePath, dataMusicLanguage);
@@ -129,10 +147,7 @@ public class GoogleMenu
         DataGenreLanguage dataGenreLanguage = ScriptableObject.CreateInstance<DataGenreLanguage>();
         dataGenreLanguage.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataGenreLanguagePath, dataGenreLanguage);
-
-        DataTutorialEventSettings dataTutorialEventSettings = ScriptableObject.CreateInstance<DataTutorialEventSettings>();
-        dataTutorialEventSettings.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataTutorialEventSettingsPath, dataTutorialEventSettings);
+        #endregion
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
@@ -145,6 +160,7 @@ public class GoogleMenu
         Debug.Log($"Ассет создан по пути: {path}");
     }
 
+    #region Game
 
     private static async UniTask Genre(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
     {
@@ -160,7 +176,41 @@ public class GoogleMenu
         ItemSettingsParser ItemParser = new ItemSettingsParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(Items_sheets_name, ItemParser);
     }
+    private static async UniTask Dialogs(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        PresentsParser presentsParser = new PresentsParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(Present_sheets_name, presentsParser);
 
+        DialogueParser dialogueParser = new DialogueParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(BazeDialogue_sheets_name, dialogueParser);
+    }
+
+    private static async UniTask Events(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        HistoryEventParser dialogueEventParser = new HistoryEventParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(HistoryEvent_sheets_name, dialogueEventParser);
+    }
+
+    private static async UniTask Opera(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        OperaParser operaParser = new OperaParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(CassetteOpera_sheets_name, operaParser);
+    }
+
+    private static async UniTask MusicCassette(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        MusicCassetteParser musicCassetteParser = new MusicCassetteParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(MusicCassette_sheets_name, musicCassetteParser);
+    }
+    private static async UniTask TutorialEvent(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        TutorialEventParser tutorialEventParser = new TutorialEventParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(TutorialEvent_sheets_name, tutorialEventParser);
+    }
+
+    #endregion
+
+    #region GameLanguage
     private static async UniTask ItemLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
     {
         ItemLanguageParser LanguageParser = new ItemLanguageParser(gameSettings);
@@ -202,31 +252,6 @@ public class GoogleMenu
         TutorialEventLanguageParser tutorialEventLanguageParser = new TutorialEventLanguageParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(TutorialEventLanguage_sheets_name, tutorialEventLanguageParser);
     }
+    #endregion
 
-    private static async UniTask Dialogs(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
-    {
-        PresentsParser presentsParser = new PresentsParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(Present_sheets_name, presentsParser);
-
-        DialogueParser dialogueParser = new DialogueParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(BazeDialogue_sheets_name, dialogueParser);
-    }
-
-    private static async UniTask Events(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
-    {
-        HistoryEventParser dialogueEventParser = new HistoryEventParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(HistoryEvent_sheets_name, dialogueEventParser);
-    }
-
-    private static async UniTask Opera(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
-    {
-        OperaParser operaParser = new OperaParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(CassetteOpera_sheets_name, operaParser);
-    }
-
-    private static async UniTask MusicCassette(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
-    {
-        MusicCassetteParser musicCassetteParser = new MusicCassetteParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(MusicCassette_sheets_name, musicCassetteParser);
-    }
 }

@@ -71,13 +71,14 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
         _eventInputSystem.ZoomItem(_playerActions.Scroll.ReadValue<Vector2>());
 
-        _eventInputSystem.ProcessRotate(_playerActions.Look.ReadValue<Vector2>(), CurrentDevice);
+        Vector2 inputLook = _playerActions.Look.ReadValue<Vector2>();
+        _eventInputSystem.ProcessRotate(inputLook, CurrentDevice);
         if (!_isPlayerControlON) { return; }
 
         Vector2 inputMove = _playerActions.Move.ReadValue<Vector2>();
         _playerMover.ProcessMove(inputMove);
         if (!_isPlayerControlON) { return; }
-        _playerLook.ProcessLook(_playerActions.Look.ReadValue<Vector2>(), CurrentDevice);
+        _playerLook.ProcessLook(inputLook, CurrentDevice);
 
     }
 

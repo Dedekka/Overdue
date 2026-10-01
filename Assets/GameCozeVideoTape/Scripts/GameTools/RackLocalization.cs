@@ -1,45 +1,53 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class RackLocalization : MonoBehaviour
+public class RackLocalization : EditorWindow
 {
-    [SerializeField] private DataGenre _dataGenre;
-    [SerializeField] private SettingsLocalization _settingsLocalization;
-    private RackGanre[] _rackGanres;
+    //[SerializeField] private DataGenre _dataGenre;
+    //[SerializeField] private SettingsLocalization _settingsLocalization;
+    //private RackGanre[] _rackGanres;
 
-    private Renderer _renderer;
-    private MaterialPropertyBlock _propertyBlock;
+    
+    
     private static readonly int ArrayIndexProperty = Shader.PropertyToID("_IndexSlice");
 
-    [ContextMenu("Ru")]
-    private void SetRuLocalized()
+    //[ContextMenu("Ru")]
+    [MenuItem("Tools/InstallTexture/Rack/Ru")]
+    private static void SetRuLocalized()
     {
         Localized(Language.Ru);
     }
 
-    [ContextMenu("Eng")]
-    private void SetEngLocalized()
+    //[ContextMenu("Eng")]
+    [MenuItem("Tools/InstallTexture/Rack/Eng")]
+    private static void SetEngLocalized()
     {
         Localized(Language.En);
     }
 
 
-    private void Localized(Language language)
+    private static void Localized(Language language)
     {
-        _rackGanres = GameObject.FindObjectsByType<RackGanre>(FindObjectsSortMode.None);
+        RackGanre[] _rackGanres = GameObject.FindObjectsByType<RackGanre>(FindObjectsSortMode.None);
+
+        DataGenre _dataGenre = AssetDatabase.LoadAssetAtPath<DataGenre>(PathConst.DataGenrePath);
+        SettingsLocalization _settingsLocalization = AssetDatabase.LoadAssetAtPath<SettingsLocalization>("Assets/Resources/Settings/SettingsLocalization.asset");
+
         _settingsLocalization.SetLocalizationMaterial(language);
         for (int i = 0; i < _rackGanres.Length; i++)
         {
             _rackGanres[i].SetEditor(out GameObject mainGanre, out List<GameObject> subGanreList, out Rack rack);
 
-            SetMainGanre(mainGanre, (int)rack.Genre);
-            SetSubGanre(subGanreList, rack.SubGenreShelfs, (int)rack.Genre);
+
+            SetMainGanre(mainGanre, (int)rack.Genre, _settingsLocalization, _dataGenre);
+            SetSubGanre(subGanreList, rack.SubGenreShelfs, (int)rack.Genre, _settingsLocalization, _dataGenre);
             //_rackGanres[i].SetLocalization();
         }
     }
 
-    public void SetMainGanre(GameObject mainGanre, int Id)
+    public static void SetMainGanre(GameObject mainGanre, int Id, SettingsLocalization _settingsLocalization, DataGenre _dataGenre)
     {
         int materialIndex = _dataGenre.GetGenreSettingsForId(Id).MaterialIndex;
         //_language = _controlSettings.Language;
@@ -52,7 +60,7 @@ public class RackLocalization : MonoBehaviour
 
     }
 
-    public void SetSubGanre(List<GameObject> subGanre, List<DataShelf> SubGenreShelfs, int indexGanre)
+    public static void SetSubGanre(List<GameObject> subGanre, List<DataShelf> SubGenreShelfs, int indexGanre, SettingsLocalization _settingsLocalization, DataGenre _dataGenre)
     {
         if (subGanre.Count != SubGenreShelfs.Count)
         {
@@ -81,12 +89,12 @@ public class RackLocalization : MonoBehaviour
     }
 
 
-    private void SetViewGanre(Material material, GameObject gameObject, int MaterialIndex)
+    private static void SetViewGanre(Material material, GameObject gameObject, int MaterialIndex)
     {
-        TryGetRenderer(gameObject);
+        TryGetRenderer(gameObject, out Renderer _renderer);
 
         _renderer.material = material;
-        _propertyBlock = new MaterialPropertyBlock();
+         MaterialPropertyBlock _propertyBlock = new MaterialPropertyBlock();
 
         // Получаем текущий блок свойств
         _renderer.GetPropertyBlock(_propertyBlock);
@@ -98,9 +106,9 @@ public class RackLocalization : MonoBehaviour
         _renderer.SetPropertyBlock(_propertyBlock);
     }
 
-    private void TryGetRenderer(GameObject gameObject)
+    private static void TryGetRenderer(GameObject gameObject, out Renderer _renderer)
     {
-        _renderer = gameObject.GetComponent<Renderer>();
+          _renderer = gameObject.GetComponent<Renderer>();
         if (_renderer == null)
         {
             _renderer = gameObject.GetComponentInChildren<Renderer>();

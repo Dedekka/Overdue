@@ -66,7 +66,7 @@ public class AudioRecorder : MonoBehaviour
             dataAudioSlot.AudioItem.gameObject.SetActive(false);
             _audioCassettsSystem.CheckCurrectId(dataAudioSlot.IndexAudioCassette, dataAudioSlot.AudioItem);
         }
-        _audioCassettsSystem.SetDataAudioSlotList(_dataAudioSlotList);
+        _audioCassettsSystem.Initialization(_dataAudioSlotList,this);
     }
 }
 

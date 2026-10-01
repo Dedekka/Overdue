@@ -62,7 +62,7 @@ public class CassetteEffects
 
     private void AnimationSuccessInstall(float time)
     {
-        Debug.Log($"AnimationSuccessInstall: {time}");
+        //Debug.Log($"AnimationSuccessInstall: {time}");
         _meshRenderer.GetPropertyBlock(_propertyBlock);
         _propertyBlock.SetFloat(ArrayIndexProperty, time);
         _meshRenderer.SetPropertyBlock(_propertyBlock);

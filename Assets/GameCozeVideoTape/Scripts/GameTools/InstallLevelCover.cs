@@ -1,28 +1,40 @@
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
-public class InstallLevelCover : MonoBehaviour
+public class InstallLevelCover : EditorWindow
 {
-    [SerializeField] private CassetteObject[] _CassetteObject;
-    [SerializeField] private DataCassets _dataCassets;
+    private static CassetteObject[] _сassetteObjects;
+    private static DataCassets _dataCassets;
 
     private static readonly int ArrayIndexProperty = Shader.PropertyToID("_IndexSlice");
 
-    [ContextMenu("InstallCover")]
-    private void InstallCover()
+    //Container.Bind<DataCassets>()
+    //       .FromResource(PathConst.DataCassetsAsset)
+    //       .AsSingle();
+
+    [MenuItem("Tools/InstallTexture/Cassette")]
+    private static void InstallCover()
     {
+        FindSub();
+
         CassetteObject tempCassette;
-        _dataCassets.GetSettings(_CassetteObject.ToList());
+        _dataCassets.GetSettings(_сassetteObjects.ToList());
         
-        for (int i = 0; i < _CassetteObject.Length; i++)
+        for (int i = 0; i < _сassetteObjects.Length; i++)
         {
-            tempCassette = _CassetteObject[i];
+            tempCassette = _сassetteObjects[i];
             ChangeMaterial(tempCassette);
         }
     }
 
+    private static void FindSub()
+    {
+        _сassetteObjects = GameObject.FindObjectsByType<CassetteObject>(FindObjectsSortMode.None);
+        _dataCassets = Resources.Load<DataCassets>(PathConst.DataCassetsAsset);
+    }
 
-    private void ChangeMaterial(CassetteObject tempCassette)
+    private static void ChangeMaterial(CassetteObject tempCassette)
     {
         Renderer renderer = tempCassette.GetComponent<Renderer>();
         MaterialPropertyBlock _propertyBlock = new MaterialPropertyBlock();
@@ -30,7 +42,7 @@ public class InstallLevelCover : MonoBehaviour
         UpdateTexture(renderer, _propertyBlock, tempCassette.ItemSettings.MaterialIndex);
     }
 
-    private void UpdateTexture(Renderer renderer, MaterialPropertyBlock _propertyBlock, int materialIndex)
+    private static void UpdateTexture(Renderer renderer, MaterialPropertyBlock _propertyBlock, int materialIndex)
     {
         // Получаем текущий блок свойств
         renderer.GetPropertyBlock(_propertyBlock);

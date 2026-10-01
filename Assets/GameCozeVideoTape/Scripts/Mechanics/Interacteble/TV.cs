@@ -21,7 +21,7 @@ public class TV : MonoBehaviour, ISloteble
         _tvManager = tvManager;
         _operatingChecker = operatingChecker;
     }
-   
+
     private void Awake()
     {
         _videoPlayer = GetComponent<VideoPlayer>();
@@ -32,41 +32,23 @@ public class TV : MonoBehaviour, ISloteble
 
     private void OnDisable()
     {
-        //_tvSlot.OnEnterCursor -= OnEnterCursor;
         _tvSlot.OnPlayCasset -= OnPlayCasset;
+        _tvSlot.OnEnterCursor -= OnEnterCursor;
     }
-
-    //public void ActiveSlot(bool isActive)
-    //{
-    //    _tvSlot.gameObject.SetActive(isActive);
-    //}
 
     public void OnEnterCursor(bool isVisible)
     {
         if (isVisible)
         {
-            if (_operatingChecker.CheckCassette())
+            if (_playerInventory.CheckActiveItem(this, out IItemble currentCassette))
             {
                 _tvSlot.ControlVisible(isVisible);
             }
-
-            //if (_playerInventory.CheckActiveItem(this, out IItemble currentCassette))
-            //{
-            //    _tvSlot.ControlVisible(isVisible);
-            //}
         }
         else
         {
             _tvSlot.ControlVisible(isVisible);
         }
-        //if (_operatingChecker.CheckHand(isVisible))
-        //{
-        //    _tvSlot.ControlVisible(true);
-        //}
-        //else
-        //{
-        //    _tvSlot.ControlVisible(false);
-        //}
     }
 
     private void OnPlayCasset()

@@ -2,9 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using static UnityEngine.InputManagerEntry;
 
 public class TutorialInstaller : MonoInstaller
 {
+    [Header("TutorialEvent")]
+    [SerializeField] private QuestViewUi _questViewUi;
+
     [Header("TutorialButtonUi")]
     [SerializeField] private Button _buttonTutorialSorting;
     [SerializeField] private Button _buttonTutorialVCR;
@@ -22,8 +26,25 @@ public class TutorialInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        FindSub();
         BindTutorialSystem();
         BindTutorialControl();
+        BindListener();
+        BindImporter();
+    }
+
+  
+
+    private void FindSub()
+    {
+        
+        Container.Bind<DataTutorialEvent>()
+           .FromResource(PathConst.DataTutorialEventAsset)
+           .AsSingle();
+
+        Container.Bind<DataTutorialEventLanguage>()
+           .FromResource(PathConst.DataTutorialEventLanguageAsset)
+           .AsSingle();
     }
 
     private void BindTutorialControl()
@@ -55,14 +76,62 @@ public class TutorialInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<TutorialControlPanelSettings>()
            .AsSingle();
+
+
+        Container.Bind<QuestViewUi>()
+          .FromInstance(_questViewUi)
+          .AsSingle();
+
+        Container.Bind<ControlComplited>()
+          .AsSingle();
+
+        Container.Bind<FactoryComplitedHistoryEvent>()
+          .AsSingle();
+
+
     }
 
     private void BindTutorialSystem()
     {
-        Container.BindInterfacesAndSelfTo<TutorialSystem>()
+        Container.BindInterfacesAndSelfTo<GoalController>()
        .AsSingle();
 
-        Container.Bind<ControlInputListener>()
+        Container.Bind<GoalContext>()
        .AsSingle();
+
+        Container.Bind<GoalFactory>()
+       .AsSingle();
+
+        Container.Bind<ControlGoalLanguage>()
+       .AsSingle();
+    }
+
+    private void BindListener()
+    {
+        Container.Bind<ListenerInputMove>()
+    .AsSingle();
+
+        Container.Bind<ListenerInventory>()
+       .AsSingle();
+
+        Container.Bind<ListenerPlayerUi>()
+       .AsSingle();
+
+        Container.Bind<ListenerTv>()
+       .AsSingle();
+
+        Container.Bind<ListenerAudioRecorder>()
+       .AsSingle();
+
+        Container.Bind<ListenerPhone>()
+       .AsSingle();
+
+        Container.Bind<ListenerPresentSystem>()
+       .AsSingle();
+    }
+
+    private void BindImporter()
+    {
+        
     }
 }

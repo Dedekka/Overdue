@@ -136,8 +136,6 @@ public class GameInstaller : MonoInstaller
         //   .WithArguments(_slotMaterial, _decorMaterial);
     }
 
-   
-
     private void FindSub()
     {
         Container.Bind<DataCassets>()

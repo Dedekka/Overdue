@@ -4,14 +4,14 @@ using System.Collections.Generic;
 public class TutorialEventLanguageParser : IGoogleParser
 {
     private readonly MainGoogleSettings _mainGoogleSettings;
-    private TutorialEventSettings _currentTutorialEventSettings;
+    private TutorialEventLanguageSettings _currentTutorialEventSettings;
 
     
 
     public TutorialEventLanguageParser(MainGoogleSettings mainGoogleSettings)
     {
         _mainGoogleSettings = mainGoogleSettings;
-        _mainGoogleSettings.TutorialEventLanguage = new List<TutorialEventSettings>();
+        _mainGoogleSettings.TutorialEventLanguage = new List<TutorialEventLanguageSettings>();
     }
 
     public void Parse(string headerName, string token)
@@ -19,7 +19,7 @@ public class TutorialEventLanguageParser : IGoogleParser
         switch (headerName)
         {
             case "ID":
-                _currentTutorialEventSettings = new TutorialEventSettings()
+                _currentTutorialEventSettings = new TutorialEventLanguageSettings()
                 {
                     Id = Convert.ToInt32(token)
                 };

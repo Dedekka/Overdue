@@ -1,3 +1,5 @@
+using System;
+
 public class OperaChecker : ISloteble
 {
     public int CurrentIdCassetteOpera { get; private set; }
@@ -7,6 +9,7 @@ public class OperaChecker : ISloteble
     
     private ControlGenreVideo _controlGenreVideo;
 
+    public event Action<bool> OnCheckOperaCassette;
 
     public OperaChecker(PlayerInventory playerInventory, DataOpera dataOpera, ControlOperaLanguage controlOperaLanguage, ControlGenreVideo controlGenreVideo)
     {
@@ -66,6 +69,7 @@ public class OperaChecker : ISloteble
         {
             _controlGenreVideo.CheckGenreVideo(cassette.ItemSettings.IdGenre);
         }
+        OnCheckOperaCassette?.Invoke(IsOpera);
         //return IsOpera;
     }
 }

@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerInventory
 {
-    private readonly InventoryCassette _inventorySlot;
-    private readonly InventoryPresent _inventoryPresent;
+    public readonly InventoryCassette InventorySlot;
+    public readonly InventoryPresent InventoryPresent;
 
     public PlayerInventory(InventoryCassette inventorySlot, InventoryPresent inventoryPresent)
     {
-        _inventorySlot = inventorySlot;
-        _inventoryPresent = inventoryPresent;
+        InventorySlot = inventorySlot;
+        InventoryPresent = inventoryPresent;
     }
 
     public bool CheckActiveItem(ISloteble sloteble, out IItemble Item)
@@ -17,15 +17,15 @@ public class PlayerInventory
         bool result = false;
         if (sloteble is DecorChecker)
         {
-            result = _inventoryPresent.CheckActivePresent(out Present present);
+            result = InventoryPresent.CheckActivePresent(out Present present);
             Item = present;
             return result;
 
             //return _inventorySlot.CheckFreeSlot(cassette);
         }
-        else if (sloteble is ContentSlot || sloteble is BazeSlot || sloteble is OperaChecker)
+        else if (sloteble is ContentSlot || sloteble is BazeSlot || sloteble is OperaChecker || sloteble is TV)
         {
-            result = _inventorySlot.CheckActiveCassette(out CassetteObject currentCassette);
+            result = InventorySlot.CheckActiveCassette(out CassetteObject currentCassette);
             Item = currentCassette;
             return result;
         }
@@ -39,24 +39,24 @@ public class PlayerInventory
 
         if (sloteble is DecorChecker decorChecker)
         {
-            tempItem = _inventoryPresent.Install();
+            tempItem = InventoryPresent.Install();
         }
         else if (sloteble is BazeSlot || sloteble is TV)
         {
-            tempItem = _inventorySlot.Install();
+            tempItem = InventorySlot.Install();
         }
         return tempItem;
     }
 
     public void Drop()
     {
-        _inventorySlot.Drop();
-        _inventoryPresent.Drop();
+        InventorySlot.Drop();
+        InventoryPresent.Drop();
     }
 
     public void Scroll(Vector2 vector)
     {
-        _inventorySlot.Scroll(vector.y < 0);
+        InventorySlot.Scroll(vector.y < 0);
     }
 
     public bool CheckFreeSlot(IItemble Item)
@@ -70,24 +70,22 @@ public class PlayerInventory
 
         if (Item is CassetteObject cassette)
         {
-            return _inventorySlot.CheckFreeSlot(cassette);
+            return InventorySlot.CheckFreeSlot(cassette);
         }
         else if (Item is Present present)
         {
-            return _inventoryPresent.CheckFreeSlot(present);
+            return InventoryPresent.CheckFreeSlot(present);
         }
         return false;
     }
 
     public void DropAllCassette()
     {
-        _inventorySlot.DropAllCassette();
+        InventorySlot.DropAllCassette();
     }
 
     public void DropAllPresent()
     {
-        _inventoryPresent.Drop();
+        InventoryPresent.Drop();
     }
-
-
 }

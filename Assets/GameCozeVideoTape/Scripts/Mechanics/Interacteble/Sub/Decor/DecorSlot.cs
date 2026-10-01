@@ -19,6 +19,7 @@ public class DecorSlot : BazeInteracteble
 
     protected override void Interact()
     {
+        Debug.Log($"DecorSlot:{gameObject.name}, Interact");
         OnInteract?.Invoke();
     }
 

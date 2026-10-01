@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class PlayerUi : MonoBehaviour
 {
+    public InventoryView InventoryView => _inventoryView;
+
     [SerializeField] private CanvasGroup _otherGoup;
     [SerializeField] private GameObject _panelUse;
     [SerializeField] private GameObject _panelDescription;
     [SerializeField] private TextMeshProUGUI _textDescription;
-    
+
     [SerializeField] private InventoryView _inventoryView;
 
     public void UpdateTextDescription(string text)
@@ -30,7 +32,7 @@ public class PlayerUi : MonoBehaviour
         _inventoryView.UpdateTextInventory(textHeader, textPanelHand);
     }
 
-    public void InventoryView()
+    public void InventoryShow()
     {
         _inventoryView.Show();
     }

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class InventoryView : MonoBehaviour
     private Vector2 _tempMovePanel;
 
     private bool _isVisible;
+
+    public event Action<bool> OnShow;
 
     private void Awake()
     {
@@ -39,15 +42,13 @@ public class InventoryView : MonoBehaviour
 
     public void Show()
     {
-        //Debug.Log($"PRE_RectTransform.sizeDelta: {_rectTransform.sizeDelta}");
-        //Debug.Log($"PRE_RectTransform.anchorMin: {_rectTransform.anchorMin}");
-        //Debug.Log($"PRE_RectTransform.anchorMinX: {_rectTransform.anchorMin.x}");
-        //Debug.Log($"PRE_RectTransform.anchorMinY: {_rectTransform.anchorMin.y}");
+        if (!_panelHand.activeSelf) return;
         _isVisible = !_isVisible;
         _tempMovePanel = _isVisible ? _onSize : _offSize;
 
         _tween = _rectTransform.DOAnchorMin(_tempMovePanel, _duration)
                  .SetLink(gameObject);
         _tween.Play();
+        OnShow?.Invoke(_isVisible);
     }
 }

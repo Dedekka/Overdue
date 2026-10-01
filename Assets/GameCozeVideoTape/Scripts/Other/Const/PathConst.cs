@@ -6,12 +6,13 @@ public static class PathConst
     public const string DataOperaPath = "Assets/Resources/Data/DataOpera.asset";
     public const string DataHistoryEventPath = "Assets/Resources/Data/DataHistoryEvent.asset";
     public const string DataMusicCassetsPath = "Assets/Resources/Data/DataMusicCassets.asset";
+    public const string DataTutorialEventPath = "Assets/Resources/Data/DataTutorialEvent.asset";
     public const string DataMusicLanguagePath = "Assets/Resources/Data/DataMusicLanguage.asset";
     public const string DataDialogLanguagePath = "Assets/Resources/Data/DataDialogLanguage.asset";
     public const string DataOperaLanguagePath = "Assets/Resources/Data/DataOperaLanguage.asset";
     public const string DataPresentLanguagePath = "Assets/Resources/Data/DataPresentLanguage.asset";
     public const string DataGenreLanguagePath = "Assets/Resources/Data/DataGenreLanguage.asset";
-    public const string DataTutorialEventSettingsPath = "Assets/Resources/Data/DataTutorialEventSettings.asset";
+    public const string DataTutorialEventLanguagePath = "Assets/Resources/Data/DataTutorialEventLanguage.asset";
     public const string LanguageCassetsPath = "Assets/Resources/Data/LanguageCassets.asset";
     public const string DataGenrePath = "Assets/Resources/Data/DataGenre.asset";
 
@@ -31,4 +32,6 @@ public static class PathConst
     public const string DataPresentLanguageAsset = "Data/DataPresentLanguage";
     public const string DataGenreAsset = "Data/DataGenre";
     public const string DataGenreLanguageAsset = "Data/DataGenreLanguage";
+    public const string DataTutorialEventAsset = "Data/DataTutorialEvent";
+    public const string DataTutorialEventLanguageAsset = "Data/DataTutorialEventLanguage";
 }

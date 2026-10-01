@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryCassette
@@ -21,6 +22,8 @@ public class InventoryCassette
 
     public event Action<CassetteObject[]> OnChangeSlot;
     public event Action OnPickUp;
+    public event Action OnDrop;
+    public event Action OnScroll;
 
     public InventoryCassette(SettingsPlayer settingsPlayer, Transform hand, Transform[] _inventorySlot)
     {
@@ -56,6 +59,7 @@ public class InventoryCassette
         ChangeCurrentCassette();
         if (_currentCassette != null)
         {
+            OnDrop?.Invoke();
             _currentCassette.Drop();
             _currentCassette.Rigidbody.AddForce(_hand.right * _forceDrop, ForceMode.Impulse);
             _cassets[0].CassetteObject = null;
@@ -99,6 +103,7 @@ public class InventoryCassette
     public void Scroll(bool duration)
     {
         if (_countSlotInventory <= 1) { return; }
+        OnScroll?.Invoke();
         //Debug.Log($"Scroll CountSlotInventory: {_countSlotInventory}");
         ChangeSlot(duration, 0);
     }
@@ -159,7 +164,6 @@ public class InventoryCassette
         {
             _cassets[i + 1].CassetteObject = _activeCassets[i];
             _activeCassets[i].Scroll(_cassets[i + 1].Position);
-
         }
         FindCasset();
     }
