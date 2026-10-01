@@ -13,7 +13,7 @@ public abstract class ComplitedHistoryEvent
         _goalController = goalController;
     }
 
-    public bool CheckComplited(int idEventHistory)
+    public virtual bool CheckComplited(int idEventHistory)
     {
        return IdEventHistory == idEventHistory;
     }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ControlComplited
 {
@@ -15,7 +14,8 @@ public class ControlComplited
         _historySystem = historySystem;
         _factoryComplited = factoryComplited;
         _complitedEvents = new List<ComplitedHistoryEvent>();
-        _currentComplitedEvents = 0;
+        _currentComplitedEvents = 1;
+        //_currentComplitedEvents = 0;
     }
 
     public void Initialization()
