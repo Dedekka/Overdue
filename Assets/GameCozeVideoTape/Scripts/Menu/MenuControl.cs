@@ -5,5 +5,6 @@ public class MenuControl : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

@@ -11,7 +11,6 @@ public class MenuInstaller : MonoInstaller
     [SerializeField] private Button _buttonNewGame;
     [SerializeField] private Button _buttonExit;
 
-
     public override void InstallBindings()
     {
         BindSub();

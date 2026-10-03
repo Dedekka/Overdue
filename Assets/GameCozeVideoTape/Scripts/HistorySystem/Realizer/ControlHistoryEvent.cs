@@ -6,10 +6,12 @@ public class ControlHistoryEvent
 {
     private BazeEvent _bazeEvent;
     private ControlLogic _сontrolLogic;
+    private CutSceneController _cutSceneController;
 
-    public ControlHistoryEvent(ControlLogic сontrolLogic)
+    public ControlHistoryEvent(ControlLogic сontrolLogic, CutSceneController cutSceneController)
     {
         _сontrolLogic = сontrolLogic;
+        _cutSceneController = cutSceneController;
     }
 
     public void SetEvent(BazeEvent bazeEvent)
@@ -21,12 +23,6 @@ public class ControlHistoryEvent
     private void ActiveEvent()
     {
         Debug.Log($"ControlHistoryEvent, IdEventHistory:{_bazeEvent.IdEventHistory}, CountCassette:{_bazeEvent.CountCassette}");
-        WaitTimer().Forget();
-    }
-
-    private async UniTask WaitTimer()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(10));
-        _сontrolLogic.BackMenu();
+        _cutSceneController.StartCutscene(3);
     }
 }
