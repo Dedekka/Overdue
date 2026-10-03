@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class GoalPickUp : Goal
 {
-    public GoalPickUp(TutorialEventSettings settings, List<Condition> conditions) : base(settings, conditions)
+    public GoalPickUp( TutorialEventSettings settings, List<Condition> conditions ) : base(settings, conditions)
     {
     }
-    
+
     public override void Initialization(GoalController goalController)
     {
         base.Initialization(goalController);
@@ -15,8 +15,9 @@ public class GoalPickUp : Goal
     }
 
 
-    protected override void OnComplitedCondition()
+    protected override void OnComplitedCondition(Condition condition)
     {
+        base.OnComplitedCondition(condition);
         Debug.Log($"CheckComplited:{CheckComplited()}");
         _goalController.ClearGoal(Settings.TutorialEventType);
         _goalController.ActiveGoal(TutorialEventType.OnDrop);

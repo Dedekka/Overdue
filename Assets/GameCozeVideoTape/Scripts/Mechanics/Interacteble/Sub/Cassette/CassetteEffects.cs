@@ -34,7 +34,7 @@ public class CassetteEffects
         if (_stateInstal == StateInstal.Nothing) { return; }
 
         var materials = _meshRenderer.materials;
-        Debug.Log($"materials {materials.Length}");
+        //Debug.Log($"materials {materials.Length}");
         _meshRenderer.materials = _effectSettings.ControlSelectedOutline(materials, isActive);
     }
 

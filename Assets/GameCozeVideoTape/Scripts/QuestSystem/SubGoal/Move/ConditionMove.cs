@@ -15,7 +15,7 @@ public class ConditionMove : Condition
     {
         _listenerInputMove = goalController.GoalContext.ListenerInputMove;
         SetSub();
-        Debug.Log($"GoalMove Initialization");
+        //Debug.Log($"GoalMove Initialization");
     }
 
     public override bool CheckComplited()
@@ -44,9 +44,9 @@ public class ConditionMove : Condition
         ControllDirection(move.x, false, ref _moveA);
         ControllDirection(move.y, true, ref _moveW);
         ControllDirection(move.y, false, ref _moveS);
-        Debug.Log($"ConditionMove, Vector2:{move} ");
+        //Debug.Log($"ConditionMove, Vector2:{move} ");
         CheckCondition();
-        Debug.Log($"ConditionMove, _moveW:{_moveW}, _moveS: {_moveS}, _moveA{_moveA}, _moveD{_moveD} ");
+        //Debug.Log($"ConditionMove, _moveW:{_moveW}, _moveS: {_moveS}, _moveA{_moveA}, _moveD{_moveD} ");
     }
 
     private void ControllDirection(float Direction, bool isModifier, ref bool isCheckCondition)

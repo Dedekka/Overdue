@@ -58,4 +58,9 @@ public class DialogSystemCall : IRealizerDialogueble
         _dialogSound.StopSound();
         OnStateDialog?.Invoke(false);
     }
+
+    public void StopProgressShow()
+    {
+        _dialogSound.StopSound();
+    }
 }

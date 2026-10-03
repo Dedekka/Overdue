@@ -31,14 +31,14 @@ public class ImporterCounterSlotCassetteUi : IDisposable, IInitializable
 
     private void OnUpdateCountSuccessInstall(int successInstall)
     {
-        Debug.Log($"ImporterCounterSlotCassetteUi, OnUpdateCountSuccessInstall: {successInstall}");
+        //Debug.Log($"ImporterCounterSlotCassetteUi, OnUpdateCountSuccessInstall: {successInstall}");
         string text = $"{successInstall}/{_maxCountSlot}";
         _counterSlotCassetteUi.UpdateTextCounter(text);
     }
 
     private void OnUpdateMaxCountSlot(int maxCountSlot)
     {
-        Debug.Log($"ImporterCounterSlotCassetteUi, OnUpdateMaxCountSlot: {maxCountSlot}");
+        //Debug.Log($"ImporterCounterSlotCassetteUi, OnUpdateMaxCountSlot: {maxCountSlot}");
         _maxCountSlot = maxCountSlot;
         _maxCountSlot -= 27;
     }

@@ -29,7 +29,7 @@ public class EffectSettings : ScriptableObject
     public Material[] ControlSelectedOutline(Material[] materials, bool isActive)
     {
 
-        Debug.Log($"materials {materials.Length}");
+        //Debug.Log($"materials {materials.Length}");
         if (isActive)
         {
             Material[] newMat = new Material[2];
@@ -48,7 +48,7 @@ public class EffectSettings : ScriptableObject
 
     public Material[] ControlInstallEffect(Material[] materials, StateInstal stateInstal)
     {
-        Debug.Log($"materials {materials.Length}");
+        //Debug.Log($"materials {materials.Length}");
         Material[] newMat = new Material[2];
         newMat[0] = materials[0];
         if (stateInstal == StateInstal.SuccessInstall)

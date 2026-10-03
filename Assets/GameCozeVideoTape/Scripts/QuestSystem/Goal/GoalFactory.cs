@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
+using Zenject;
 
 public class GoalFactory
 {
+    private DiContainer _container;
     private DataTutorialEvent _dataTutorialEvent;
 
-    public GoalFactory(DataTutorialEvent dataTutorialEvent)
+    public GoalFactory(DataTutorialEvent dataTutorialEvent, DiContainer container)
     {
         _dataTutorialEvent = dataTutorialEvent;
+        _container = container;
     }
 
     public List<Goal> GetGoal()
@@ -37,18 +40,18 @@ public class GoalFactory
         TutorialEventType type = (TutorialEventType)id;
         Condition tutorialEventType = type switch
         {
-            TutorialEventType.OnMove => new ConditionMove(),
-            TutorialEventType.OnPickUp => new ConditionPickUp(),
-            TutorialEventType.OnDrop => new ConditionDrop(),
-            TutorialEventType.OnScroll => new ConditionScroll(),
-            TutorialEventType.OnShow => new ConditionShow(),
-            TutorialEventType.OnTv => new ConditionTv(),
-            TutorialEventType.OnPhone => new ConditionPhone(),
-            TutorialEventType.OnPresent => new ConditionPresent(),
-            TutorialEventType.OnReturned => new ConditionReturned(),
-            TutorialEventType.OnInstall => new ConditionInstall(),
-            TutorialEventType.OnChangeAudio => new ConditionChangeAudio(),
-            TutorialEventType.OnOpera => new ConditionOpera(),
+            TutorialEventType.OnMove => _container.Instantiate<ConditionMove>(),
+            TutorialEventType.OnPickUp => _container.Instantiate<ConditionPickUp>(),
+            TutorialEventType.OnDrop => _container.Instantiate<ConditionDrop>(),
+            TutorialEventType.OnScroll => _container.Instantiate<ConditionScroll>(),
+            TutorialEventType.OnShow => _container.Instantiate<ConditionShow>(),
+            TutorialEventType.OnTv => _container.Instantiate<ConditionTv>(),
+            TutorialEventType.OnPhone => _container.Instantiate<ConditionPhone>(),
+            TutorialEventType.OnPresent => _container.Instantiate<ConditionPresent>(),
+            TutorialEventType.OnReturned => _container.Instantiate<ConditionReturned>(),
+            TutorialEventType.OnInstall => _container.Instantiate<ConditionInstall>(),
+            TutorialEventType.OnChangeAudio => _container.Instantiate<ConditionChangeAudio>(),
+            TutorialEventType.OnOpera => _container.Instantiate<ConditionOpera>(),
             _ => throw new NotImplementedException()
         };
         return tutorialEventType;
@@ -59,18 +62,18 @@ public class GoalFactory
         TutorialEventType type = (TutorialEventType)id;
         Goal tutorialEventType = type switch
         {
-            TutorialEventType.OnMove => new GoalMove(settings, conditions),
-            TutorialEventType.OnPickUp => new GoalPickUp(settings, conditions),
-            TutorialEventType.OnDrop => new GoalDrop(settings, conditions),
-            TutorialEventType.OnScroll => new GoalScroll(settings, conditions),
-            TutorialEventType.OnShow => new GoalShow(settings, conditions),
-            TutorialEventType.OnTv => new GoalTv(settings, conditions),
-            TutorialEventType.OnPhone => new GoalPhone(settings, conditions),
-            TutorialEventType.OnPresent => new GoalPresent(settings, conditions),
-            TutorialEventType.OnReturned => new GoalReturned(settings, conditions),
-            TutorialEventType.OnInstall => new GoalInstall(settings, conditions),
-            TutorialEventType.OnChangeAudio => new GoalChangeAudio(settings, conditions),
-            TutorialEventType.OnOpera => new GoalOpera(settings, conditions),
+            TutorialEventType.OnMove => _container.Instantiate<GoalMove>(new object[] { settings, conditions }),
+            TutorialEventType.OnPickUp => _container.Instantiate<GoalPickUp>(new object[] { settings, conditions }),
+            TutorialEventType.OnDrop => _container.Instantiate<GoalDrop>(new object[] { settings, conditions }),
+            TutorialEventType.OnScroll => _container.Instantiate<GoalScroll>(new object[] { settings, conditions }),
+            TutorialEventType.OnShow => _container.Instantiate<GoalShow>(new object[] { settings, conditions }),
+            TutorialEventType.OnTv => _container.Instantiate<GoalTv>(new object[] { settings, conditions }),
+            TutorialEventType.OnPhone => _container.Instantiate<GoalPhone>(new object[] { settings, conditions }),
+            TutorialEventType.OnPresent => _container.Instantiate<GoalPresent>(new object[] {11, settings, conditions }),
+            TutorialEventType.OnReturned => _container.Instantiate<GoalReturned>(new object[] { settings, conditions }),
+            TutorialEventType.OnInstall => _container.Instantiate<GoalInstall>(new object[] {12, settings, conditions }),
+            TutorialEventType.OnChangeAudio => _container.Instantiate<GoalChangeAudio>(new object[] { settings, conditions }),
+            TutorialEventType.OnOpera => _container.Instantiate<GoalOpera>(new object[] { settings, conditions }),
             _ => throw new NotImplementedException()
         };
         return tutorialEventType;

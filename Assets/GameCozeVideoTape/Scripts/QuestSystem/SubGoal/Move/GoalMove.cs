@@ -12,12 +12,13 @@ public class GoalMove : Goal
         _goalController = goalController;
         base.Initialization(goalController);
         SetSub();
-        Debug.Log($"GoalMove Initialization");
+        //Debug.Log($"GoalMove Initialization");
     }
 
-    protected override void OnComplitedCondition()
+    protected override void OnComplitedCondition(Condition condition)
     {
-        Debug.Log($"CheckComplited:{CheckComplited()}");
+        base.OnComplitedCondition(condition);
+        //Debug.Log($"CheckComplited:{CheckComplited()}");
         _goalController.ClearGoal(Settings.TutorialEventType);
         _goalController.ActiveGoal(TutorialEventType.OnPickUp);
     }

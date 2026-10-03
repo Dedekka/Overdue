@@ -52,6 +52,9 @@ public class PhoneInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ImporterDialogSystemCallPhoneAnimation>()
             .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterPhonePlayerInventory>()
+            .AsSingle();
     }
 
 }

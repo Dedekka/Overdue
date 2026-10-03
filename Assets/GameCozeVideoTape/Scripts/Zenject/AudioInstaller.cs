@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -19,7 +20,17 @@ public class AudioInstaller : MonoInstaller
         BindSystem();
         BindImporter();
         BindEmitter();
+        BindPlayerSaySystem();
         BindAudioCassettsSystem();
+    }
+
+    private void BindPlayerSaySystem()
+    {
+        Container.BindInterfacesAndSelfTo<PlayerSaySystem>()
+         .AsSingle();
+
+        Container.Bind<FactorySayEvent>()
+         .AsSingle();
     }
 
     private void BindAudioCassettsSystem()

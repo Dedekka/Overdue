@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Threading;
 using UnityEngine;
 
 public class DialogWaiter
@@ -21,7 +22,7 @@ public class DialogWaiter
         _dialogLine = dialogLine;
     }
 
-    public async UniTask StartShow()
+    public async UniTask StartShow(CancellationToken Token)
     {
         string characterName = _dialogLine.Character;
         string Text = _dialogLine.Line;
@@ -35,7 +36,7 @@ public class DialogWaiter
             tempText += Text[i];
             _updateDialogText.Line = tempText;
             OnUpdateDialogText?.Invoke(_updateDialogText);
-            await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitChar));
+            await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitChar),cancellationToken: Token);
         }
     }
 }

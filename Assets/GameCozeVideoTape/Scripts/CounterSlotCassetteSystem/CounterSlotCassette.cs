@@ -22,7 +22,7 @@ public class CounterSlotCassette : IDisposable
 
     public void Initialize(ManagerRack managerRack)
     {
-        Debug.Log($"CounterSlotCassette!!!!!!!!!!!!!!!");
+        //Debug.Log($"CounterSlotCassette!!!!!!!!!!!!!!!");
         _managerRack = managerRack;
         _finderFreeSlot.OnChanheCountSuccessInstall += OnChanheCountSuccessInstall;
         _counterRackSlot.OnFinderMaxCountSlot += OnFinderMaxCountSlot;
@@ -42,7 +42,7 @@ public class CounterSlotCassette : IDisposable
 
     private void OnFinderMaxCountSlot(int count)
     {
-        Debug.Log($"OnFinderMaxCountSlot: {count}");
+        //Debug.Log($"OnFinderMaxCountSlot: {count}");
         _maxCountSlot = count;
         OnUpdateMaxCountSlot?.Invoke(count);
         // Получаем максимально доступное количество слотов для заполнения

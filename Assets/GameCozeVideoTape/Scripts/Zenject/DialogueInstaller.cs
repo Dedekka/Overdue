@@ -80,6 +80,10 @@ public class DialogueInstaller : MonoInstaller
 
         Container.Bind<DialogSystemSubtitles>()
             .AsSingle();
+
+
+        Container.Bind<DialogSystemPlayerSay>()
+            .AsSingle();
             //.WithArguments(_dataOpera);
     }
 

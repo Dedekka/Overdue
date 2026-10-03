@@ -16,8 +16,9 @@ public class GoalPhone : Goal
 
 
 
-    protected override void OnComplitedCondition()
+    protected override void OnComplitedCondition(Condition condition)
     {
+        base.OnComplitedCondition(condition);
         Debug.Log($"{this.GetType()}, CheckComplited:{CheckComplited()}");
         _goalController.ClearGoal(Settings.TutorialEventType);
     }

@@ -54,8 +54,9 @@ public abstract class Goal
         }
     }
 
-    protected virtual void OnComplitedCondition()
+    protected virtual void OnComplitedCondition(Condition condition)
     {
-        Debug.Log($"{this.GetType()}, CheckComplited:{CheckComplited()}");
+        condition.OnComplited -= OnComplitedCondition;
+        //Debug.Log($"{this.GetType()}, CheckComplited:{CheckComplited()}");
     }
 }

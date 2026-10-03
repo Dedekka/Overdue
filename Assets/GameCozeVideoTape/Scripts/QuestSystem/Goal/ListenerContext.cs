@@ -1,4 +1,4 @@
-public class GoalContext
+public class ListenerContext
 {
     public readonly ListenerInputMove ListenerInputMove;
     public readonly ListenerInventory ListenerInventory;
@@ -8,7 +8,7 @@ public class GoalContext
     public readonly ListenerPresentSystem ListenerPresentSystem;
     public readonly ListenerAudioRecorder ListenerAudioRecorder;
 
-    public GoalContext
+    public ListenerContext
         (
         ListenerInputMove listenerInputMove,
         ListenerPlayerUi listenerPlayerUi,

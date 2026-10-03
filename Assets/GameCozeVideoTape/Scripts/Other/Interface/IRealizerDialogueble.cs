@@ -10,6 +10,7 @@ public interface IRealizerDialogueble
     public void SetDialogLine();
     public void StartDialog();
     public void EndDialog();
+    public void StopProgressShow();
 }
 //Получить количество реплик из _dialogSystemCall
 //Получить строку диалога из _dialogSystemCall

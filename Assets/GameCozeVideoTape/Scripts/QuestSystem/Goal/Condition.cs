@@ -4,8 +4,8 @@ using UnityEngine;
 [Serializable]
 public abstract class Condition 
 {
-    public string Name;
-    public event Action OnComplited;
+    //public string Name;
+    public event Action<Condition> OnComplited;
 
     public virtual void Initialization(GoalController goalController)
     {
@@ -17,6 +17,6 @@ public abstract class Condition
 
     protected void Complited()
     {
-        OnComplited?.Invoke();  
+        OnComplited?.Invoke(this);  
     }
 }

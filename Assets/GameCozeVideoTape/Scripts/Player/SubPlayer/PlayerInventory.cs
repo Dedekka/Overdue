@@ -20,8 +20,6 @@ public class PlayerInventory
             result = InventoryPresent.CheckActivePresent(out Present present);
             Item = present;
             return result;
-
-            //return _inventorySlot.CheckFreeSlot(cassette);
         }
         else if (sloteble is ContentSlot || sloteble is BazeSlot || sloteble is OperaChecker || sloteble is TV)
         {

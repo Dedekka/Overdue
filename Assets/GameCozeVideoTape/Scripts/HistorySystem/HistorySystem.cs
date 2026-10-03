@@ -54,7 +54,7 @@ public class HistorySystem : IInitializable, IDisposable
         if (_bazeEvents == null) { return; }
         if (_countHistoryEvent >= _bazeEvents.Count) { return; }
         _currentEvent = _bazeEvents[_countHistoryEvent];
-        Debug.Log($"ChangeCurrentEvent:{_currentEvent.IdEventHistory}");
+        //Debug.Log($"ChangeCurrentEvent:{_currentEvent.IdEventHistory}");
     }
 
     public void ProgressHistory(int successInstall)
@@ -75,10 +75,10 @@ public class HistorySystem : IInitializable, IDisposable
 
     public void ComplitedHistoryEvent()
     {
-        Debug.Log($"Complited_CountHistoryEvent:{_countHistoryEvent}");
+        //Debug.Log($"Complited_CountHistoryEvent:{_countHistoryEvent}");
         _waitCompliteEvent = false;
         _countHistoryEvent++;
-        Debug.Log($"UP_CountHistoryEvent:{_countHistoryEvent}");
+        //Debug.Log($"UP_CountHistoryEvent:{_countHistoryEvent}");
         ChangeCurrentEvent();
     }
 
@@ -86,17 +86,17 @@ public class HistorySystem : IInitializable, IDisposable
     {
 
         _waitCompliteEvent = true;
-        Debug.Log($"FindEvent IdEventHistory:{bazeEvent.IdEventHistory}");
+        //Debug.Log($"FindEvent IdEventHistory:{bazeEvent.IdEventHistory}");
         if (bazeEvent is PresentEvent presentEvent)
         {
             _controlPresentEvent.SetEvent(presentEvent);
-            Debug.Log($"PresentEvent , Подарок: {presentEvent.IDPresent}");
+            //Debug.Log($"PresentEvent , Подарок: {presentEvent.IDPresent}");
             return;
         }
 
         if (bazeEvent is PhoneEvent PhoneEvent)
         {
-            Debug.Log($"PhoneEvent, Звонок: {PhoneEvent.IDDialogue}");
+            //Debug.Log($"PhoneEvent, Звонок: {PhoneEvent.IDDialogue}");
             _controlPhoneAnswer.SetEvent(PhoneEvent);
             return;
         }

@@ -4,14 +4,14 @@ using Zenject;
 
 public class GoalController : IInitializable, IDisposable
 {
-    public GoalContext GoalContext { private set; get; }
+    public ListenerContext GoalContext { private set; get; }
     private List<Goal> _goals;
     private GoalFactory _goalFactory;
     private QuestViewUi _questViewUi;
     private ControlGoalLanguage _controlGoalLanguage;
     private ControlComplited _controlComplited;
 
-    public GoalController(GoalContext goalContext, GoalFactory goalFactory, QuestViewUi questViewUi, ControlGoalLanguage controlGoalLanguage, ControlComplited controlComplited)
+    public GoalController(ListenerContext goalContext, GoalFactory goalFactory, QuestViewUi questViewUi, ControlGoalLanguage controlGoalLanguage, ControlComplited controlComplited)
     {
         GoalContext = goalContext;
         _goals = new();

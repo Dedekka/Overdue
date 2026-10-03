@@ -14,9 +14,9 @@ public class GoalTv : Goal
         Debug.Log($"{this.GetType()} Initialization");
     }
 
-    protected override void OnComplitedCondition()
+    protected override void OnComplitedCondition(Condition condition)
     {
-        Debug.Log($"CheckComplited:{CheckComplited()}");
+        base.OnComplitedCondition(condition);
         _goalController.ClearGoal(Settings.TutorialEventType);
     }
 }

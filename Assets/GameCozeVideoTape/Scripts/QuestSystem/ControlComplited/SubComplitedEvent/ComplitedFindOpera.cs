@@ -2,17 +2,21 @@ using System.Collections.Generic;
 
 public class ComplitedFindOpera : ComplitedHistoryEvent
 {
+    private PlayerSaySystem _playerSaySystem;
     private InventoryCassette _listenerInventory;
     private List<int> _idFindCassette;
+    private int _idDialogue;
     private bool _isComplited;
     private bool _isActive;
 
-    public ComplitedFindOpera(int id, int idEventHistory, List<int> idFindCassette, GoalController goalController) : base(id, idEventHistory, goalController)
+    public ComplitedFindOpera(int id, int idEventHistory, int idDialogue, List<int> idFindCassette, GoalController goalController, PlayerSaySystem playerSaySystem) : base(id, idEventHistory, goalController)
     {
+        _playerSaySystem = playerSaySystem;
         _idFindCassette = idFindCassette;
         _listenerInventory = goalController.GoalContext.ListenerInventory.InventorySlot;
         _isComplited = false;
         _isActive = false;
+        _idDialogue = idDialogue;
     }
 
     public override bool CheckComplited(int idEventHistory)
@@ -27,6 +31,7 @@ public class ComplitedFindOpera : ComplitedHistoryEvent
 
     public override void Complited()
     {
+        _playerSaySystem.ActiveDialogue(_idDialogue);
         _goalController.ActiveGoal(TutorialEventType.OnOpera);
     }
 

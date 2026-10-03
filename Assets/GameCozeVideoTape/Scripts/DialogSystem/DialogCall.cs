@@ -20,10 +20,7 @@ public class DialogCall : IStarterDialogueble
         {
             _dialogSystem.StartDialogue();
         }
-        else
-        {
-            Debug.LogError("Dialog End");
-        }
+       
         return SuccessStart;
     }
 

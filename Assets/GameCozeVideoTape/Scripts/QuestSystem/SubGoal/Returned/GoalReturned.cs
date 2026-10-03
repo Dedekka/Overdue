@@ -15,8 +15,9 @@ public class GoalReturned : Goal
     }
 
 
-    protected override void OnComplitedCondition()
+    protected override void OnComplitedCondition(Condition condition)
     {
+        base.OnComplitedCondition(condition);
         Debug.Log($"CheckComplited:{CheckComplited()}");
         _goalController.ClearGoal(Settings.TutorialEventType);
 

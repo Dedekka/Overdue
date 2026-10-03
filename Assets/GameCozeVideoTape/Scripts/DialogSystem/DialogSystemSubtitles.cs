@@ -54,4 +54,8 @@ public class DialogSystemSubtitles : IRealizerDialogueble
     {
 
     }
+
+    public void StopProgressShow()
+    {
+    }
 }

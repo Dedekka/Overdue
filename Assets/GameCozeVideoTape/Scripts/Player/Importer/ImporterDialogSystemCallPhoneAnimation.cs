@@ -12,6 +12,7 @@ public class ImporterDialogSystemCallPhoneAnimation : IDisposable, IInitializabl
         _dialogSystemCall = dialogSystem;
         _phoneAnimation = phoneAnimation;
     }
+
     public void Initialize()
     {
         _dialogSystemCall.OnStateDialog += OnStateDialog;

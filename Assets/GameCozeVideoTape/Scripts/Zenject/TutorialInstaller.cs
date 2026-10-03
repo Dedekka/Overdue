@@ -96,7 +96,7 @@ public class TutorialInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<GoalController>()
        .AsSingle();
 
-        Container.Bind<GoalContext>()
+        Container.Bind<ListenerContext>()
        .AsSingle();
 
         Container.Bind<GoalFactory>()
