@@ -22,6 +22,7 @@ public class Question_3 : ControlFeedback
         for (int i = 0; i < _sendSrings.Count; i++)
         {
             Question_Text += CheckText(countText, _dataQuestion);
+            Question_Text += " , ";
             countText++;
         }
         Question_Text += " , ";

@@ -44,6 +44,7 @@ public class Question_8 : ControlFeedback
         for (int i = 0; i < _sendSrings.Count; i++)
         {
             Question_Text += CheckText(countText, _pageOneChoose);
+            Question_Text += " , ";
             countText++;
         }
     }
