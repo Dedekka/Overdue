@@ -12,5 +12,7 @@ public class LoadingSystem
 public enum SceneIndex
 {
     Menu,
-    Game
+    Game,
+    FeedbackMenu
+
 }
