@@ -6,10 +6,11 @@ public class StateCutSceneEnd : StateCutScene
 {
     private ControlLogic _ñontrolLogic;
     private CutsceneBlackScreen _cutsceneBlackScreen;
+    private ControlSettings _controlSettings;
     private float _startWait;
     private float _endWait;
 
-    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi) : base(idCutscene, playerStateControl, playerUi)
+    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi, ControlSettings controlSettings) : base(idCutscene, playerStateControl, playerUi)
     {
          _cutsceneBlackScreen = cutsceneBlackScreen;
         _startWait = StartWait;
@@ -33,6 +34,14 @@ public class StateCutSceneEnd : StateCutScene
     private async UniTask WaitTimer()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(3));
+
+        if (_controlSettings.IsComplitedFeedback)
+        {
         _ñontrolLogic.BackMenu();
+        }
+        else
+        {
+        _ñontrolLogic.FeedbackMenu();
+        }
     }
 }

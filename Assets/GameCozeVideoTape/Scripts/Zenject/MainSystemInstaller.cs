@@ -11,6 +11,7 @@ public class MainSystemInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindSettingsSound();
+        BindControlLogic();
     }
 
     private void BindSettingsSound()
@@ -24,6 +25,19 @@ public class MainSystemInstaller : MonoInstaller
             .AsSingle();
 
         Container.Bind<ControlSettings>()
+            .AsSingle();
+    }
+
+
+    private void BindControlLogic()
+    {
+        Container.Bind<ControlLogic>()
+            .AsSingle();
+
+        //Container.Bind<ControlSound>()
+        //    .AsSingle();
+
+        Container.Bind<LoadingSystem>()
             .AsSingle();
     }
 }

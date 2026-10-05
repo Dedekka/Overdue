@@ -1,94 +1,49 @@
-using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Question_2 : ControlFeedback
 {
-    DataQuestion_2 _dataQuestion_1;
+    private PageOneChoose _pageOneChoose;
 
-    private const string Question_2_Toggle_1 = "Почти всегда понимал(а) сразу";
-    private const string Question_2_Toggle_2 = "Обычно понимал(а) после изучения обложки";
-    private const string Question_2_Toggle_3 = "Иногда приходилось долго разбираться";
-    private const string Question_2_Toggle_4 = "Часто приходилось угадывать";
-    private const string Question_2_Toggle_5 = "Почти никогда не понимал(а), куда её ставить";
-
-    public Question_2(int id, DataQuestion_2 dataQuestion_1) : base(id)
+    public Question_2(int id, PageOneChoose pageOneChoose, List<SendSring> sendSrings) : base(id, sendSrings)
     {
-        _dataQuestion_1 = dataQuestion_1;
+        _pageOneChoose = pageOneChoose;
     }
 
     protected override void Initialization()
     {
-        //_dataQuestion_1.Question_2_Toggle_1.onValueChanged.AddListener((x) => AllDisable(1, x));
-        //_dataQuestion_1.Question_2_Toggle_2.onValueChanged.AddListener((x) => AllDisable(2, x));
-        //_dataQuestion_1.Question_2_Toggle_3.onValueChanged.AddListener((x) => AllDisable(3, x));
-        //_dataQuestion_1.Question_2_Toggle_4.onValueChanged.AddListener((x) => AllDisable(4, x));
-        //_dataQuestion_1.Question_2_Toggle_5.onValueChanged.AddListener((x) => AllDisable(5, x));
+        _pageOneChoose.ToggleBooles[0].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[0].IdToggle));
+        _pageOneChoose.ToggleBooles[1].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[1].IdToggle));
+        _pageOneChoose.ToggleBooles[2].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[2].IdToggle));
+        _pageOneChoose.ToggleBooles[3].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[3].IdToggle));
+        _pageOneChoose.ToggleBooles[4].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[4].IdToggle));
     }
 
     protected override void Disposeble()
     {
-        //_dataQuestion_1.Question_2_Toggle_1.onValueChanged.RemoveAllListeners();
-        //_dataQuestion_1.Question_2_Toggle_2.onValueChanged.RemoveAllListeners();
-        //_dataQuestion_1.Question_2_Toggle_3.onValueChanged.RemoveAllListeners();
-        //_dataQuestion_1.Question_2_Toggle_4.onValueChanged.RemoveAllListeners();
-        //_dataQuestion_1.Question_2_Toggle_5.onValueChanged.RemoveAllListeners();
+        for (int i = 0; i < _pageOneChoose.ToggleBooles.Count; i++)
+        {
+            _pageOneChoose.ToggleBooles[i].Button.onClick.RemoveAllListeners();
+        }
     }
 
     private void SetText()
     {
         Question_Text = string.Empty;
-
-        Question_Text += CheckText(_dataQuestion_1.Question_2_Toggle_1, Question_2_Toggle_1);
-        Question_Text += " , ";
-        Question_Text += CheckText(_dataQuestion_1.Question_2_Toggle_2, Question_2_Toggle_2);
-        Question_Text += " , ";
-        Question_Text += CheckText(_dataQuestion_1.Question_2_Toggle_3, Question_2_Toggle_3);
-        Question_Text += " , ";
-        Question_Text += CheckText(_dataQuestion_1.Question_2_Toggle_4, Question_2_Toggle_4);
-        Question_Text += " , ";
-        Question_Text += CheckText(_dataQuestion_1.Question_2_Toggle_5, Question_2_Toggle_5);
+        int countText = 1;
+        for (int i = 0; i < _sendSrings.Count; i++)
+        {
+            Question_Text += CheckText(countText, _pageOneChoose);
+            countText++;
+        }
     }
 
     public override void PreSend() { SetText(); }
 
-    private string CheckText(Toggle toggle, string text)
+    private void AllDisable(int id)
     {
-        string question_Text;
+        Debug.Log($"AllDisable, id: {id}");
 
-        question_Text = toggle.isOn ? $"{text}" : "";
-
-        return question_Text;
+        _pageOneChoose.ChooseToggle(id);
     }
-
-    //private void AllDisable(int id, bool isOn)
-    //{
-    //    if (!isOn) { return; }
-
-    //    _dataQuestion_1.Question_2_Toggle_1.isOn = false;
-    //    _dataQuestion_1.Question_2_Toggle_2.isOn = false;
-    //    _dataQuestion_1.Question_2_Toggle_3.isOn = false;
-    //    _dataQuestion_1.Question_2_Toggle_4.isOn = false;
-    //    _dataQuestion_1.Question_2_Toggle_5.isOn = false;
-    //    switch (id)
-    //    {
-    //        case 1:
-    //            _dataQuestion_1.Question_2_Toggle_1.isOn = true;
-    //            Question_Text = Question_2_Toggle_1;
-    //            break;
-    //        case 2:
-    //            _dataQuestion_1.Question_2_Toggle_2.isOn = true;
-    //            Question_Text = Question_2_Toggle_2;
-    //            break;
-    //        case 3:
-    //            _dataQuestion_1.Question_2_Toggle_3.isOn = true;
-    //            Question_Text = Question_2_Toggle_3;
-    //            break;
-    //        case 4:
-    //            _dataQuestion_1.Question_2_Toggle_4.isOn = true;
-    //            Question_Text = Question_2_Toggle_4;
-    //            break;
-    //        case 5:
-    //            _dataQuestion_1.Question_2_Toggle_5.isOn = true;
-    //            Question_Text = Question_2_Toggle_5;
-    //            break;
-  
 }

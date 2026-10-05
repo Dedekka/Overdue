@@ -3,7 +3,7 @@ using UnityEngine.Localization.Settings;
 
 public class ControlSettings
 {
-    
+    public bool IsComplitedFeedback { get; private set; }
     public float Sensitivity { get; private set; }
     public Language Language { get; private set; }
     public ControlSettings(SettingsPlayer settingsPlayer)
@@ -21,5 +21,10 @@ public class ControlSettings
     {
         //Debug.Log($"ControlSettings,  Language:{language}, index:{(int)language}");
         Language = language;
+    }
+
+    public void ChangeComplitedFeedback(bool isComplited)
+    {
+        IsComplitedFeedback = isComplited;
     }
 }
