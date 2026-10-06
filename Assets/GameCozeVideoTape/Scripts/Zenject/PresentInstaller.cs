@@ -3,7 +3,7 @@ using Zenject;
 
 public class PresentInstaller : MonoInstaller
 {
-    [SerializeField] private Transform _soundDoorPoint;
+    //[SerializeField] private Transform _soundDoorPoint;
 
     public override void InstallBindings()
     {
@@ -12,9 +12,9 @@ public class PresentInstaller : MonoInstaller
 
     private void BindPresent()
     {
-        Container.Bind<PresentSound>()
-          .AsSingle()
-          .WithArguments(_soundDoorPoint);
+        //Container.Bind<PresentSound>()
+        //  .AsSingle()
+        //  .WithArguments(_soundDoorPoint);
 
         Container.Bind<PresentEffect>()
           .AsSingle();

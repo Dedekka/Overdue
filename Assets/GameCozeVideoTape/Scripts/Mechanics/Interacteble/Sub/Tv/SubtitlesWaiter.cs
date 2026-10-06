@@ -19,6 +19,9 @@ public class SubtitlesWaiter
         Subtitles subtitles = _controlOperaLanguage.GetSubtitles();
         if (_isWait) { return; }
         Debug.Log($"StartWait, _isWait:{_isWait}");
+
+        if (subtitles.DialogLine.Line == "") { return; }
+
         ProgressShow(subtitles.TimeStart).Forget();
     }
 

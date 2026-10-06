@@ -22,7 +22,7 @@ public class ImporterMusicControlAudio : IDisposable, IInitializable
     public void Initialize()
     {
         _musicControl.OnChangeMusic += OnChangeMusic;
-        _musicControl.OnChangeState += OnChangeState; 
+        _musicControl.OnChangeState += OnChangeState;
     }
 
     private void OnChangeState(bool _isPlaying)

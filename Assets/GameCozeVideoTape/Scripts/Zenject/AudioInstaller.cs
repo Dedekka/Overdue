@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
 using Zenject;
 
 public class AudioInstaller : MonoInstaller
 {
+
+
     [SerializeField] private AudioSettings _audioSettings;
     [SerializeField] private int _maxAudioItem;
     [SerializeField] private Material _materialAudioItem;
@@ -13,16 +14,25 @@ public class AudioInstaller : MonoInstaller
     [SerializeField] private Transform _recorderSlotPosition;
     [SerializeField] private Transform _preRecorderSlotPosition;
 
+    [Header("PositionEvent")]
+    [SerializeField] private Transform _soundDoorPoint;
+    [SerializeField] private Transform _soundPhonePoint;
+    [SerializeField] private Transform _soundAmbientOutsidePoint;
+    [SerializeField] private Transform _soundRecorderPoint;
+    [SerializeField] private Transform _soundTvPoint;
 
     public override void InstallBindings()
     {
         FindSub();
         BindSystem();
         BindImporter();
+        BindPositionEvent();
         BindEmitter();
         BindPlayerSaySystem();
         BindAudioCassettsSystem();
     }
+
+
 
     private void BindPlayerSaySystem()
     {
@@ -72,8 +82,22 @@ public class AudioInstaller : MonoInstaller
           .AsSingle();
     }
 
+    private void BindPositionEvent()
+    {
+        Container.Bind<PresentSound>()
+        .AsSingle()
+        .WithArguments(_soundDoorPoint);
+
+        Container.Bind<PhoneSound>()
+          .AsSingle()
+          .WithArguments(_soundPhonePoint);
+    }
+
     private void BindEmitter()
     {
+        Container.Bind<TvGanreSound>()
+         .AsSingle();
+
         Container.Bind<AudioCassette>()
          .AsSingle();
 
@@ -98,7 +122,19 @@ public class AudioInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ImporterMusicControlAudio>()
             .AsSingle();
 
+        Container.BindInterfacesAndSelfTo<ImporterTVAudioManager>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterInventoryPresentAudioManager>()
+            .AsSingle();
+
         Container.BindInterfacesAndSelfTo<ImporterRecorderAnimationMusicControl>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterInventoryCassetteAudioManager>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterDialogSystemCallAudioManager>()
             .AsSingle();
     }
 
@@ -106,6 +142,23 @@ public class AudioInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<AudioManager>()
            .AsSingle()
-           .WithArguments(_audioSettings);
+           .WithArguments(_audioSettings, new GroupEmitter()
+           {
+               //AmbientOutsideEmitter = _ambientOutsideEmitter,
+               SoundTvPoint = _soundTvPoint,
+               SoundRecorderPoint = _soundRecorderPoint,
+               //DoorEmitter = _doorEmitter,
+               //PhoneEmitter = _phoneEmitter,
+           });
     }
 }
+
+public class GroupEmitter
+{
+    //public Transform PhoneEmitter;
+    //public StudioEventEmitter DoorEmitter;
+    public Transform SoundRecorderPoint;
+    public Transform SoundTvPoint;
+    //public StudioEventEmitter AmbientOutsideEmitter;
+}
+

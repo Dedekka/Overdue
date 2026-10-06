@@ -12,14 +12,14 @@ public class TvManager : IDisposable, IInitializable
     private OperaChecker _operaChecker;
     private ControlGenreVideo _controlGenreVideo;
 
-    //private DataOpera _dataOpera;
+    private TvGanreSound _tvGanreSound;
 
     private OperaSettings _currentEpisode;
     private GenreVideo _currentGanreVideo;
 
     public event Action<bool> OnPlayEpisode;
 
-    public TvManager(DialogSubtitles dialogSubtitles, VideoControl videoControl, TVCameraControl tvCameraControl, DialogSound dialogSound, OperaChecker operaChecker, ControlGenreVideo controlGenreVideo)//, DataOpera dataOpera)
+    public TvManager(DialogSubtitles dialogSubtitles, VideoControl videoControl, TVCameraControl tvCameraControl, DialogSound dialogSound, OperaChecker operaChecker, ControlGenreVideo controlGenreVideo, TvGanreSound tvGanreSound)//, DataOpera dataOpera)
     {
         _dialogSubtitles = dialogSubtitles;
         _videoControl = videoControl;
@@ -27,6 +27,7 @@ public class TvManager : IDisposable, IInitializable
         _dialogSound = dialogSound;
         _operaChecker = operaChecker;
         _controlGenreVideo = controlGenreVideo;
+        _tvGanreSound = tvGanreSound;
         //_dataOpera = dataOpera;
     }
 
@@ -66,6 +67,7 @@ public class TvManager : IDisposable, IInitializable
     {
         _videoControl.StopVideo();
         _dialogSound.StopSound();
+        _tvGanreSound.StopSound();
     }
 
     private void OnEndEpisode()
@@ -124,13 +126,13 @@ public class TvManager : IDisposable, IInitializable
     private void SetEpisode(VideoClip video, string Audio)
     {
         _videoControl.SetVideo(video);
-        _dialogSound.SetFmodSound(Audio);
+         _tvGanreSound.SetFmodSound(Audio);
     }
 
     private void PlayGanreVideo()
     {
         _videoControl.StartEpisode();
-        _dialogSound.StartSound();
+        _tvGanreSound.StartSound();
     }
 
     private void PlayEpisode()

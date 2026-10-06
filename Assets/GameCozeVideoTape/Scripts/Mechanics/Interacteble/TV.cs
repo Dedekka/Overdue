@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 using Zenject;
@@ -11,8 +13,8 @@ public class TV : MonoBehaviour, ISloteble
     private CassetteObject _cassetteObject;
     private PlayerInventory _playerInventory;
     public bool IsEmpty => _cassetteObject == null;
-    // ѕровер€ть кассету в руках
-    // есть ли на ней опера 
+
+    public event Action<bool> OnStateInstallTv;
 
     [Inject]
     public void Construct(TvManager tvManager, OperaChecker operatingChecker, PlayerInventory playerInventory)
@@ -81,12 +83,14 @@ public class TV : MonoBehaviour, ISloteble
     {
         if (isNull) { return; }
 
+        OnStateInstallTv?.Invoke(isNull);
         _cassetteObject.OnPickUp += OnPickUp;
     }
 
     private void OnPickUp(CassetteObject tempcassette)
     {
         tempcassette.OnPickUp -= OnPickUp;
+        OnStateInstallTv?.Invoke(false);
         _tvSlot.gameObject.SetActive(true);
         _tvSlot.ControlVisible(true);
         _cassetteObject = null;

@@ -18,7 +18,7 @@ public class PhoneInstaller : MonoInstaller
         BindImporter();
     }
 
-
+    
     private void FindSub()
     {
         Container.Bind<PhoneSettings>()
@@ -37,10 +37,6 @@ public class PhoneInstaller : MonoInstaller
     {
         Container.Bind<PhoneEffect>()
            .AsSingle();
-
-        Container.Bind<PhoneSound>()
-           .AsSingle()
-           .WithArguments(_phoneBody);
 
         Container.BindInterfacesAndSelfTo<PhoneAnimation>()
            .AsSingle()

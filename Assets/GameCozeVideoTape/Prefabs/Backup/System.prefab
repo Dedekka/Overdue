@@ -44,6 +44,7 @@ Transform:
   - {fileID: 5892933565311890900}
   - {fileID: 9121346454015038017}
   - {fileID: 1584822827894214622}
+  - {fileID: 3012724010471747166}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -74,6 +75,7 @@ MonoBehaviour:
   - {fileID: 8374506966343398293}
   - {fileID: 8416183146287703856}
   - {fileID: 8985462976778569440}
+  - {fileID: 3442840369263143106}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -254,6 +256,11 @@ MonoBehaviour:
   _coverPlate: {fileID: 0}
   _recorderSlotPosition: {fileID: 0}
   _preRecorderSlotPosition: {fileID: 0}
+  _soundDoorPoint: {fileID: 0}
+  _soundPhonePoint: {fileID: 0}
+  _soundAmbientOutsidePoint: {fileID: 0}
+  _soundRecorderPoint: {fileID: 0}
+  _soundTvPoint: {fileID: 0}
 --- !u!1 &4182355753853103304
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e548870aebc37c34b8a1c0a40f352794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PresentInstaller
-  _soundDoorPoint: {fileID: 0}
 --- !u!1 &5286014337423541928
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,8 +469,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5777150591074028754}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.0051601, y: 1.34412, z: -1.5214002}
+  m_LocalRotation: {x: 0, y: -0.9063079, z: 0.42261827, w: 0}
+  m_LocalPosition: {x: 1.9651599, y: 1.5871117, z: 11.9696865}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -774,6 +780,61 @@ MonoBehaviour:
   - {fileID: 0}
   _slotItem_0: {fileID: 0}
   _bodyLogic: {fileID: 0}
+--- !u!1 &8231441641714751920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3012724010471747166}
+  - component: {fileID: 3442840369263143106}
+  m_Layer: 0
+  m_Name: CutsceneInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3012724010471747166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231441641714751920}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3442840369263143106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231441641714751920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630b320de40943942bd943d2c90f8871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CutsceneInstaller
+  _cutscenes:
+  - CutsceneName: Intro
+    IDCutscene: 1
+    CutsceneObject: {fileID: 0}
+  - CutsceneName: InstallRecorderCat
+    IDCutscene: 2
+    CutsceneObject: {fileID: 0}
+  - CutsceneName: End
+    IDCutscene: 3
+    CutsceneObject: {fileID: 0}
+  _blackScreen: {fileID: 0}
 --- !u!1 &8276730092316044430
 GameObject:
   m_ObjectHideFlags: 0

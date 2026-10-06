@@ -24,6 +24,8 @@ public class DebugTools : MonoBehaviour
         _okButton.onClick.AddListener(() => SetCountSuccessInstall());
     }
 
+#if UNITY_EDITOR
+   
     private void Update()
     {
         if (Keyboard.current.tKey.wasPressedThisFrame)
@@ -42,6 +44,7 @@ public class DebugTools : MonoBehaviour
         }
     }
 
+#endif
     private void SetCountSuccessInstall()
     {
         int count = 0;

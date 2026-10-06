@@ -2,15 +2,10 @@ using FMOD.Studio;
 using FMODUnity;
 using System;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class AudioManager : IDisposable
 {
-    [Header("OtherSound")]
-    private EventReference _pickUp;
-    private EventReference _snapCorrect;
-    private EventReference _snapWrong;
-    private EventReference _drop;
-
     [Header("VoiceSound")]
     private EventInstance _voiceInstance;
     private EventReference _tempVoice;
@@ -22,17 +17,54 @@ public class AudioManager : IDisposable
     [Header("EventSound")]
     private EventInstance _doorInstance;
     private EventReference _doorOpen;
-    private EventInstance _ringInstance;
-    private EventReference _ringPhone;
 
-    public AudioManager(AudioSettings audioSettings)
+
+    [Header("AudioRecorder")]
+    private EventReference _audioRecorder_Play;
+    private EventReference _audioRecorder_ChangeMusic;
+    private Transform _soundRecorderPoint;
+
+    [Header("TV")]
+    private EventReference _tv_PickUp;
+    private EventReference _tv_Install;
+    private EventReference _tempGanre;
+    private EventInstance _ganreInstance;
+    private Transform _soundTvPoint;
+
+    [Header("Present")]
+    private EventReference _present_Drop;
+
+    [Header("Cassette")]
+    private EventReference _scroll;
+    private EventReference _pickUp;
+    private EventReference _snapCorrect;
+    private EventReference _snapWrong;
+    private EventReference _drop;
+
+    [Header("Phone")]
+    private EventReference _phone_Down;
+    private EventReference _phone_Up;
+    private EventReference _ringPhone;
+    private EventInstance _ringInstance;
+
+    public AudioManager(AudioSettings audioSettings, GroupEmitter groupEmitter)
     {
         _pickUp = audioSettings.PickUp;
         _snapCorrect = audioSettings.SnapCorrect;
         _snapWrong = audioSettings.SnapWrong;
         _drop = audioSettings.Drop;
-        _ringPhone = audioSettings.CallPhone;
+        _ringPhone = audioSettings.Phone_Ring;
         _doorOpen = audioSettings.DoorOpen;
+        _audioRecorder_Play = audioSettings.AudioRecorder_Play;
+        _soundRecorderPoint = groupEmitter.SoundRecorderPoint;
+        _audioRecorder_ChangeMusic = audioSettings.AudioRecorder_ChangeMusic;
+        _tv_PickUp = audioSettings.Tv_PickUp;
+        _tv_Install = audioSettings.Tv_Install;
+        _present_Drop = audioSettings.Present_Drop;
+        _scroll = audioSettings.Scroll;
+        _phone_Down = audioSettings.Phone_Down;
+        _phone_Up = audioSettings.Phone_Up;
+        _soundTvPoint = groupEmitter.SoundTvPoint;
     }
 
     public void Dispose()
@@ -75,8 +107,14 @@ public class AudioManager : IDisposable
         _tempVoice = eventReference;
     }
 
+    public void SetTvGanre(EventReference eventReference)
+    {
+        _tempGanre = eventReference;
+    }
+
     public void SetMusic(EventReference eventReference)
     {
+        Play(_audioRecorder_ChangeMusic);
         _tempMusic = eventReference;
         StopSmartEvent(ref _musicInstance);
     }
@@ -84,6 +122,12 @@ public class AudioManager : IDisposable
     public void PlayVoice()
     {
         PlaySmartEvent(ref _tempVoice, ref _voiceInstance);
+    }
+
+    public void PlayTvGanre()
+    {
+        //PlaySmartEvent(ref _tempGanre, ref _ganreInstance);
+        PlayPositionEvent(ref _tempGanre, ref _ganreInstance, _soundTvPoint.position);
     }
 
     public void PlayRing(Vector3 pos)
@@ -110,13 +154,43 @@ public class AudioManager : IDisposable
         }
         else if (_isPlaying)
         {
-            PlaySmartEvent(ref _tempMusic, ref _musicInstance);
+            PlayPositionEvent(ref _tempMusic, ref _musicInstance, _soundRecorderPoint.position);
+        }
+        Play(_audioRecorder_Play);
+    }
+
+    public void PlayTvInstall(bool isInstall)
+    {
+        if (isInstall)
+        {
+            Play(_tv_Install);
+        }
+        else
+        {
+            Play(_tv_PickUp);
+        }
+    }
+
+    public void PlayPhoneInstall(bool isInstall)
+    {
+        if (isInstall)
+        {
+            Play(_phone_Up);
+        }
+        else
+        {
+            Play(_phone_Down);
         }
     }
 
     public void PlayPickUp()
     {
         Play(_pickUp);
+    }
+
+    public void PlayPresentDrop()
+    {
+        Play(_present_Drop);
     }
 
     public void PlaySnapCorrect()
@@ -134,9 +208,19 @@ public class AudioManager : IDisposable
         Play(_drop);
     }
 
+    public void PlayScroll()
+    {
+        Play(_scroll);
+    }
+
     public void StopVoice()
     {
         StopSmartEvent(ref _voiceInstance);
+    }
+
+    public void StopTvGanre()
+    {
+        StopSmartEvent(ref _ganreInstance);
     }
 
     public void StopSmartEvent(ref EventInstance eventInstance)
