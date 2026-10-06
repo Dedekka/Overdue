@@ -16,6 +16,7 @@ public class StateCutSceneEnd : StateCutScene
         _startWait = StartWait;
         _endWait = EndWait;
         _ñontrolLogic = ñontrolLogic;
+        _controlSettings = controlSettings;
     }
 
     public override void StartCutscene()

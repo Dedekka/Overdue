@@ -5,7 +5,6 @@ using Zenject;
 public class Phone : MonoBehaviour
 {
     [SerializeField] private AnswerCall _answerCall;
-    //[SerializeField] private StudioEventEmitter _eventEmitter;
     private DialogCall _dialogTest;
     private PhoneEffect _phoneEffect;
     private int _dialogId;

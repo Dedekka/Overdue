@@ -11,6 +11,7 @@ public class CutSceneController
     private FactoryCutScene _factoryCutScene;
 
 
+    public event Action<bool> OnCutscene;
     public event Action<int> OnStartCutscene;
     public event Action OnEndCutscene;
 
@@ -47,6 +48,7 @@ public class CutSceneController
     {
         cutscene.Play();
         cutscene.stopped += OnStopped;
+        OnCutscene?.Invoke(true);
         OnStartCutscene?.Invoke(CurrentCutsceneIndex);
     }
 
@@ -56,6 +58,7 @@ public class CutSceneController
         {
             CurrentCutscene = null;
             OnEndCutscene?.Invoke();
+            OnCutscene?.Invoke(false);
         }
         cutscene.stopped -= OnStopped;
     }

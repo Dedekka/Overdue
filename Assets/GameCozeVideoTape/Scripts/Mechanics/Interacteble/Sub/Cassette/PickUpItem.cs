@@ -60,6 +60,8 @@ public class PickUpItem
         _speedBlend2 = _speedBlend;
         while (_isActive)
         {
+            if (Time.deltaTime <= 0f) continue;
+
             yield return null;
             _speedBlend2 *= _coeffBlend;
             _body.position = Vector3.Lerp(_body.position, temptransform.position, _speedBlend2 * Time.deltaTime);

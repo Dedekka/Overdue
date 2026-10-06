@@ -18,28 +18,35 @@ MonoBehaviour:
       Data2: 1135694264
       Data3: 1451956887
       Data4: 1533818575
-    Path: event:/Items/PickUp
+    Path: event:/Items/Cassette/PickUp
   _snapCorrect:
     Guid:
       Data1: -829582433
       Data2: 1080042350
       Data3: 993486215
       Data4: -2138973221
-    Path: event:/Items/SnapCorrect
+    Path: event:/Items/Cassette/SnapCorrect
   _snapWrong:
     Guid:
       Data1: 1414794744
       Data2: 1097105987
       Data3: 965223096
       Data4: 2055342466
-    Path: event:/Items/SnapWrong
+    Path: event:/Items/Cassette/SnapWrong
   _drop:
     Guid:
       Data1: -507282293
       Data2: 1331934657
       Data3: -238882912
       Data4: 2041543200
-    Path: event:/Items/Drop
+    Path: event:/Items/Cassette/Drop
+  _scroll:
+    Guid:
+      Data1: -1361717978
+      Data2: 1249326600
+      Data3: -492298821
+      Data4: 1976327134
+    Path: event:/Items/Cassette/Scroll
   _doorOpen:
     Guid:
       Data1: 1730493937
@@ -47,10 +54,59 @@ MonoBehaviour:
       Data3: -1885192017
       Data4: -906250630
     Path: event:/EventAction/DoorOpen
-  _callPhone:
+  _audioRecorder_Play:
+    Guid:
+      Data1: -291149280
+      Data2: 1249158578
+      Data3: -1928857173
+      Data4: 1880453991
+    Path: event:/Items/AudioRecorder/AudioRecorder_Play
+  _audioRecorder_ChangeMusic:
+    Guid:
+      Data1: 1065541014
+      Data2: 1313971486
+      Data3: 1776927924
+      Data4: -964546234
+    Path: event:/Items/AudioRecorder/AudioRecorder_ChangeMusic
+  _tv_PickUp:
+    Guid:
+      Data1: -329699942
+      Data2: 1316350206
+      Data3: 1423090570
+      Data4: -105826379
+    Path: event:/Items/Tv/Tv_PickUp
+  _tv_Install:
+    Guid:
+      Data1: 1255721861
+      Data2: 1152926715
+      Data3: 1601376161
+      Data4: -810188263
+    Path: event:/Items/Tv/Tv_Install
+  _present_Drop:
+    Guid:
+      Data1: 383496362
+      Data2: 1104414372
+      Data3: 1009768854
+      Data4: 1744330127
+    Path: event:/Items/Present/Present_Drop
+  _phone_Ring:
     Guid:
       Data1: -1554582693
       Data2: 1262471383
       Data3: 1243323799
       Data4: -1065306181
-    Path: event:/EventAction/CallPhone
+    Path: event:/Items/Phone/Phone_Ring
+  _phone_Down:
+    Guid:
+      Data1: -700904009
+      Data2: 1324730613
+      Data3: 1043743414
+      Data4: 1134673687
+    Path: event:/Items/Phone/Phone_Down
+  _phone_Up:
+    Guid:
+      Data1: 234692572
+      Data2: 1339920581
+      Data3: 1925111945
+      Data4: 1298530642
+    Path: event:/Items/Phone/Phone_Up
