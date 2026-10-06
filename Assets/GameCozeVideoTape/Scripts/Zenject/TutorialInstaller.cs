@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using static UnityEngine.InputManagerEntry;
 
 public class TutorialInstaller : MonoInstaller
 {
@@ -33,11 +31,11 @@ public class TutorialInstaller : MonoInstaller
         BindImporter();
     }
 
-  
+
 
     private void FindSub()
     {
-        
+
         Container.Bind<DataTutorialEvent>()
            .FromResource(PathConst.DataTutorialEventAsset)
            .AsSingle();
@@ -132,6 +130,6 @@ public class TutorialInstaller : MonoInstaller
 
     private void BindImporter()
     {
-        
+
     }
 }
