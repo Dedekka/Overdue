@@ -10,7 +10,7 @@ public class MenuInstaller : MonoInstaller
     [Header("Buttons")]
     [SerializeField] private Button _buttonNewGame;
     [SerializeField] private Button _buttonExit;
-
+    [SerializeField] private Button _buttonFeedbackMenu;
 
     public override void InstallBindings()
     {
@@ -32,6 +32,6 @@ public class MenuInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ImporterButtonMenuControlLogic>()
           .AsSingle()
-          .WithArguments(_buttonNewGame, _buttonExit);
+          .WithArguments(_buttonNewGame, _buttonExit, _buttonFeedbackMenu);
     }
 }

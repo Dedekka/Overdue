@@ -24,7 +24,7 @@ public class SettingsInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindSub();
-        BindControlLogic();
+        //BindControlLogic();
         BindSound();
         BindSensitivity();
         BindLanguage();
@@ -50,17 +50,17 @@ public class SettingsInstaller : MonoInstaller
         //ControlSensitivity
     }
 
-    private void BindControlLogic()
-    {
-        Container.Bind<ControlLogic>()
-            .AsSingle();
+    //private void BindControlLogic()
+    //{
+    //    Container.Bind<ControlLogic>()
+    //        .AsSingle();
 
-        Container.Bind<ControlSound>()
-            .AsSingle();
+    //    //Container.Bind<ControlSound>()
+    //    //    .AsSingle();
 
-        Container.Bind<LoadingSystem>()
-            .AsSingle();
-    }
+    //    Container.Bind<LoadingSystem>()
+    //        .AsSingle();
+    //}
 
     private void BindSound()
     {

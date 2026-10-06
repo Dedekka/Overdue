@@ -7,7 +7,7 @@ public class PlayerLook
     private float _sensitivityY;
     private float _sensitivityX;
     private float _sensitivity;
-    private float _xRotation = 0;
+    private float _xRotation;
     private float _coefficientSensitivityAim;
     private float _coefficientGamepadSensitivity;
     
@@ -19,6 +19,7 @@ public class PlayerLook
         _sensitivityX = settingsPlayer.SensitivityX;
         _coefficientGamepadSensitivity = settingsPlayer.CoefficientGamepadSensitivity;
         _coefficientSensitivityAim = 1;
+        _xRotation = _headSlot.transform.localRotation.eulerAngles.x;
         _sensitivity = settingsPlayer.MainSensitivity;
         Cursor.lockState = CursorLockMode.Locked;
     }

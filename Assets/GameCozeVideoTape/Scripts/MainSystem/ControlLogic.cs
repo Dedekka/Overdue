@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ControlLogic 
+public class ControlLogic
 {
-   private LoadingSystem _loadingSystem;
+    private LoadingSystem _loadingSystem;
 
     public ControlLogic(LoadingSystem loadingSystem)
     {
@@ -17,6 +17,11 @@ public class ControlLogic
     public void BackMenu()
     {
         _loadingSystem.LoadScene(SceneIndex.Menu);
+    }
+
+    public void FeedbackMenu()
+    {
+        _loadingSystem.LoadScene(SceneIndex.FeedbackMenu);
     }
 
     public void Exit()
