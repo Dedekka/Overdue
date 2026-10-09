@@ -89,8 +89,14 @@ public class FeedbackInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        BindSub();
         BindQuestions();
         BindMain();
+    }
+
+    private void BindSub()
+    {
+       
     }
 
     private void BindMain()
@@ -363,9 +369,9 @@ public class FeedbackInstaller : MonoInstaller
 [Serializable]
 public class PageButton
 {
-   public int IdPage;
-   public Button NextPage;
-   public GameObject LastPage;
+    public int IdPage;
+    public Button NextPage;
+    public GameObject LastPage;
 }
 
 
@@ -374,7 +380,7 @@ public class Main_ButtonSEND
     public Button _main_ButtonSEND;
     public List<PageButton> _pageButtons;
 
-    public Main_ButtonSEND( Button Main_ButtonSEND, List<PageButton> pageButtons)
+    public Main_ButtonSEND(Button Main_ButtonSEND, List<PageButton> pageButtons)
     {
         _main_ButtonSEND = Main_ButtonSEND;
         _pageButtons = pageButtons;

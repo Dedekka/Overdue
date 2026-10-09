@@ -9,6 +9,8 @@ public class PageMultyChoose : MonoBehaviour, IPage
     public List<ToggleMulty> ToggleBooles => _toggleBooles;
     [SerializeField] private List<ToggleMulty> _toggleBooles;
 
+    
+
     public bool CheckImage(int IdToggle)
     {
         return _toggleBooles.Find((x) => x.IdToggle == IdToggle).Toggle.isOn;

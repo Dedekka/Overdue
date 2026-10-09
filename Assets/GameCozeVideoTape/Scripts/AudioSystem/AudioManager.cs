@@ -2,6 +2,7 @@ using FMOD.Studio;
 using FMODUnity;
 using System;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class AudioManager : IDisposable
 {

@@ -14,13 +14,19 @@ public class TutorialInstaller : MonoInstaller
     [SerializeField] private Button _buttonTutorialReturns;
     [SerializeField] private Button _buttonTutorialDecorating;
     [SerializeField] private Button _buttonTutorialMusic;
+
+
     [Header("PanelTutorialUi")]
+
+ 
     [SerializeField] private GameObject _sortingPanel;
     [SerializeField] private GameObject _vCRPanel;
     [SerializeField] private GameObject _phonePanel;
     [SerializeField] private GameObject _returnsPanel;
     [SerializeField] private GameObject _decoratingPanel;
     [SerializeField] private GameObject _musicPanel;
+
+
 
     public override void InstallBindings()
     {

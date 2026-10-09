@@ -185,11 +185,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b360fdc57b173ef488f21127f75fe3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameInstaller
+  _controlStatePanel: {fileID: 0}
   _pauseCanvas: {fileID: 0}
+  _panelSettings: {fileID: 0}
+  _panelButtonsPause: {fileID: 0}
+  _panelTutorial: {fileID: 0}
   _playerUi: {fileID: 0}
   _handSlot: {fileID: 0}
   _buttonExit: {fileID: 0}
   _buttonBackMenu: {fileID: 0}
+  _buttonTutorialBack: {fileID: 0}
+  _buttonSettingsBack: {fileID: 0}
+  _buttonSettings: {fileID: 0}
+  _buttonTutorial: {fileID: 0}
   _cassetteMaterial: {fileID: 2100000, guid: f3ac4eadba2f9184ebb6f98354eb977b, type: 2}
   _presentMaterial: {fileID: 2100000, guid: 893ed82fe1867654cbf4c42fea25be16, type: 2}
   _pickUpSettings: {fileID: 11400000, guid: 3944792fb45878c4fa87a1ae348afcdc, type: 2}
@@ -307,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueInstaller
   _viewDialog: {fileID: 0}
   _timeWaitChar: 0.03
-  _timeWaitLine: 1
+  _timeWaitLine: 2.5
 --- !u!1 &4485493663572995381
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +478,7 @@ Transform:
   m_GameObject: {fileID: 5777150591074028754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.9063079, z: 0.42261827, w: 0}
-  m_LocalPosition: {x: 1.9651599, y: 1.5871117, z: 11.9696865}
+  m_LocalPosition: {x: 1.9651599, y: 1.5832496, z: 11.974289}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

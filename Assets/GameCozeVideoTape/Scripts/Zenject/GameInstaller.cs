@@ -7,11 +7,19 @@ using Zenject;
 public class GameInstaller : MonoInstaller
 {
     [Header("PauseMenu")]
+    [SerializeField] private ControlStatePanel _controlStatePanel;
     [SerializeField] private GameObject _pauseCanvas;
+    [SerializeField] private GameObject _panelSettings;
+    [SerializeField] private GameObject _panelButtonsPause;
+    [SerializeField] private GameObject _panelTutorial;
     [SerializeField] private PlayerUi _playerUi;
     [SerializeField] private Transform _handSlot;
     [SerializeField] private Button _buttonExit;
     [SerializeField] private Button _buttonBackMenu;
+    [SerializeField] private Button _buttonTutorialBack;
+    [SerializeField] private Button _buttonSettingsBack;
+    [SerializeField] private Button _buttonSettings;
+    [SerializeField] private Button _buttonTutorial;
     [Header("Materials")]
     [SerializeField] private Material _cassetteMaterial;
     [SerializeField] private Material _presentMaterial;
@@ -26,7 +34,7 @@ public class GameInstaller : MonoInstaller
     [Header("Rack")]
     [SerializeField] private int _maxRack;
     [SerializeField] private int _maxCassette;
-    
+
     [Header("TV")]
     [SerializeField] private CinemachineCamera _tvCamera;
     [SerializeField] private TV _tv;
@@ -105,6 +113,8 @@ public class GameInstaller : MonoInstaller
          .FromInstance(_packageSystem)
            .AsSingle();
 
+
+
         Container.Bind<FactoryPresent>()
         .AsSingle()
         .WithArguments(_prefabPresent, _presentMaterial);
@@ -177,6 +187,31 @@ public class GameInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ImporterButtonPauseMenuControlLogic>()
           .AsSingle()
           .WithArguments(_buttonBackMenu, _buttonExit);
+
+        Container.BindInterfacesAndSelfTo<ControlPauseMenuPanel>()
+          .AsSingle()
+          .WithArguments(new PanelsPauseMenu
+            (
+                _buttonTutorialBack,
+                 _buttonSettingsBack,
+                 _buttonSettings,
+                 _buttonTutorial,
+                 _panelButtonsPause,
+                 _panelSettings,
+                 _panelTutorial
+                //ButtonTutorialBack = _buttonTutorialBack,
+                //ButtonSettingsBack = _buttonSettingsBack,
+                //ButtonSettings = _buttonSettings,
+                //ButtonTutorial = _buttonTutorial,
+                //PanelButtonsPause = _panelButtonsPause,
+                //PanelSettings = _panelSettings,
+                //PanelTutorial = _panelTutorial,
+                )
+            );
+
+        Container.Bind<ControlStatePanel>()
+     .FromInstance(_controlStatePanel)
+       .AsSingle();
     }
 
     private void BindItem()
