@@ -10,7 +10,7 @@ public class InventoryCassette
     private CassetteObject[] _activeCassets;
     private CassetteObject _currentCassette;
     private readonly Transform _hand;
-    //private Vector2 _rotationOffset;
+    private Vector2 _rotationOffset;
     private Vector3 _startOffsetHand;
     private Vector3 _endOffsetHand;
     private float _offsetSlotY;
@@ -219,6 +219,12 @@ public class InventoryCassette
 
     private void MoveHand()
     {
+        // Когда кассет мало стопка на верху
+        // _startOffsetHand - Верхняя точка
+        // _endOffsetHand - нижняя точка
+        // temp = 1 (нижняя точка) когда у нас в руке все кассеты
+        // temp = 0.1 (Верхняя точка) когда у нас в руке 1 кассета
+
         float temp = (float)_countSlotInventory / _SlotInventoryMax;
         _hand.localPosition = Vector3.Lerp(_startOffsetHand, _endOffsetHand, temp);
     }
@@ -249,9 +255,9 @@ public class InventoryCassette
             tempInventoryDataArray[i] = new InventoryData();
             tempInventoryDataArray[i].Index = i;
 
-            Vector3 pos = _hand.position;
-            pos.y += i * _offsetSlotY;
-            _inventorySlot[i].position = pos;
+            //Vector3 pos = _hand.position;
+            //pos.y += i * _offsetSlotY;
+            //_inventorySlot[i].position = pos;
             tempInventoryDataArray[i].Position = _inventorySlot[i];
         }
         return tempInventoryDataArray;

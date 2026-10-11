@@ -26,6 +26,7 @@ public class FeedbackSystem : IInitializable, IDisposable
     {
         _cancellationTokenSource = new CancellationTokenSource();
         _main_ButtonSEND._main_ButtonSEND.onClick.AddListener(() => MainSend());
+        _main_ButtonSEND._buttonBackMenu.onClick.AddListener(() => BackMenu());
 
 
         _main_ButtonSEND._pageButtons[0].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[0].LastPage, _main_ButtonSEND._pageButtons[1].LastPage));
@@ -64,8 +65,18 @@ public class FeedbackSystem : IInitializable, IDisposable
     public void Dispose()
     {
         _main_ButtonSEND._main_ButtonSEND.onClick.RemoveAllListeners();
+        for (int i = 0; i < _main_ButtonSEND._pageButtons.Count; i++)
+        {
+            _main_ButtonSEND._pageButtons[i].NextPage.onClick.RemoveAllListeners();
+        }
+
         _cancellationTokenSource?.Cancel();
         _cancellationTokenSource?.Dispose();
+    }
+
+    private void BackMenu()
+    {
+        _ñontrolLogic.BackMenu();
     }
 
     private async void MainSend()

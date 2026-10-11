@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 public class FactoryFeedback
 {
+    public List<ControlFeedback> ControlFeedback => _controlFeedback;
     private List<ControlFeedback> _controlFeedback;
 
     public FactoryFeedback

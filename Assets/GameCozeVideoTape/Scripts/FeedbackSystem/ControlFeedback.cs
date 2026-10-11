@@ -11,6 +11,8 @@ public abstract class ControlFeedback : IInitializable, IDisposable
     public int ID;
     public string Question_Text = "";
 
+    public Action<int,bool> OnComplitedQuestion;
+
     public ControlFeedback(int id, List<SendSring> sendSrings )
     {
         ID = id;
@@ -35,6 +37,20 @@ public abstract class ControlFeedback : IInitializable, IDisposable
     public void Send()
     {
         PreSend();
+    }
+
+    public bool CheckComplitedQuestion(IPage page)
+    {
+        int countText = 1;
+        for (int i = 0; i < _sendSrings.Count; i++)
+        {
+            if (page.CheckImage(countText))
+            {
+                return true;
+            }
+            countText++;
+        }
+        return false;
     }
 
     protected string CheckText(int id, IPage page)

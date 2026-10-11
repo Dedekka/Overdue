@@ -5,31 +5,51 @@ using Zenject;
 
 public class ControlMenuPanel : IInitializable, IDisposable
 {
-    private Button _buttonSettings;
     private Button _backButton;
+    private Button _buttonSettings;
+    private Button _buttonTutorial;
 
     [Header("Panel")]
     private GameObject _mainMenu;
     private GameObject _panelSettings;
+    private GameObject _panelTutorial;
 
-    public ControlMenuPanel(Button buttonSettings, Button backButton, GameObject mainMenu, GameObject panelSettings )
+    public ControlMenuPanel(DataMenuPanel dataMenuPanel )
     {
-        _buttonSettings = buttonSettings;
-        _backButton = backButton;
-        _mainMenu = mainMenu;
-        _panelSettings = panelSettings;
+        _backButton = dataMenuPanel.BackButton;
+        _buttonSettings = dataMenuPanel.ButtonSettings;
+        _buttonTutorial = dataMenuPanel.ButtonTutorial;
+        _mainMenu = dataMenuPanel.MainMenu;
+        _panelSettings = dataMenuPanel.PanelSettings;
+        _panelTutorial = dataMenuPanel.PanelTutorial;
     }
 
     public void Initialize()
     {
-        _buttonSettings.onClick.AddListener(() => _mainMenu.gameObject.SetActive(false));
-        _buttonSettings.onClick.AddListener(() => _panelSettings.gameObject.SetActive(true));
-        _backButton.onClick.AddListener(() => _mainMenu.gameObject.SetActive(true));
+        _buttonSettings.onClick.AddListener(() => ControlStatePanel(_panelSettings));
+        _buttonTutorial.onClick.AddListener(() => ControlStatePanel(_panelTutorial));
+        _backButton.onClick.AddListener(() => Back());
     }
 
     public void Dispose()
     {
         _buttonSettings.onClick.RemoveAllListeners();
         _backButton.onClick.RemoveAllListeners();
+        _buttonTutorial.onClick.RemoveAllListeners();
+    }
+
+    private void ControlStatePanel(GameObject currentPanel)
+    {
+        _mainMenu.gameObject.SetActive(false);
+        currentPanel.gameObject.SetActive(true);
+        _backButton.gameObject.SetActive(true);
+    }
+
+    private void Back()
+    {
+        _mainMenu.gameObject.SetActive(true);
+        _panelSettings.gameObject.SetActive(false);
+        _panelTutorial.gameObject.SetActive(false);
+        _backButton.gameObject.SetActive(false);
     }
 }

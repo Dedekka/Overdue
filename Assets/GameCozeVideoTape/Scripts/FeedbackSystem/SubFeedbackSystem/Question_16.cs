@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Question_16 : ControlFeedback
 {
@@ -10,6 +11,11 @@ public class Question_16 : ControlFeedback
         TMP_InputField = tMP_InputField;
     }
 
+    protected override void Initialization()
+    {
+        TMP_InputField.onValueChanged.AddListener((x) => OnSelectQuestion());
+    }
+
     private void SetText()
     {
         Question_Text = string.Empty;
@@ -18,5 +24,12 @@ public class Question_16 : ControlFeedback
     }
 
     public override void PreSend() { SetText(); }
+
+    private void OnSelectQuestion()
+    {
+        bool isComplitedInputField = TMP_InputField.text != "";
+
+        OnComplitedQuestion?.Invoke(ID, isComplitedInputField);
+    }
 
 }

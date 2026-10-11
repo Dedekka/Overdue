@@ -1,11 +1,18 @@
 using UnityEngine;
+using Zenject;
 
 public class DisableUi : MonoBehaviour
 {
-    [SerializeField] private ControlStatePanel _controlStatePanel;
+     private ControlPauseMenuPanel _controlPauseMenuPanel;
     [SerializeField] private GameObject _panelSettings;
     [SerializeField] private GameObject _panelTutorial;
     [SerializeField]  private GameObject _panelButtonsPause;
+
+    [Inject]
+    public void Construct(ControlPauseMenuPanel controlPauseMenuPanel)
+    {
+        _controlPauseMenuPanel = controlPauseMenuPanel;
+    }
 
     private void OnEnable()
     {
@@ -16,6 +23,6 @@ public class DisableUi : MonoBehaviour
     {
         _panelSettings.SetActive(false);
         _panelTutorial.SetActive(false);
-        _controlStatePanel.ChangeState(StatePanelUi.Pause);
+        _controlPauseMenuPanel.Back();
     }
 }

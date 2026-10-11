@@ -14,7 +14,6 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
     private Button _buttonSettings;
     private Button _buttonTutorial;
 
-    //public ControlPauseMenuPanel(Button buttonSettings, Button buttonTutorial, ControlStatePanel controlStatePanel, GameObject panelSettings, GameObject panelTutorial)
     public ControlPauseMenuPanel(PanelsPauseMenu PanelsPauseMenu, ControlStatePanel controlStatePanel)
     {
         _buttonSettings = PanelsPauseMenu.ButtonSettings;
@@ -55,7 +54,7 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
         _controlStatePanel.ChangeState(state);
     }
 
-    private void Back()
+    public void Back()
     {
         _panelButtonsPause.SetActive(true);
         _panelSettings.SetActive(false);

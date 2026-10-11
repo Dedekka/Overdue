@@ -4,8 +4,8 @@ using Zenject;
 
 public class TutorialInstaller : MonoInstaller
 {
-    [Header("TutorialEvent")]
-    [SerializeField] private QuestViewUi _questViewUi;
+    //[Header("TutorialEvent")]
+    //[SerializeField] private QuestViewUi _questViewUi;
 
     [Header("TutorialButtonUi")]
     [SerializeField] private Button _buttonTutorialSorting;
@@ -30,26 +30,26 @@ public class TutorialInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        FindSub();
-        BindTutorialSystem();
+        //FindSub();
         BindTutorialControl();
-        BindListener();
-        BindImporter();
+        //BindTutorialSystem();
+        //BindListener();
+        //BindImporter();
     }
 
 
 
-    private void FindSub()
-    {
+    //private void FindSub()
+    //{
 
-        Container.Bind<DataTutorialEvent>()
-           .FromResource(PathConst.DataTutorialEventAsset)
-           .AsSingle();
+    //    Container.Bind<DataTutorialEvent>()
+    //       .FromResource(PathConst.DataTutorialEventAsset)
+    //       .AsSingle();
 
-        Container.Bind<DataTutorialEventLanguage>()
-           .FromResource(PathConst.DataTutorialEventLanguageAsset)
-           .AsSingle();
-    }
+    //    Container.Bind<DataTutorialEventLanguage>()
+    //       .FromResource(PathConst.DataTutorialEventLanguageAsset)
+    //       .AsSingle();
+    //}
 
     private void BindTutorialControl()
     {
@@ -82,60 +82,60 @@ public class TutorialInstaller : MonoInstaller
            .AsSingle();
 
 
-        Container.Bind<QuestViewUi>()
-          .FromInstance(_questViewUi)
-          .AsSingle();
+        //Container.Bind<QuestViewUi>()
+        //  .FromInstance(_questViewUi)
+        //  .AsSingle();
 
-        Container.Bind<ControlComplited>()
-          .AsSingle();
+        //Container.Bind<ControlComplited>()
+        //  .AsSingle();
 
-        Container.Bind<FactoryComplitedHistoryEvent>()
-          .AsSingle();
+        //Container.Bind<FactoryComplitedHistoryEvent>()
+        //  .AsSingle();
 
-
-    }
-
-    private void BindTutorialSystem()
-    {
-        Container.BindInterfacesAndSelfTo<GoalController>()
-       .AsSingle();
-
-        Container.Bind<ListenerContext>()
-       .AsSingle();
-
-        Container.Bind<GoalFactory>()
-       .AsSingle();
-
-        Container.Bind<ControlGoalLanguage>()
-       .AsSingle();
-    }
-
-    private void BindListener()
-    {
-        Container.Bind<ListenerInputMove>()
-    .AsSingle();
-
-        Container.Bind<ListenerInventory>()
-       .AsSingle();
-
-        Container.Bind<ListenerPlayerUi>()
-       .AsSingle();
-
-        Container.Bind<ListenerTv>()
-       .AsSingle();
-
-        Container.Bind<ListenerAudioRecorder>()
-       .AsSingle();
-
-        Container.Bind<ListenerPhone>()
-       .AsSingle();
-
-        Container.Bind<ListenerPresentSystem>()
-       .AsSingle();
-    }
-
-    private void BindImporter()
-    {
 
     }
+
+    //private void BindTutorialSystem()
+    //{
+    //    Container.BindInterfacesAndSelfTo<GoalController>()
+    //   .AsSingle();
+
+    //    Container.Bind<ListenerContext>()
+    //   .AsSingle();
+
+    //    Container.Bind<GoalFactory>()
+    //   .AsSingle();
+
+    //    Container.Bind<ControlGoalLanguage>()
+    //   .AsSingle();
+    //}
+
+    //private void BindListener()
+    //{
+    //    Container.Bind<ListenerInputMove>()
+    //.AsSingle();
+
+    //    Container.Bind<ListenerInventory>()
+    //   .AsSingle();
+
+    //    Container.Bind<ListenerPlayerUi>()
+    //   .AsSingle();
+
+    //    Container.Bind<ListenerTv>()
+    //   .AsSingle();
+
+    //    Container.Bind<ListenerAudioRecorder>()
+    //   .AsSingle();
+
+    //    Container.Bind<ListenerPhone>()
+    //   .AsSingle();
+
+    //    Container.Bind<ListenerPresentSystem>()
+    //   .AsSingle();
+    //}
+
+    //private void BindImporter()
+    //{
+
+    //}
 }

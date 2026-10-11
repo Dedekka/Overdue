@@ -12,11 +12,13 @@ public class MenuInstaller : MonoInstaller
     [SerializeField] private Button _buttonExit;
     [SerializeField] private Button _buttonSettings;
     [SerializeField] private Button _buttonFeedbackMenu;
+    [SerializeField] private Button _buttonTutorial;
     [SerializeField] private Button _backButton;
 
     [Header("Panel")]
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _panelSettings;
+    [SerializeField] private GameObject _panelTutorial;
 
 
     public override void InstallBindings()
@@ -46,8 +48,29 @@ public class MenuInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<ControlMenuPanel>()
           .AsSingle()
-          .WithArguments(_buttonSettings, _backButton, _mainMenu, _panelSettings);
+          .WithArguments(
+            new DataMenuPanel()
+            {
+                BackButton = _backButton,
+                ButtonSettings = _buttonSettings,
+                ButtonTutorial = _buttonTutorial,
+                MainMenu = _mainMenu,
+                PanelSettings = _panelSettings,
+                PanelTutorial = _panelTutorial,
+            });
         
     }
 }
 
+public class DataMenuPanel
+{
+    [Header("Buttons")]
+    public Button BackButton;
+    public Button ButtonSettings;
+    public Button ButtonTutorial;
+
+    [Header("Panel")]
+    public GameObject MainMenu;
+    public GameObject PanelSettings;
+    public GameObject PanelTutorial;
+}

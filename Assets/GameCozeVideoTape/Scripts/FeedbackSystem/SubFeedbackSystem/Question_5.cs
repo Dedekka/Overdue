@@ -17,6 +17,7 @@ public class Question_5 : ControlFeedback
         _pageOneChoose.ToggleBooles[2].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[2].IdToggle));
         _pageOneChoose.ToggleBooles[3].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[3].IdToggle));
         _pageOneChoose.ToggleBooles[4].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[4].IdToggle));
+        _pageOneChoose.OnSelectQuestion += OnSelectQuestion;
     }
 
     protected override void Disposeble()
@@ -42,13 +43,13 @@ public class Question_5 : ControlFeedback
 
     public override void PreSend() { SetText(); }
 
-    private string CheckText(int id, string text)
+
+
+    private void OnSelectQuestion()
     {
-        string question_Text;
+        bool isComplitedQuestion = CheckComplitedQuestion(_pageOneChoose);
 
-        question_Text = _pageOneChoose.CheckImage(id) ? $"{text}" : "";
-
-        return question_Text;
+        OnComplitedQuestion?.Invoke(ID, isComplitedQuestion);
     }
 
 

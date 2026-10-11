@@ -1,13 +1,17 @@
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class Question_1 : ControlFeedback
 {
-    PageMultyChoose _dataQuestion_1;
+    private PageMultyChoose _dataQuestion_1;
 
     public Question_1(int id, PageMultyChoose dataQuestion_1, List<SendSring> sendSrings) : base(id, sendSrings)
     {
         _dataQuestion_1 = dataQuestion_1;
+    }
+
+    protected override void Initialization()
+    {
+        _dataQuestion_1.OnSelectQuestion += OnSelectQuestion;
     }
 
     private void SetText()
@@ -24,6 +28,15 @@ public class Question_1 : ControlFeedback
     }
 
     public override void PreSend() { SetText(); }
+
+    private void OnSelectQuestion()
+    {
+        bool isComplitedQuestion = CheckComplitedQuestion(_dataQuestion_1);
+
+        OnComplitedQuestion?.Invoke(ID, isComplitedQuestion);
+    }
+
+
 }
 
 public class SendSring

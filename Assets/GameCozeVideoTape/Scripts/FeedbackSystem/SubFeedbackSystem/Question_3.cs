@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class Question_3 : ControlFeedback
 {
     private PageMultyChoose _dataQuestion;
-    private TMP_InputField TMP_InputField;
+    private TMP_InputField _InputField;
 
     public Question_3(int id, PageMultyChoose dataQuestion_3, TMP_InputField tMP_InputField, List<SendSring> sendSrings) : base(id, sendSrings)
     {
         _dataQuestion = dataQuestion_3;
-        TMP_InputField = tMP_InputField;
+        _InputField = tMP_InputField;
+    }
+
+    protected override void Initialization()
+    {
+        _dataQuestion.OnSelectQuestion += OnSelectQuestion;
+        _InputField.onValueChanged.AddListener((x) => OnSelectQuestion());
     }
 
     private void SetText()
@@ -26,8 +32,20 @@ public class Question_3 : ControlFeedback
             countText++;
         }
         Question_Text += " , ";
-        Question_Text += TMP_InputField.text;
+        Question_Text += _InputField.text;
     }
 
     public override void PreSend() { SetText(); }
+
+    private void OnSelectQuestion()
+    {
+        bool isComplitedQuestion = CheckComplitedQuestion(_dataQuestion);
+        bool isComplitedInputField = _InputField.text != "";
+
+        Debug.Log($"Send_InputField: {_InputField.text}");
+
+        isComplitedQuestion = isComplitedQuestion || isComplitedInputField;
+
+        OnComplitedQuestion?.Invoke(ID, isComplitedQuestion);
+    }
 }
