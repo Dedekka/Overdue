@@ -866,7 +866,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 506733002}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2046968913}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &506733002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3269,7 +3281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuInstaller
   _buttonNewGame: {fileID: 1538765561}
-  _buttonExit: {fileID: 1562839371}
+  _buttonExit: {fileID: 506733001}
   _buttonSettings: {fileID: 1346806930}
   _buttonFeedbackMenu: {fileID: 2115983628}
   _buttonTutorial: {fileID: 1562839371}
