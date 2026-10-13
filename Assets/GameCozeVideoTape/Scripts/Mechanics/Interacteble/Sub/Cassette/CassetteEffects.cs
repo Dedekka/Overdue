@@ -4,16 +4,18 @@ using UnityEngine;
 public class CassetteEffects
 {
     private MeshRenderer _meshRenderer;
-    private EffectSettings _effectSettings;
+    private ControlCassetteEffects _controlCassetteEffects;
     private MaterialPropertyBlock _propertyBlock;
+    private EffectSettings _effectSettings;
 
     private StateInstal _stateInstal;
 
     private static readonly int ArrayIndexProperty = Shader.PropertyToID("_SweepPos");
 
-    public CassetteEffects(EffectSettings effectSettings)
+    public CassetteEffects(ControlCassetteEffects controlCassetteEffects, EffectSettings effectSettings)
     {
         _effectSettings = effectSettings;
+        _controlCassetteEffects = controlCassetteEffects;
         _stateInstal = StateInstal.None;
         _propertyBlock = new MaterialPropertyBlock();
     }
@@ -35,13 +37,13 @@ public class CassetteEffects
 
         var materials = _meshRenderer.materials;
         //Debug.Log($"materials {materials.Length}");
-        _meshRenderer.materials = _effectSettings.ControlSelectedOutline(materials, isActive);
+        _meshRenderer.materials = _controlCassetteEffects.ControlSelectedOutline(materials, isActive);
     }
 
     public void Install()
     {
         var materials = _meshRenderer.materials;
-        _meshRenderer.materials = _effectSettings.ControlInstallEffect(materials, _stateInstal);
+        _meshRenderer.materials = _controlCassetteEffects.ControlInstallEffect(materials, _stateInstal);
         
         if (_stateInstal == StateInstal.SuccessInstall)
         {
@@ -57,7 +59,7 @@ public class CassetteEffects
     public void ClearEffects()
     {
         var materials = _meshRenderer.materials;
-        _meshRenderer.materials = _effectSettings.ClearEffects(materials);
+        _meshRenderer.materials = _controlCassetteEffects.ClearEffects(materials);
     }
 
     private void AnimationSuccessInstall(float time)
