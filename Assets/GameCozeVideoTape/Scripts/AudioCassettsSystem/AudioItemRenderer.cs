@@ -19,7 +19,7 @@ public class AudioItemRenderer
         for (int i = 0; i < listCassette.Count; i++)
         {
             tempCassetteObject = listCassette[i];
-            materialIndex = tempCassetteObject.MusicCassetteSettings.MaterialIndex;
+            materialIndex = tempCassetteObject.MusicCassetteSettings.MusicIndex;
             _viewRenderer.Initialization(_material, tempCassetteObject.Body, materialIndex);
         }
     }

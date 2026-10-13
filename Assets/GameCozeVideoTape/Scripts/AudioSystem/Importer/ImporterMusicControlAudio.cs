@@ -31,9 +31,9 @@ public class ImporterMusicControlAudio : IDisposable, IInitializable
         _audioManager.PlayMusic(_isPlaying);
     }
 
-    private void OnChangeMusic(FMODUnity.EventReference eventReference)
+    private void OnChangeMusic(FMODUnity.EventReference eventReference, int musicIndex)
     {
         Debug.Log("OnChangeMusic");
-        _audioManager.SetMusic(eventReference);
+        _audioManager.SetMusic(eventReference, musicIndex);
     }
 }

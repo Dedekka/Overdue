@@ -12,6 +12,7 @@ public class AudioManager : IDisposable
     [Header("MusicSound")]
     private EventInstance _musicInstance;
     private EventReference _tempMusic;
+    private int _musicIndex;
 
     [Header("EventSound")]
     private EventInstance _doorInstance;
@@ -92,6 +93,11 @@ public class AudioManager : IDisposable
         }
     }
 
+    public void StopMusic()
+    {
+        StopSmartEvent(ref _musicInstance);
+    }
+
     public void PauseMusic(bool isPause)
     {
         Debug.Log($"AudioManager,Pre PauseMusic, isPause: {isPause} ");
@@ -111,10 +117,11 @@ public class AudioManager : IDisposable
         _tempGanre = eventReference;
     }
 
-    public void SetMusic(EventReference eventReference)
+    public void SetMusic(EventReference eventReference,int musicIndex )
     {
         Play(_audioRecorder_ChangeMusic);
         _tempMusic = eventReference;
+        _musicIndex = musicIndex;
         StopSmartEvent(ref _musicInstance);
     }
 
@@ -127,16 +134,19 @@ public class AudioManager : IDisposable
     {
         //PlaySmartEvent(ref _tempGanre, ref _ganreInstance);
         PlayPositionEvent(ref _tempGanre, ref _ganreInstance, _soundTvPoint.position);
+        _ganreInstance.start();
     }
 
     public void PlayRing(Vector3 pos)
     {
         PlayPositionEvent(ref _ringPhone, ref _ringInstance, pos);
+        _ringInstance.start();
     }
 
     public void PlayDoor(Vector3 pos)
     {
         PlayPositionEvent(ref _doorOpen, ref _doorInstance, pos);
+        _doorInstance.start();
     }
 
     public void StopRing()
@@ -154,6 +164,8 @@ public class AudioManager : IDisposable
         else if (_isPlaying)
         {
             PlayPositionEvent(ref _tempMusic, ref _musicInstance, _soundRecorderPoint.position);
+            _musicInstance.setParameterByName("MusicId", _musicIndex);
+            _musicInstance.start();
         }
         Play(_audioRecorder_Play);
     }
@@ -252,7 +264,7 @@ public class AudioManager : IDisposable
 
         playHit.set3DAttributes(RuntimeUtils.To3DAttributes(Pos)); // Мы вводим информацию об положении в 3Д , а                       
                                                                    //(RuntimeUtils.To3DAttributes) переводит наш Vector3 В понятный для Код 
-        playHit.start(); // Запускаем воспроизведение 
+        //playHit.start(); // Запускаем воспроизведение 
     }
 
 
