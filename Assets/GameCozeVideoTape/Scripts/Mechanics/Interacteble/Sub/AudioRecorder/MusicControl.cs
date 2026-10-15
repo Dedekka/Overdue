@@ -11,7 +11,7 @@ public class MusicControl
 
     private bool _isPlaying;
 
-    public event Action<EventReference> OnChangeMusic;
+    public event Action<EventReference,int> OnChangeMusic;
 
     public event Action<bool> OnChangeState;
 
@@ -24,8 +24,7 @@ public class MusicControl
     public void SetMusic(int idMusic)
     {
         _currentMusicCassetteSettings = _dataMusicCassets.GetItem(idMusic);
-        string audioPath = _currentMusicCassetteSettings == null ? null : _currentMusicCassetteSettings.Audio;
-        SetFmodSound(audioPath);
+        SetFmodSound();
     }
 
     public void PlayMusic()
@@ -37,13 +36,16 @@ public class MusicControl
         OnChangeState?.Invoke(_isPlaying);
     }
 
-    private void SetFmodSound(string audioPath)
+    private void SetFmodSound()
     {
-        if (audioPath != null)
+        if (_currentMusicCassetteSettings != null)
         {
+            string audioPath = _currentMusicCassetteSettings.Audio;
+            int musicIndex = _currentMusicCassetteSettings.MusicIndex;
+
             _tempMusic = RuntimeManager.PathToEventReference(audioPath);
             _isPlaying = false;
-            OnChangeMusic?.Invoke(_tempMusic);
+            OnChangeMusic?.Invoke(_tempMusic, musicIndex);
         }
         else
         {

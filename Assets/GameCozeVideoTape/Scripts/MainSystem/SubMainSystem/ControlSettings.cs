@@ -19,7 +19,7 @@ public class ControlSettings
 
     public void ChangeLanguage(Language language)
     {
-        //Debug.Log($"ControlSettings,  Language:{language}, index:{(int)language}");
+        Debug.Log($"ControlSettings,  Language:{language}, index:{(int)language}");
         Language = language;
     }
 

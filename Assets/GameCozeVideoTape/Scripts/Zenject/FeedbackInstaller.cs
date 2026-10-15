@@ -11,7 +11,8 @@ public class FeedbackInstaller : MonoInstaller
 
     [SerializeField] private List<PageButton> _pageButtons;
 
-    [SerializeField] private Button Main_ButtonSEND;
+    [SerializeField] private Button _mainButtonSEND;
+    [SerializeField] private Button _buttonBackMenu;
 
     [Header("Question_1")] // несколько вариантов
     [SerializeField] private PageMultyChoose Page_1;
@@ -89,8 +90,14 @@ public class FeedbackInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        BindSub();
         BindQuestions();
         BindMain();
+    }
+
+    private void BindSub()
+    {
+       
     }
 
     private void BindMain()
@@ -98,11 +105,16 @@ public class FeedbackInstaller : MonoInstaller
         Container.Bind<FactoryFeedback>()
             .AsSingle();
 
+        Container.BindInterfacesAndSelfTo<ControlInteractableButton>()
+            .AsSingle()
+            .WithArguments(_pageButtons);
+
         Container.BindInterfacesAndSelfTo<FeedbackSystem>()
              .AsSingle()
              .WithArguments(
             new Main_ButtonSEND(
-                Main_ButtonSEND,
+                _mainButtonSEND,
+                _buttonBackMenu,
                 _pageButtons
                     ));
     }
@@ -363,20 +375,22 @@ public class FeedbackInstaller : MonoInstaller
 [Serializable]
 public class PageButton
 {
-   public int IdPage;
-   public Button NextPage;
-   public GameObject LastPage;
+    public int IdPage;
+    public Button NextPage;
+    public GameObject LastPage;
 }
 
 
 public class Main_ButtonSEND
 {
     public Button _main_ButtonSEND;
+    public Button _buttonBackMenu;
     public List<PageButton> _pageButtons;
 
-    public Main_ButtonSEND( Button Main_ButtonSEND, List<PageButton> pageButtons)
+    public Main_ButtonSEND(Button Main_ButtonSEND, Button buttonBackMenu, List<PageButton> pageButtons)
     {
         _main_ButtonSEND = Main_ButtonSEND;
+        _buttonBackMenu = buttonBackMenu;
         _pageButtons = pageButtons;
     }
 }

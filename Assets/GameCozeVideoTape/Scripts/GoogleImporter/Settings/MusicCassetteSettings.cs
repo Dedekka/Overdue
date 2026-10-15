@@ -9,7 +9,7 @@ public class MusicCassetteSettings
     public int Id;
     public string Audio;
     //public string Description;
-    public int MaterialIndex;
+    public int MusicIndex;
 }
 
 [Serializable]

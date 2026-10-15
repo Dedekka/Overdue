@@ -24,7 +24,7 @@ public class InventoryView : MonoBehaviour
     private void Awake()
     {
         _rectTransform = _panelHand.GetComponent<RectTransform>();
-        _offSize = new Vector2(0, 0.9f);
+        _offSize = new Vector2(0, 1f);
         _onSize = Vector2.zero;
     }
 

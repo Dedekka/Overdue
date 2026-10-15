@@ -36,8 +36,8 @@ public class MusicCassetteParser : IGoogleParser
             //    _currentGenreSettings.Description = token;
             //    break;
 
-            case "MaterialIndex":
-                _currentGenreSettings.MaterialIndex = Convert.ToInt32(token);
+            case "MusicIndex":
+                _currentGenreSettings.MusicIndex = Convert.ToInt32(token);
                 break;
             default:
                 throw new Exception($"Invalid header: {headerName}");

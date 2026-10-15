@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -8,8 +9,8 @@ public class EffectsInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindEffects();
+        BindGarland();
     }
-
 
 
     private void BindEffects()
@@ -20,5 +21,15 @@ public class EffectsInstaller : MonoInstaller
 
         Container.Bind<CassetteEffects>()
         .AsTransient();
+
+        Container.Bind<ControlCassetteEffects>()
+        .AsTransient();
     }
+
+    private void BindGarland()
+    {
+        Container.Bind<GarlandRender>()
+       .AsSingle();
+    }
+
 }

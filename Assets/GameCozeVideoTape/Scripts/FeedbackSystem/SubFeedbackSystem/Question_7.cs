@@ -17,6 +17,7 @@ public class Question_7 : ControlFeedback
         _pageOneChoose.ToggleBooles[1].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[1].IdToggle));
         _pageOneChoose.ToggleBooles[2].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[2].IdToggle));
         _pageOneChoose.ToggleBooles[3].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[3].IdToggle));
+        _pageOneChoose.OnSelectQuestion += OnSelectQuestion;
     }
 
     protected override void Disposeble()
@@ -45,5 +46,12 @@ public class Question_7 : ControlFeedback
     private void AllDisable(int id)
     {
         _pageOneChoose.ChooseToggle(id);
+    }
+
+    private void OnSelectQuestion()
+    {
+        bool isComplitedQuestion = CheckComplitedQuestion(_pageOneChoose);
+
+        OnComplitedQuestion?.Invoke(ID, isComplitedQuestion);
     }
 }

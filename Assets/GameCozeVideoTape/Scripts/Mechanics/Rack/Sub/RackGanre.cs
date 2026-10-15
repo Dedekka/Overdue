@@ -6,7 +6,7 @@ public class RackGanre : MonoBehaviour
 {
     [SerializeField] GameObject _mainGanre;
     [SerializeField] List<GameObject> _subGanreList;
-    private Rack rack;
+    private Rack _rack;
     private RackPlateControl _rackPlateControl;
 
 
@@ -25,7 +25,7 @@ public class RackGanre : MonoBehaviour
 
     private void Awake()
     {
-        rack = GetComponent<Rack>();
+        _rack = GetComponent<Rack>();
         SetView();
     }
 
@@ -51,8 +51,8 @@ public class RackGanre : MonoBehaviour
 
     private void SetView()
     {
-        _rackPlateControl.SetMainGanre(_mainGanre, (int)rack.Genre);
-        _rackPlateControl.SetSubGanre(_subGanreList, rack.SubGenreShelfs, (int)rack.Genre);
+        _rackPlateControl.SetMainGanre(_mainGanre, (int)_rack.Genre);
+        _rackPlateControl.SetSubGanre(_subGanreList, _rack.SubGenreShelfs, (int)_rack.Genre);
     }
 
     

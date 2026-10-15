@@ -5,22 +5,25 @@ using UnityEngine;
 public class StateCutSceneEnd : StateCutScene
 {
     private ControlLogic _ñontrolLogic;
+    private AudioManager _audioManager;
     private CutsceneBlackScreen _cutsceneBlackScreen;
     private ControlSettings _controlSettings;
     private float _startWait;
     private float _endWait;
 
-    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi, ControlSettings controlSettings) : base(idCutscene, playerStateControl, playerUi)
+    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi, ControlSettings controlSettings, AudioManager audioManager) : base(idCutscene, playerStateControl, playerUi)
     {
          _cutsceneBlackScreen = cutsceneBlackScreen;
         _startWait = StartWait;
         _endWait = EndWait;
         _ñontrolLogic = ñontrolLogic;
         _controlSettings = controlSettings;
+        _audioManager = audioManager;
     }
 
     public override void StartCutscene()
     {
+        _audioManager.StopMusic();
         _cutsceneBlackScreen.ControlView(true);
         _cutsceneBlackScreen.ActiveBlackScreen(_startWait, _endWait);
         _playerStateControl.ChangeStateControlPlayer(false);
