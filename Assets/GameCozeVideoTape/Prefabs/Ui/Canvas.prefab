@@ -972,7 +972,7 @@ MonoBehaviour:
     the subgenre, find the matching shelf, and put the tape in its place.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d151009054bc0304b819a28408f8d5ad, type: 2}
-  m_sharedMaterial: {fileID: 5876741043246142808, guid: b381b4129dd25d340824c4b0147e75b6, type: 2}
+  m_sharedMaterial: {fileID: 8592362543326321204, guid: d151009054bc0304b819a28408f8d5ad, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4788,7 +4788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8329139622628809054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4888,7 +4888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d084c0401b60242b8124bf6d2f737c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisableUi
-  _controlStatePanel: {fileID: 8429831765758821526}
   _panelSettings: {fileID: 5217852337678494563}
   _panelTutorial: {fileID: 7855989154928185484}
   _panelButtonsPause: {fileID: 2512977440381697154}
@@ -10005,7 +10004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &939411630984990373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10199,7 +10198,7 @@ MonoBehaviour:
     the subgenre, find the matching shelf, and put the tape in its place.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d151009054bc0304b819a28408f8d5ad, type: 2}
-  m_sharedMaterial: {fileID: 5876741043246142808, guid: b381b4129dd25d340824c4b0147e75b6, type: 2}
+  m_sharedMaterial: {fileID: 8592362543326321204, guid: d151009054bc0304b819a28408f8d5ad, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11608,6 +11607,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3171134984774073052, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280196571434670038, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315876384117025379, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986797673224358044, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4842978690855604870, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
       propertyPath: m_Name
       value: PanelSettings
@@ -11615,6 +11630,22 @@ PrefabInstance:
     - target: {fileID: 4842978690855604870, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853049863283907226, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889207236447401872, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997791818954885669, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622829873520863450, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9216061393467544284, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
       propertyPath: m_IsActive
