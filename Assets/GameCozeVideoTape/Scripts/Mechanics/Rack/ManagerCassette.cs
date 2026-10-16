@@ -1,12 +1,12 @@
 using SaveLoadSystem;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 public class ManagerCassette : IInitializable, IDisposable
 {
     public Dictionary<int, CassetteObject> CassetsDictionary => _cassetsDictionary;
+    public List<CassetteObject> ListCassette => _listCassette;
     private List<CassetteObject> _listCassette;
     private Dictionary<int, CassetteObject> _cassetsDictionary;
     private ControlSleepCassette _controlSleepCassette;

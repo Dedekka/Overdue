@@ -39,7 +39,7 @@ public abstract class Rack: MonoBehaviour
         ItemSettings ItemSettings = cassetteObject.ItemSettings;
         bool installState = ItemSettings.IdGenre == (int)_genre && subGenreindex == ItemSettings.IdSubGenre;
         OnChangeState(installState);
-        SubPickUp(cassetteObject, installState);
+        SubPickUp(cassetteObject);
         return installState;
     }
 
@@ -57,21 +57,20 @@ public abstract class Rack: MonoBehaviour
         }
     }
 
-    protected void SubPickUp(CassetteObject cassetteObject, bool installState)
+    protected void SubPickUp(CassetteObject cassetteObject)
     {
-        if (!installState) {  return; }
-        //cassetteObject.OnPickUp += OnPickUp;
-        cassetteObject.OffInteracteble();
+        cassetteObject.OnPickUp += OnPickUp;
+        //cassetteObject.OffInteracteble();
         _countSuccessInstall++;
         OnChanheCountSuccessInstall?.Invoke();
     }
 
-    //private void OnPickUp(CassetteObject cassetteObject)
-    //{
-    //    //cassetteObject.OnPickUp -= OnPickUp;
-    //    _countSuccessInstall--;
-    //    OnChanheCountSuccessInstall?.Invoke();
-    //}
+    private void OnPickUp(CassetteObject cassetteObject)
+    {
+        cassetteObject.OnPickUp -= OnPickUp;
+        _countSuccessInstall--;
+        OnChanheCountSuccessInstall?.Invoke();
+    }
 
 
 }

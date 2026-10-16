@@ -7,12 +7,19 @@ public class ImporterControlLanguageCassette: IInitializable, IDisposable
     private ControlLanguage _controlLanguage;
     private ManagerCassette _managerCassette;
     private ManagerAudioItem _managerAudioItem;
+    private GoalController _goalController;
+    private ControlRackLanguage _controlRackLanguage;
+    private PlayerInventory _playerInventory;
 
-    public ImporterControlLanguageCassette(ControlLanguage controlLanguage, ManagerCassette managerCassette, ManagerAudioItem managerAudioItem)
+    
+    public ImporterControlLanguageCassette(ControlLanguage controlLanguage, ManagerCassette managerCassette, ManagerAudioItem managerAudioItem, GoalController goalController, ControlRackLanguage controlRackLanguage, PlayerInventory playerInventory)
     {
         _controlLanguage = controlLanguage;
         _managerCassette = managerCassette;
         _managerAudioItem = managerAudioItem;
+        _goalController = goalController;
+        _controlRackLanguage = controlRackLanguage;
+        _playerInventory = playerInventory;
     }
 
     public void Initialize()
@@ -29,5 +36,8 @@ public class ImporterControlLanguageCassette: IInitializable, IDisposable
     {
         _managerCassette.ChangeLanguage();
         _managerAudioItem.ChangeLanguage();
+        _goalController.ChangeLanguage();
+        _controlRackLanguage.ChangeLanguage();
+        _playerInventory.ChangeLanguage();
     }
 }

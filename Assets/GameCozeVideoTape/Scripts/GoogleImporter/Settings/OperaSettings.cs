@@ -32,8 +32,8 @@ public class OperaLanguageSettings
     {
         Subtitles subtitles = language switch
         {
-            Language.En => En_Subtitles,
-            Language.Ru => Rus_Subtitles,
+            Language.en => En_Subtitles,
+            Language.ru => Rus_Subtitles,
             _ => throw new NotImplementedException()
         };
         return subtitles;

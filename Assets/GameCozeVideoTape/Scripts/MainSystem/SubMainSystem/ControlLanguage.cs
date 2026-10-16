@@ -1,7 +1,9 @@
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using Zenject;
 
@@ -23,7 +25,8 @@ public class ControlLanguage : IInitializable, IDisposable
 
     public void Dispose()
     {
-        //_dropDownLanguage.onValueChanged.RemoveListener(ChangeLanguage);
+        _buttonLanguageR.onClick.RemoveAllListeners();
+        _buttonLanguageL.onClick.RemoveAllListeners();
         LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
     }
 
@@ -34,12 +37,6 @@ public class ControlLanguage : IInitializable, IDisposable
         LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
 
         GetLanguage().Forget();
-
-        //_dropDownLanguage.value = (int)_controlSettings.Language;
-        //Debug.Log($"ControlLanguage, Initialize,  _dropDownLanguage.value:{_dropDownLanguage.value},_controlSettings.Language:{_controlSettings.Language} ");
-        //_dropDownLanguage.onValueChanged.AddListener(ChangeLanguage);
-        //OnChangeLanguage?.Invoke();
-        //_dropDownLanguage.onValueChanged.AddListener((_) => Debug.Log($"BindLanguage:{_}"));
     }
 
     private void ChangeLanguage(string language)
@@ -48,24 +45,21 @@ public class ControlLanguage : IInitializable, IDisposable
 
         LocalizationSettings.SelectedLocale = locale;
 
-        _controlSettings.ChangeLanguage(FindLanguage(language));
-        //LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)_controlSettings.Language];
-        OnChangeLanguage?.Invoke();
+        ChangeLanguage(FindLanguage(language));
     }
 
     private async UniTaskVoid GetLanguage()
     {
         Locale local = await LocalizationSettings.SelectedLocaleAsync;
-        _controlSettings.ChangeLanguage(FindLanguage(local.Identifier.Code));
-        OnChangeLanguage?.Invoke();
+        ChangeLanguage(FindLanguage(local.Identifier.Code));
     }
 
     private Language FindLanguage(string language)
     {
         Language currentLanguage = language switch
         {
-            "en" => Language.En,
-            "ru" => Language.Ru,
+            "en" => Language.en,
+            "ru" => Language.ru,
             //Language.DE => DE,
             //Language.ES => ES,
             //Language.JPN => JPN,
@@ -77,7 +71,12 @@ public class ControlLanguage : IInitializable, IDisposable
 
     private void OnLocaleChanged(Locale locale)
     {
-        _controlSettings.ChangeLanguage(FindLanguage(locale.Identifier.Code));
+        ChangeLanguage(FindLanguage(locale.Identifier.Code));
+    }
+
+    private void ChangeLanguage(Language language)
+    {
+        _controlSettings.ChangeLanguage(language);
         OnChangeLanguage?.Invoke();
     }
 }

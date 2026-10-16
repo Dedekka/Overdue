@@ -24,8 +24,8 @@ public class TutorialEventLanguageSettings
     {
         string currentLanguage = language switch
         {
-            Language.En => En,
-            Language.Ru => Ru,
+            Language.en => En,
+            Language.ru => Ru,
             _ => throw new NotImplementedException()
         };
         return currentLanguage;

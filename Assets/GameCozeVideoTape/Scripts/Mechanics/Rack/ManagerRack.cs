@@ -13,10 +13,11 @@ public class ManagerRack : IInitializable, IDisposable
     private AudioRack _audioRack;
     private CounterRackSlot _counterRackSlot;
     private CounterSlotCassette _counterSlotCassette;
-    
+    private ControlRackLanguage _controlRackLanguage;
+
     private int _maxRack;
 
-    public ManagerRack(int maxRack, RackHolder rackHolder, ManagerCassette managerCassette, AudioRack audioRack, CounterRackSlot counterRackSlot, CounterSlotCassette counterSlotCassette)
+    public ManagerRack(int maxRack, RackHolder rackHolder, ManagerCassette managerCassette, AudioRack audioRack, CounterRackSlot counterRackSlot, CounterSlotCassette counterSlotCassette, ControlRackLanguage controlRackLanguage)
     {
         _racks = new List<Rack>();
         _managerCassette = managerCassette;
@@ -25,6 +26,7 @@ public class ManagerRack : IInitializable, IDisposable
         _audioRack = audioRack;
         _counterRackSlot = counterRackSlot;
         _counterSlotCassette = counterSlotCassette;
+        _controlRackLanguage = controlRackLanguage;
     }
 
     public void Dispose()
@@ -38,6 +40,7 @@ public class ManagerRack : IInitializable, IDisposable
     public void Initialize()
     {
         //Debug.Log($"ManagerRack!!!!!!!!!!!!!!!");
+        _controlRackLanguage.FindRackLanguage();
         _rackHolder.OnSave += Save;
         _rackHolder.OnUpdateItems += UpdateItems;
     }

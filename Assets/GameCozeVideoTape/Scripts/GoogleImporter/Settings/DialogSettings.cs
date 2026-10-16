@@ -28,8 +28,8 @@ public class DialogLanguageSettings
     {
         List<DialogLine> currentLanguage = language switch
         {
-            Language.En => En_DialogLines,
-            Language.Ru => Rus_DialogLines,
+            Language.en => En_DialogLines,
+            Language.ru => Rus_DialogLines,
             _ => throw new NotImplementedException()
         };
         return currentLanguage;
@@ -71,8 +71,8 @@ public class PresentLanguageSettings
     {
         string currentLanguage = language switch
         {
-            Language.En => En_NamePresent,
-            Language.Ru => Rus_NamePresent,
+            Language.en => En_NamePresent,
+            Language.ru => Rus_NamePresent,
             _ => throw new NotImplementedException()
         };
         return currentLanguage;

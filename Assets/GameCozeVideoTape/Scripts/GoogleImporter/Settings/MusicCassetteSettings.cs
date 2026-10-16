@@ -27,8 +27,8 @@ public class MusicLanguage
     {
         string currentLanguage = language switch
         {
-            Language.En => En,
-            Language.Ru => Ru,
+            Language.en => En,
+            Language.ru => Ru,
             Language.DE => DE,
             Language.ES => ES,
             Language.JPN => JPN,

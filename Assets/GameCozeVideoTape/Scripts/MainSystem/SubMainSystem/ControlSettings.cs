@@ -21,10 +21,14 @@ public class ControlSettings
     {
         Debug.Log($"ControlSettings,  Language:{language}, index:{(int)language}");
         Language = language;
+
+
     }
 
     public void ChangeComplitedFeedback(bool isComplited)
     {
         IsComplitedFeedback = isComplited;
     }
+
+
 }

@@ -32,8 +32,8 @@ public class ItemLanguage
     {
         string currentLanguage = language switch
         {
-            Language.En => En,
-            Language.Ru => Ru,
+            Language.en => En,
+            Language.ru => Ru,
             Language.DE => DE,
             Language.ES => ES,
             Language.JPN => JPN,
@@ -67,8 +67,8 @@ public class GenreLanguage
     {
         VideoClip currentLanguage = language switch
         {
-            Language.En => En_Video,
-            Language.Ru => Rus_Video,
+            Language.en => En_Video,
+            Language.ru => Rus_Video,
             _ => throw new NotImplementedException()
         };
         return currentLanguage;

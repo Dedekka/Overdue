@@ -86,4 +86,9 @@ public class PlayerInventory
     {
         InventoryPresent.Drop();
     }
+
+    public void ChangeLanguage()
+    {
+        InventorySlot.ChangeLanguage();
+    }
 }

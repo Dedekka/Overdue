@@ -54,6 +54,11 @@ public class InventoryCassette
         return isSucsses;
     }
 
+    public void ChangeLanguage()
+    {
+        OnChangeSlot?.Invoke(_activeCassets);
+    }
+
     public void Drop()
     {
         ChangeCurrentCassette();

@@ -304,5 +304,10 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<RackHolder>()
           .AsSingle();
+
+        Container.Bind<ControlRackLanguage>()
+          .AsSingle();
+
+
     }
 }

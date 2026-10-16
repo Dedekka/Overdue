@@ -29,7 +29,16 @@ public class ControlDialogLanguage
 
     public DialogLine GetDialogLine(int index)
     {
-       return tempDialogLines[index];
+        if (CheckCurrectLanguage())
+        {
+            _currentLanguage = _controlSettings.Language;
+            tempDialogLines = _dialogLanguageSettings.GetLanguage(_currentLanguage);
+        }
+        return tempDialogLines[index];
     }
 
+    private bool CheckCurrectLanguage()
+    {
+        return _currentLanguage != _controlSettings.Language;
+    }
 }

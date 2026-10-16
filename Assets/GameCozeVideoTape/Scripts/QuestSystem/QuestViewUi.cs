@@ -16,6 +16,11 @@ public class QuestViewUi : MonoBehaviour
         panelQuestUi.gameObject.SetActive(true);
     }
 
+    public List<PanelQuestUi> GetPanelQuestUi()
+    {
+        return _panelQuests;
+    }
+
     public void ClearPanel(int idGoal)
     {
         PanelQuestUi panelQuestUi = _panelQuests.Find((x) => x.IdQuest == idGoal && x.Select);

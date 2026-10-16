@@ -17,14 +17,14 @@ public class RackLocalization : EditorWindow
     [MenuItem("Tools/InstallTexture/Rack/Ru")]
     private static void SetRuLocalized()
     {
-        Localized(Language.Ru);
+        Localized(Language.ru);
     }
 
     //[ContextMenu("Eng")]
     [MenuItem("Tools/InstallTexture/Rack/Eng")]
     private static void SetEngLocalized()
     {
-        Localized(Language.En);
+        Localized(Language.en);
     }
 
 

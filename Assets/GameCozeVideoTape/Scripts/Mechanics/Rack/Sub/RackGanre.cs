@@ -26,7 +26,7 @@ public class RackGanre : MonoBehaviour
     private void Awake()
     {
         _rack = GetComponent<Rack>();
-        SetView();
+        //SetView();
     }
 
     public void SetEditor(out GameObject mainGanre, out List<GameObject> subGanreList,out Rack rack)
@@ -49,8 +49,9 @@ public class RackGanre : MonoBehaviour
     //    }
     //}
 
-    private void SetView()
+    public void ChangeLanguage()
     {
+        _rackPlateControl.ChangeLanguage();
         _rackPlateControl.SetMainGanre(_mainGanre, (int)_rack.Genre);
         _rackPlateControl.SetSubGanre(_subGanreList, _rack.SubGenreShelfs, (int)_rack.Genre);
     }

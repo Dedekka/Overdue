@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class RackPlateControl : IInitializable
+public class RackPlateControl 
 {
     private DataGenre _dataGenre;
     private SettingsLocalization _settingsLocalization;
@@ -19,7 +19,7 @@ public class RackPlateControl : IInitializable
         _controlSettings = controlSettings;
     }
 
-    public void Initialize()
+    public void ChangeLanguage()
     {
         _settingsLocalization.SetLocalizationMaterial(_controlSettings.Language);
     }

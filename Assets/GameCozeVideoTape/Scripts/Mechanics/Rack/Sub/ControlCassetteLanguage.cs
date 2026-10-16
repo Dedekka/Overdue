@@ -33,8 +33,8 @@ public class ControlCassetteLanguage
 
 public enum Language
 {
-    En,
-    Ru,
+    en,
+    ru,
     DE,
     ES,
     JPN,

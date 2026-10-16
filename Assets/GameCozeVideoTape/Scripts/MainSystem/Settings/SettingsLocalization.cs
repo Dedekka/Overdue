@@ -29,14 +29,14 @@ public class SettingsLocalization : ScriptableObject
         //Debug.Log($"MaterialSubGanre:{_materialSubGanre.GetTexture(_colorTexture).name}");
         switch (language)
         {
-            case Language.En:
+            case Language.en:
                 _materialGanre.SetTexture(_colorTexture, _ganreEng);
                 _materialSubGanre.SetTexture(_colorTexture, _subGanreEng);
                 //_materialGanre.mainTexture = _GanreEng;
                 //_materialSubGanre.mainTexture = _subGanreEng;
                 break;
 
-            case Language.Ru:
+            case Language.ru:
 
                 _materialGanre.SetTexture(_colorTexture, _ganreRu);
                 _materialSubGanre.SetTexture(_colorTexture, _subGanreRu);

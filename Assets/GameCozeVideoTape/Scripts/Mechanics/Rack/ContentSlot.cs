@@ -5,6 +5,8 @@ using Zenject;
 
 public class ContentSlot : BazeInteracteble, ISloteble
 {
+    public ItemSettings _itemSettings;
+
     private PlayerInventory _playerInventory;
     private Ease _ease;
     private float _time;
@@ -65,11 +67,11 @@ public class ContentSlot : BazeInteracteble, ISloteble
         tempCassette = cassetteObject;
         bool isSuccessful = cassetteObject == null;
 
-        if (isSuccessful) { return isSuccessful; }
+        if (isSuccessful) { return false; }
 
         cassetteObject.Install(transform, _ease, _time, _stateInstal);
         //Debug.Log($"isSuccessful {isSuccessful}");
-
+        _itemSettings = cassetteObject.ItemSettings;
         return isSuccessful;
     }
 

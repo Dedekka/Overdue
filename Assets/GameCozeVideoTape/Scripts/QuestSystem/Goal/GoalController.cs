@@ -32,6 +32,21 @@ public class GoalController : IInitializable, IDisposable
 
     }
 
+    public void ChangeLanguage()
+    {
+        List<PanelQuestUi> tempPanelQuestUi = _questViewUi.GetPanelQuestUi();
+        int tempIdQuest;
+        string goalText;
+        for (int i = 0; i < tempPanelQuestUi.Count; i++)
+        {
+            if (tempPanelQuestUi[i].IdQuest <= 0) { continue; }
+            tempIdQuest = tempPanelQuestUi[i].IdQuest;
+            goalText = _controlGoalLanguage.GetLanguage(tempIdQuest);
+            tempPanelQuestUi[i].Initialization(tempIdQuest, goalText);
+        }
+    }
+
+
     public void ActiveGoal(TutorialEventType type)
     {
         Goal currentGoal = _goals.Find((x) => x.Settings.TutorialEventType == type);
