@@ -11,7 +11,7 @@ public class CutsceneSystem : IDisposable, IInitializable
     }
 
     public void Initialize()
-    {
+    { 
         _cutSceneController.Initialization();
         _cutSceneController.StartCutscene(1);
     }

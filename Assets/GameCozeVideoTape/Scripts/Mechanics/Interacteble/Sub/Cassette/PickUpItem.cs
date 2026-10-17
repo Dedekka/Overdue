@@ -60,10 +60,10 @@ public class PickUpItem
         _speedBlend2 = _speedBlend;
         while (_isActive)
         {
+            yield return null;
             if (Time.deltaTime <= 0f) continue;
 
-            yield return null;
-            _speedBlend2 *= _coeffBlend;
+            _speedBlend2 += _coeffBlend;
             _body.position = Vector3.Lerp(_body.position, temptransform.position, _speedBlend2 * Time.deltaTime);
             _body.rotation = Quaternion.Lerp(_body.rotation, temptransform.rotation, _speedBlend2 * Time.deltaTime);
             _isActive = CheckEnd(temptransform);
