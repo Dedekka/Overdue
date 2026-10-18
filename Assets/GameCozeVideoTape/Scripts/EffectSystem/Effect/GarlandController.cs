@@ -11,6 +11,7 @@ public class GarlandController : MonoBehaviour
     private GarlandRender _garlandRender;
     private EffectSettings _effectSettings;
     private FinderFreeSlot _finderFreeSlot;
+    private ControlSteamAchievement _controlSteamAchievement;
     private Rack _rack;
     private int _maxLamp;
     private int _freeSlot;
@@ -18,12 +19,13 @@ public class GarlandController : MonoBehaviour
 
 
     [Inject]
-    public void Construct(GarlandRender garlandRender, EffectSettings effectSettings, FinderFreeSlot finderFreeSlot)
+    public void Construct(GarlandRender garlandRender, EffectSettings effectSettings, FinderFreeSlot finderFreeSlot, ControlSteamAchievement controlSteamAchievement)
     {
         _garlandRender = garlandRender;
         _effectSettings = effectSettings;
         _finderFreeSlot = finderFreeSlot;
         _maxLamp = _garlands.Count;
+        _controlSteamAchievement = controlSteamAchievement;
     }
 
     private void Awake()
@@ -52,6 +54,7 @@ public class GarlandController : MonoBehaviour
         {
             _isComplited = true;
             StartEffect().Forget();
+            _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_2);
         }
     }
 

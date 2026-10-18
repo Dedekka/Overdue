@@ -20,7 +20,7 @@ public class MusicControl
         _dataMusicCassets = dataMusicCassets;
         _isPlaying = false;
     }
-
+    
     public void SetMusic(int idMusic)
     {
         _currentMusicCassetteSettings = _dataMusicCassets.GetItem(idMusic);

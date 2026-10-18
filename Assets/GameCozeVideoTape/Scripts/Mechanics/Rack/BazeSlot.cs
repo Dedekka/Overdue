@@ -4,18 +4,21 @@ using Zenject;
 public class BazeSlot : MonoBehaviour, ISloteble
 {
     public bool IsEmpty => _cassetteObject == null;
-   [SerializeField] protected ContentSlot _slot;
+    public bool IsCorrectInstall => _isCorrectInstall;
+    [SerializeField] protected ContentSlot _slot;
     protected SubGenreShelf _subGenreShelf;
     protected PlayerInventory _playerInventory;
     protected CassetteObject _cassetteObject;
     protected ShelfSlotSettings _settings;
     protected int _idSlot;
-    
+    protected bool _isCorrectInstall;
+
     [Inject]
-    public void Construct(ShelfSlotSettings settings,  PlayerInventory playerInventory)
+    public void Construct(ShelfSlotSettings settings, PlayerInventory playerInventory)
     {
         _playerInventory = playerInventory;
         _settings = settings;
+        _isCorrectInstall = false;
     }
 
     public void SetContentSlot(ContentSlot contentSlot)
@@ -42,7 +45,7 @@ public class BazeSlot : MonoBehaviour, ISloteble
         _slot.gameObject.SetActive(IsEmpty);
     }
 
-    public void Initialization(SubGenreShelf subGenreShelf,int idSlot)
+    public void Initialization(SubGenreShelf subGenreShelf, int idSlot)
     {
         _subGenreShelf = subGenreShelf;
         _idSlot = idSlot;
@@ -61,12 +64,14 @@ public class BazeSlot : MonoBehaviour, ISloteble
         if (_subGenreShelf.CheckCorrectSlot(currentCassette))
         {
             _slot.SetSettings(_settings.EaseSuccess, _settings.TimeSuccess, StateInstal.SuccessInstall);
+            _isCorrectInstall = true;
         }
         else
         {
             _slot.SetSettings(_settings.EaseNothing, _settings.TimeNothing, StateInstal.Nothing);
+            _isCorrectInstall = false;
         }
-
+        _subGenreShelf.Install(currentCassette, _isCorrectInstall);
         IItemble tempItem = _playerInventory.Install(this);
 
         if (tempItem is CassetteObject cassette)
@@ -107,6 +112,7 @@ public class BazeSlot : MonoBehaviour, ISloteble
     {
         tempcassette.OnPickUp -= OnPickUp;
         _slot.gameObject.SetActive(true);
+        _isCorrectInstall = false;
         //_slot.ControlVisible(true);
         _cassetteObject = null;
     }

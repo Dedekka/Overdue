@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class GoalPhone : Goal
 {
-    public GoalPhone(TutorialEventSettings settings, List<Condition> conditions) : base(settings, conditions)
+    private ControlSteamAchievement _controlSteamAchievement;
+    public GoalPhone(TutorialEventSettings settings, List<Condition> conditions, ControlSteamAchievement controlSteamAchievement) : base(settings, conditions)
     {
+        _controlSteamAchievement = controlSteamAchievement;
     }
     
     public override void Initialization(GoalController goalController)
@@ -20,6 +22,8 @@ public class GoalPhone : Goal
     {
         base.OnComplitedCondition(condition);
         Debug.Log($"{this.GetType()}, CheckComplited:{CheckComplited()}");
+
+        _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_24);
         _goalController.ClearGoal(Settings.TutorialEventType);
     }
 }

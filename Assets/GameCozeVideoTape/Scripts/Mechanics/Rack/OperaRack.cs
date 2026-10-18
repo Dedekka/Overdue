@@ -18,8 +18,8 @@ public class OperaRack : Rack
             OperaSettings operaSettings = _operaRack.GetOperaEpisode();
             installState = operaSettings.Id_Slot == slotndex;
         }
-        OnChangeState(installState);
-        SubPickUp(itemSettings);
+        //OnChangeState(installState);
+        //SubPickUp(itemSettings, installState);
         return installState;
     }
 }

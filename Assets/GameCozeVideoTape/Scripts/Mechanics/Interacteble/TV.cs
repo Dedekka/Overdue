@@ -13,7 +13,6 @@ public class TV : MonoBehaviour, ISloteble
     private CassetteObject _cassetteObject;
     private PlayerInventory _playerInventory;
     public bool IsEmpty => _cassetteObject == null;
-
     public event Action<bool> OnStateInstallTv;
 
     [Inject]

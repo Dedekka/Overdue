@@ -46,6 +46,7 @@ Transform:
   - {fileID: 1584822827894214622}
   - {fileID: 3012724010471747166}
   - {fileID: 5103741258505591911}
+  - {fileID: 3763841556495756474}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -78,6 +79,7 @@ MonoBehaviour:
   - {fileID: 8985462976778569440}
   - {fileID: 3442840369263143106}
   - {fileID: 8140232536375893700}
+  - {fileID: 941549702470637395}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -406,6 +408,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e548870aebc37c34b8a1c0a40f352794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PresentInstaller
+--- !u!1 &5228131549862591971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3763841556495756474}
+  - component: {fileID: 941549702470637395}
+  m_Layer: 0
+  m_Name: AchievementInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3763841556495756474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228131549862591971}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &941549702470637395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228131549862591971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f710f59417d36e24290807e5092616ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementInstaller
 --- !u!1 &5286014337423541928
 GameObject:
   m_ObjectHideFlags: 0

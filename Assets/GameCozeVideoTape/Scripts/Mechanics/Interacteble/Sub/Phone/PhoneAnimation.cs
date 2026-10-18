@@ -1,8 +1,9 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using Zenject;
 
-public class PhoneAnimation : IInitializable
+public class PhoneAnimation : IInitializable, IDisposable
 {
     private float _timePhoneBody;
     private Transform _phoneBody;
@@ -30,12 +31,18 @@ public class PhoneAnimation : IInitializable
         _startRotationPhoneHand = _phoneHand.rotation;
     }
 
+    public void Dispose()
+    {
+        _ringAnimation?.Kill();
+    }
+
     public void ActivationRingAnimation()
     {
         Quaternion quat = Quaternion.AngleAxis(5, Vector3.right);
         _ringAnimation = _phoneBody.DORotate(quat.eulerAngles, _timePhoneBody, RotateMode.LocalAxisAdd)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutQuad)
+            .SetLink(_phoneBody.gameObject)
             .Play();
         //_body.do
     }
@@ -50,10 +57,12 @@ public class PhoneAnimation : IInitializable
     {
         _phoneHand.DOMove(_slot_Phone.position, 1f)
             .SetEase(Ease.InOutSine)
+            .SetLink(_phoneHand.gameObject)
             .Play();
 
         _phoneHand.DORotate(_slot_Phone.rotation.eulerAngles,1f,RotateMode.FastBeyond360)
             .SetEase(Ease.InOutSine)
+            .SetLink(_phoneHand.gameObject)
             .Play();
     }
     
@@ -61,12 +70,14 @@ public class PhoneAnimation : IInitializable
     {
         _phoneHand.DOMove(_startPosPhoneHand, 1f)
             .SetEase(Ease.InOutSine)
+            .SetLink(_phoneHand.gameObject)
             .Play();
 
         _phoneHand.DORotate(_startRotationPhoneHand.eulerAngles, 1f, RotateMode.FastBeyond360)
           .SetEase(Ease.InOutSine)
+          .SetLink(_phoneHand.gameObject)
           .Play();
     }
 
-  
+   
 }

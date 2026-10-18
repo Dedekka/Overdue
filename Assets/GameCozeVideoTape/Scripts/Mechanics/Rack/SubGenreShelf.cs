@@ -24,6 +24,11 @@ public class SubGenreShelf : MonoBehaviour
         return _rack.CheckCorrectSlot(_subGenreindex, cassetteObject);
     }
 
+    public virtual void Install(CassetteObject cassetteObject, bool installState)
+    {
+        _rack.Install(cassetteObject, installState);
+    }
+
     private void Initialization()
     {
         int idSlot = 1;
