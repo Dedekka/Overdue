@@ -1,13 +1,13 @@
 using DG.Tweening;
 using UnityEngine;
-using Zenject;
 
 public class AudioRecorderAnimation //: IInitializable
 {
 
+    private ParticleSystem _musicPlayngParticle;
     private Transform _buttonPlay;
     private Transform _coverPlate;
-    Sequence _changeStateCoverPlate;
+    private Sequence _changeStateCoverPlate;
 
     private float _timeCoverPlate;
     private float _timeButtonPlay;
@@ -20,10 +20,11 @@ public class AudioRecorderAnimation //: IInitializable
     Vector3 StatePause;
     Vector3 StatePlay;
 
-    public AudioRecorderAnimation(Transform buttonPlay, Transform coverPlate, SettingsLookItem settingsLookItem)
+    public AudioRecorderAnimation(Transform buttonPlay, Transform coverPlate, ParticleSystem musicPlayngParticle, SettingsLookItem settingsLookItem)
     {
         _buttonPlay = buttonPlay;
         _coverPlate = coverPlate;
+        _musicPlayngParticle = musicPlayngParticle;
 
         _timeCoverPlate = settingsLookItem.TimeCoverPlate;
         _timeButtonPlay = settingsLookItem.TimeButtonPlay;
@@ -45,6 +46,7 @@ public class AudioRecorderAnimation //: IInitializable
     {
         tempState = isButtonPlayState ? StatePlay : StatePause;
         _buttonPlay.DOLocalMoveY(tempState.y, _timeButtonPlay).Play();
+        MusicPlayng(isButtonPlayState);
     }
 
     private void ChangeStateCoverPlate()
@@ -55,5 +57,17 @@ public class AudioRecorderAnimation //: IInitializable
         _changeStateCoverPlate.Append(_coverPlate.DOLocalRotate(CoverPlateOpen, _timeCoverPlate));
         _changeStateCoverPlate.Append(_coverPlate.DOLocalRotate(CoverPlateCloset, _timeCoverPlate).SetDelay(_delayOpen));
         _changeStateCoverPlate.Play();
+    }
+
+    private void MusicPlayng(bool isActive)
+    {
+        if (isActive)
+        {
+            _musicPlayngParticle.Play();
+        }
+        else
+        {
+            _musicPlayngParticle.Stop();
+        }
     }
 }

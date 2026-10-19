@@ -1,13 +1,20 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class DecorPresentSystem : MonoBehaviour
 {
     [SerializeField] private List<DataDecorSlot> _listDataDecorSlot;
     private DataDecorSlot _currentDataDecorSlot;
-
+    private DecorEffect _decorEffect;
     public event Action<int> OnInstall;
+
+    [Inject]
+    public void Construct(DecorEffect decorEffect)
+    {
+        _decorEffect = decorEffect;
+    }
 
     private void Start()
     {
@@ -79,9 +86,11 @@ public class DecorPresentSystem : MonoBehaviour
         return isBlocked;
     }
 
-    private void OnInstallDecor(int idItem)
+    private void OnInstallDecor(DecorPresent DecorPresent)
     {
-        OnInstall?.Invoke(idItem);
+        _decorEffect.SetPosition(DecorPresent.transform);
+        _decorEffect.ActiveEffect();
+        OnInstall?.Invoke(DecorPresent.IdItem);
     }
 
 }

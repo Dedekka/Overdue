@@ -5,11 +5,11 @@ using Zenject;
 public class DecorPresent : MonoBehaviour
 {
     [SerializeField] private DecorSlot _decorSlot;
-    private int _idItem;
+    public int IdItem {  get; private set; }
 
     private DecorChecker _decorChecker;
 
-    public event Action<int> OnInstall;
+    public event Action<DecorPresent> OnInstall;
 
     [Inject]
     private void Construct(DecorChecker decorChecker)
@@ -19,7 +19,7 @@ public class DecorPresent : MonoBehaviour
 
     public void Initialization(int idItem)
     {
-        _idItem = idItem;
+        IdItem = idItem;
         _decorSlot.OnInteract += OnInteract;
     }
 
@@ -30,7 +30,7 @@ public class DecorPresent : MonoBehaviour
 
     public void OnControlVisible(bool isVisible)
     {
-        if (_decorChecker.CheckEmptyHand(isVisible, _idItem))
+        if (_decorChecker.CheckEmptyHand(isVisible, IdItem))
         {
             _decorSlot.ControlVisible(true);
         }
@@ -42,13 +42,13 @@ public class DecorPresent : MonoBehaviour
 
     private void OnInteract()
     {
-        Debug.Log($"DecorPresent:{gameObject.name}, idItem:{_idItem}, OnInteract");
-        if (_decorChecker.CheckEmptyHand(true, _idItem))
+        Debug.Log($"DecorPresent:{gameObject.name}, idItem:{IdItem}, OnInteract");
+        if (_decorChecker.CheckEmptyHand(true, IdItem))
         {
             Debug.Log($"DecorPresent:{gameObject.name}, _decorChecker.CheckEmptyHand true");
             _decorSlot.ActiveSlot();
             _decorChecker.DestroyPresent();
-            OnInstall?.Invoke(_idItem);
+            OnInstall?.Invoke(this);
         }
     }
 

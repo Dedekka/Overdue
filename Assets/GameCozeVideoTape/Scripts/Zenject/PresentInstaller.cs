@@ -16,7 +16,6 @@ public class PresentInstaller : MonoInstaller
         //  .AsSingle()
         //  .WithArguments(_soundDoorPoint);
 
-        Container.Bind<PresentEffect>()
-          .AsSingle();
+      
     }
 }

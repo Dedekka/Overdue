@@ -35,8 +35,7 @@ public class PhoneInstaller : MonoInstaller
 
     private void BindPhoneEffect()
     {
-        Container.Bind<PhoneEffect>()
-           .AsSingle();
+      
 
         Container.BindInterfacesAndSelfTo<PhoneAnimation>()
            .AsSingle()

@@ -33,6 +33,7 @@ public class ControlPresentEvent : IDisposable, IInitializable
 
     public void ActiveEvent()
     {
+        _presentEffect.SetCallData(_presentEvent);
         _dialogEventManager.SetCallData(_presentEvent);
         _dialogEventManager.ActiveEvent();
         _presentEffect.ActivationPresentEffect();

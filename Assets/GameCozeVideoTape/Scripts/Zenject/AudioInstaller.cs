@@ -60,9 +60,7 @@ public class AudioInstaller : MonoInstaller
          .AsSingle()
          .WithArguments(_materialAudioItem);
 
-        Container.BindInterfacesAndSelfTo<AudioRecorderAnimation>()
-         .AsSingle()
-         .WithArguments(_buttonPlay, _coverPlate);
+      
 
         Container.Bind<ControlMusicLanguage>()
          .AsSingle();

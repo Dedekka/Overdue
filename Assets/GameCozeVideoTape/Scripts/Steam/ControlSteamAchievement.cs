@@ -10,6 +10,7 @@ public class ControlSteamAchievement
 
     public void SetAchievement(string name)
     {
+        if (!RequestStats()) { return; }
         _isSetAchievement = Steamworks.SteamUserStats.SetAchievement(name);
         Debug.Log($"Achievement:{name}, SetAchievement:{_isSetAchievement}");
         StoreState();
@@ -22,10 +23,11 @@ public class ControlSteamAchievement
     //    //SetAchievement(DataAchievement.ACHIEVEMENT_1);
     //}
 
-    private void RequestStats()
+    private bool RequestStats()
     {
         _isActiveSteam = SteamManager.Initialized;
         Debug.Log($"IsActiveSteam:{_isActiveSteam}");
+        return _isActiveSteam;
     }
 
     public void ClearAchievement(string name)
