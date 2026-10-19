@@ -28,7 +28,11 @@ public class FactoryFeedback
         Question_20 question_20,
         Question_21 question_21,
         Question_22 question_22,
-        Question_23 question_23
+        Question_23 question_23,
+        Question_24 question_24,
+        Question_25 question_25,
+        Question_26 question_26,
+        Question_27 question_27
         )
     {
         _controlFeedback = new List<ControlFeedback>()
@@ -55,9 +59,12 @@ public class FactoryFeedback
             question_20,
             question_21,
             question_22,
-            question_23
+            question_23,
+            question_24,
+            question_25,
+            question_26,
+            question_27,
         };
-
     }
 
     public void PrePost()
@@ -74,5 +81,4 @@ public class FactoryFeedback
         string temp_Text = tempSendSring == null ? "" : tempSendSring.Question_Text;
         return temp_Text;
     }
-
 }

@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class Question_13 : ControlFeedback
 {
-    private PageMultyChoose _dataQuestion_1;
-    private TMP_InputField Question_12_InputField_1;
+    private PageOneChoose _dataQuestion_1;
 
-    public Question_13(int id, PageMultyChoose dataQuestion_1, TMP_InputField Question_12_InputField_1, List<SendSring> sendSrings) : base(id, sendSrings)
+    public Question_13(int id, PageOneChoose dataQuestion_1, List<SendSring> sendSrings) : base(id, sendSrings)
     {
         _dataQuestion_1 = dataQuestion_1;
-        this.Question_12_InputField_1 = Question_12_InputField_1;
     }
 
     protected override void Initialization()
     {
+
+        _dataQuestion_1.ToggleBooles[0].Button.onClick.AddListener(() => AllDisable(_dataQuestion_1.ToggleBooles[0].IdToggle));
+        _dataQuestion_1.ToggleBooles[1].Button.onClick.AddListener(() => AllDisable(_dataQuestion_1.ToggleBooles[1].IdToggle));
+        _dataQuestion_1.ToggleBooles[2].Button.onClick.AddListener(() => AllDisable(_dataQuestion_1.ToggleBooles[2].IdToggle));
+        _dataQuestion_1.ToggleBooles[3].Button.onClick.AddListener(() => AllDisable(_dataQuestion_1.ToggleBooles[3].IdToggle));
+        _dataQuestion_1.ToggleBooles[4].Button.onClick.AddListener(() => AllDisable(_dataQuestion_1.ToggleBooles[4].IdToggle));
         _dataQuestion_1.OnSelectQuestion += OnSelectQuestion;
-        Question_12_InputField_1.onValueChanged.AddListener((x) => OnSelectQuestion());
+    }
+
+    protected override void Disposeble()
+    {
+        for (int i = 0; i < _dataQuestion_1.ToggleBooles.Count; i++)
+        {
+            _dataQuestion_1.ToggleBooles[i].Button.onClick.RemoveAllListeners();
+        }
     }
 
     private void SetText()
@@ -30,8 +41,6 @@ public class Question_13 : ControlFeedback
             Question_Text += " , ";
             countText++;
         }
-        Question_Text += " , ";
-        Question_Text += Question_12_InputField_1.text;
     }
 
     public override void PreSend() { SetText(); }
@@ -39,13 +48,12 @@ public class Question_13 : ControlFeedback
     private void OnSelectQuestion()
     {
         bool isComplitedQuestion = CheckComplitedQuestion(_dataQuestion_1);
-        bool isComplitedInputField = Question_12_InputField_1.text != "";
-
-        Debug.Log($"Send_InputField: {Question_12_InputField_1.text}");
-
-        isComplitedQuestion = isComplitedQuestion || isComplitedInputField;
 
         OnComplitedQuestion?.Invoke(ID, isComplitedQuestion);
     }
 
+    private void AllDisable(int id)
+    {
+        _dataQuestion_1.ChooseToggle(id);
+    }
 }

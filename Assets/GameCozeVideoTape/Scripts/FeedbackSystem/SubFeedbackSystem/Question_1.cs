@@ -8,7 +8,7 @@ public class Question_1 : ControlFeedback
     {
         _dataQuestion_1 = dataQuestion_1;
     }
-
+    
     protected override void Initialization()
     {
         _dataQuestion_1.OnSelectQuestion += OnSelectQuestion;

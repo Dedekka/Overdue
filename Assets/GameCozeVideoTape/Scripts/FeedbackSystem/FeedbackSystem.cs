@@ -52,7 +52,11 @@ public class FeedbackSystem : IInitializable, IDisposable
         _main_ButtonSEND._pageButtons[20].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[20].LastPage, _main_ButtonSEND._pageButtons[21].LastPage));
         _main_ButtonSEND._pageButtons[21].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[21].LastPage, _main_ButtonSEND._pageButtons[22].LastPage));
         _main_ButtonSEND._pageButtons[22].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[22].LastPage, _main_ButtonSEND._pageButtons[23].LastPage));
-        _main_ButtonSEND._pageButtons[23].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[23].LastPage, _main_ButtonSEND._pageButtons[0].LastPage));
+        _main_ButtonSEND._pageButtons[23].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[23].LastPage, _main_ButtonSEND._pageButtons[24].LastPage));
+        _main_ButtonSEND._pageButtons[24].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[24].LastPage, _main_ButtonSEND._pageButtons[25].LastPage));
+        _main_ButtonSEND._pageButtons[25].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[25].LastPage, _main_ButtonSEND._pageButtons[26].LastPage));
+        _main_ButtonSEND._pageButtons[26].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[26].LastPage, _main_ButtonSEND._pageButtons[27].LastPage));
+        _main_ButtonSEND._pageButtons[27].NextPage.onClick.AddListener(() => ControlPage(_main_ButtonSEND._pageButtons[27].LastPage, _main_ButtonSEND._pageButtons[0].LastPage));
 
     }
 
@@ -115,6 +119,10 @@ public class FeedbackSystem : IInitializable, IDisposable
             form.AddField(FeedbackConstURL.Question_21_Entry, _factoryFeedback.GetFeedback(21));
             form.AddField(FeedbackConstURL.Question_22_Entry, _factoryFeedback.GetFeedback(22));
             form.AddField(FeedbackConstURL.Question_23_Entry, _factoryFeedback.GetFeedback(23));
+            form.AddField(FeedbackConstURL.Question_24_Entry, _factoryFeedback.GetFeedback(24));
+            form.AddField(FeedbackConstURL.Question_25_Entry, _factoryFeedback.GetFeedback(25));
+            form.AddField(FeedbackConstURL.Question_26_Entry, _factoryFeedback.GetFeedback(26));
+            form.AddField(FeedbackConstURL.Question_27_Entry, _factoryFeedback.GetFeedback(27));
 
             using (UnityWebRequest www = UnityWebRequest.Post(FeedbackConstURL.Question_URL, form))
             {

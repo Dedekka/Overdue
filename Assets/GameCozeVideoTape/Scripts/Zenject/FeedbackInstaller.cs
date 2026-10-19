@@ -28,7 +28,8 @@ public class FeedbackInstaller : MonoInstaller
     [SerializeField] private PageOneChoose Page_4;
 
     [Header("Question_5")]  // 1 вариант
-    [SerializeField] private PageOneChoose Page_5;
+    [SerializeField] private TMP_InputField Question_5_InputField_1;
+    //[SerializeField] private PageOneChoose Page_5;
 
     [Header("Question_6")]  // 1 вариант
     [SerializeField] private PageOneChoose Page_6;
@@ -47,46 +48,65 @@ public class FeedbackInstaller : MonoInstaller
 
     [Header("Question_11")]  // 1 вариант
     [SerializeField] private PageOneChoose Page_11;
+    [SerializeField] private TMP_InputField Question_11_InputField_1;
 
     [Header("Question_12")]  // 1 вариант
-    [SerializeField] private PageMultyChoose Page_12;
+    [SerializeField] private PageOneChoose Page_12;
     [SerializeField] private TMP_InputField Question_12_InputField_1;
 
     [Header("Question_13")]  // 1 вариант
-    [SerializeField] private PageMultyChoose Page_13;
-    [SerializeField] private TMP_InputField Question_13_InputField_1;
+    [SerializeField] private PageOneChoose Page_13;
+    //[SerializeField] private TMP_InputField Question_13_InputField_1;
 
     [Header("Question_14")]  // 1 вариант
     [SerializeField] private PageOneChoose Page_14;
 
     [Header("Question_15")]  // 1 вариант
-    [SerializeField] private PageOneChoose Page_15;
+    [SerializeField] private PageMultyChoose Page_15;
+    [SerializeField] private TMP_InputField Question_15_InputField_1;
 
     [Header("Question_16")]  // 1 вариант
+    [SerializeField] private PageMultyChoose Page_16;
     [SerializeField] private TMP_InputField Question_16_InputField_1;
 
     [Header("Question_17")]  // 1 вариант
-    [SerializeField] private TMP_InputField Question_17_InputField_1;
+    [SerializeField] private PageOneChoose Page_17;
 
     [Header("Question_18")]  // 1 вариант
     [SerializeField] private PageOneChoose Page_18;
 
     [Header("Question_19")]  // 1 вариант
-    [SerializeField] private PageOneChoose Page_19;
+                             //[SerializeField] private PageOneChoose Page_19;
+    [SerializeField] private TMP_InputField Question_19_InputField_1;
 
     [Header("Question_20")]  // 1 вариант
-    [SerializeField] private PageOneChoose Page_20;
+    [SerializeField] private TMP_InputField Question_20_InputField_1;
+    //[SerializeField] private PageOneChoose Page_20;
 
     [Header("Question_21")]  // 1 вариант
     [SerializeField] private PageOneChoose Page_21;
 
     [Header("Question_22")]  // 1 вариант
-    //[SerializeField] private PageOneChoose Page_22;
-    [SerializeField] private TMP_InputField Question_22_InputField_1;
+    [SerializeField] private PageOneChoose Page_22;
+    //[SerializeField] private TMP_InputField Question_22_InputField_1;
 
     [Header("Question_23")]  // 1 вариант
-    [SerializeField] private PageMultyChoose Page_23;
+    [SerializeField] private PageOneChoose Page_23;
+    //[SerializeField] private PageMultyChoose Page_23;
     [SerializeField] private TMP_InputField Question_23_InputField_1;
+
+    [Header("Question_24")]  // 1 вариант
+    [SerializeField] private PageOneChoose Page_24;
+
+    [Header("Question_25")]  // 1 вариант
+    [SerializeField] private PageOneChoose Page_25;
+
+    [Header("Question_26")]  // 1 вариант
+    [SerializeField] private TMP_InputField Question_26_InputField_1;
+
+    [Header("Question_27")]  // 1 вариант
+    [SerializeField] private PageMultyChoose Page_27;
+    [SerializeField] private TMP_InputField Question_27_InputField_1;
 
     public override void InstallBindings()
     {
@@ -97,7 +117,7 @@ public class FeedbackInstaller : MonoInstaller
 
     private void BindSub()
     {
-       
+
     }
 
     private void BindMain()
@@ -141,11 +161,11 @@ public class FeedbackInstaller : MonoInstaller
                 .AsSingle()
                 .WithArguments(2, Page_2, new List<SendSring>()
                  {
-             new SendSring(1,"Почти всегда понимал(а) сразу"),
-             new SendSring(2,"Обычно понимал(а) после изучения обложки"),
+             new SendSring(1,"Почти никогда не понимал(а), куда её ставить"),
+             new SendSring(2,"Часто приходилось угадывать"),
              new SendSring(3,"Иногда приходилось долго разбираться"),
-             new SendSring(4,"Часто приходилось угадывать"),
-             new SendSring(5,"Почти никогда не понимал(а), куда её ставить"),
+             new SendSring(4,"Обычно понимал(а) после изучения обложки"),
+             new SendSring(5,"Почти всегда понимал(а) сразу"),
                  });
 
         Container.BindInterfacesAndSelfTo<Question_3>()
@@ -165,6 +185,21 @@ public class FeedbackInstaller : MonoInstaller
            .AsSingle()
            .WithArguments(4, Page_4, new List<SendSring>()
              {
+             new SendSring(1,"Совсем непонятными"),
+             new SendSring(2,"Некоторые понятны, некоторые нет"),
+             new SendSring(3,"Скорее понятными"),
+             new SendSring(4,"Полностью понятными"),
+             new SendSring(5,"Не заметил(а) стикеры"),
+             });
+
+        Container.BindInterfacesAndSelfTo<Question_5>()
+           .AsSingle()
+           .WithArguments(5, Question_5_InputField_1);
+
+        Container.BindInterfacesAndSelfTo<Question_6>()
+           .AsSingle()
+           .WithArguments(6, Page_6, new List<SendSring>()
+             {
              new SendSring(1,"Хочу, чтобы было заметно проще"),
              new SendSring(2,"Можно сделать немного проще"),
              new SendSring(3,"Сейчас в самый раз"),
@@ -172,10 +207,9 @@ public class FeedbackInstaller : MonoInstaller
              new SendSring(5,"Хочу больше неоднозначных кассет и загадок"),
              });
 
-
-        Container.BindInterfacesAndSelfTo<Question_5>()
+        Container.BindInterfacesAndSelfTo<Question_7>()
            .AsSingle()
-           .WithArguments(5, Page_5, new List<SendSring>()
+           .WithArguments(7, Page_7, new List<SendSring>()
              {
              new SendSring(1,"Совсем не понравилось"),
              new SendSring(2,"Скорее не понравилось"),
@@ -185,75 +219,84 @@ public class FeedbackInstaller : MonoInstaller
              });
 
 
-        Container.BindInterfacesAndSelfTo<Question_6>()
-           .AsSingle()
-           .WithArguments(6, Page_6, new List<SendSring>()
-             {
-             new SendSring(1,"Да, очень"),
-             new SendSring(2,"Скорее да"),
-             new SendSring(3,"Не уверен(а)"),
-             new SendSring(4,"Скорее нет"),
-             new SendSring(5,"Нет"),
-             });
-
-        Container.BindInterfacesAndSelfTo<Question_7>()
-           .AsSingle()
-           .WithArguments(7, Page_7, new List<SendSring>()
-             {
-             new SendSring(1,"Да"),
-             new SendSring(2,"Нет"),
-             new SendSring(3,"Не заметил(а), что так можно"),
-             new SendSring(4,"Понял(а), что так можно, но не было необходимости"),
-             });
-
-
         Container.BindInterfacesAndSelfTo<Question_8>()
            .AsSingle()
            .WithArguments(8, Page_8, new List<SendSring>()
              {
-             new SendSring(1,"Да, хотелось смотреть даже без необходимости"),
-             new SendSring(2,"Да, как игровая механика это работает"),
-             new SendSring(3,"Нейтрально"),
-             new SendSring(4,"Скорее отвлекало от сортировки"),
-             new SendSring(5,"Вообще не хотелось этим пользоваться"),
+             new SendSring(1,"Нет"),
+             new SendSring(2,"Скорее нет"),
+             new SendSring(3,"Не уверен(а)"),
+             new SendSring(4,"Скорее да"),
+             new SendSring(5,"Да, очень"),
              });
 
         Container.BindInterfacesAndSelfTo<Question_9>()
            .AsSingle()
            .WithArguments(9, Page_9, new List<SendSring>()
              {
-             new SendSring(1,"Всё было понятно"),
-             new SendSring(2,"Понял(а) не сразу, но потом разобрался(ась)"),
-             new SendSring(3,"Было непонятно, где искать кассету"),
-             new SendSring(4,"Было непонятно, что делать с подарком"),
-             new SendSring(5,"В целом не понял(а), зачем нужны звонки"),
+             new SendSring(1,"Нет, хотя знал(а) об этой возможности и нуждался(ась) в подсказке"),
+             new SendSring(2,"Нет, не заметил(а), что так можно"),
+             new SendSring(3,"Нет, не было необходимости"),
+             new SendSring(4,"Да")
              });
 
         Container.BindInterfacesAndSelfTo<Question_10>()
            .AsSingle()
            .WithArguments(10, Page_10, new List<SendSring>()
              {
-             new SendSring(1,"Совсем не интересны — хотелось быстрее вернуться к сортировке"),
-             new SendSring(2,"Скорее не интересны"),
-             new SendSring(3,"Нормально"),
-             new SendSring(4,"Интересны"),
-             new SendSring(5,"Очень интересны — хотелось бы больше таких историй"),
+             new SendSring(1,"Совсем не понравилось"),
+             new SendSring(2,"Нейтрально"),
+             new SendSring(3,"Скорее понравилось"),
+             new SendSring(4,"Очень понравилось"),
+             new SendSring(5,"Не смотрел(а) фрагменты фильмов"),
              });
 
         Container.BindInterfacesAndSelfTo<Question_11>()
            .AsSingle()
-           .WithArguments(11, Page_11, new List<SendSring>()
+           .WithArguments(11, Page_11, Question_11_InputField_1, new List<SendSring>()
              {
-             new SendSring(1,"Чаще"),
-             new SendSring(2,"Немного чаще"),
-             new SendSring(3,"Сейчас в самый раз"),
-             new SendSring(4,"Немного реже"),
-             new SendSring(5,"Значительно реже"),
+             new SendSring(1,"Оставить короткие видеоэпизоды — использование ИИ меня не беспокоит"),
+             new SendSring(2,"Оставить видеоэпизоды, если они выглядят достаточно качественно"),
+             new SendSring(3,"Лучше убрать видео и оставить только название / номер эпизода"),
+             new SendSring(4,"Мне всё равно"),
              });
 
         Container.BindInterfacesAndSelfTo<Question_12>()
            .AsSingle()
            .WithArguments(12, Page_12, Question_12_InputField_1, new List<SendSring>()
+             {
+             new SendSring(1,"Совсем непонятно"),
+             new SendSring(2,"Скорее непонятно"),
+             new SendSring(3,"Что-то было понятно, что-то — нет"),
+             new SendSring(4,"Скорее понятно"),
+             new SendSring(5,"Полностью понятно")
+             });
+
+        Container.BindInterfacesAndSelfTo<Question_13>()
+           .AsSingle()
+           .WithArguments(13, Page_13, new List<SendSring>()
+             {
+             new SendSring(1,"Совсем не интересны — хотелось быстрее вернуться к сортировке"),
+             new SendSring(2,"Скорее не интересны"),
+             new SendSring(3,"Нормально"),
+             new SendSring(4,"Интересны"),
+             new SendSring(5,"Очень интересны — хотелось бы больше таких историй")
+             });
+
+        Container.BindInterfacesAndSelfTo<Question_14>()
+           .AsSingle()
+           .WithArguments(14, Page_14, new List<SendSring>()
+             {
+             new SendSring(1,"Значительно реже"),
+             new SendSring(2,"Немного реже"),
+             new SendSring(3,"Сейчас в самый раз"),
+             new SendSring(4,"Немного чаще"),
+             new SendSring(5,"Значительно чаще"),
+             });
+
+        Container.BindInterfacesAndSelfTo<Question_15>()
+           .AsSingle()
+           .WithArguments(15, Page_15, Question_15_InputField_1, new List<SendSring>()
              {
              new SendSring(1,"Больше подарков и украшения магазина"),
              new SendSring(2,"Больше кассет, которые можно посмотреть на VCR"),
@@ -265,9 +308,9 @@ public class FeedbackInstaller : MonoInstaller
              new SendSring(8,"Ничего из этого — мне достаточно самой сортировки"),
              });
 
-        Container.BindInterfacesAndSelfTo<Question_13>()
+        Container.BindInterfacesAndSelfTo<Question_16>()
            .AsSingle()
-           .WithArguments(13, Page_13, Question_13_InputField_1, new List<SendSring>()
+           .WithArguments(16, Page_16, Question_16_InputField_1, new List<SendSring>()
              {
              new SendSring(1,"Уютная"),
              new SendSring(2,"Ностальгическая"),
@@ -279,20 +322,20 @@ public class FeedbackInstaller : MonoInstaller
              new SendSring(8,"Не почувствовал(а) особой атмосферы"),
              });
 
-        Container.BindInterfacesAndSelfTo<Question_14>()
+        Container.BindInterfacesAndSelfTo<Question_17>()
            .AsSingle()
-           .WithArguments(14, Page_14, new List<SendSring>()
+           .WithArguments(17, Page_17, new List<SendSring>()
              {
-             new SendSring(1,"Очень понравился"),
-             new SendSring(2,"Скорее понравился"),
+             new SendSring(1,"Совсем не понравился"),
+             new SendSring(2,"Скорее не понравился"),
              new SendSring(3,"Нейтрально"),
-             new SendSring(4,"Скорее не понравился"),
-             new SendSring(5,"Совсем не понравился"),
+             new SendSring(4,"Скорее понравился"),
+             new SendSring(5,"Очень понравился")
              });
 
-        Container.BindInterfacesAndSelfTo<Question_15>()
+        Container.BindInterfacesAndSelfTo<Question_18>()
            .AsSingle()
-           .WithArguments(15, Page_15, new List<SendSring>()
+           .WithArguments(18, Page_18, new List<SendSring>()
              {
              new SendSring(1,"Слишком медленным"),
              new SendSring(2,"Скорее медленным"),
@@ -301,17 +344,17 @@ public class FeedbackInstaller : MonoInstaller
              new SendSring(5,"Слишком быстрым"),
              });
 
-        Container.BindInterfacesAndSelfTo<Question_16>()
+        Container.BindInterfacesAndSelfTo<Question_19>()
            .AsSingle()
-           .WithArguments(16, Question_16_InputField_1);
+           .WithArguments(19, Question_19_InputField_1);
 
-        Container.BindInterfacesAndSelfTo<Question_17>()
+        Container.BindInterfacesAndSelfTo<Question_20>()
            .AsSingle()
-           .WithArguments(17, Question_17_InputField_1);
+           .WithArguments(20, Question_20_InputField_1);
 
-        Container.BindInterfacesAndSelfTo<Question_18>()
+        Container.BindInterfacesAndSelfTo<Question_21>()
            .AsSingle()
-           .WithArguments(18, Page_18, new List<SendSring>()
+           .WithArguments(21, Page_21, new List<SendSring>()
              {
              new SendSring(1,"Точно не порекомендую"),
              new SendSring(2,"Скорее не порекомендую"),
@@ -320,45 +363,54 @@ public class FeedbackInstaller : MonoInstaller
              new SendSring(5,"Точно порекомендую"),
              });
 
-        Container.BindInterfacesAndSelfTo<Question_19>()
+        Container.BindInterfacesAndSelfTo<Question_22>()
            .AsSingle()
-           .WithArguments(19, Page_19, new List<SendSring>()
+           .WithArguments(22, Page_22, new List<SendSring>()
              {
-             new SendSring(1,"Да, точно"),
-             new SendSring(2,"Скорее да"),
+             new SendSring(1,"Нет"),
+             new SendSring(2,"Скорее нет"),
              new SendSring(3,"Пока не уверен(а)"),
-             new SendSring(4,"Скорее нет"),
-             new SendSring(5,"Нет"),
+             new SendSring(4,"Скорее да"),
+             new SendSring(5,"Да, точно"),
              });
 
-        Container.BindInterfacesAndSelfTo<Question_20>()
+        Container.BindInterfacesAndSelfTo<Question_23>()
            .AsSingle()
-           .WithArguments(20, Page_20, new List<SendSring>()
+           .WithArguments(23, Page_23, Question_23_InputField_1, new List<SendSring>()
+             {
+             new SendSring(1,"Женский"),
+             new SendSring(2,"Мужской"),
+             new SendSring(3,"Предпочитаю не отвечать")
+             });
+
+        Container.BindInterfacesAndSelfTo<Question_24>()
+           .AsSingle()
+           .WithArguments(24, Page_24, new List<SendSring>()
              {
              new SendSring(1,"До 18"),
              new SendSring(2,"18–24"),
              new SendSring(3,"25–34"),
              new SendSring(4,"35–44"),
-             new SendSring(5,"45"),
+             new SendSring(5,"45")
              });
 
-        Container.BindInterfacesAndSelfTo<Question_21>()
+        Container.BindInterfacesAndSelfTo<Question_25>()
            .AsSingle()
-           .WithArguments(21, Page_21, new List<SendSring>()
+           .WithArguments(25, Page_25, new List<SendSring>()
              {
-             new SendSring(1,"Очень часто"),
-             new SendSring(2,"Иногда"),
-             new SendSring(3,"Редко"),
-             new SendSring(4,"Практически никогда"),
+             new SendSring(1,"Практически никогда"),
+             new SendSring(2,"Редко"),
+             new SendSring(3,"Иногда"),
+             new SendSring(4,"Очень часто")
              });
 
-        Container.BindInterfacesAndSelfTo<Question_22>()
+        Container.BindInterfacesAndSelfTo<Question_26>()
            .AsSingle()
-           .WithArguments(22, Question_22_InputField_1);
+           .WithArguments(26, Question_26_InputField_1);
 
-        Container.BindInterfacesAndSelfTo<Question_23>()
+        Container.BindInterfacesAndSelfTo<Question_27>()
            .AsSingle()
-           .WithArguments(23, Page_23, Question_23_InputField_1, new List<SendSring>()
+           .WithArguments(27, Page_27, Question_27_InputField_1, new List<SendSring>()
              {
              new SendSring(1,"Steam"),
              new SendSring(2,"TikTok"),

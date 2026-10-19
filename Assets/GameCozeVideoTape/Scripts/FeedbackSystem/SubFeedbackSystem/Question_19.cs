@@ -1,60 +1,35 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Question_19 : ControlFeedback
 {
-    private PageOneChoose _pageOneChoose;
+    private TMP_InputField TMP_InputField;
 
-    public Question_19(int id, PageOneChoose pageOneChoose, List<SendSring> sendSrings) : base(id, sendSrings)
+    public Question_19(int id, TMP_InputField tMP_InputField) : base(id)
     {
-        _pageOneChoose = pageOneChoose;
+        TMP_InputField = tMP_InputField;
     }
-
 
     protected override void Initialization()
     {
-        _pageOneChoose.ToggleBooles[0].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[0].IdToggle));
-        _pageOneChoose.ToggleBooles[1].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[1].IdToggle));
-        _pageOneChoose.ToggleBooles[2].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[2].IdToggle));
-        _pageOneChoose.ToggleBooles[3].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[3].IdToggle));
-        _pageOneChoose.ToggleBooles[4].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[4].IdToggle));
-        _pageOneChoose.OnSelectQuestion += OnSelectQuestion;
-    }
-
-    protected override void Disposeble()
-    {
-        for (int i = 0; i < _pageOneChoose.ToggleBooles.Count; i++)
-        {
-            _pageOneChoose.ToggleBooles[i].Button.onClick.RemoveAllListeners();
-        }
+        TMP_InputField.onValueChanged.AddListener((x) => OnSelectQuestion());
     }
 
     private void SetText()
     {
         Question_Text = string.Empty;
 
-        int countText = 1;
-        for (int i = 0; i < _sendSrings.Count; i++)
-        {
-            Question_Text += CheckText(countText, _pageOneChoose);
-            Question_Text += " , ";
-            countText++;
-        }
+        Question_Text += TMP_InputField.text;
     }
 
     public override void PreSend() { SetText(); }
 
-    private void AllDisable(int id)
-    {
-        _pageOneChoose.ChooseToggle(id);
-    }
-
     private void OnSelectQuestion()
     {
-        bool isComplitedQuestion = CheckComplitedQuestion(_pageOneChoose);
+        bool isComplitedInputField = TMP_InputField.text != "";
 
-        OnComplitedQuestion?.Invoke(ID, isComplitedQuestion);
+        OnComplitedQuestion?.Invoke(ID, isComplitedInputField);
     }
-
 
 }

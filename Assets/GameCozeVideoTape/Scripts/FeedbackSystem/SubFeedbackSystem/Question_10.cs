@@ -27,12 +27,6 @@ public class Question_10 : ControlFeedback
         {
             _pageOneChoose.ToggleBooles[i].Button.onClick.RemoveAllListeners();
         }
-
-        //_dataQuestion.Question_2_Toggle_1.onClick.RemoveAllListeners();
-        //_dataQuestion.Question_2_Toggle_2.onClick.RemoveAllListeners();
-        //_dataQuestion.Question_2_Toggle_3.onClick.RemoveAllListeners();
-        //_dataQuestion.Question_2_Toggle_4.onClick.RemoveAllListeners();
-        //_dataQuestion.Question_2_Toggle_5.onClick.RemoveAllListeners();
     }
 
     private void SetText()

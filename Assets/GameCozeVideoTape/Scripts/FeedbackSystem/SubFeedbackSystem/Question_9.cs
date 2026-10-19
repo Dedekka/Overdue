@@ -18,7 +18,6 @@ public class Question_9 : ControlFeedback
         _pageOneChoose.ToggleBooles[1].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[1].IdToggle));
         _pageOneChoose.ToggleBooles[2].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[2].IdToggle));
         _pageOneChoose.ToggleBooles[3].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[3].IdToggle));
-        _pageOneChoose.ToggleBooles[4].Button.onClick.AddListener(() => AllDisable(_pageOneChoose.ToggleBooles[4].IdToggle));
         _pageOneChoose.OnSelectQuestion += OnSelectQuestion;
     }
 
