@@ -14,6 +14,18 @@ public class DataCassets : ScriptableObject
         itemSettings = mainGoogleSettings.Items;
     }
 
+    public List<int> GetMaterialIndex()
+    {
+        List<int> materialIndex = new List<int>();
+
+        for (int i = 0; i < itemSettings.Count; i++)
+        {
+            materialIndex.Add(itemSettings[i].MaterialIndex);
+        }
+
+        return materialIndex;
+    }
+
     public void GetSettings(List<CassetteObject> cassettes)
     {
         CassetteObject tempCassette;
