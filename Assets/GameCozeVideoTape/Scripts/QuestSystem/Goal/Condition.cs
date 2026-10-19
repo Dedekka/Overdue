@@ -13,6 +13,14 @@ public abstract class Condition
         // Zenject и через него можно это отслеживать
     }
 
+    public void Stop()
+    {
+        SetUnSub();
+    }
+
+    protected abstract void SetSub();
+    protected abstract void SetUnSub();
+
     public abstract bool CheckComplited();
 
     protected void Complited()

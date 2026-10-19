@@ -58,6 +58,8 @@ public class GoalController : IInitializable, IDisposable
     public void ClearGoal(TutorialEventType type)
     {
         _questViewUi.ClearPanel(((int)type));
+        Goal currentGoal = _goals.Find((x) => x.Settings.TutorialEventType == type);
+        currentGoal.Stop();
     }
 
     public void ChangeComplitedEvents()

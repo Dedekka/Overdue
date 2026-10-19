@@ -20,12 +20,12 @@ public class ConditionInstall : Condition
         return _isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerPresentSystem.OnInstall += OnInstall;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerPresentSystem.OnInstall -= OnInstall;
     }

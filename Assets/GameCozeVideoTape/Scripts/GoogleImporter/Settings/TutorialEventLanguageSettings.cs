@@ -35,6 +35,7 @@ public class TutorialEventLanguageSettings
 public enum TutorialEventType
 {
     OnMove = 1,
+    OnLook,
     OnPickUp,
     OnDrop,
     OnScroll,
@@ -45,5 +46,6 @@ public enum TutorialEventType
     OnReturned,
     OnInstall,
     OnChangeAudio,
-    OnOpera
+    OnOpera,
+    OnInstallOpera
 }

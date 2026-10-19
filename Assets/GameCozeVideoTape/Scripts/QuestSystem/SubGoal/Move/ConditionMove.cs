@@ -26,12 +26,12 @@ public class ConditionMove : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerInputMove._playerActions.Move.performed += OnMove;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerInputMove._playerActions.Move.performed -= OnMove;
     }

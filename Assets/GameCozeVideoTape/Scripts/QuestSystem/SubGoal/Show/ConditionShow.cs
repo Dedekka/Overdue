@@ -21,12 +21,12 @@ public class ConditionShow : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerPlayerUi.OnShow += OnShow;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerPlayerUi.OnShow -= OnShow;
     }

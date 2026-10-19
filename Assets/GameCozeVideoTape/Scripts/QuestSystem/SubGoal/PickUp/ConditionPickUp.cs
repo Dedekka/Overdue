@@ -18,12 +18,12 @@ public class ConditionPickUp : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerInventory.OnPickUp += OnPickUp;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerInventory.OnPickUp -= OnPickUp;
     }
@@ -39,5 +39,4 @@ public class ConditionPickUp : Condition
         SetUnSub();
         Complited();
     }
-
 }

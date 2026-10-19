@@ -18,6 +18,11 @@ public abstract class Goal
         _isActive = false;
     }
 
+    public virtual void Stop()
+    {
+        SetUnSub();
+    }
+
     public virtual void Initialization(GoalController goalController)
     {
         if (_isActive) return;
@@ -51,6 +56,14 @@ public abstract class Goal
         for (int i = 0; i < Conditions.Count; i++)
         {
             Conditions[i].OnComplited += OnComplitedCondition;
+        }
+    }
+
+    protected void SetUnSub()
+    {
+        for (int i = 0; i < Conditions.Count; i++)
+        {
+            Conditions[i].OnComplited -= OnComplitedCondition;
         }
     }
 

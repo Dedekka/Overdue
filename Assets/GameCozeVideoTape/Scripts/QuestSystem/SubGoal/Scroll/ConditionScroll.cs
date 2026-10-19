@@ -18,12 +18,12 @@ public class ConditionScroll : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerInventory.OnScroll += OnScroll;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerInventory.OnScroll -= OnScroll;
     }

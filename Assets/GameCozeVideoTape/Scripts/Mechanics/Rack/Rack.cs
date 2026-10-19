@@ -9,7 +9,6 @@ public abstract class Rack : MonoBehaviour
     public Genre Genre => _genre;
     public List<DataShelf> SubGenreShelfs => _subGenreShelfs;
     public int CountSuccessInstall => _countSuccessInstall;
-
     [SerializeField] protected Genre _genre;
     [SerializeField] private List<DataShelf> _subGenreShelfs;
     private SubGenreAchievement _subGenreAchievement;

@@ -20,12 +20,12 @@ public class ConditionReturned : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerInventory.OnChangeSlot += OnChangeSlot;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerInventory.OnChangeSlot -= OnChangeSlot;
     }

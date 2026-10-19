@@ -20,6 +20,6 @@ public class GoalMove : Goal
         base.OnComplitedCondition(condition);
         //Debug.Log($"CheckComplited:{CheckComplited()}");
         _goalController.ClearGoal(Settings.TutorialEventType);
-        _goalController.ActiveGoal(TutorialEventType.OnPickUp);
+        _goalController.ActiveGoal(TutorialEventType.OnLook);
     }
 }

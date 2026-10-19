@@ -41,6 +41,7 @@ public class TutorialEventParser : IGoogleParser
         TutorialEventType tutorialEventType = type switch
         {
             "OnMove" => TutorialEventType.OnMove,
+            "OnLook" => TutorialEventType.OnLook,
             "OnPickUp" => TutorialEventType.OnPickUp,
             "OnDrop" => TutorialEventType.OnDrop,
             "OnScroll" => TutorialEventType.OnScroll,
@@ -52,6 +53,7 @@ public class TutorialEventParser : IGoogleParser
             "OnInstall" => TutorialEventType.OnInstall,
             "OnChangeAudio" => TutorialEventType.OnChangeAudio,
             "OnOpera" => TutorialEventType.OnOpera,
+            "OnInstallOpera" => TutorialEventType.OnInstallOpera,
             _ => throw new NotImplementedException()
         };
         return tutorialEventType;

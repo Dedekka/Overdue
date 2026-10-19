@@ -18,12 +18,12 @@ public class ConditionTv : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerTv.OnCheckOperaCassette += OnCheckOperaCassette;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerTv.OnCheckOperaCassette -= OnCheckOperaCassette;
     }

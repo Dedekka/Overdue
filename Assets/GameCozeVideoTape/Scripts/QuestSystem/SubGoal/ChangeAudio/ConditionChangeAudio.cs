@@ -18,12 +18,12 @@ public class ConditionChangeAudio : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerAudioRecorder.OnChangeAudio += OnChangeAudio;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerAudioRecorder.OnChangeAudio -= OnChangeAudio;
     }

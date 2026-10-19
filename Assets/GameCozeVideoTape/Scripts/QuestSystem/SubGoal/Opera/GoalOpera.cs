@@ -20,5 +20,6 @@ public class GoalOpera : Goal
         base.OnComplitedCondition(condition);
         Debug.Log($"CheckComplited:{CheckComplited()}");
         _goalController.ClearGoal(Settings.TutorialEventType);
+        _goalController.ActiveGoal(TutorialEventType.OnInstallOpera);
     }
 }

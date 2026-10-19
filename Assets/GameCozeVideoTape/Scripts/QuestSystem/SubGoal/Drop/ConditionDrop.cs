@@ -18,12 +18,12 @@ public class ConditionDrop : Condition
         return isComplited;
     }
 
-    private void SetSub()
+    protected override void SetSub()
     {
         _listenerInventory.OnDrop += OnDrop;
     }
 
-    private void SetUnSub()
+    protected override void SetUnSub()
     {
         _listenerInventory.OnDrop -= OnDrop;
     }

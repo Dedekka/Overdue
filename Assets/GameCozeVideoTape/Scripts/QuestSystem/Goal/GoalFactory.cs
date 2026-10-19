@@ -41,6 +41,7 @@ public class GoalFactory
         Condition tutorialEventType = type switch
         {
             TutorialEventType.OnMove => _container.Instantiate<ConditionMove>(),
+            TutorialEventType.OnLook => _container.Instantiate<ConditionLook>(),
             TutorialEventType.OnPickUp => _container.Instantiate<ConditionPickUp>(),
             TutorialEventType.OnDrop => _container.Instantiate<ConditionDrop>(),
             TutorialEventType.OnScroll => _container.Instantiate<ConditionScroll>(),
@@ -52,6 +53,7 @@ public class GoalFactory
             TutorialEventType.OnInstall => _container.Instantiate<ConditionInstall>(),
             TutorialEventType.OnChangeAudio => _container.Instantiate<ConditionChangeAudio>(),
             TutorialEventType.OnOpera => _container.Instantiate<ConditionOpera>(),
+            TutorialEventType.OnInstallOpera => _container.Instantiate<ConditionInstallOpera>(),
             _ => throw new NotImplementedException()
         };
         return tutorialEventType;
@@ -63,6 +65,7 @@ public class GoalFactory
         Goal tutorialEventType = type switch
         {
             TutorialEventType.OnMove => _container.Instantiate<GoalMove>(new object[] { settings, conditions }),
+            TutorialEventType.OnLook => _container.Instantiate<GoalLook>(new object[] { settings, conditions }),
             TutorialEventType.OnPickUp => _container.Instantiate<GoalPickUp>(new object[] { settings, conditions }),
             TutorialEventType.OnDrop => _container.Instantiate<GoalDrop>(new object[] { settings, conditions }),
             TutorialEventType.OnScroll => _container.Instantiate<GoalScroll>(new object[] { settings, conditions }),
@@ -74,6 +77,7 @@ public class GoalFactory
             TutorialEventType.OnInstall => _container.Instantiate<GoalInstall>(new object[] {12, settings, conditions }),
             TutorialEventType.OnChangeAudio => _container.Instantiate<GoalChangeAudio>(new object[] { settings, conditions }),
             TutorialEventType.OnOpera => _container.Instantiate<GoalOpera>(new object[] { settings, conditions }),
+            TutorialEventType.OnInstallOpera => _container.Instantiate<GoalInstallOpera>(new object[] { settings, conditions }),
             _ => throw new NotImplementedException()
         };
         return tutorialEventType;

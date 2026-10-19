@@ -14,7 +14,6 @@ public class GoalPickUp : Goal
         Debug.Log($"{this.GetType()} Initialization");
     }
 
-
     protected override void OnComplitedCondition(Condition condition)
     {
         base.OnComplitedCondition(condition);

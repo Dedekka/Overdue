@@ -22,7 +22,7 @@ public class MenuControl : MonoBehaviour
 
         _buttonFeedbackMenu.gameObject.SetActive(!_controlSettings.IsComplitedFeedback);
         
-        Debug.Log($"Steam Inst:{SteamManager.Initialized}");
+        //Debug.Log($"Steam Inst:{SteamManager.Initialized}");
 # if UNITY_EDITOR
         _controlSteamAchievement.ClearAchievement(DataAchievement.ACHIEVEMENT_1);
         _controlSteamAchievement.ClearAchievement(DataAchievement.ACHIEVEMENT_2);
