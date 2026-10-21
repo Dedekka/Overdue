@@ -21,7 +21,6 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
         _controlStatePanel = controlStatePanel;
         _panelSettings = PanelsPauseMenu.PanelSettings;
         _panelTutorial = PanelsPauseMenu.PanelTutorial;
-        _buttonTutorialBack = PanelsPauseMenu.ButtonTutorialBack;
         _buttonSettingsBack = PanelsPauseMenu.ButtonSettingsBack;
         _panelButtonsPause = PanelsPauseMenu.PanelButtonsPause;
     }
@@ -30,7 +29,6 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
     {
         _buttonSettings.onClick.AddListener(() => ChangePanel(_panelSettings, _buttonSettings, StatePanelUi.Settings));
         _buttonTutorial.onClick.AddListener(() => ChangePanel(_panelTutorial, _buttonTutorial, StatePanelUi.Tutorial));
-        _buttonTutorialBack.onClick.AddListener(() => Back());
         _buttonSettingsBack.onClick.AddListener(() => Back());
     }
 
@@ -42,6 +40,7 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
 
     private void ChangePanel(GameObject currentActivePanel, Button currentActiveButton, StatePanelUi state)
     {
+        _buttonSettingsBack.gameObject.SetActive(true);
         _panelButtonsPause.SetActive(false);
         _panelSettings.SetActive(false);
         _panelTutorial.SetActive(false);
@@ -56,6 +55,7 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
 
     public void Back()
     {
+        _buttonSettingsBack.gameObject.SetActive(false);
         _panelButtonsPause.SetActive(true);
         _panelSettings.SetActive(false);
         _panelTutorial.SetActive(false);
@@ -68,8 +68,6 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
 
 public class PanelsPauseMenu
 {
-
-    public Button ButtonTutorialBack;
     public Button ButtonSettingsBack;
     public Button ButtonSettings;
     public Button ButtonTutorial;
@@ -79,7 +77,6 @@ public class PanelsPauseMenu
 
     public PanelsPauseMenu
         (
-         Button buttonTutorialBack,
           Button buttonSettingsBack,
            Button buttonSettings,
           Button buttonTutorial,
@@ -88,7 +85,6 @@ public class PanelsPauseMenu
             GameObject panelTutorial
         )
     {
-        ButtonTutorialBack = buttonTutorialBack;
         ButtonSettingsBack = buttonSettingsBack;
         ButtonSettings = buttonSettings;
         ButtonTutorial = buttonTutorial;

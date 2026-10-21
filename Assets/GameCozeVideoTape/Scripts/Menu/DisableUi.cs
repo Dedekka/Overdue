@@ -7,6 +7,7 @@ public class DisableUi : MonoBehaviour
     [SerializeField] private GameObject _panelSettings;
     [SerializeField] private GameObject _panelTutorial;
     [SerializeField]  private GameObject _panelButtonsPause;
+    [SerializeField]  private GameObject _buttonSettingsBack;
 
     [Inject]
     public void Construct(ControlPauseMenuPanel controlPauseMenuPanel)
@@ -21,6 +22,7 @@ public class DisableUi : MonoBehaviour
 
     private void OnDisable()
     {
+        _buttonSettingsBack.SetActive(false);
         _panelSettings.SetActive(false);
         _panelTutorial.SetActive(false);
         _controlPauseMenuPanel.Back();

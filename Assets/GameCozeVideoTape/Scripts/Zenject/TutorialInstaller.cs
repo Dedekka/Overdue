@@ -4,52 +4,27 @@ using Zenject;
 
 public class TutorialInstaller : MonoInstaller
 {
-    //[Header("TutorialEvent")]
-    //[SerializeField] private QuestViewUi _questViewUi;
-
     [Header("TutorialButtonUi")]
     [SerializeField] private Button _buttonTutorialSorting;
     [SerializeField] private Button _buttonTutorialVCR;
     [SerializeField] private Button _buttonTutorialPhone;
-    [SerializeField] private Button _buttonTutorialReturns;
     [SerializeField] private Button _buttonTutorialDecorating;
     [SerializeField] private Button _buttonTutorialMusic;
-
+    [SerializeField] private Button _buttonTutorialSunset;
 
     [Header("PanelTutorialUi")]
 
- 
     [SerializeField] private GameObject _sortingPanel;
     [SerializeField] private GameObject _vCRPanel;
     [SerializeField] private GameObject _phonePanel;
-    [SerializeField] private GameObject _returnsPanel;
     [SerializeField] private GameObject _decoratingPanel;
     [SerializeField] private GameObject _musicPanel;
-
-
+    [SerializeField] private GameObject _sunsetPanel;
 
     public override void InstallBindings()
     {
-        //FindSub();
         BindTutorialControl();
-        //BindTutorialSystem();
-        //BindListener();
-        //BindImporter();
     }
-
-
-
-    //private void FindSub()
-    //{
-
-    //    Container.Bind<DataTutorialEvent>()
-    //       .FromResource(PathConst.DataTutorialEventAsset)
-    //       .AsSingle();
-
-    //    Container.Bind<DataTutorialEventLanguage>()
-    //       .FromResource(PathConst.DataTutorialEventLanguageAsset)
-    //       .AsSingle();
-    //}
 
     private void BindTutorialControl()
     {
@@ -60,9 +35,9 @@ public class TutorialInstaller : MonoInstaller
             _buttonTutorialSorting,
             _buttonTutorialVCR,
             _buttonTutorialPhone,
-            _buttonTutorialReturns,
             _buttonTutorialDecorating,
-            _buttonTutorialMusic
+            _buttonTutorialMusic,
+            _buttonTutorialSunset
             );
 
         Container.Bind<PanelsTutorial>()
@@ -72,70 +47,13 @@ public class TutorialInstaller : MonoInstaller
             _sortingPanel,
             _vCRPanel,
             _phonePanel,
-            _returnsPanel,
             _decoratingPanel,
-            _musicPanel
+            _musicPanel,
+            _sunsetPanel
             );
 
 
         Container.BindInterfacesAndSelfTo<TutorialControlPanelSettings>()
            .AsSingle();
-
-
-        //Container.Bind<QuestViewUi>()
-        //  .FromInstance(_questViewUi)
-        //  .AsSingle();
-
-        //Container.Bind<ControlComplited>()
-        //  .AsSingle();
-
-        //Container.Bind<FactoryComplitedHistoryEvent>()
-        //  .AsSingle();
-
-
     }
-
-    //private void BindTutorialSystem()
-    //{
-    //    Container.BindInterfacesAndSelfTo<GoalController>()
-    //   .AsSingle();
-
-    //    Container.Bind<ListenerContext>()
-    //   .AsSingle();
-
-    //    Container.Bind<GoalFactory>()
-    //   .AsSingle();
-
-    //    Container.Bind<ControlGoalLanguage>()
-    //   .AsSingle();
-    //}
-
-    //private void BindListener()
-    //{
-    //    Container.Bind<ListenerInputMove>()
-    //.AsSingle();
-
-    //    Container.Bind<ListenerInventory>()
-    //   .AsSingle();
-
-    //    Container.Bind<ListenerPlayerUi>()
-    //   .AsSingle();
-
-    //    Container.Bind<ListenerTv>()
-    //   .AsSingle();
-
-    //    Container.Bind<ListenerAudioRecorder>()
-    //   .AsSingle();
-
-    //    Container.Bind<ListenerPhone>()
-    //   .AsSingle();
-
-    //    Container.Bind<ListenerPresentSystem>()
-    //   .AsSingle();
-    //}
-
-    //private void BindImporter()
-    //{
-
-    //}
 }

@@ -16,7 +16,6 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private Transform _handSlot;
     [SerializeField] private Button _buttonExit;
     [SerializeField] private Button _buttonBackMenu;
-    [SerializeField] private Button _buttonTutorialBack;
     [SerializeField] private Button _buttonSettingsBack;
     [SerializeField] private Button _buttonSettings;
     [SerializeField] private Button _buttonTutorial;
@@ -192,7 +191,6 @@ public class GameInstaller : MonoInstaller
           .AsSingle()
           .WithArguments(new PanelsPauseMenu
             (
-                _buttonTutorialBack,
                  _buttonSettingsBack,
                  _buttonSettings,
                  _buttonTutorial,
