@@ -1,13 +1,10 @@
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 public class SettingsInstaller : MonoInstaller
 {
-    //[Header("Buttons")]
-    //[SerializeField] private Button _buttonNewGame;
-    //[SerializeField] private Button _buttonExit;
     [Header("Sliders sound")]
     [SerializeField] private Slider _sliderMain;
     [SerializeField] private Slider _sliderEffects;
@@ -18,16 +15,21 @@ public class SettingsInstaller : MonoInstaller
     [Header("Language")]
     [SerializeField] private Button _buttonLanguageR;
     [SerializeField] private Button _buttonLanguageL;
-    //[SerializeField] private TMP_Dropdown _dropDownLanguage;
-
+    [SerializeField] private List<PageButton> _pageButtons;
 
     public override void InstallBindings()
     {
         BindSub();
-        //BindControlLogic();
         BindSound();
-        BindSensitivity();
         BindLanguage();
+        BindButton();
+    }
+
+    private void BindButton()
+    {
+        Container.Bind<SettingsButton>()
+            .AsSingle()
+            .WithArguments(_pageButtons);
     }
 
     private void BindSub()
@@ -43,24 +45,9 @@ public class SettingsInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ControlSensitivity>()
           .AsSingle();
 
-        
-
-
-        //ImporterSliderControlSensitivity
-        //ControlSensitivity
+        Container.BindInterfacesAndSelfTo<ControlPanelSettings>()
+          .AsSingle();
     }
-
-    //private void BindControlLogic()
-    //{
-    //    Container.Bind<ControlLogic>()
-    //        .AsSingle();
-
-    //    //Container.Bind<ControlSound>()
-    //    //    .AsSingle();
-
-    //    Container.Bind<LoadingSystem>()
-    //        .AsSingle();
-    //}
 
     private void BindSound()
     {
@@ -68,18 +55,20 @@ public class SettingsInstaller : MonoInstaller
             .AsSingle();
     }
 
-    private void BindSensitivity()
-    {
-
-    }
-
     private void BindLanguage()
     {
         Container.BindInterfacesAndSelfTo<ControlLanguage>()
          .AsSingle()
          .WithArguments(_buttonLanguageR, _buttonLanguageL);
+    }
+}
 
+public class SettingsButton
+{
+    public readonly List<PageButton> PageButtons;
 
-
+    public SettingsButton(List<PageButton> pageButtons)
+    {
+        PageButtons = pageButtons;
     }
 }

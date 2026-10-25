@@ -18,19 +18,21 @@ public class PauseSystem
         isPause = !isPause;
         ChangeState(isPause);
     }
-
+    
     private void ChangeState( bool isPause)
     {
-        if ( isPause )
-        {
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        Time.timeScale = isPause ? 0.0f : 1.0f;
+
+        //if ( isPause )
+        //{
+        //    Time.timeScale = 0f;
+        //    //Cursor.lockState = CursorLockMode.None;
+        //}
+        //else
+        //{
+        //    Time.timeScale = 1f;
+        //    //Cursor.lockState = CursorLockMode.Locked;
+        //}
         OnChangeStatePause?.Invoke( isPause );
         _pausePanel.SetActive( isPause );
     }

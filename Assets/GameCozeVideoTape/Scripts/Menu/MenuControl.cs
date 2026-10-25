@@ -7,18 +7,21 @@ public class MenuControl : MonoBehaviour
    [SerializeField] private Button _buttonFeedbackMenu;
     private ControlSettings _controlSettings;
     private ControlSteamAchievement _controlSteamAchievement;
+    private ControlVisibleCursor _visibleCursor;
 
     [Inject]
-    public void Construct(ControlSettings controlSettings, ControlSteamAchievement controlSteamAchievement)
+    public void Construct(ControlSettings controlSettings, ControlSteamAchievement controlSteamAchievement, ControlVisibleCursor visibleCursor)
     {
         _controlSettings = controlSettings;
         _controlSteamAchievement = controlSteamAchievement;
+        _visibleCursor = visibleCursor;
     }
 
     private void Start()
     {
         Time.timeScale = 1.0f;
-        Cursor.lockState = CursorLockMode.None;
+        _visibleCursor.SetVisibleState(true);
+        //Cursor.lockState = CursorLockMode.None;
 
         _buttonFeedbackMenu.gameObject.SetActive(!_controlSettings.IsComplitedFeedback);
         

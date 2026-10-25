@@ -27,15 +27,7 @@ public class MenuInstaller : MonoInstaller
         BindControl();
     }
 
-    //private void BindImporter()
-    //{
-    //    LocalizationSettings.SelectedLocaleChanged += LocalizationSettings_SelectedLocaleChanged;
-    //}
-
-    //private void LocalizationSettings_SelectedLocaleChanged(UnityEngine.Localization.Locale obj)
-    //{
-    //    Debug.Log($"LocalizationSettings_SelectedLocaleChanged, obj.LocaleName:{obj.LocaleName}");
-    //}
+ 
 
     private void BindSub()
     {
@@ -58,8 +50,15 @@ public class MenuInstaller : MonoInstaller
                 PanelSettings = _panelSettings,
                 PanelTutorial = _panelTutorial,
             });
-        
+
+
+        Container.Bind<PlayerSystemActions>()
+           .AsSingle();
+
     }
+
+
+    
 }
 
 public class DataMenuPanel

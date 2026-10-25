@@ -28,6 +28,7 @@ public class GoogleMenu
     private const string MusicCassette_sheets_name = "BazeMusicCassette";
     private const string TutorialEvent_sheets_name = "TutorialEvent";
     private const string TutorialEventLanguage_sheets_name = "TutorialEventLanguage";
+    private const string BazeTagTypeDevice_sheets_name = "BazeTagTypeDevice";
     //private const string LanguageDialogue_sheets_name = "LanguageDialogue";
 
 
@@ -53,6 +54,8 @@ public class GoogleMenu
         await MusicCassette(gameSettings, sheetsImporter);
 
         await TutorialEvent(gameSettings, sheetsImporter);
+
+        await TagTypeDevice(gameSettings, sheetsImporter);
 
          sheetsImporter = new GoogleImporter(Credentials_path, CassetteLanguageSheet_id);
         await ItemLanguage(gameSettings, sheetsImporter);
@@ -112,6 +115,11 @@ public class GoogleMenu
         DataTutorialEvent dataTutorialEvent = ScriptableObject.CreateInstance<DataTutorialEvent>();
         dataTutorialEvent.Initialization(mainGoogleSettings);
         SaveAssets(PathConst.DataTutorialEventPath, dataTutorialEvent);
+
+
+        DataTagTypeDevice dataTagTypeDevice = ScriptableObject.CreateInstance<DataTagTypeDevice>();
+        dataTagTypeDevice.Initialization(mainGoogleSettings);
+        SaveAssets(PathConst.DataTagTypeDevicePath, dataTagTypeDevice);
 
         
 
@@ -202,10 +210,17 @@ public class GoogleMenu
         MusicCassetteParser musicCassetteParser = new MusicCassetteParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(MusicCassette_sheets_name, musicCassetteParser);
     }
+
     private static async UniTask TutorialEvent(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
     {
         TutorialEventParser tutorialEventParser = new TutorialEventParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(TutorialEvent_sheets_name, tutorialEventParser);
+    }
+
+    private static async UniTask TagTypeDevice(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        TagTypeDeviceParser tutorialEventParser = new TagTypeDeviceParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(BazeTagTypeDevice_sheets_name, tutorialEventParser);
     }
 
     #endregion

@@ -2,11 +2,15 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Zenject;
 
 public class FeedbackInstaller : MonoInstaller
 {
+    [SerializeField] private EventSystem _eventSystem;
+    [SerializeField] private List<GameObject> _selectedPanel;
+
     [Header("Main")]
 
     [SerializeField] private List<PageButton> _pageButtons;
@@ -136,7 +140,11 @@ public class FeedbackInstaller : MonoInstaller
                 _mainButtonSEND,
                 _buttonBackMenu,
                 _pageButtons
-                    ));
+                    ), _selectedPanel);
+
+        Container.Bind<EventSystem>()
+           .FromInstance(_eventSystem)
+           .AsSingle();
     }
 
     private void BindQuestions()

@@ -164,7 +164,6 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         if (action == null || action.activeControl == null) return;
 
         var device = action.activeControl.device;
-
         if (device is Gamepad)
         {
             if (CurrentDevice != DeviceType.Gamepad)
@@ -187,5 +186,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 public enum DeviceType
 {
     KeyboardMouse,
-    Gamepad
+    Gamepad,
+    GamepadXbox,
+    GamepadSony,
 }

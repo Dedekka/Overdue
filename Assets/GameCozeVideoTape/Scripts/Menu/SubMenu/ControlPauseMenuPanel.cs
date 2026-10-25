@@ -9,27 +9,30 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
     private GameObject _panelButtonsPause;
     private GameObject _panelSettings;
     private GameObject _panelTutorial;
-    private Button _buttonTutorialBack;
-    private Button _buttonSettingsBack;
+    private Button _buttonBack;
     private Button _buttonSettings;
     private Button _buttonTutorial;
+    private GamePadMenu _gamePadMenu;
+    private GamePadSelecter _gamePadSelecter;
 
-    public ControlPauseMenuPanel(PanelsPauseMenu PanelsPauseMenu, ControlStatePanel controlStatePanel)
+    public ControlPauseMenuPanel(PanelsPauseMenu PanelsPauseMenu, ControlStatePanel controlStatePanel, GamePadMenu gamePadMenu, GamePadSelecter gamePadSelecter)
     {
         _buttonSettings = PanelsPauseMenu.ButtonSettings;
         _buttonTutorial = PanelsPauseMenu.ButtonTutorial;
         _controlStatePanel = controlStatePanel;
         _panelSettings = PanelsPauseMenu.PanelSettings;
         _panelTutorial = PanelsPauseMenu.PanelTutorial;
-        _buttonSettingsBack = PanelsPauseMenu.ButtonSettingsBack;
+        _buttonBack = PanelsPauseMenu.ButtonSettingsBack;
         _panelButtonsPause = PanelsPauseMenu.PanelButtonsPause;
+        _gamePadMenu = gamePadMenu;
+        _gamePadSelecter = gamePadSelecter;
     }
 
     public void Initialize()
     {
-        _buttonSettings.onClick.AddListener(() => ChangePanel(_panelSettings, _buttonSettings, StatePanelUi.Settings));
-        _buttonTutorial.onClick.AddListener(() => ChangePanel(_panelTutorial, _buttonTutorial, StatePanelUi.Tutorial));
-        _buttonSettingsBack.onClick.AddListener(() => Back());
+        _buttonSettings.onClick.AddListener(() => ChangePanel(_panelSettings, StatePanelUi.Settings));
+        _buttonTutorial.onClick.AddListener(() => ChangePanel(_panelTutorial, StatePanelUi.Tutorial));
+        _buttonBack.onClick.AddListener(() => Back());
     }
 
     public void Dispose()
@@ -38,24 +41,44 @@ public class ControlPauseMenuPanel : IInitializable, IDisposable
         _buttonTutorial.onClick.RemoveAllListeners();
     }
 
-    private void ChangePanel(GameObject currentActivePanel, Button currentActiveButton, StatePanelUi state)
+    public void OnEnable()
     {
-        _buttonSettingsBack.gameObject.SetActive(true);
-        _panelButtonsPause.SetActive(false);
+        _panelButtonsPause.SetActive(true);
+        _gamePadMenu.ActiveButton(0);
+    }
+
+    public void OnDisable()
+    {
+        _buttonBack.gameObject.SetActive(false);
         _panelSettings.SetActive(false);
         _panelTutorial.SetActive(false);
+        Back();
+    }
 
-        _buttonSettings.interactable = true;
-        _buttonTutorial.interactable = true;
 
+    private void ChangePanel(GameObject currentActivePanel, StatePanelUi state)
+    {
+        _gamePadSelecter.ControlStatePanel((int)state);
+        _panelButtonsPause.SetActive(false);
+        _buttonBack.gameObject.SetActive(true);
+        //_panelSettings.SetActive(false);
+        //_panelTutorial.SetActive(false);
         currentActivePanel.SetActive(true);
-        currentActiveButton.interactable = false;
+
+        //_buttonSettings.interactable = true;
+        //_buttonTutorial.interactable = true;
+
+        //currentActiveButton.interactable = false;
+
+        _gamePadMenu.ActiveButton((int)state);
         _controlStatePanel.ChangeState(state);
     }
 
     public void Back()
     {
-        _buttonSettingsBack.gameObject.SetActive(false);
+        _gamePadSelecter.ControlStatePanel(0);
+        _gamePadMenu.ActiveButton(0);
+        _buttonBack.gameObject.SetActive(false);
         _panelButtonsPause.SetActive(true);
         _panelSettings.SetActive(false);
         _panelTutorial.SetActive(false);

@@ -178,6 +178,8 @@ public class GameInstaller : MonoInstaller
 
     private void BindUI()
     {
+
+
         Container.Bind<PlayerUi>()
            .FromInstance(_playerUi)
            .AsSingle()
@@ -276,6 +278,9 @@ public class GameInstaller : MonoInstaller
     private void BindImporter()
     {
         Container.BindInterfacesAndSelfTo<SaveInventoryImporter>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterPauseSystemControlVisibleCursor>()
          .AsSingle();
 
         Container.BindInterfacesAndSelfTo<ImporterControlLanguageCassette>()

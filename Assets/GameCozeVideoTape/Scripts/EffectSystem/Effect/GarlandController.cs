@@ -15,7 +15,6 @@ public class GarlandController : MonoBehaviour
     private Rack _rack;
     private int _maxLamp;
     private int _freeSlot;
-    private bool _isComplited;
 
 
     [Inject]
@@ -52,7 +51,7 @@ public class GarlandController : MonoBehaviour
     {
         if (_rack.CountSuccessInstall==_freeSlot)
         {
-            _isComplited = true;
+            _rack.OnChanheCountSuccessInstall -= CheckContinueInstall;
             StartEffect().Forget();
             _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_2);
         }

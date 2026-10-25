@@ -47,6 +47,7 @@ Transform:
   - {fileID: 3012724010471747166}
   - {fileID: 5103741258505591911}
   - {fileID: 3763841556495756474}
+  - {fileID: 5461741885689760604}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -80,6 +81,7 @@ MonoBehaviour:
   - {fileID: 3442840369263143106}
   - {fileID: 8140232536375893700}
   - {fileID: 941549702470637395}
+  - {fileID: 4050568474203697871}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -198,7 +200,6 @@ MonoBehaviour:
   _handSlot: {fileID: 0}
   _buttonExit: {fileID: 0}
   _buttonBackMenu: {fileID: 0}
-  _buttonTutorialBack: {fileID: 0}
   _buttonSettingsBack: {fileID: 0}
   _buttonSettings: {fileID: 0}
   _buttonTutorial: {fileID: 0}
@@ -209,7 +210,7 @@ MonoBehaviour:
   _timeWaitCheckPhysics: 0.5
   _decorMaterial: {fileID: 2100000, guid: c6ca8123eb88d2e4ebcfb346e068eae7, type: 2}
   _slotMaterial: {fileID: 2100000, guid: 840e2dd2dd27f564b87d12a2760eb365, type: 2}
-  _maxRack: 66
+  _maxRack: 65
   _maxCassette: 303
   _tvCamera: {fileID: 0}
   _tv: {fileID: 0}
@@ -818,6 +819,16 @@ MonoBehaviour:
   _sliderSensitivity: {fileID: 0}
   _buttonLanguageR: {fileID: 0}
   _buttonLanguageL: {fileID: 0}
+  _pageButtons:
+  - IdPage: 0
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+  - IdPage: 1
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+  - IdPage: 2
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
 --- !u!1 &8223330750382343642
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,18 +991,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a8845c2c4d26f489d2258822bca3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialInstaller
-  _buttonTutorialSorting: {fileID: 0}
-  _buttonTutorialVCR: {fileID: 0}
-  _buttonTutorialPhone: {fileID: 0}
-  _buttonTutorialReturns: {fileID: 0}
-  _buttonTutorialDecorating: {fileID: 0}
-  _buttonTutorialMusic: {fileID: 0}
-  _sortingPanel: {fileID: 0}
-  _vCRPanel: {fileID: 0}
-  _phonePanel: {fileID: 0}
-  _returnsPanel: {fileID: 0}
-  _decoratingPanel: {fileID: 0}
-  _musicPanel: {fileID: 0}
+  _pageButtons:
+  - IdPage: 0
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+  - IdPage: 1
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+  - IdPage: 2
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+  - IdPage: 3
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+  - IdPage: 4
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+  - IdPage: 5
+    NextPage: {fileID: 0}
+    LastPage: {fileID: 0}
+--- !u!1 &8282040479229805756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5461741885689760604}
+  - component: {fileID: 4050568474203697871}
+  m_Layer: 0
+  m_Name: GamepadInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5461741885689760604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282040479229805756}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4050568474203697871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282040479229805756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c49d122b21bec49af621f126d9f2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamepadInstaller
+  _selectedPanel:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _gamepadButtonData:
+  - ImageButton:
+    - {fileID: 0}
+    - {fileID: 0}
+    gamepadButton: 0
+  - ImageButton:
+    - {fileID: 0}
+    - {fileID: 0}
+    gamepadButton: 1
 --- !u!1 &8752889859600553088
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -13,8 +14,10 @@ public class QuestInstaller : MonoInstaller
         BindTutorialControl();
         BindTutorialSystem();
         BindListener();
-        //BindImporter();
+        BindImporter();
     }
+
+ 
 
     private void FindSub()
     {
@@ -81,5 +84,11 @@ public class QuestInstaller : MonoInstaller
 
         Container.Bind<ListenerPresentSystem>()
        .AsSingle();
+    }
+
+    private void BindImporter()
+    {
+        Container.BindInterfacesAndSelfTo<ImporterDeviceControlGoalTextIcon>()
+         .AsSingle();
     }
 }

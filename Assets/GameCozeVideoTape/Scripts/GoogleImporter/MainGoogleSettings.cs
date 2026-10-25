@@ -27,4 +27,6 @@ public class MainGoogleSettings
     [Header("TutorialEvent")]
     public List<TutorialEventLanguageSettings> TutorialEventLanguage;
     public List<TutorialEventSettings> TutorialEvent;
+    [Header("TagTypeDevice")]
+    public List<TagTypeDeviceSettings> TagTypeDeviceSettings;
 }

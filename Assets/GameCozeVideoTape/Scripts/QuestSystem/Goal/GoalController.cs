@@ -10,8 +10,11 @@ public class GoalController : IInitializable, IDisposable
     private QuestViewUi _questViewUi;
     private ControlGoalLanguage _controlGoalLanguage;
     private ControlComplited _controlComplited;
+    private ControlGoalTextIcon _ñontrolGoalTextIcon;
 
-    public GoalController(ListenerContext goalContext, GoalFactory goalFactory, QuestViewUi questViewUi, ControlGoalLanguage controlGoalLanguage, ControlComplited controlComplited)
+    //ControlGoalTextIcon
+
+    public GoalController(ListenerContext goalContext, GoalFactory goalFactory, QuestViewUi questViewUi, ControlGoalLanguage controlGoalLanguage, ControlComplited controlComplited, ControlGoalTextIcon ñontrolGoalTextIcon)
     {
         GoalContext = goalContext;
         _goals = new();
@@ -19,6 +22,7 @@ public class GoalController : IInitializable, IDisposable
         _questViewUi = questViewUi;
         _controlGoalLanguage = controlGoalLanguage;
         _controlComplited = controlComplited;
+        _ñontrolGoalTextIcon = ñontrolGoalTextIcon;
     }
 
     public void Initialize()
@@ -36,23 +40,42 @@ public class GoalController : IInitializable, IDisposable
     {
         List<PanelQuestUi> tempPanelQuestUi = _questViewUi.GetPanelQuestUi();
         int tempIdQuest;
-        string goalText;
         for (int i = 0; i < tempPanelQuestUi.Count; i++)
         {
-            if (tempPanelQuestUi[i].IdQuest <= 0) { continue; }
             tempIdQuest = tempPanelQuestUi[i].IdQuest;
-            goalText = _controlGoalLanguage.GetLanguage(tempIdQuest);
-            tempPanelQuestUi[i].Initialization(tempIdQuest, goalText);
+            if (tempIdQuest <= 0) { continue; }
+            ResetInitializationGoal(tempPanelQuestUi[i]);
+            //SetInitializationGoal(tempIdQuest);
         }
     }
 
+    public void OnChangeDevice()
+    {
+        List<PanelQuestUi> tempPanelQuestUi = _questViewUi.GetPanelQuestUi();
+        int IdQuest;
+        for (int i = 0; i < tempPanelQuestUi.Count; i++)
+        {
+            if (!tempPanelQuestUi[i].Select){ continue; }
+
+            IdQuest = tempPanelQuestUi[i].IdQuest;
+
+            if (IdQuest <= 0){ continue; }
+            //SetInitializationGoal(IdQuest);
+            ResetInitializationGoal(tempPanelQuestUi[i]);
+        }
+    }
 
     public void ActiveGoal(TutorialEventType type)
     {
         Goal currentGoal = _goals.Find((x) => x.Settings.TutorialEventType == type);
         currentGoal.Initialization(this);
-        string GoalText = _controlGoalLanguage.GetLanguage(currentGoal.Settings.Id);
-        _questViewUi.Initialization(currentGoal.Settings.Id, GoalText);
+
+
+        //string GoalText = _controlGoalLanguage.GetLanguage(currentGoal.Settings.Id);
+        //GoalText = _ñontrolGoalTextIcon.CheckTagIcon(GoalText);
+        //_questViewUi.Initialization(currentGoal.Settings.Id, GoalText);
+
+        SetInitializationGoal(currentGoal.Settings.Id);
     }
 
     public void ClearGoal(TutorialEventType type)
@@ -82,5 +105,19 @@ public class GoalController : IInitializable, IDisposable
         //    Debug.Log($"Goals_ID:{_goals[i].Settings.Id}, ConditionType:{tempCondition.GetType()}");
         //}
         ActiveGoal(TutorialEventType.OnMove);
+    }
+
+    private void SetInitializationGoal(int tempIdQuest)
+    {
+        string GoalText = _controlGoalLanguage.GetLanguage(tempIdQuest);
+        GoalText = _ñontrolGoalTextIcon.CheckTagIcon(GoalText);
+        _questViewUi.Initialization(tempIdQuest, GoalText);
+    }
+
+    private void ResetInitializationGoal(PanelQuestUi panelQuestUi)
+    {
+        string GoalText = _controlGoalLanguage.GetLanguage(panelQuestUi.IdQuest);
+        GoalText = _ñontrolGoalTextIcon.CheckTagIcon(GoalText);
+        panelQuestUi.Initialization(panelQuestUi.IdQuest, GoalText);
     }
 }

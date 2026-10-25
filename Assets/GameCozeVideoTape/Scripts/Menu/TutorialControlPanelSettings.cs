@@ -4,140 +4,99 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class TutorialControlPanelSettings : IDisposable, IInitializable
+public class TutorialControlPanelSettings : IDisposable, IInitializable, ISelected
 {
-    private ButtonsTutorial _buttonsTutorial;
-    private PanelsTutorial _panelsTutorial;
-    private List<Button> _buttonsList;
-    private List<GameObject> _panelsList;
+    public int CountPage => _pageButtons.Count;
+    private List<PageButton> _pageButtons;
+    private GameObject _selectedPanel;
 
-    public TutorialControlPanelSettings(ButtonsTutorial buttonsTutorial, PanelsTutorial panelsTutorial)
+    public TutorialControlPanelSettings(TutorialsButton pageButtons)
     {
-        _buttonsTutorial = buttonsTutorial;
-        _panelsTutorial = panelsTutorial;
+        _pageButtons = pageButtons.PageButtons;
     }
+    public void Dispose()
+    {
+
+        _pageButtons[0].NextPage.onClick.RemoveAllListeners();
+        _pageButtons[1].NextPage.onClick.RemoveAllListeners();
+        _pageButtons[2].NextPage.onClick.RemoveAllListeners();
+        _pageButtons[3].NextPage.onClick.RemoveAllListeners();
+        _pageButtons[4].NextPage.onClick.RemoveAllListeners();
+        _pageButtons[5].NextPage.onClick.RemoveAllListeners();
+    }
+
 
     public void Initialize()
     {
-        _buttonsList = _buttonsTutorial.GetButtons();
-        _panelsList = _panelsTutorial.GetPanels();
-        ControlStatePanel(0);
-        _buttonsTutorial.ButtonTutorialSorting.onClick.AddListener(() => { ControlStatePanel(0); });
-        _buttonsTutorial.ButtonTutorialVCR.onClick.AddListener(() => { ControlStatePanel(1); });
-        _buttonsTutorial.ButtonTutorialPhone.onClick.AddListener(() => { ControlStatePanel(2); });
-        _buttonsTutorial.ButtonTutorialReturns.onClick.AddListener(() => { ControlStatePanel(3); });
-        _buttonsTutorial.ButtonTutorialDecorating.onClick.AddListener(() => { ControlStatePanel(4); });
-        _buttonsTutorial.ButtonTutorialMusic.onClick.AddListener(() => { ControlStatePanel(5); });
+        _pageButtons[0].NextPage.onClick.AddListener(() => ActivePanel(0));
+        _pageButtons[1].NextPage.onClick.AddListener(() => ActivePanel(1));
+        _pageButtons[2].NextPage.onClick.AddListener(() => ActivePanel(2));
+        _pageButtons[3].NextPage.onClick.AddListener(() => ActivePanel(3));
+        _pageButtons[4].NextPage.onClick.AddListener(() => ActivePanel(4));
+        _pageButtons[5].NextPage.onClick.AddListener(() => ActivePanel(5));
     }
 
-    public void Dispose()
+    public void ActivePanel(int idPanel)
     {
-        _buttonsTutorial.ButtonTutorialSorting.onClick.RemoveAllListeners();
-        _buttonsTutorial.ButtonTutorialVCR.onClick.RemoveAllListeners();
-        _buttonsTutorial.ButtonTutorialPhone.onClick.RemoveAllListeners();
-        _buttonsTutorial.ButtonTutorialReturns.onClick.RemoveAllListeners();
-        _buttonsTutorial.ButtonTutorialDecorating.onClick.RemoveAllListeners();
-        _buttonsTutorial.ButtonTutorialMusic.onClick.RemoveAllListeners();
+        if (CheckActivePanel(idPanel)) { return ; }
+        for (int i = 0; i < _pageButtons.Count; i++)
+        {
+            _pageButtons[i].LastPage.SetActive(false);
+        }
+        _pageButtons[idPanel].LastPage.SetActive(true);
+        _selectedPanel = _pageButtons[idPanel].NextPage.gameObject;
     }
 
-    private void ControlStatePanel(int index)
+    public GameObject SelectedPanel()
     {
-        int count = _buttonsList.Count;
-        if (index >= count)
-        {
-            Debug.LogError($"Index >= count Tutorial UI, Index:{index}, Count:{count}");
-            return;
-        }
-        if (_buttonsList.Count != _panelsList.Count)
-        {
-            Debug.LogError($"Not found Full Ui, ButtonsList.Count:{_buttonsList.Count},PanelsList.Count{_panelsList.Count}");
-            return;
-        }
-
-        for (int i = 0; i < count; i++)
-        {
-            _buttonsList[i].interactable = true;
-            _panelsList[i].SetActive(false);
-        }
-        _buttonsList[index].interactable = false;
-        _panelsList[index].SetActive(true);
+        return _selectedPanel;
     }
 
-    // Все кнопки вкл как активные
-    // Когда эта кнопка нажата она становится не активной\
+    private bool CheckActivePanel(int idPanel)
+    {
+        bool isUnSuccess = false;
 
-    // Выключаются все панели отображения Ui
-    // Вкл Ui панель соответствующая кнопке 
+        if (idPanel >= _pageButtons.Count) { isUnSuccess = true; }
+        else if (_pageButtons[idPanel].LastPage.activeSelf) { isUnSuccess = true; }
 
+        return isUnSuccess;
+    }
+
+
+
+    //private void ControlStatePanel(int index)
+    //{
+    //    int count = _buttonsList.Count;
+    //    if (index >= count)
+    //    {
+    //        Debug.LogError($"Index >= count Tutorial UI, Index:{index}, Count:{count}");
+    //        return;
+    //    }
+    //    if (_buttonsList.Count != _panelsList.Count)
+    //    {
+    //        Debug.LogError($"Not found Full Ui, ButtonsList.Count:{_buttonsList.Count},PanelsList.Count{_panelsList.Count}");
+    //        return;
+    //    }
+
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        _buttonsList[i].interactable = true;
+    //        _panelsList[i].SetActive(false);
+    //    }
+    //    _buttonsList[index].interactable = false;
+    //    _panelsList[index].SetActive(true);
+    //}
 
 }
 
-public class ButtonsTutorial
+
+
+public class TutorialsButton
 {
-    public Button ButtonTutorialSorting;
-    public Button ButtonTutorialVCR;
-    public Button ButtonTutorialPhone;
-    public Button ButtonTutorialReturns;
-    public Button ButtonTutorialDecorating;
-    public Button ButtonTutorialMusic;
+    public readonly List<PageButton> PageButtons;
 
-    public ButtonsTutorial(Button buttonTutorialSorting, Button buttonTutorialVCR, Button buttonTutorialPhone, Button buttonTutorialReturns, Button buttonTutorialDecorating, Button buttonTutorialMusic)
+    public TutorialsButton(List<PageButton> pageButtons)
     {
-        ButtonTutorialSorting = buttonTutorialSorting;
-        ButtonTutorialVCR = buttonTutorialVCR;
-        ButtonTutorialPhone = buttonTutorialPhone;
-        ButtonTutorialReturns = buttonTutorialReturns;
-        ButtonTutorialDecorating = buttonTutorialDecorating;
-        ButtonTutorialMusic = buttonTutorialMusic;
-    }
-
-    public List<Button> GetButtons()
-    {
-        List<Button> buttons = new List<Button>()
-        {
-
-            ButtonTutorialSorting,
-            ButtonTutorialVCR,
-            ButtonTutorialPhone,
-            ButtonTutorialReturns,
-            ButtonTutorialDecorating,
-            ButtonTutorialMusic
-        };
-        return buttons;
-    }
-}
-
-public class PanelsTutorial
-{
-    public GameObject SortingPanel;
-    public GameObject VCRPanel;
-    public GameObject PhonePanel;
-    public GameObject ReturnsPanel;
-    public GameObject DecoratingPanel;
-    public GameObject MusicPanel;
-
-    public PanelsTutorial(GameObject sortingPanel, GameObject vCRPanel, GameObject phonePanel, GameObject returnsPanel, GameObject decoratingPanel, GameObject musicPanel)
-    {
-        SortingPanel = sortingPanel;
-        VCRPanel = vCRPanel;
-        PhonePanel = phonePanel;
-        ReturnsPanel = returnsPanel;
-        DecoratingPanel = decoratingPanel;
-        MusicPanel = musicPanel;
-    }
-
-    public List<GameObject> GetPanels()
-    {
-        List<GameObject> buttons = new List<GameObject>()
-        {
-
-            SortingPanel,
-            VCRPanel,
-            PhonePanel,
-            ReturnsPanel,
-            DecoratingPanel,
-            MusicPanel
-        };
-        return buttons;
+        PageButtons = pageButtons;
     }
 }

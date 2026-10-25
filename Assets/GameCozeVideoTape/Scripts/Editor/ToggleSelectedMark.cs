@@ -1,10 +1,5 @@
-using TMPro;
 using UnityEditor;
-using UnityEditor.Events;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Localization.Components;
-using UnityEngine.Localization.PropertyVariants;
 using UnityEngine.UI;
 
 public class ToggleSelectedMark : EditorWindow
@@ -27,7 +22,7 @@ public class ToggleSelectedMark : EditorWindow
             Debug.LogWarning("Выбранный объект не содержит Checkmark");
             return;
         }
-         temp = temp.transform.Find("Checkmark");
+         //temp = temp.transform.Find("Checkmark");
 
 
         if (!temp.TryGetComponent<Graphic>(out Graphic graphic))
@@ -36,7 +31,9 @@ public class ToggleSelectedMark : EditorWindow
             return;
         }
 
-        temp_Toggle.graphic = graphic;
+        temp_Toggle.targetGraphic = graphic;
+
+        EditorUtility.SetDirty(temp_Toggle);
     }
 
 

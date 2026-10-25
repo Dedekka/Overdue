@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fde8f5e8a3ce844b08965d2f61c584, type: 3}
+  m_Name: DataTagTypeDevice
+  m_EditorClassIdentifier: Assembly-CSharp::DataTagTypeDevice
+  _tutorialEventSettings:
+  - KeyTag: '[Move]'
+    IdTag: 1
+    UiButtonTexts:
+    - DeviceType: 0
+      Text: '<b>W, A, S, D</b> '
+    - DeviceType: 1
+      Text: <sprite="UiGamePad" index=2>
+    - DeviceType: 2
+      Text: <sprite="UiGamePad" index=2>
+    - DeviceType: 3
+      Text: <sprite="UiGamePad" index=2>
+  - KeyTag: '[Look]'
+    IdTag: 2
+    UiButtonTexts:
+    - DeviceType: 0
+      Text: <sprite="UiGamePad" index=26>
+    - DeviceType: 1
+      Text: <sprite="UiGamePad" index=5>
+    - DeviceType: 2
+      Text: <sprite="UiGamePad" index=5>
+    - DeviceType: 3
+      Text: <sprite="UiGamePad" index=5>
+  - KeyTag: '[Zoom]'
+    IdTag: 3
+    UiButtonTexts:
+    - DeviceType: 0
+      Text: '<b>RMB</b> '
+    - DeviceType: 1
+      Text: <sprite="UiGamePad" index=3>
+    - DeviceType: 2
+      Text: <sprite="UiGamePad" index=24>
+    - DeviceType: 3
+      Text: <sprite="UiGamePad" index=3>
+  - KeyTag: '[Interact]'
+    IdTag: 4
+    UiButtonTexts:
+    - DeviceType: 0
+      Text: '<b>E</b> '
+    - DeviceType: 1
+      Text: <sprite="UiGamePad" index=7>
+    - DeviceType: 2
+      Text: <sprite="UiGamePad" index=16>
+    - DeviceType: 3
+      Text: <sprite="UiGamePad" index=7>
+  - KeyTag: '[Drop]'
+    IdTag: 5
+    UiButtonTexts:
+    - DeviceType: 0
+      Text: '<b>Q</b> '
+    - DeviceType: 1
+      Text: <sprite="UiGamePad" index=9>
+    - DeviceType: 2
+      Text: <sprite="UiGamePad" index=17>
+    - DeviceType: 3
+      Text: <sprite="UiGamePad" index=9>
+  - KeyTag: '[Scroll]'
+    IdTag: 6
+    UiButtonTexts:
+    - DeviceType: 0
+      Text: <sprite="UiGamePad" index=27>
+    - DeviceType: 1
+      Text: <sprite="UiGamePad" index=12> <sprite="UiGamePad" index=13>
+    - DeviceType: 2
+      Text: <sprite="UiGamePad" index=12> <sprite="UiGamePad" index=13>
+    - DeviceType: 3
+      Text: <sprite="UiGamePad" index=12> <sprite="UiGamePad" index=13>
+  - KeyTag: '[ShowList]'
+    IdTag: 7
+    UiButtonTexts:
+    - DeviceType: 0
+      Text: '<b>TAB</b> '
+    - DeviceType: 1
+      Text: <sprite="UiGamePad" index=15>
+    - DeviceType: 2
+      Text: <sprite="UiGamePad" index=15>
+    - DeviceType: 3
+      Text: <sprite="UiGamePad" index=15>

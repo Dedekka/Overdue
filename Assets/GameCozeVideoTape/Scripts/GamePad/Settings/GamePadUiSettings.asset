@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a6d083340b06e40b4ede04eba77fe8, type: 3}
+  m_Name: GamePadUiSettings
+  m_EditorClassIdentifier: Assembly-CSharp::GamePadUiSettings
+  IconGamepadData:
+  - DeviceType: 2
+    GamepadButtonImages:
+    - GamepadButton: 0
+      Icon: {fileID: 2089630319, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 1
+      Icon: {fileID: 1001819150, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 2
+      Icon: {fileID: -980057880, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 3
+      Icon: {fileID: -1370258501, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 4
+      Icon: {fileID: -335266627, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 5
+      Icon: {fileID: 146248412, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 6
+      Icon: {fileID: -161357894, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 7
+      Icon: {fileID: -337485791, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 8
+      Icon: {fileID: 977395577, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+  - DeviceType: 3
+    GamepadButtonImages:
+    - GamepadButton: 0
+      Icon: {fileID: 1070390742, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 1
+      Icon: {fileID: 1652265309, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 2
+      Icon: {fileID: -1539324346, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 3
+      Icon: {fileID: 1962648034, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 4
+      Icon: {fileID: 36734194, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 5
+      Icon: {fileID: 1142604575, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 6
+      Icon: {fileID: -161357894, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 7
+      Icon: {fileID: 1033119821, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
+    - GamepadButton: 8
+      Icon: {fileID: -424549242, guid: d1acb7fe2f1e2ee4a9fb1cb26b66b4c6, type: 3}
