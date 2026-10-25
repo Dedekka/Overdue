@@ -1,7 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using Zenject;
 
@@ -27,7 +24,7 @@ public class MenuInstaller : MonoInstaller
         BindControl();
     }
 
- 
+
 
     private void BindSub()
     {
@@ -58,7 +55,7 @@ public class MenuInstaller : MonoInstaller
     }
 
 
-    
+
 }
 
 public class DataMenuPanel

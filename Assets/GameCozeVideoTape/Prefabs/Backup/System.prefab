@@ -526,8 +526,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5777150591074028754}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.9063079, z: 0.42261827, w: 0}
-  m_LocalPosition: {x: 1.9651599, y: 1.5832496, z: 11.974289}
+  m_LocalRotation: {x: 0.072230555, y: 0.9258997, z: -0.29098698, w: 0.22982414}
+  m_LocalPosition: {x: 3.5971084, y: 1.6252201, z: -4.503576}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c49d122b21bec49af621f126d9f2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamepadInstaller
+  _gamePadUiSettings: {fileID: 11400000, guid: 9182b0272f45412469cd19d128d69bfc, type: 2}
   _selectedPanel:
   - {fileID: 0}
   - {fileID: 0}
@@ -1065,8 +1066,26 @@ MonoBehaviour:
     gamepadButton: 0
   - ImageButton:
     - {fileID: 0}
-    - {fileID: 0}
     gamepadButton: 1
+  - ImageButton:
+    - {fileID: 0}
+    - {fileID: 0}
+    gamepadButton: 2
+  - ImageButton:
+    - {fileID: 0}
+    gamepadButton: 3
+  - ImageButton:
+    - {fileID: 0}
+    gamepadButton: 5
+  - ImageButton:
+    - {fileID: 0}
+    gamepadButton: 6
+  - ImageButton:
+    - {fileID: 0}
+    gamepadButton: 4
+  - ImageButton:
+    - {fileID: 0}
+    gamepadButton: 8
 --- !u!1 &8752889859600553088
 GameObject:
   m_ObjectHideFlags: 0

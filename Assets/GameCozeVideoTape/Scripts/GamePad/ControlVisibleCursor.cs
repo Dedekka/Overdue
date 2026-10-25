@@ -31,31 +31,25 @@ public class ControlVisibleCursor : IDisposable, IInitializable
 
     public void CheckVisibleCursor()
     {
-        //if (_isVisibleState)
-        //{
         if (_importerMenuInputControlDevice.CurrentDevice == DeviceType.KeyboardMouse)
         {
             Debug.Log("CheckVisibleCursor, Переключение на клавиатуру/мышь");
             ControlVisible(CursorLockMode.None);
-            //Cursor.lockState = CursorLockMode.None;
             return;
         }
         //}
         Debug.Log("CheckVisibleCursor, Переключение на геймпад");
         ControlVisible(CursorLockMode.Locked);
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 
 
-    private void OnChangeDevice(DeviceType obj)
+    private void OnChangeDevice(DeviceType deviceType)
     {
         CheckVisibleCursor();
     }
 
     private void ControlVisible(CursorLockMode cursorLock)
     {
-        if (Cursor.lockState == cursorLock) { return; }
-
         Cursor.lockState = _isVisibleState ? cursorLock : CursorLockMode.Locked;
     }
 }

@@ -121,7 +121,11 @@ public class FeedbackInstaller : MonoInstaller
 
     private void BindSub()
     {
+        Container.BindInterfacesAndSelfTo<VisibleCursorFeedBack>()
+            .AsSingle();
 
+        Container.Bind<PlayerSystemActions>()
+          .AsSingle();
     }
 
     private void BindMain()
@@ -132,7 +136,6 @@ public class FeedbackInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<ControlInteractableButton>()
             .AsSingle()
             .WithArguments(_pageButtons);
-
         Container.BindInterfacesAndSelfTo<FeedbackSystem>()
              .AsSingle()
              .WithArguments(

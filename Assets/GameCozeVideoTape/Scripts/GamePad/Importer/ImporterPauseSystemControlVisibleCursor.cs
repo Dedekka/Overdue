@@ -6,7 +6,6 @@ public class ImporterPauseSystemControlVisibleCursor : IDisposable, IInitializab
 {
     private ControlVisibleCursor _controlVisibleCursor;
     private PauseSystem _pauseSystem;
-    private bool _isPause;
 
     public ImporterPauseSystemControlVisibleCursor(ControlVisibleCursor controlVisibleCursor, PauseSystem pauseSystem)
     {
@@ -26,8 +25,7 @@ public class ImporterPauseSystemControlVisibleCursor : IDisposable, IInitializab
 
     private void OnChangeStatePause(bool isPause)
     {
-        _isPause = isPause;
-        _controlVisibleCursor.SetVisibleState(_isPause);
+        _controlVisibleCursor.SetVisibleState(isPause);
         _controlVisibleCursor.CheckVisibleCursor();
     }
 }
