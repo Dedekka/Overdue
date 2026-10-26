@@ -311,13 +311,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.16
+  m_Height: 1.2
   m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.1
   m_SkinWidth: 0.3
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1 &4654381397541394937
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +577,7 @@ MonoBehaviour:
     NearClipPlane: 0.15
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 1
+    ModeOverride: 0
     PhysicalProperties:
       GateFit: 2
       SensorSize: {x: 21.946, y: 16.002}

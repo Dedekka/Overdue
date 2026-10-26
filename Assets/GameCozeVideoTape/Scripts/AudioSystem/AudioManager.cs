@@ -34,6 +34,9 @@ public class AudioManager : IDisposable
     [Header("Present")]
     private EventReference _present_Drop;
 
+    [Header("Garland")]
+     private EventReference _garland_Active;
+
     [Header("Cassette")]
     private EventReference _scroll;
     private EventReference _pickUp;
@@ -65,6 +68,7 @@ public class AudioManager : IDisposable
         _phone_Down = audioSettings.Phone_Down;
         _phone_Up = audioSettings.Phone_Up;
         _soundTvPoint = groupEmitter.SoundTvPoint;
+        _garland_Active = audioSettings.Garland_Active;
     }
 
     public void Dispose()
@@ -197,6 +201,11 @@ public class AudioManager : IDisposable
     public void PlayPickUp()
     {
         Play(_pickUp);
+    }
+
+    public void PlayGarlandActive()
+    {
+        Play(_garland_Active);
     }
 
     public void PlayPresentDrop()

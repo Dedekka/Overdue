@@ -37,7 +37,7 @@ public class EasyFindGenre : MonoBehaviour
         SubIdGenre();
         _genreDropdown.onValueChanged.AddListener(SubIdSubGenre);
         _subGenreDropdown.gameObject.SetActive(false);
-
+        _handSlot = GameObject.Find("HandSlot").transform;
 
         _genreDropdown.onValueChanged.AddListener(SaveIdGanre);
         _subGenreDropdown.onValueChanged.AddListener(SaveIdSubGanre);

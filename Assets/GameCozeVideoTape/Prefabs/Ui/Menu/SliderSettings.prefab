@@ -196,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5088412574017777995}
-  - component: {fileID: 7144470030138989285}
+  - component: {fileID: 1789444278148037015}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -226,7 +226,7 @@ RectTransform:
   m_AnchoredPosition: {x: 122, y: 0}
   m_SizeDelta: {x: -279, y: 19}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7144470030138989285
+--- !u!114 &1789444278148037015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,9 +235,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2608122015777591173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c3d65b9a5b6e6d4198847f1cb1c4db8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleSlider
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.8962264, g: 0.81106293, b: 0.2494215, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

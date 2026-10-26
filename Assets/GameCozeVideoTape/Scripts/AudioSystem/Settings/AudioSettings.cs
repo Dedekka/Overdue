@@ -19,6 +19,12 @@ public class AudioSettings : ScriptableObject
     public EventReference Scroll => _scroll;
     public EventReference Phone_Down => _phone_Down;
     public EventReference Phone_Up => _phone_Up;
+    public EventReference Ui_Select => _ui_Select;
+    public EventReference Ui_LoadScene => _ui_LoadScene;
+    public EventReference Ui_Slider => _ui_Slider;
+    public EventReference Ui_Click => _ui_Click;
+    public EventReference Garland_Active => _garland_Active;
+    public float TimeWaitSliderSound => _timeWaitSliderSound;
 
     #endregion
     [Header("Cassette")]
@@ -38,8 +44,18 @@ public class AudioSettings : ScriptableObject
     [SerializeField] private EventReference _tv_Install;
     [Header("Present")]
     [SerializeField] private EventReference _present_Drop;
+    [Header("Garland")]
+    [SerializeField] private EventReference _garland_Active;
     [Header("Phone")]
     [SerializeField] private EventReference _phone_Ring;
     [SerializeField] private EventReference _phone_Down;
     [SerializeField] private EventReference _phone_Up;
+    [Header("Ui")]
+    [SerializeField] private EventReference _ui_Select;
+    [SerializeField] private EventReference _ui_LoadScene;
+    [SerializeField] private EventReference _ui_Slider;
+    [SerializeField] private EventReference _ui_Click;
+
+    [Header("UiSettings")]
+    [SerializeField] private float _timeWaitSliderSound;
 }

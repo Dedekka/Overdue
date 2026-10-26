@@ -158,7 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16097b93fb4d6cc40b61d30d4ca2d80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecorderController
-  _description: 
 --- !u!1 &3020797039346124898
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d16c6e4f022e0904d8d8aca6b7586587, type: 3}
       propertyPath: m_Name
-      value: OLD_SM_boombox
+      value: SM_boombox
       objectReference: {fileID: 0}
     - target: {fileID: 2132833841439207588, guid: d16c6e4f022e0904d8d8aca6b7586587, type: 3}
       propertyPath: m_LocalRotation.w
@@ -421,6 +420,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ee5dde298af4a94439407fe20b0abbbd, type: 2}
+    - target: {fileID: 2793140509476961394, guid: d16c6e4f022e0904d8d8aca6b7586587, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 716b40e4f8679ed4cbc888e08b03d423, type: 2}
     - target: {fileID: 3611136666896363782, guid: d16c6e4f022e0904d8d8aca6b7586587, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -629,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 478136629314166526, guid: 2ade49a36335c7d4f99b5258a5be24a6, type: 3}
       propertyPath: m_VersionIndex
-      value: 2763
+      value: 3510
       objectReference: {fileID: 0}
     - target: {fileID: 695124986975379683, guid: 2ade49a36335c7d4f99b5258a5be24a6, type: 3}
       propertyPath: _id
@@ -677,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1101273833927114190, guid: 2ade49a36335c7d4f99b5258a5be24a6, type: 3}
       propertyPath: m_VersionIndex
-      value: 2763
+      value: 3510
       objectReference: {fileID: 0}
     - target: {fileID: 1300121181440866990, guid: 2ade49a36335c7d4f99b5258a5be24a6, type: 3}
       propertyPath: m_VersionIndex
@@ -825,7 +828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4039709044755554659, guid: 2ade49a36335c7d4f99b5258a5be24a6, type: 3}
       propertyPath: m_VersionIndex
-      value: 2763
+      value: 3510
       objectReference: {fileID: 0}
     - target: {fileID: 4152435668027763541, guid: 2ade49a36335c7d4f99b5258a5be24a6, type: 3}
       propertyPath: m_Mesh

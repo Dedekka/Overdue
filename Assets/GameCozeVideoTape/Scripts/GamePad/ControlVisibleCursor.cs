@@ -33,12 +33,12 @@ public class ControlVisibleCursor : IDisposable, IInitializable
     {
         if (_importerMenuInputControlDevice.CurrentDevice == DeviceType.KeyboardMouse)
         {
-            Debug.Log("CheckVisibleCursor, Переключение на клавиатуру/мышь");
+            //Debug.Log("CheckVisibleCursor, Переключение на клавиатуру/мышь");
             ControlVisible(CursorLockMode.None);
             return;
         }
         //}
-        Debug.Log("CheckVisibleCursor, Переключение на геймпад");
+        //Debug.Log("CheckVisibleCursor, Переключение на геймпад");
         ControlVisible(CursorLockMode.Locked);
     }
 

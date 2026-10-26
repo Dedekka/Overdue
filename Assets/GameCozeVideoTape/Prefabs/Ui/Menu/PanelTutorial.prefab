@@ -2011,7 +2011,7 @@ GameObject:
   - component: {fileID: 1480229861570664949}
   - component: {fileID: 2525755332707951530}
   - component: {fileID: 1295479248408249272}
-  - component: {fileID: 8561114979129088950}
+  - component: {fileID: 5649649483226433461}
   m_Layer: 5
   m_Name: ButtonTutorialMusic
   m_TagString: Untagged
@@ -2077,7 +2077,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8561114979129088950
+--- !u!114 &5649649483226433461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2086,9 +2086,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4657275611644213316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c92ba00ccd435fd4d8c1c1c9cf1f742d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -2106,10 +2106,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: f957b3d056858fe49b35d8854a535d4a, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2310,7 +2310,7 @@ GameObject:
   - component: {fileID: 6239776405759191034}
   - component: {fileID: 5157719548261296503}
   - component: {fileID: 2459221335573583695}
-  - component: {fileID: 3031846957191619802}
+  - component: {fileID: 569557030917474026}
   m_Layer: 5
   m_Name: ButtonTutorialPhoneRETURNS
   m_TagString: Untagged
@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3031846957191619802
+--- !u!114 &569557030917474026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2385,9 +2385,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4952130158300009818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c92ba00ccd435fd4d8c1c1c9cf1f742d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -2405,10 +2405,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: f957b3d056858fe49b35d8854a535d4a, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2431,7 +2431,7 @@ GameObject:
   - component: {fileID: 8520575469059547965}
   - component: {fileID: 6520503550421860587}
   - component: {fileID: 1796979122719970453}
-  - component: {fileID: 8580449246595953137}
+  - component: {fileID: 3941108448264798809}
   m_Layer: 5
   m_Name: ButtonTutorialVCR
   m_TagString: Untagged
@@ -2497,7 +2497,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8580449246595953137
+--- !u!114 &3941108448264798809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2506,9 +2506,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5578420218934139275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c92ba00ccd435fd4d8c1c1c9cf1f742d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -2526,10 +2526,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: f957b3d056858fe49b35d8854a535d4a, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3280,7 +3280,7 @@ GameObject:
   - component: {fileID: 3389664961776133799}
   - component: {fileID: 2990631943661202257}
   - component: {fileID: 2611994233037444308}
-  - component: {fileID: 5827692371690434619}
+  - component: {fileID: 6794842401094182177}
   m_Layer: 5
   m_Name: ButtonTutorialSorting
   m_TagString: Untagged
@@ -3346,7 +3346,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5827692371690434619
+--- !u!114 &6794842401094182177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3355,9 +3355,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6580900188961173462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c92ba00ccd435fd4d8c1c1c9cf1f742d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -3375,10 +3375,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: f957b3d056858fe49b35d8854a535d4a, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 4373730723663343059}
   - component: {fileID: 4182987039886364953}
   - component: {fileID: 5512648633446065167}
-  - component: {fileID: 5579196964275629881}
+  - component: {fileID: 8435357624459045061}
   m_Layer: 5
   m_Name: ButtonTutorialSunset
   m_TagString: Untagged
@@ -3467,7 +3467,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5579196964275629881
+--- !u!114 &8435357624459045061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3476,9 +3476,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7028591940296103241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c92ba00ccd435fd4d8c1c1c9cf1f742d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -3496,10 +3496,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: f957b3d056858fe49b35d8854a535d4a, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -4607,7 +4607,7 @@ GameObject:
   - component: {fileID: 3648925916996892056}
   - component: {fileID: 1247706054356243297}
   - component: {fileID: 1457423789387420700}
-  - component: {fileID: 7030202880978305549}
+  - component: {fileID: 2317558782121742008}
   m_Layer: 5
   m_Name: ButtonTutorialDecorating
   m_TagString: Untagged
@@ -4673,7 +4673,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7030202880978305549
+--- !u!114 &2317558782121742008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4682,9 +4682,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8408335926795298326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c92ba00ccd435fd4d8c1c1c9cf1f742d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -4702,10 +4702,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 20bb25aac8b9c904d9b1e837a9f32bc8, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: f957b3d056858fe49b35d8854a535d4a, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: ab9efb286f7485f489ead3910cb0d1c2, type: 3}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted

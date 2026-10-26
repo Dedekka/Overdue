@@ -21,6 +21,7 @@ public class EasyFindCasset : MonoBehaviour
     private void Start()
     {
         _activeButton.onClick.AddListener(() => FindCassets());
+        _handSlot = GameObject.Find("HandSlot").transform;
     }
 #endif
 
