@@ -19,6 +19,7 @@ public class ComplitedCallOne : ComplitedHistoryEvent
         _goalController.ClearGoal(TutorialEventType.OnScroll);
         _goalController.ClearGoal(TutorialEventType.OnShow);
         _goalController.ClearGoal(TutorialEventType.OnTv);
+        _goalController.ClearGoal(TutorialEventType.OnLook);
         _goalController.ActiveGoal(TutorialEventType.OnPhone);
         _playerSaySystem.ActiveDialogue(_idDialogue);
 

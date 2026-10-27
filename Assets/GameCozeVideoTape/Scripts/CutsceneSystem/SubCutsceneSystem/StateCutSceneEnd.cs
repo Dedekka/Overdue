@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StateCutSceneEnd : StateCutScene
 {
+    private Cat _cat;
     private ControlLogic _ñontrolLogic;
     private AudioManager _audioManager;
     private CutsceneBlackScreen _cutsceneBlackScreen;
@@ -11,7 +12,7 @@ public class StateCutSceneEnd : StateCutScene
     private float _startWait;
     private float _endWait;
 
-    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi, ControlSettings controlSettings, AudioManager audioManager) : base(idCutscene, playerStateControl, playerUi)
+    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi, ControlSettings controlSettings, AudioManager audioManager, Cat cat) : base(idCutscene, playerStateControl, playerUi)
     {
          _cutsceneBlackScreen = cutsceneBlackScreen;
         _startWait = StartWait;
@@ -19,6 +20,7 @@ public class StateCutSceneEnd : StateCutScene
         _ñontrolLogic = ñontrolLogic;
         _controlSettings = controlSettings;
         _audioManager = audioManager;
+        _cat = cat;
     }
 
     public override void StartCutscene()
@@ -28,6 +30,7 @@ public class StateCutSceneEnd : StateCutScene
         _cutsceneBlackScreen.ActiveBlackScreen(_startWait, _endWait);
         _playerStateControl.ChangeStateControlPlayer(false);
         _playerUi.ChangeOtherGoup(false);
+        _cat.gameObject.SetActive(false);
     }
 
     public override void EndCutscene()

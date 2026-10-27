@@ -49,6 +49,7 @@ Transform:
   - {fileID: 3763841556495756474}
   - {fileID: 5461741885689760604}
   - {fileID: 3212240330979816391}
+  - {fileID: 5177934591982722458}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -84,6 +85,7 @@ MonoBehaviour:
   - {fileID: 941549702470637395}
   - {fileID: 4050568474203697871}
   - {fileID: 8400273270181811236}
+  - {fileID: 5218962440454769055}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -360,6 +362,7 @@ MonoBehaviour:
   _soundAmbientOutsidePoint: {fileID: 0}
   _soundRecorderPoint: {fileID: 0}
   _soundTvPoint: {fileID: 0}
+  _soundCatPoint: {fileID: 0}
 --- !u!1 &4182355753853103304
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +454,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849f181df7183494fbb257d4f172baf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HistoryInstaller
+--- !u!1 &4907417359199930675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5177934591982722458}
+  - component: {fileID: 5218962440454769055}
+  m_Layer: 0
+  m_Name: CatInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5177934591982722458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907417359199930675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5218962440454769055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907417359199930675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb991610179b1ba478886fa8226a3d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CatInstaller
+  _cat: {fileID: 0}
+  _catTrigger: {fileID: 0}
 --- !u!1 &5127015498304284498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,3 +1423,4 @@ MonoBehaviour:
   _returnedParticle: {fileID: 0}
   _decorInstallParticle: {fileID: 0}
   _musicPlayngParticle: {fileID: 0}
+  _catHeartParticle: {fileID: 0}

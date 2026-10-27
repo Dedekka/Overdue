@@ -35,7 +35,7 @@ public class AudioManager : IDisposable
     private EventReference _present_Drop;
 
     [Header("Garland")]
-     private EventReference _garland_Active;
+    private EventReference _garland_Active;
 
     [Header("Cassette")]
     private EventReference _scroll;
@@ -49,6 +49,12 @@ public class AudioManager : IDisposable
     private EventReference _phone_Up;
     private EventReference _ringPhone;
     private EventInstance _ringInstance;
+    [Header("Cat")]
+    private EventReference _cat_idle;
+    private EventReference _cat_meow;
+    private EventInstance _CatInstance;
+    private Transform _soundCatPoint;
+
 
     public AudioManager(AudioSettings audioSettings, GroupEmitter groupEmitter)
     {
@@ -69,6 +75,9 @@ public class AudioManager : IDisposable
         _phone_Up = audioSettings.Phone_Up;
         _soundTvPoint = groupEmitter.SoundTvPoint;
         _garland_Active = audioSettings.Garland_Active;
+        _cat_idle = audioSettings.Cat_idle;
+        _cat_meow = audioSettings.Cat_meow;
+        _soundCatPoint = groupEmitter.SoundCatPoint;
     }
 
     public void Dispose()
@@ -121,7 +130,7 @@ public class AudioManager : IDisposable
         _tempGanre = eventReference;
     }
 
-    public void SetMusic(EventReference eventReference,int musicIndex )
+    public void SetMusic(EventReference eventReference, int musicIndex)
     {
         Play(_audioRecorder_ChangeMusic);
         _tempMusic = eventReference;
@@ -139,6 +148,17 @@ public class AudioManager : IDisposable
         //PlaySmartEvent(ref _tempGanre, ref _ganreInstance);
         PlayPositionEvent(ref _tempGanre, ref _ganreInstance, _soundTvPoint.position);
         _ganreInstance.start();
+    }
+
+    public void PlayCatIdle()
+    {
+        PlayPositionEvent(ref _cat_idle, ref _CatInstance, _soundCatPoint.position);
+        _CatInstance.start();
+    }
+
+    public void PlayCatMeow()
+    {
+        Play(_cat_meow);
     }
 
     public void PlayRing(Vector3 pos)
@@ -273,7 +293,7 @@ public class AudioManager : IDisposable
 
         playHit.set3DAttributes(RuntimeUtils.To3DAttributes(Pos)); // Мы вводим информацию об положении в 3Д , а                       
                                                                    //(RuntimeUtils.To3DAttributes) переводит наш Vector3 В понятный для Код 
-        //playHit.start(); // Запускаем воспроизведение 
+                                                                   //playHit.start(); // Запускаем воспроизведение 
     }
 
 

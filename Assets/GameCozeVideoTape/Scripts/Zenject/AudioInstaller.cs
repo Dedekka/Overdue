@@ -20,6 +20,7 @@ public class AudioInstaller : MonoInstaller
     [SerializeField] private Transform _soundAmbientOutsidePoint;
     [SerializeField] private Transform _soundRecorderPoint;
     [SerializeField] private Transform _soundTvPoint;
+    [SerializeField] private Transform _soundCatPoint;
 
     public override void InstallBindings()
     {
@@ -145,6 +146,7 @@ public class AudioInstaller : MonoInstaller
                //AmbientOutsideEmitter = _ambientOutsideEmitter,
                SoundTvPoint = _soundTvPoint,
                SoundRecorderPoint = _soundRecorderPoint,
+               SoundCatPoint = _soundCatPoint,
                //DoorEmitter = _doorEmitter,
                //PhoneEmitter = _phoneEmitter,
            });
@@ -157,6 +159,7 @@ public class GroupEmitter
     //public StudioEventEmitter DoorEmitter;
     public Transform SoundRecorderPoint;
     public Transform SoundTvPoint;
+    public Transform SoundCatPoint;
     //public StudioEventEmitter AmbientOutsideEmitter;
 }
 

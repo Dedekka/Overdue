@@ -24,6 +24,8 @@ public class AudioSettings : ScriptableObject
     public EventReference Ui_Slider => _ui_Slider;
     public EventReference Ui_Click => _ui_Click;
     public EventReference Garland_Active => _garland_Active;
+    public EventReference Cat_idle => _cat_idle;
+    public EventReference Cat_meow => _cat_meow;
     public float TimeWaitSliderSound => _timeWaitSliderSound;
 
     #endregion
@@ -55,6 +57,9 @@ public class AudioSettings : ScriptableObject
     [SerializeField] private EventReference _ui_LoadScene;
     [SerializeField] private EventReference _ui_Slider;
     [SerializeField] private EventReference _ui_Click;
+    [Header("Cat")]
+    [SerializeField] private EventReference _cat_idle;
+    [SerializeField] private EventReference _cat_meow;
 
     [Header("UiSettings")]
     [SerializeField] private float _timeWaitSliderSound;

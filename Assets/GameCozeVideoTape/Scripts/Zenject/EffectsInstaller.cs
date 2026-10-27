@@ -16,6 +16,7 @@ public class EffectsInstaller : MonoInstaller
     [SerializeField] private ParticleSystem _returnedParticle;
     [SerializeField] private ParticleSystem _decorInstallParticle;
     [SerializeField] private ParticleSystem _musicPlayngParticle;
+    [SerializeField] private ParticleSystem _catHeartParticle;
 
     public override void InstallBindings()
     {
@@ -24,6 +25,15 @@ public class EffectsInstaller : MonoInstaller
         BindPhone();
         BindPresent();
         BindAudioRecorder();
+        BindCat();
+    }
+
+    private void BindCat()
+    {
+
+        Container.Bind<CatAnimation>()
+      .AsSingle()
+      .WithArguments(_catHeartParticle);
     }
 
     private void BindAudioRecorder()
