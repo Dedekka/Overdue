@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataHistoryEvent : ScriptableObject
+public class DataHistoryEvent : ScriptableObject, IDatable
 {
     [SerializeField] private List<HistoryEventSettings> _historyEvent;
     private Dictionary<int, HistoryEventSettings> _historyData;

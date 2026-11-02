@@ -82,6 +82,14 @@ public class InventoryCassette
         return _activeCassets.ToList();
     }
 
+    public void VisibleHand(bool isVisible)
+    {
+        for (int i = 0; i < _activeCassets.Length; i++)
+        {
+            _activeCassets[i].gameObject.SetActive(isVisible);
+        }
+    }
+
     public bool CheckActiveCassette(out CassetteObject cassetteObject)
     {
         ChangeCurrentCassette();

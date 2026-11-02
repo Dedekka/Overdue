@@ -14,10 +14,10 @@ public class GoalChangeAudio : Goal
         Debug.Log($"{this.GetType()} Initialization");
     }
 
-
     protected override void OnComplitedCondition(Condition condition)
     {
         base.OnComplitedCondition(condition);
         _goalController.ClearGoal(Settings.TutorialEventType);
+        _goalController.ActiveGoal(TutorialEventType.OnPlayAudio);
     }
 }

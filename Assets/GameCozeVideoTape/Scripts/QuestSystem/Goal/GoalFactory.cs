@@ -52,6 +52,7 @@ public class GoalFactory
             TutorialEventType.OnReturned => _container.Instantiate<ConditionReturned>(),
             TutorialEventType.OnInstall => _container.Instantiate<ConditionInstall>(),
             TutorialEventType.OnChangeAudio => _container.Instantiate<ConditionChangeAudio>(),
+            TutorialEventType.OnPlayAudio => _container.Instantiate<ConditionPlayAudio>(),
             TutorialEventType.OnOpera => _container.Instantiate<ConditionOpera>(),
             TutorialEventType.OnInstallOpera => _container.Instantiate<ConditionInstallOpera>(),
             _ => throw new NotImplementedException()
@@ -76,6 +77,7 @@ public class GoalFactory
             TutorialEventType.OnReturned => _container.Instantiate<GoalReturned>(new object[] { settings, conditions }),
             TutorialEventType.OnInstall => _container.Instantiate<GoalInstall>(new object[] {12, settings, conditions }),
             TutorialEventType.OnChangeAudio => _container.Instantiate<GoalChangeAudio>(new object[] { settings, conditions }),
+            TutorialEventType.OnPlayAudio => _container.Instantiate<GoalPlayAudio>(new object[] { settings, conditions }),
             TutorialEventType.OnOpera => _container.Instantiate<GoalOpera>(new object[] { settings, conditions }),
             TutorialEventType.OnInstallOpera => _container.Instantiate<GoalInstallOpera>(new object[] { settings, conditions }),
             _ => throw new NotImplementedException()

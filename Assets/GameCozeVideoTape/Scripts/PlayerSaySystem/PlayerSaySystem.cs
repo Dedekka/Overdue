@@ -9,10 +9,14 @@ public class PlayerSaySystem : IInitializable, IDisposable, IStarterDialogueble
     private FactorySayEvent _factorySayEvent;
     private DialogSystem _dialogSystem;
 
+    private int _waitDialogId;
+    public event Action OnWaitDialog;
+
     public PlayerSaySystem(FactorySayEvent factorySayEvent, DialogSystem dialogSystem)
     {
         _factorySayEvent = factorySayEvent;
         _dialogSystem = dialogSystem;
+        _waitDialogId = -1;
     }
 
     public void Initialize()
@@ -23,6 +27,24 @@ public class PlayerSaySystem : IInitializable, IDisposable, IStarterDialogueble
     public void Dispose()
     {
 
+    }
+    //
+
+    public void SetWaitDialog(int idDialogue)
+    {
+        _waitDialogId = idDialogue;
+        OnWaitDialog?.Invoke();
+    }
+
+    public void ActiveDialogue()
+    {
+        if (_waitDialogId < 0)
+        {
+            Debug.Log("Not found waitdialogId");
+            return;
+        }
+        ActiveDialogue(_waitDialogId);
+        _waitDialogId = -1;
     }
 
     public void ActiveDialogue(int idDialogue)

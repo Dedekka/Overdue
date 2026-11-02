@@ -7,14 +7,16 @@ public class EventInputSystem
     private LookItemRotate _lookItemRotate;
     private LookItemCamera _lookItemCamera;
     private PlayerLookItem _playerLookItem;
+    private ControlFullScreenTutorial _controlFullScreenTutorial;
 
-    public EventInputSystem(PlayerUi playerUi, PauseSystem pause, PlayerLookItem playerLookItem)
+    public EventInputSystem(PlayerUi playerUi, PauseSystem pause, PlayerLookItem playerLookItem, ControlFullScreenTutorial controlFullScreenTutorial)
     {
         _playerUi = playerUi;
         _pause = pause;
         _lookItemRotate = playerLookItem.LookItemRotate;
         _lookItemCamera = playerLookItem.LookItemCamera;
         _playerLookItem = playerLookItem;
+        _controlFullScreenTutorial = controlFullScreenTutorial;
     }
 
     public void InventoryView()
@@ -24,9 +26,17 @@ public class EventInputSystem
 
     public void Pause()
     {
-        if (!_playerLookItem.IsActive)
+        if (!ControllPauseState())
         {
             _pause.Pause();
+        }
+    }
+
+    public void EndPause()
+    {
+        if (!ControllPauseState())
+        {
+            _pause.Pause(false);
         }
     }
 
@@ -35,6 +45,14 @@ public class EventInputSystem
         if (_playerLookItem.IsActive)
         {
             _playerLookItem.EndLookItem();
+        }
+    }
+
+    public void EndFullScreenTutorial()
+    {
+        if (_controlFullScreenTutorial.IsActive)
+        {
+            _controlFullScreenTutorial.ControlActive(false);
         }
     }
 
@@ -62,4 +80,37 @@ public class EventInputSystem
             _lookItemCamera.Zoom(-rotate);
         }
     }
+
+    public bool ControllClosePanelState()
+    {
+        bool _isActivePause = false;
+
+        if (_pause.IsPause)
+        {
+            _isActivePause = true;
+        }
+        if (ControllPauseState())
+        {
+            _isActivePause = true;
+
+        }
+        return _isActivePause;
+    }
+
+    private bool ControllPauseState()
+    {
+        bool _isActivePause = false;
+
+        if (_playerLookItem.IsActive)
+        {
+            _isActivePause = true;
+        }
+        if (_controlFullScreenTutorial.IsActive)
+        {
+            _isActivePause = true;
+        }
+        return _isActivePause;
+    }
+
+ 
 }

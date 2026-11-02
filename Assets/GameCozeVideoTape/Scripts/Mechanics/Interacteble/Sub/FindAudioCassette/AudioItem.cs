@@ -38,6 +38,7 @@ public abstract class AudioItem : MonoBehaviour
         Initialization();
     }
 
+
     protected abstract void OnInteract();
 
     protected virtual void Initialization() { }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DataOperaLanguage : ScriptableObject
+public class DataOperaLanguage : ScriptableObject, IDatable
 {
     [SerializeField] private List<OperaLanguageSettings> itemSettings;
     private Dictionary<int, OperaLanguageSettings> _cassetsData;

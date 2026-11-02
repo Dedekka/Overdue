@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataGenreLanguage : ScriptableObject
+public class DataGenreLanguage : ScriptableObject, IDatable
 {
     [SerializeField] private List<GenreLanguage> itemSettings;
     private Dictionary<int, GenreLanguage> _cassetsData;

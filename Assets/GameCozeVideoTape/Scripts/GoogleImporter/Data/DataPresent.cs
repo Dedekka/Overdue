@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "DataPresent", menuName = "Create/DataPresent")]
-public class DataPresent : ScriptableObject
+public class DataPresent : ScriptableObject, IDatable
 {
     [SerializeField] private List<PresentSettings> _dataPresents;
     private Dictionary<int, PresentSettings> _presentsData;

@@ -32,5 +32,6 @@ public class GoalInstall : Goal
         _playerSaySystem.ActiveDialogue(_idDialogue);
         _goalController.ClearGoal(Settings.TutorialEventType);
         _goalController.ActiveGoal(TutorialEventType.OnChangeAudio);
+        
     }
 }

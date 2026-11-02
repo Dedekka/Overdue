@@ -29,6 +29,7 @@ public class GoogleMenu
     private const string TutorialEvent_sheets_name = "TutorialEvent";
     private const string TutorialEventLanguage_sheets_name = "TutorialEventLanguage";
     private const string BazeTagTypeDevice_sheets_name = "BazeTagTypeDevice";
+    private const string FullScreenTutorialPanel_sheets_name = "FullScreenTutorialKey";
     //private const string LanguageDialogue_sheets_name = "LanguageDialogue";
 
 
@@ -56,8 +57,9 @@ public class GoogleMenu
         await TutorialEvent(gameSettings, sheetsImporter);
 
         await TagTypeDevice(gameSettings, sheetsImporter);
+        await FullScreenTutorialKey(gameSettings, sheetsImporter);
 
-         sheetsImporter = new GoogleImporter(Credentials_path, CassetteLanguageSheet_id);
+        sheetsImporter = new GoogleImporter(Credentials_path, CassetteLanguageSheet_id);
         await ItemLanguage(gameSettings, sheetsImporter);
         await MusicLanguage(gameSettings, sheetsImporter);
         await DialogsLanguage(gameSettings, sheetsImporter);
@@ -65,7 +67,7 @@ public class GoogleMenu
         await PresentLanguage(gameSettings, sheetsImporter);
         await GenreLanguage(gameSettings, sheetsImporter);
         await TutorialEventLanguage(gameSettings, sheetsImporter);
-        
+
         SaveSettings(gameSettings);
     }
 
@@ -84,78 +86,113 @@ public class GoogleMenu
         //PlayerPrefs.SetString(SettingFileName, JsonSaver);
         //PlayerPrefs.Save();
         #region Game
-        DataCassets dataCassets = ScriptableObject.CreateInstance<DataCassets>();
-        dataCassets.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataCassetsPath, dataCassets);
-        
-        DataGenre dataGenre = ScriptableObject.CreateInstance<DataGenre>();
-        dataGenre.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataGenrePath, dataGenre);
+        //DataCassets dataCassets = ScriptableObject.CreateInstance<DataCassets>();
+        //dataCassets.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataCassetsPath, dataCassets);
 
-        DataDialogue dataDialogue = ScriptableObject.CreateInstance<DataDialogue>();
-        dataDialogue.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataDialoguePath, dataDialogue);
+        //DataGenre dataGenre = ScriptableObject.CreateInstance<DataGenre>();
+        //dataGenre.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataGenrePath, dataGenre);
 
-        DataPresent dataPresent = ScriptableObject.CreateInstance<DataPresent>();
-        dataPresent.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataPresentPath, dataPresent);
+        //DataDialogue dataDialogue = ScriptableObject.CreateInstance<DataDialogue>();
+        //dataDialogue.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataDialoguePath, dataDialogue);
 
-        DataOpera dataOpera = ScriptableObject.CreateInstance<DataOpera>();
-        dataOpera.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataOperaPath, dataOpera);
+        //DataPresent dataPresent = ScriptableObject.CreateInstance<DataPresent>();
+        //dataPresent.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataPresentPath, dataPresent);
 
-        DataHistoryEvent dataHistoryEvent = ScriptableObject.CreateInstance<DataHistoryEvent>();
-        dataHistoryEvent.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataHistoryEventPath, dataHistoryEvent);
+        //DataOpera dataOpera = ScriptableObject.CreateInstance<DataOpera>();
+        //dataOpera.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataOperaPath, dataOpera);
 
-        DataMusicCassets dataMusicCassets = ScriptableObject.CreateInstance<DataMusicCassets>();
-        dataMusicCassets.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataMusicCassetsPath, dataMusicCassets);
+        //DataHistoryEvent dataHistoryEvent = ScriptableObject.CreateInstance<DataHistoryEvent>();
+        //dataHistoryEvent.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataHistoryEventPath, dataHistoryEvent);
 
-        DataTutorialEvent dataTutorialEvent = ScriptableObject.CreateInstance<DataTutorialEvent>();
-        dataTutorialEvent.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataTutorialEventPath, dataTutorialEvent);
+        //DataMusicCassets dataMusicCassets = ScriptableObject.CreateInstance<DataMusicCassets>();
+        //dataMusicCassets.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataMusicCassetsPath, dataMusicCassets);
+
+        //DataTutorialEvent dataTutorialEvent = ScriptableObject.CreateInstance<DataTutorialEvent>();
+        //dataTutorialEvent.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataTutorialEventPath, dataTutorialEvent);
 
 
-        DataTagTypeDevice dataTagTypeDevice = ScriptableObject.CreateInstance<DataTagTypeDevice>();
-        dataTagTypeDevice.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataTagTypeDevicePath, dataTagTypeDevice);
+        //DataTagTypeDevice dataTagTypeDevice = ScriptableObject.CreateInstance<DataTagTypeDevice>();
+        //dataTagTypeDevice.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataTagTypeDevicePath, dataTagTypeDevice);
 
-        
 
+        //DataFullScreenTutorialKey dataFullScreenTutorialKey = ScriptableObject.CreateInstance<DataFullScreenTutorialKey>();
+        //dataFullScreenTutorialKey.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataFullScreenTutorialKeyPath, dataFullScreenTutorialKey);
+
+        SaveAssetsType(ScriptableObject.CreateInstance<DataCassets>(), mainGoogleSettings, PathConst.DataCassetsPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataGenre>(), mainGoogleSettings, PathConst.DataGenrePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataDialogue>(), mainGoogleSettings, PathConst.DataDialoguePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataPresent>(), mainGoogleSettings, PathConst.DataPresentPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataOpera>(), mainGoogleSettings, PathConst.DataOperaPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataHistoryEvent>(), mainGoogleSettings, PathConst.DataHistoryEventPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataMusicCassets>(), mainGoogleSettings, PathConst.DataMusicCassetsPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataTutorialEvent>(), mainGoogleSettings, PathConst.DataTutorialEventPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataTagTypeDevice>(), mainGoogleSettings, PathConst.DataTagTypeDevicePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataFullScreenTutorialKey>(), mainGoogleSettings, PathConst.DataFullScreenTutorialKeyPath);
 
         #endregion
 
         #region GameLanguage
 
-        DataTutorialEventLanguage dataTutorialEventSettings = ScriptableObject.CreateInstance<DataTutorialEventLanguage>();
-        dataTutorialEventSettings.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataTutorialEventLanguagePath, dataTutorialEventSettings);
+        //DataTutorialEventLanguage dataTutorialEventSettings = ScriptableObject.CreateInstance<DataTutorialEventLanguage>();
+        //dataTutorialEventSettings.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataTutorialEventLanguagePath, dataTutorialEventSettings);
 
-        DataLanguage dataLanguage = ScriptableObject.CreateInstance<DataLanguage>();
-        dataLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.LanguageCassetsPath, dataLanguage);
+        //DataLanguage dataLanguage = ScriptableObject.CreateInstance<DataLanguage>();
+        //dataLanguage.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.LanguageCassetsPath, dataLanguage);
 
-        DataMusicLanguage dataMusicLanguage = ScriptableObject.CreateInstance<DataMusicLanguage>();
-        dataMusicLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataMusicLanguagePath, dataMusicLanguage);
+        //DataMusicLanguage dataMusicLanguage = ScriptableObject.CreateInstance<DataMusicLanguage>();
+        //dataMusicLanguage.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataMusicLanguagePath, dataMusicLanguage);
 
-        DataDialogLanguage dataDialogLanguage = ScriptableObject.CreateInstance<DataDialogLanguage>();
-        dataDialogLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataDialogLanguagePath, dataDialogLanguage);
+        //DataDialogLanguage dataDialogLanguage = ScriptableObject.CreateInstance<DataDialogLanguage>();
+        //dataDialogLanguage.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataDialogLanguagePath, dataDialogLanguage);
 
-        DataOperaLanguage dataOperaLanguage = ScriptableObject.CreateInstance<DataOperaLanguage>();
-        dataOperaLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataOperaLanguagePath, dataOperaLanguage);
+        //DataOperaLanguage dataOperaLanguage = ScriptableObject.CreateInstance<DataOperaLanguage>();
+        //dataOperaLanguage.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataOperaLanguagePath, dataOperaLanguage);
 
-        DataPresentLanguage dataPresentLanguage = ScriptableObject.CreateInstance<DataPresentLanguage>();
-        dataPresentLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataPresentLanguagePath, dataPresentLanguage);
+        //DataPresentLanguage dataPresentLanguage = ScriptableObject.CreateInstance<DataPresentLanguage>();
+        //dataPresentLanguage.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataPresentLanguagePath, dataPresentLanguage);
 
-        DataGenreLanguage dataGenreLanguage = ScriptableObject.CreateInstance<DataGenreLanguage>();
-        dataGenreLanguage.Initialization(mainGoogleSettings);
-        SaveAssets(PathConst.DataGenreLanguagePath, dataGenreLanguage);
+        //DataGenreLanguage dataGenreLanguage = ScriptableObject.CreateInstance<DataGenreLanguage>();
+        //dataGenreLanguage.Initialization(mainGoogleSettings);
+        //SaveAssets(PathConst.DataGenreLanguagePath, dataGenreLanguage);
+
+
+        SaveAssetsType(ScriptableObject.CreateInstance<DataTutorialEventLanguage>(), mainGoogleSettings, PathConst.DataTutorialEventLanguagePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataLanguage>(), mainGoogleSettings, PathConst.LanguageCassetsPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataMusicLanguage>(), mainGoogleSettings, PathConst.DataMusicLanguagePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataDialogLanguage>(), mainGoogleSettings, PathConst.DataDialogLanguagePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataOperaLanguage>(), mainGoogleSettings, PathConst.DataOperaLanguagePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataPresentLanguage>(), mainGoogleSettings, PathConst.DataPresentLanguagePath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataGenreLanguage>(), mainGoogleSettings, PathConst.DataGenreLanguagePath);
         #endregion
+    }
+
+    private static void SaveAssetsType(IDatable parameter, MainGoogleSettings mainGoogleSettings, string path)
+    {
+        parameter.Initialization(mainGoogleSettings);
+        if (parameter is ScriptableObject scriptableObject)
+        {
+        SaveAssets(path, scriptableObject);
+        }
+        else
+        {
+            Debug.LogError("Not Found ScriptableObject");
+        }
     }
 
     private static void SaveAssets(string path, ScriptableObject data)
@@ -223,6 +260,12 @@ public class GoogleMenu
         await sheetsImporter.DownloandAndParseSheet(BazeTagTypeDevice_sheets_name, tutorialEventParser);
     }
 
+    private static async UniTask FullScreenTutorialKey(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        FullScreenTutorialKeyParser tutorialEventParser = new FullScreenTutorialKeyParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(FullScreenTutorialPanel_sheets_name, tutorialEventParser);
+    }
+
     #endregion
 
     #region GameLanguage
@@ -270,3 +313,4 @@ public class GoogleMenu
     #endregion
 
 }
+

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataCassets", menuName = "Create/DataCassets")]
-public class DataCassets : ScriptableObject
+public class DataCassets : ScriptableObject, IDatable
 {
     [SerializeField] private List<ItemSettings> itemSettings;
     private Dictionary<int, ItemSettings> _cassetsData;

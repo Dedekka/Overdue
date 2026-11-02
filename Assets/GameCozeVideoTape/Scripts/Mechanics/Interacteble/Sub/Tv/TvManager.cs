@@ -28,7 +28,6 @@ public class TvManager : IDisposable, IInitializable
         _operaChecker = operaChecker;
         _controlGenreVideo = controlGenreVideo;
         _tvGanreSound = tvGanreSound;
-        //_dataOpera = dataOpera;
     }
 
     public void Initialize()

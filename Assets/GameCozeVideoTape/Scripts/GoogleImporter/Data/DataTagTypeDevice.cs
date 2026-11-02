@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataTagTypeDevice : ScriptableObject
+public class DataTagTypeDevice : ScriptableObject, IDatable
 {
     [SerializeField] private List<TagTypeDeviceSettings> _tutorialEventSettings;
     private Dictionary<int, TagTypeDeviceSettings> _cassetsData;

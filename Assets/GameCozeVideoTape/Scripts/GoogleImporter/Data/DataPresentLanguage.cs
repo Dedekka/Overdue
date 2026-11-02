@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataPresentLanguage : ScriptableObject
+public class DataPresentLanguage : ScriptableObject, IDatable
 {
     [SerializeField] private List<PresentLanguageSettings> itemSettings;
     private Dictionary<int, PresentLanguageSettings> _cassetsData;

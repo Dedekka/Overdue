@@ -8,6 +8,7 @@ public static class PathConst
     public const string DataMusicCassetsPath = "Assets/Resources/Data/DataMusicCassets.asset";
     public const string DataTutorialEventPath = "Assets/Resources/Data/DataTutorialEvent.asset";
     public const string DataTagTypeDevicePath = "Assets/Resources/Data/DataTagTypeDevice.asset";
+    public const string DataFullScreenTutorialKeyPath = "Assets/Resources/Data/DataFullScreenTutorialKey.asset";
     public const string DataMusicLanguagePath = "Assets/Resources/Data/DataMusicLanguage.asset";
     public const string DataDialogLanguagePath = "Assets/Resources/Data/DataDialogLanguage.asset";
     public const string DataOperaLanguagePath = "Assets/Resources/Data/DataOperaLanguage.asset";
@@ -34,6 +35,7 @@ public static class PathConst
     public const string DataPresentLanguageAsset = "Data/DataPresentLanguage";
     public const string DataGenreAsset = "Data/DataGenre";
     public const string DataGenreLanguageAsset = "Data/DataGenreLanguage";
+    public const string DataFullScreenTutorialKeyAsset = "Data/DataFullScreenTutorialKey";
     public const string DataTutorialEventAsset = "Data/DataTutorialEvent";
     public const string DataTutorialEventLanguageAsset = "Data/DataTutorialEventLanguage";
 }

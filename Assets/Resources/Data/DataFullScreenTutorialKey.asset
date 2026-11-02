@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3eaedcffce19494fb79b975a8e5927f, type: 3}
+  m_Name: DataFullScreenTutorialKey
+  m_EditorClassIdentifier: Assembly-CSharp::DataFullScreenTutorialKey
+  _tutorialEventSettings:
+  - Id: 1
+    KeyHeader: '#FullScreenTutorialPanel.Sorting.Header'
+    KeyBody: '#FullScreenTutorialPanel.Sorting.Body'
+    Video: {fileID: 32900000, guid: 639dce0a6e418df40bfa94455f894274, type: 3}
+  - Id: 2
+    KeyHeader: '#FullScreenTutorialPanel.VCR.Header'
+    KeyBody: '#FullScreenTutorialPanel.VCR.Body'
+    Video: {fileID: 32900000, guid: b97ce1f264faedc43bd51af24095c056, type: 3}
+  - Id: 3
+    KeyHeader: '#FullScreenTutorialPanel.Phone.Header'
+    KeyBody: '#FullScreenTutorialPanel.Phone.Body'
+    Video: {fileID: 32900000, guid: 03a205a1795205b4e81a7ff0a64c012e, type: 3}
+  - Id: 4
+    KeyHeader: '#FullScreenTutorialPanel.Decorating.Header'
+    KeyBody: '#FullScreenTutorialPanel.Decorating.Body'
+    Video: {fileID: 32900000, guid: b5a9fae1c0b91a446a41847c5dbe88f8, type: 3}
+  - Id: 5
+    KeyHeader: '#FullScreenTutorialPanel.Music.Header'
+    KeyBody: '#FullScreenTutorialPanel.Music.Body'
+    Video: {fileID: 32900000, guid: 42d42a820df0eb047833587232bd85d3, type: 3}
+  - Id: 6
+    KeyHeader: '#FullScreenTutorialPanel.Sunset.Header'
+    KeyBody: '#FullScreenTutorialPanel.Sunset.Body'
+    Video: {fileID: 32900000, guid: 0540292e50c22b040a8e1a75285bea5f, type: 3}

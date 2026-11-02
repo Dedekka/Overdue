@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataDialogue", menuName = "Create/DataDialogue")]
-public class DataDialogue : ScriptableObject
+public class DataDialogue : ScriptableObject, IDatable
 {
     [SerializeField] private List<DialogSettings> _dialogues;
     private Dictionary<int, DialogSettings> _dialogData;

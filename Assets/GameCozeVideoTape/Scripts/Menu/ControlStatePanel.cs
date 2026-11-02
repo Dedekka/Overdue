@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControlStatePanel : MonoBehaviour
 {
     [SerializeField] private List<StatePanel> _statePanels;
-
+    
     public void ChangeState(StatePanelUi state)
     {
         GameObject tempPanel = null;

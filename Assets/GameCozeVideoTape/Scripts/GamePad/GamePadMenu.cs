@@ -16,22 +16,19 @@ public class GamePadMenu : IInitializable
     public void Initialize()
     {
         _eventSystem = EventSystem.current;
-        
-             Debug.Log($"Initialize, _eventSystem ={_eventSystem == null}");
+        Debug.Log($"Initialize, _eventSystem ={_eventSystem == null}");
         ActiveButton(0);
     }
 
     public void ActiveButton(int indexPanel)
     {
-        //Debug.Log($"ActiveButton ={CheckButton(indexPanel)}");
-
         if (CheckButton(indexPanel))
         {
             ChangeButton(indexPanel);
         }
         else
         {
-            Debug.LogError("Not Found ActiveButton");
+            Debug.LogWarning($"Not Found ActiveButton, indexPanel:{indexPanel}");
         }
     }
 

@@ -1,4 +1,5 @@
 using SaveLoadSystem;
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,6 +44,8 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private Transform _returnedPosition;
     [Header("AudioCassettsSystem")]
     [SerializeField] private AudioRecorder _audioRecorder;
+    [Header("FullScreenTutorial")]
+    [SerializeField] private FullScreenTutorialUi _fullScreenTutorialUi;
 
     public override void InstallBindings()
     {
@@ -58,6 +61,25 @@ public class GameInstaller : MonoInstaller
         BindPresentDecor();
         BindTv();
         BindRecorder();
+        BindFullScreenTutorial();
+    }
+
+    private void BindFullScreenTutorial()
+    {
+
+        Container.Bind<FullScreenTutorialUi>()
+        .FromInstance(_fullScreenTutorialUi)
+        .AsSingle();
+
+        Container.Bind<ControlFullScreenTutorial>()
+        .AsSingle();
+        
+        Container.Bind<ListenerFailInstallCassete>()
+        .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ListenerWaitDialog>()
+         .AsSingle();
+
     }
 
     private void BindRecorder()
@@ -174,6 +196,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<DataGenreLanguage>()
            .FromResource(PathConst.DataGenreLanguageAsset)
            .AsSingle();
+
+        Container.Bind<DataFullScreenTutorialKey>()
+           .FromResource(PathConst.DataFullScreenTutorialKeyAsset)
+           .AsSingle();
     }
 
     private void BindUI()
@@ -280,6 +306,15 @@ public class GameInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<SaveInventoryImporter>()
          .AsSingle();
 
+        Container.BindInterfacesAndSelfTo<ImporterFullScreenTutorialLookItemEffects>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterFullScreenTutorialState>()
+         .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ImporterListenerFailInstallControlFullScreenTutorial>()
+         .AsSingle();
+
         Container.BindInterfacesAndSelfTo<ImporterPauseSystemControlVisibleCursor>()
          .AsSingle();
 
@@ -290,12 +325,6 @@ public class GameInstaller : MonoInstaller
          .AsSingle();
 
         Container.BindInterfacesAndSelfTo<ImporterImporterDialogSystemCall>()
-         .AsSingle();
-
-        //Container.BindInterfacesAndSelfTo<ImporterInventoryCassetteTv>()
-        // .AsSingle();
-
-        Container.BindInterfacesAndSelfTo<ImporterTvManagerTV>()
          .AsSingle();
     }
 

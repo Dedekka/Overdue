@@ -36,6 +36,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Aim.canceled -= AimControl;
         _playerActions.Interact.started -= OnInteracteble;
         _playerActions.Drop.started -= OnDrop;
+        _playerActions.Drop.started -= OnClosePanel;
         _playerActions.Scroll.started -= OnScroll;
         _playerActions.Inventory.started -= OnInventory;
         _playerActions.Disable();
@@ -51,6 +52,8 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Aim.canceled += AimControl;
         _playerActions.Interact.started += OnInteracteble;
         _playerActions.Drop.started += OnDrop;
+        _playerActions.Drop.started += OnClosePanel;
+      
         _playerActions.Scroll.started += OnScroll;
         _playerActions.Pause.started += OnPause;
         _playerActions.Inventory.started += OnInventory;
@@ -101,7 +104,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         {
             _eventInputSystem.Pause();
             _eventInputSystem.EndLookItem();
-
+            _eventInputSystem.EndFullScreenTutorial();
         }
     }
 
@@ -114,7 +117,6 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         }
     }
 
-
     private void OnInteracteble(InputAction.CallbackContext context)
     {
         if (!_isPlayerControlON) { return; }
@@ -126,12 +128,19 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
     private void OnDrop(InputAction.CallbackContext context)
     {
-        _eventInputSystem.EndLookItem();
         if (!_isPlayerControlON) { return; }
+        if (_eventInputSystem.ControllClosePanelState()) { return; }
         if (context.phase == InputActionPhase.Started)
         {
             _playerInventory.Drop();
         }
+    }
+
+    private void OnClosePanel(InputAction.CallbackContext context)
+    {
+        _eventInputSystem.EndLookItem();
+        _eventInputSystem.EndFullScreenTutorial();
+        _eventInputSystem.EndPause();
     }
 
     private void OnScroll(InputAction.CallbackContext context)

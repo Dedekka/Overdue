@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataMusicCassets", menuName = "Create/DataMusicCassets")]
-public class DataMusicCassets : ScriptableObject
+public class DataMusicCassets : ScriptableObject, IDatable
 {
     [SerializeField] private List<MusicCassetteSettings> _itemSettings;
     private Dictionary<int, MusicCassetteSettings> _cassetsData;

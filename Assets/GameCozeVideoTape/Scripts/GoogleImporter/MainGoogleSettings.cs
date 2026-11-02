@@ -29,4 +29,6 @@ public class MainGoogleSettings
     public List<TutorialEventSettings> TutorialEvent;
     [Header("TagTypeDevice")]
     public List<TagTypeDeviceSettings> TagTypeDeviceSettings;
+    [Header("FullScreenTutorialKey")]
+    public List<FullScreenTutorialKeySettings> FullScreenTutorialKeySettings;
 }

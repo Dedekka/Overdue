@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataGenre", menuName = "Create/DataGenre")]
-public class DataGenre : ScriptableObject
+public class DataGenre : ScriptableObject, IDatable
 {
     [SerializeField] private List<GenreSettings> _genreSettings;
     private Dictionary<int, GenreSettings> _genreVideoDictionary;

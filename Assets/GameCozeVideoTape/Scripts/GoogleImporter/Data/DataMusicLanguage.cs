@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataMusicLanguage", menuName = "Create/DataMusicLanguage")]
-public class DataMusicLanguage : ScriptableObject
+public class DataMusicLanguage : ScriptableObject, IDatable
 {
     [SerializeField] private List<MusicLanguage> itemSettings;
     private Dictionary<int, MusicLanguage> _cassetsData;

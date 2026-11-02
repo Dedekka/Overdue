@@ -52,6 +52,7 @@ public class TutorialEventParser : IGoogleParser
             "OnReturned" => TutorialEventType.OnReturned,
             "OnInstall" => TutorialEventType.OnInstall,
             "OnChangeAudio" => TutorialEventType.OnChangeAudio,
+            "OnPlayAudio" => TutorialEventType.OnPlayAudio,
             "OnOpera" => TutorialEventType.OnOpera,
             "OnInstallOpera" => TutorialEventType.OnInstallOpera,
             _ => throw new NotImplementedException()

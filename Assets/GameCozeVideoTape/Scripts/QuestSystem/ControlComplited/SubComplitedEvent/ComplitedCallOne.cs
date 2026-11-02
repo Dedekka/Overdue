@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class ComplitedCallOne : ComplitedHistoryEvent
 {
+    private ControlFullScreenTutorial _controlFullScreenTutorial;
     private PlayerSaySystem _playerSaySystem;
     private int _idDialogue;
 
-    public ComplitedCallOne(int id, int idEventHistory, int idDialogue, GoalController goalController, PlayerSaySystem playerSaySystem) : base(id, idEventHistory, goalController)
+    public ComplitedCallOne(int id, int idEventHistory, int idDialogue, GoalController goalController, PlayerSaySystem playerSaySystem, ControlFullScreenTutorial controlFullScreenTutorial) : base(id, idEventHistory, goalController)
     {
         _playerSaySystem = playerSaySystem;
         _idDialogue = idDialogue;
+        _controlFullScreenTutorial = controlFullScreenTutorial;
     }
 
     public override void Complited()
@@ -21,7 +23,7 @@ public class ComplitedCallOne : ComplitedHistoryEvent
         _goalController.ClearGoal(TutorialEventType.OnTv);
         _goalController.ClearGoal(TutorialEventType.OnLook);
         _goalController.ActiveGoal(TutorialEventType.OnPhone);
-        _playerSaySystem.ActiveDialogue(_idDialogue);
-
+        _playerSaySystem.SetWaitDialog(_idDialogue);
+        _controlFullScreenTutorial.SetPanel(3);
     }
 }

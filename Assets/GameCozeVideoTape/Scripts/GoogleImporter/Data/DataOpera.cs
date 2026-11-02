@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataOpera", menuName = "Create/DataOpera")]
-public class DataOpera : ScriptableObject
+public class DataOpera : ScriptableObject, IDatable
 {
     [SerializeField] private List<OperaSettings> _listDataOpera;
     private Dictionary<int, OperaSettings> _operaDataDictionary;

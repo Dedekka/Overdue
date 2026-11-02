@@ -4,12 +4,13 @@ public class ComplitedFindOpera : ComplitedHistoryEvent
 {
     private PlayerSaySystem _playerSaySystem;
     private InventoryCassette _listenerInventory;
+    private ControlFullScreenTutorial _controlFullScreenTutorial;
     private List<int> _idFindCassette;
     private int _idDialogue;
     private bool _isComplited;
     private bool _isActive;
 
-    public ComplitedFindOpera(int id, int idEventHistory, int idDialogue, List<int> idFindCassette, GoalController goalController, PlayerSaySystem playerSaySystem) : base(id, idEventHistory, goalController)
+    public ComplitedFindOpera(int id, int idEventHistory, int idDialogue, List<int> idFindCassette, GoalController goalController, PlayerSaySystem playerSaySystem, ControlFullScreenTutorial controlFullScreenTutorial) : base(id, idEventHistory, goalController)
     {
         _playerSaySystem = playerSaySystem;
         _idFindCassette = idFindCassette;
@@ -17,6 +18,7 @@ public class ComplitedFindOpera : ComplitedHistoryEvent
         _isComplited = false;
         _isActive = false;
         _idDialogue = idDialogue;
+        _controlFullScreenTutorial = controlFullScreenTutorial;
     }
 
     public override bool CheckComplited(int idEventHistory)
@@ -31,8 +33,9 @@ public class ComplitedFindOpera : ComplitedHistoryEvent
 
     public override void Complited()
     {
-        _playerSaySystem.ActiveDialogue(_idDialogue);
+        _playerSaySystem.SetWaitDialog(_idDialogue);
         _goalController.ActiveGoal(TutorialEventType.OnOpera);
+        _controlFullScreenTutorial.SetPanel(6);
     }
 
     private void SetSub()

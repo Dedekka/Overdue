@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataTutorialEvent : ScriptableObject
+public class DataTutorialEvent : ScriptableObject, IDatable
 {
     [SerializeField] private List<TutorialEventSettings> _tutorialEventSettings;
     private Dictionary<int, TutorialEventSettings> _cassetsData;

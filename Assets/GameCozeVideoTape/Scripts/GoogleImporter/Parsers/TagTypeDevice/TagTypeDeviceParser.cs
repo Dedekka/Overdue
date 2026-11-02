@@ -12,7 +12,7 @@ public class TagTypeDeviceParser : IGoogleParser
         _mainGoogleSettings.TagTypeDeviceSettings = new List<TagTypeDeviceSettings>();
     }
 
-
+    
     public void Parse(string headerName, string token)
     {
         switch (headerName)
