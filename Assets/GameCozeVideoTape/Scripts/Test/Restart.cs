@@ -38,14 +38,14 @@ public class Restart : MonoBehaviour
         //}
 
 
-        //if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        //{
-        //    _realizerPresent.SetCallData(new CallData()
-        //    {
-        //        IdCassetts = 0,
-        //        IDPresent = 1
-        //    });
-        //}
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            _realizerPresent.SetCallData(new PresentEvent()
+            {
+                IDCassette = 0,
+                IDPresent = 1
+            });
+        }
 
         //if (Keyboard.current.digit2Key.wasPressedThisFrame)
         //{

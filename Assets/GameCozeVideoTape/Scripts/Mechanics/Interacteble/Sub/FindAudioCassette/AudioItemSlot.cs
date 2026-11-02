@@ -28,6 +28,11 @@ public class AudioItemSlot : AudioItem
         startRotation = _startRotation;
     }
 
+    public void ClearEffect()
+    {
+        base.OnInteract();
+    }
+
     protected override void Initialization()
     {
         SetStartState();

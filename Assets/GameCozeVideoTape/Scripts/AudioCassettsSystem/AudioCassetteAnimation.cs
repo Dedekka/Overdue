@@ -70,7 +70,7 @@ public class AudioCassetteAnimation
     {
         if (_currentAudioItem == null) { return; }
         _currentAudioItem.GetStartState(out Vector3 startPosition, out Quaternion startRotation);
-
+        _currentAudioItem.ClearEffect();
         MoveReturnItem(startPosition, startRotation, _powerJumpReturnAudioSlot, _timeJumpReturnAudioSlot);
         _currentAudioItem = null;
     }

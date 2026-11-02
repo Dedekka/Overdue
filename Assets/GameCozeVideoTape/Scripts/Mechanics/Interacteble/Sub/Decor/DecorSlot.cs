@@ -23,6 +23,11 @@ public class DecorSlot : BazeInteracteble
         OnInteract?.Invoke();
     }
 
+    public void Initialization(SelectedItemEffect selectedItemEffect)
+    {
+        _decorRender.Initialization(selectedItemEffect);
+    }
+
     public void ActiveSlot()
     {
         // Decor Render - отображает финальное видение декора 

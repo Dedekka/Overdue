@@ -36,4 +36,9 @@ public class PresentEffect
             _present.Play();
         }
     }
+
+    public void ActiveEffectReturned()
+    {
+        _returned.Play();
+    }
 }

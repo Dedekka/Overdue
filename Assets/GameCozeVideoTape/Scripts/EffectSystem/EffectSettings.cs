@@ -10,6 +10,7 @@ public class EffectSettings : ScriptableObject
     public Material WrongShelfOutline => _wrongShelfOutline;
     public Material CorrectPosition => _correctPosition;
     public Vector2 SweepPosRange => _sweepPosRange;
+    public Color PresentItemColor => _presentItemColor;
     public Vector2 EmissiveStrenghRange => _emissiveStrenghRange;
     public float SweepMoveSpeed => _sweepMoveSpeed;
     public float EmissiveSpeed => _emissiveTime;
@@ -30,4 +31,6 @@ public class EffectSettings : ScriptableObject
     [SerializeField] private Vector2 _emissiveStrenghRange = new Vector2(0f, 2f);
     [SerializeField] private float _emissiveTime = 1;
 
+    [Header("PresentItem")]
+    [SerializeField] private Color _presentItemColor;
 }

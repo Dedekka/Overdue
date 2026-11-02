@@ -8,17 +8,20 @@ public class DecorPresent : MonoBehaviour
     public int IdItem {  get; private set; }
 
     private DecorChecker _decorChecker;
+    private SelectedItemEffect _selectedItemEffect;
 
     public event Action<DecorPresent> OnInstall;
 
     [Inject]
-    private void Construct(DecorChecker decorChecker)
+    private void Construct(DecorChecker decorChecker, SelectedItemEffect selectedItemEffect)
     {
         _decorChecker = decorChecker;
+        _selectedItemEffect = selectedItemEffect;
     }
 
     public void Initialization(int idItem)
     {
+        _decorSlot.Initialization(_selectedItemEffect);
         IdItem = idItem;
         _decorSlot.OnInteract += OnInteract;
     }

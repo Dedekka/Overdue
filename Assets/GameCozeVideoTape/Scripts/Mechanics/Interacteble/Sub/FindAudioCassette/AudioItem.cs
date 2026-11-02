@@ -13,21 +13,25 @@ public abstract class AudioItem : MonoBehaviour
     private ManagerAudioItem _managerAudioItem;
     private MusicCassetteSettings _musicCassetteSettings;
     private MusicLanguage _dataMusicLanguage;
+    private SelectedItemEffect _selectedItemEffect;
     private GameObject _body;
 
     [Inject]
-    public void Construct(ManagerAudioItem ManagerAudioItem)
+    public void Construct(ManagerAudioItem ManagerAudioItem, SelectedItemEffect selectedItemEffect)
     {
         _managerAudioItem = ManagerAudioItem;
+        _selectedItemEffect = selectedItemEffect;
     }
 
     private void OnEnable()
     {
         _music.OnInteract += OnInteract;
+        _music.OnEnterCursor += OnEnterCursor;
     }
 
     private void OnDisable()
     {
+        _music.OnEnterCursor -= OnEnterCursor;
         _music.OnInteract -= OnInteract;
     }
 
@@ -35,13 +39,20 @@ public abstract class AudioItem : MonoBehaviour
     {
         _body = transform.GetChild(0).gameObject;
         _managerAudioItem.AddAudioItem(this);
+        _selectedItemEffect.Initialization(GetComponentInChildren<MeshRenderer>());
         Initialization();
     }
 
-
-    protected abstract void OnInteract();
+    protected virtual void OnInteract()
+    {
+        _selectedItemEffect.ClearEffects();
+    }
 
     protected virtual void Initialization() { }
+    private void OnEnterCursor(bool isVisible)
+    {
+        _selectedItemEffect.ControlSelectedOutline(isVisible);
+    }
 
     public void SetSettings(MusicCassetteSettings musicCassetteSettings)
     {

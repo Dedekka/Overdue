@@ -24,4 +24,11 @@ public class ReturnedMover
             Debug.LogError($"ReturnedMover, Not Found Cassette, ID: {id}");
         }
     }
+
+    public void Returned(CassetteObject cassetteObject)
+    {
+        cassetteObject.transform.position = _returnedPosition.position;
+        cassetteObject.transform.rotation = _returnedPosition.rotation;
+        cassetteObject.Drop();
+    }
 }

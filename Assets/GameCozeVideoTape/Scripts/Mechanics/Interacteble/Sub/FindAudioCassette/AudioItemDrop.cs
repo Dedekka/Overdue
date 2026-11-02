@@ -14,6 +14,7 @@ public class AudioItemDrop : AudioItem
 
     protected override void OnInteract()
     {
+        base.OnInteract();
         _playerLookItem.SetItem(this);
         _playerLookItem.Move();
     }

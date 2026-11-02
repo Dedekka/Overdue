@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -12,21 +10,23 @@ public class Present : BazeInteracteble, IItemble
 
     public Transform _body => transform;
 
-    [SerializeField] private List<TextMeshPro> listText;
     private PickUpItem _pickUpItem;
     private StateItem _stateItem;
-    [SerializeField] private PresentSettings _presentSettings;
+    private PresentSettings _presentSettings;
     private Rigidbody _rigidbody;
     private Collider _collider;
+    private SelectedItemEffect _selectedItemEffect;
+    private bool _PickUp;
 
     public event Action<Present> OnPickUp;
 
     [Inject]
-    private void Construct(PickUpItem PickUpItem, ViewRenderer ViewRenderer, StateItem stateItem)
+    private void Construct(PickUpItem PickUpItem, ViewRenderer ViewRenderer, StateItem stateItem, SelectedItemEffect selectedItemEffect)
     {
         _stateItem = stateItem;
         _pickUpItem = PickUpItem;
         _isShowPanelUse = true;
+        _selectedItemEffect = selectedItemEffect;
     }
 
 
@@ -38,18 +38,25 @@ public class Present : BazeInteracteble, IItemble
 
     public void Install()
     {
+        _PickUp = false;
         _pickUpItem.StopMove();
         Destroy(gameObject);
     }
 
     public void Drop()
     {
+        _PickUp = false;
         //OnDrop?.Invoke();
         _pickUpItem.StopMove();
         _stateItem.Drop();
     }
 
-    public void SetPresentSettings(PresentSettings presentSettings,string currentNamePresent)
+    public override void EnterCursor(bool isVisible)
+    {
+        _selectedItemEffect.ControlSelectedOutline(isVisible);
+    }
+
+    public void SetPresentSettings(PresentSettings presentSettings, string currentNamePresent)
     {
         _presentSettings = presentSettings;
         Description = currentNamePresent;
@@ -62,6 +69,8 @@ public class Present : BazeInteracteble, IItemble
 
         if (_pickUpItem.CheckFreeSlot())
         {
+            _PickUp = true;
+            _selectedItemEffect.ClearEffects();
             _stateItem.ControlHand(true);
             OnPickUp?.Invoke(this);
             _stateItem.Control(false);
@@ -74,5 +83,6 @@ public class Present : BazeInteracteble, IItemble
         _collider = GetComponent<Collider>();
         _pickUpItem.SetBody(this);
         _stateItem.Initialization(this, _rigidbody);
+        _selectedItemEffect.Initialization(GetComponentInChildren<MeshRenderer>());
     }
 }

@@ -61,6 +61,9 @@ public class EffectsInstaller : MonoInstaller
 
         Container.Bind<ControlCassetteEffects>()
         .AsTransient();
+
+        Container.Bind<SelectedItemEffect>()
+        .AsTransient();
     }
 
     private void BindGarland()

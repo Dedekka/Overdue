@@ -7,10 +7,17 @@ public class AudioCassetteInteract : BazeInteracteble
     //private AudioCassettsSystem _audioCassettsSystem;
 
     public event Action OnInteract;
+    public event Action<bool> OnEnterCursor;
 
     public void SetDescription(string description)
     {
         Description = description;
+    }
+
+    public override void EnterCursor(bool isVisible)
+    {
+        OnEnterCursor?.Invoke(isVisible);
+        //_cassetteEffects.ControlSelectedOutline(isVisible);
     }
 
     private void Awake()
