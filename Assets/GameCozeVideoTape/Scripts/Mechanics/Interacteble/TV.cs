@@ -57,7 +57,6 @@ public class TV : MonoBehaviour, ISloteble
         if (!IsEmpty) { return; }
         if (_operatingChecker.CheckHand(true))
         {
-            _tvManager.OnPlayCasset();
             Install();
         }
     }
@@ -81,7 +80,7 @@ public class TV : MonoBehaviour, ISloteble
     private void SubPickUp(bool isNull)
     {
         if (isNull) { return; }
-
+        _cassetteObject.OnEndInstall += PlayTv;
         OnStateInstallTv?.Invoke(isNull);
         _cassetteObject.OnPickUp += OnPickUp;
     }
@@ -94,5 +93,12 @@ public class TV : MonoBehaviour, ISloteble
         _tvSlot.ControlVisible(true);
         _cassetteObject = null;
         _tvManager.StopPlay();
+    }
+
+    private void PlayTv()
+    {
+        _cassetteObject.OnEndInstall -= PlayTv;
+
+        _tvManager.OnPlayCasset();
     }
 }

@@ -10,6 +10,7 @@ public class RealizerReturned
 
     public void SetCallData(PresentEvent callData)
     {
+        if (callData.IDCassette < 1) { return; }
         _callData = callData;
         ActiveEvent();
     }

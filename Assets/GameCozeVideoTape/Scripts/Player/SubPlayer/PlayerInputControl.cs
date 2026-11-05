@@ -53,7 +53,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
         _playerActions.Interact.started += OnInteracteble;
         _playerActions.Drop.started += OnDrop;
         _playerActions.Drop.started += OnClosePanel;
-      
+
         _playerActions.Scroll.started += OnScroll;
         _playerActions.Pause.started += OnPause;
         _playerActions.Inventory.started += OnInventory;
@@ -194,7 +194,7 @@ public class PlayerInputControl : IDisposable, IInitializable, ITickable // ILat
 
 public enum DeviceType
 {
-    KeyboardMouse,
+    KeyboardMouse = 0,
     Gamepad,
     GamepadXbox,
     GamepadSony,

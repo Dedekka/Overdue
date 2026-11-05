@@ -34,12 +34,15 @@ public class TagTypeDeviceParser : IGoogleParser
                 _currentTutorialEventSettings.UiButtonTexts.Add(FindType(token, DeviceType.KeyboardMouse));
                 break;
             case "Gamepad":
+                //DeviceType device = DeviceType.Gamepad;
                 _currentTutorialEventSettings.UiButtonTexts.Add(FindType(token, DeviceType.Gamepad));
                 break;
             case "GamepadXbox":
+                 //device = DeviceType.GamepadXbox | DeviceType.Gamepad;
                 _currentTutorialEventSettings.UiButtonTexts.Add(FindType(token, DeviceType.GamepadXbox));
                 break;
             case "GamepadSony":
+                 //device = DeviceType.GamepadSony | DeviceType.Gamepad;
                 _currentTutorialEventSettings.UiButtonTexts.Add(FindType(token, DeviceType.GamepadSony));
                 break;
             default:

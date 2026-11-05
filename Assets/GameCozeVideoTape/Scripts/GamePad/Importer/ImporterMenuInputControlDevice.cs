@@ -8,6 +8,7 @@ using Zenject;
 public class ImporterMenuInputControlDevice : IDisposable, IInitializable
 {
     public DeviceType CurrentDevice { get; private set; }
+    public InputDevice Device { get; private set; }
     private MenuInputControl _menuInputControl;
 
     public event Action<DeviceType> OnInputDevice;
@@ -30,6 +31,7 @@ public class ImporterMenuInputControlDevice : IDisposable, IInitializable
 
     private void ChangeDevice(InputDevice device)
     {
+        Device = device;
         DeviceType tempDevice = CurrentDevice;
 
         if (device is Gamepad gamepad)
@@ -72,5 +74,4 @@ public class ImporterMenuInputControlDevice : IDisposable, IInitializable
 
         OnInputDevice?.Invoke(CurrentDevice);
     }
-
 }

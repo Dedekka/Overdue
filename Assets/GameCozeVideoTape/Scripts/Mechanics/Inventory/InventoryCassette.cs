@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryCassette
@@ -86,7 +85,10 @@ public class InventoryCassette
     {
         for (int i = 0; i < _activeCassets.Length; i++)
         {
-            _activeCassets[i].gameObject.SetActive(isVisible);
+            if (_activeCassets[i] != null)
+            {
+                _activeCassets[i].gameObject.SetActive(isVisible);
+            }
         }
     }
 
