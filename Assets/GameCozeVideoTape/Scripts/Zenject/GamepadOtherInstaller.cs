@@ -7,9 +7,7 @@ public class GamepadOtherInstaller : MonoInstaller
     public override void InstallBindings()
     {
         FindSub();
-        //BindGamePadeUI();
-        //BindInput();
-        //BindImporter();
+        BindImporter();
         BindGamepadVibration();
     }
 
@@ -30,7 +28,14 @@ public class GamepadOtherInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<ListenerFailInstallEvent>()
       .AsSingle();
+
         Container.BindInterfacesAndSelfTo<ListenerPhoneEvent>()
       .AsSingle();
+    }
+
+    private void BindImporter()
+    {
+        Container.BindInterfacesAndSelfTo<ImporterPauseSystemGamepadVibration>()
+     .AsSingle();
     }
 }

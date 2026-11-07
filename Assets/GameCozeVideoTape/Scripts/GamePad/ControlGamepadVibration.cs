@@ -50,8 +50,12 @@ public class ControlGamepadVibration : IDisposable
 
     public void ActiveVibrationPhone(float _forceVibration)
     {
+        Debug.Log($"ActiveVibrationPhone, _forceVibration:{_forceVibration}");
         if (!CheckActiveGamepad()) { return; }
+        _forceVibration = _forceVibration > _gamepadSettings.MaxForceVibration ? _gamepadSettings.MaxForceVibration : _forceVibration;
+
         _gamepad.SetMotorSpeeds(_forceVibration, _forceVibration);
+        Debug.Log($"ActiveVibrationPhone, SetMotorSpeeds:{_forceVibration}");
     }
 
     public void ResetVibration()
@@ -99,11 +103,12 @@ public class ControlGamepadVibration : IDisposable
 
     private bool CheckActiveGamepad()
     {
-        bool isGamepad = _importerMenuInputControlDevice.CurrentDevice == DeviceType.Gamepad;
-        if (isGamepad)
+        bool isGamepadSelected = false;
+        if (_importerMenuInputControlDevice.Device is Gamepad gamepad)
         {
-            _gamepad = _importerMenuInputControlDevice.Device as Gamepad;
+            _gamepad = gamepad;
+            isGamepadSelected = true;
         }
-        return isGamepad;
+        return isGamepadSelected;
     }
 }

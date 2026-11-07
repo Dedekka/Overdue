@@ -11,8 +11,9 @@ public class GamepadSettings : ScriptableObject
     public float DurationVibrationInstallSuccess => _durationVibrationInstallSuccess;
     public float DurationVibrationInstallFail => _durationVibrationInstallFail;
     public float RangeVibrationPhone => _rangeVibrationPhone;
-    public float TimeWaitVibration => _timeWaitVibration;
+    public float TimeVibration => _timeVibration;
     public float TimeWaitWaiting => _timeWaitWaiting;
+    public float MaxForceVibration => _maxForceVibration;
 
     #endregion
     [Header("Present")]
@@ -20,8 +21,9 @@ public class GamepadSettings : ScriptableObject
     [SerializeField] private float _durationVibrationPresent;
     [Header("Phone")]
     [SerializeField] private float _rangeVibrationPhone;// Дистанция вибрации контроллера когда звонит телефон
-    [SerializeField] private float _timeWaitVibration;
-    [SerializeField] private float _timeWaitWaiting;
+    [SerializeField] private float _timeVibration = 1f;
+    [SerializeField] private float _timeWaitWaiting = 1.5f;
+    [SerializeField] private float _maxForceVibration = 0.8f;
     [Header("Install")]
     [SerializeField] private Vector2 _forceVibrationInstallSuccess;
     [SerializeField] private float _durationVibrationInstallSuccess;

@@ -15,8 +15,9 @@ MonoBehaviour:
   _forceVibrationPresent: {x: 1, y: 1}
   _durationVibrationPresent: 0.5
   _rangeVibrationPhone: 18
-  _timeWaitVibration: 0.4
-  _timeWaitWaiting: 0.2
+  _timeVibration: 1
+  _timeWaitWaiting: 1.5
+  _maxForceVibration: 0.8
   _forceVibrationInstallSuccess: {x: 0.5, y: 0}
   _durationVibrationInstallSuccess: 0.15
   _forceVibrationInstallFail: {x: 0.5, y: 0.5}

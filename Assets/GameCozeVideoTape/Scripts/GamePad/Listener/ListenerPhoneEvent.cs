@@ -18,16 +18,17 @@ public class ListenerPhoneEvent : IDisposable, IInitializable
     private float _rangeVibrationPhone;
     private float _tempForce;
     private float _timeWaitVibration;
-    private float _tempTimeWait;
-    private float _tempTimeWaitWaiting;
+    //private float _tempTimeWait;
+    //private float _tempTimeWaitWaiting;
     private float _timeWaitWaiting;
     private bool _isPlaying;
+    private bool _isWaitRing;
 
 
     public ListenerPhoneEvent(PhoneEffect phoneEffect, ControlGamepadVibration controlGamepadVibration, ImporterMenuInputControlDevice importerMenuInputControlDevice, Phone phone, Player player, GamepadSettings gamepadSettings)
     {
         _timeWaitWaiting = gamepadSettings.TimeWaitWaiting;
-        _timeWaitVibration = gamepadSettings.TimeWaitVibration;
+        _timeWaitVibration = gamepadSettings.TimeVibration;
         _rangeVibrationPhone = gamepadSettings.RangeVibrationPhone;
         _gamepadSettings = gamepadSettings;
         _controlGamepadVibration = controlGamepadVibration;
@@ -36,6 +37,7 @@ public class ListenerPhoneEvent : IDisposable, IInitializable
         _phone = phone;
         _player = player;
         _isPlaying = false;
+        _isWaitRing = false;
     }
 
     public void Initialize()
@@ -70,32 +72,43 @@ public class ListenerPhoneEvent : IDisposable, IInitializable
 
     private void ActiveRingEffect(CancellationToken token)
     {
-        //WaitPickUpPhone(token).Forget();
-        //ChangePhoneVibration(token).Forget();
+        WaitPickUpPhone(token).Forget();
+        ChangePhoneVibration(token).Forget();
     }
 
     private async UniTask WaitPickUpPhone(CancellationToken token)
     {
         while (_isPlaying)
         {
-            //_tempForce = CheckForce();
-            //_controlGamepadVibration.ActiveVibrationPhone(tempForce);
-            //await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: token);
-            //_controlGamepadVibration.ActiveVibrationPhone(0);
-            //await UniTask.Delay(TimeSpan.FromSeconds(1.5f), cancellationToken: token);
+            await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: token);
+            _tempForce = CheckForce();
+            if (_isWaitRing)
+            {
+                _controlGamepadVibration.ActiveVibrationPhone(_tempForce);
+            }
+            else
+            {
+                _controlGamepadVibration.ActiveVibrationPhone(0);
+            }
 
         }
         _tempForce = 0;
         _controlGamepadVibration.ResetVibration();
     }
+    // 1 сек звонить 1.5 молчит
 
     private async UniTask ChangePhoneVibration(CancellationToken token)
     {
-        _controlGamepadVibration.ActiveVibrationPhone(_tempForce);
-        await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: token);
-        _controlGamepadVibration.ActiveVibrationPhone(0);
-        await UniTask.Delay(TimeSpan.FromSeconds(1.5f), cancellationToken: token);
-
+        while (_isPlaying)
+        {
+            Debug.Log($"ChangePhoneVibration, tempForce:{_tempForce}");
+            //_controlGamepadVibration.ActiveVibrationPhone(_tempForce);
+            _isWaitRing = true;
+            await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitVibration), cancellationToken: token);
+            //_controlGamepadVibration.ActiveVibrationPhone(0);
+            _isWaitRing = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitWaiting), cancellationToken: token);
+        }
     }
 
     private float CheckForce()
