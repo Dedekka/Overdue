@@ -16,7 +16,7 @@ public class Present : BazeInteracteble, IItemble
     private Rigidbody _rigidbody;
     private Collider _collider;
     private SelectedItemEffect _selectedItemEffect;
-    private bool _PickUp;
+    //private bool _PickUp;
 
     public event Action<Present> OnPickUp;
 
@@ -38,14 +38,14 @@ public class Present : BazeInteracteble, IItemble
 
     public void Install()
     {
-        _PickUp = false;
+        //_PickUp = false;
         _pickUpItem.StopMove();
         Destroy(gameObject);
     }
 
     public void Drop()
     {
-        _PickUp = false;
+        //_PickUp = false;
         //OnDrop?.Invoke();
         _pickUpItem.StopMove();
         _stateItem.Drop();
@@ -69,7 +69,7 @@ public class Present : BazeInteracteble, IItemble
 
         if (_pickUpItem.CheckFreeSlot())
         {
-            _PickUp = true;
+            //_PickUp = true;
             _selectedItemEffect.ClearEffects();
             _stateItem.ControlHand(true);
             OnPickUp?.Invoke(this);

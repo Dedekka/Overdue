@@ -1744,7 +1744,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamepadInstaller
   _gamePadUiSettings: {fileID: 11400000, guid: 9182b0272f45412469cd19d128d69bfc, type: 2}
-  _gamepadSettings: {fileID: 11400000, guid: de9f713b9a84c38479058f0a2bb4b39f, type: 2}
   _selectedPanel:
   - {fileID: 1668534126}
   - {fileID: 313154383}
@@ -3672,9 +3671,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3171134984774073052, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280196571434670038, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315876384117025379, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986797673224358044, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4842978690855604870, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
       propertyPath: m_Name
       value: PanelSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842978690855604870, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853049863283907226, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889207236447401872, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997791818954885669, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622829873520863450, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

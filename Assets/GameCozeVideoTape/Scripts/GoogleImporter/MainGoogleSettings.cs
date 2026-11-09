@@ -31,4 +31,6 @@ public class MainGoogleSettings
     public List<TagTypeDeviceSettings> TagTypeDeviceSettings;
     [Header("FullScreenTutorialKey")]
     public List<FullScreenTutorialKeySettings> FullScreenTutorialKeySettings;
+    [Header("GamePadKeyboard")]
+    public List<GamePadKeyboardLanguageSettings> GamePadKeyboardLanguageSettings;
 }

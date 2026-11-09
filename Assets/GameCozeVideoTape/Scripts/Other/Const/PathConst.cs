@@ -14,6 +14,7 @@ public static class PathConst
     public const string DataOperaLanguagePath = "Assets/Resources/Data/DataOperaLanguage.asset";
     public const string DataPresentLanguagePath = "Assets/Resources/Data/DataPresentLanguage.asset";
     public const string DataGenreLanguagePath = "Assets/Resources/Data/DataGenreLanguage.asset";
+    public const string DataGamePadKeyboardLanguagePath = "Assets/Resources/Data/DataGamePadKeyboardLanguage.asset";
     public const string DataTutorialEventLanguagePath = "Assets/Resources/Data/DataTutorialEventLanguage.asset";
     public const string LanguageCassetsPath = "Assets/Resources/Data/LanguageCassets.asset";
     public const string DataGenrePath = "Assets/Resources/Data/DataGenre.asset";
@@ -22,7 +23,7 @@ public static class PathConst
     public const string DataTagTypeDeviceAsset = "Data/DataTagTypeDevice";
 
     public const string DataHistoryEventAsset = "Data/DataHistoryEvent";
-
+    
 
     public const string DataMusicCassetsAsset = "Data/DataMusicCassets";
     public const string DataMusicLanguageAsset = "Data/DataMusicLanguage";
@@ -38,4 +39,5 @@ public static class PathConst
     public const string DataFullScreenTutorialKeyAsset = "Data/DataFullScreenTutorialKey";
     public const string DataTutorialEventAsset = "Data/DataTutorialEvent";
     public const string DataTutorialEventLanguageAsset = "Data/DataTutorialEventLanguage";
+    public const string DataGamePadKeyboardLanguageAsset = "Data/DataGamePadKeyboardLanguage";
 }

@@ -50,6 +50,7 @@ Transform:
   - {fileID: 5461741885689760604}
   - {fileID: 3212240330979816391}
   - {fileID: 5177934591982722458}
+  - {fileID: 3868441955253860976}
   m_Father: {fileID: 5469793838121500178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7044845725981146782
@@ -86,6 +87,7 @@ MonoBehaviour:
   - {fileID: 4050568474203697871}
   - {fileID: 8400273270181811236}
   - {fileID: 5218962440454769055}
+  - {fileID: 4305769675602872388}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -222,6 +224,7 @@ MonoBehaviour:
   _prefabPresent: {fileID: 3761425653305267592, guid: af8470ce3165af0498b182943eafcc24, type: 3}
   _returnedPosition: {fileID: 0}
   _audioRecorder: {fileID: 0}
+  _fullScreenTutorialUi: {fileID: 0}
 --- !u!1 &3806310843643116031
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +503,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CatInstaller
   _cat: {fileID: 0}
   _catTrigger: {fileID: 0}
+--- !u!1 &5009094597701366812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3868441955253860976}
+  - component: {fileID: 4305769675602872388}
+  m_Layer: 0
+  m_Name: GamepadOtherInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3868441955253860976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009094597701366812}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 53495480388798514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4305769675602872388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009094597701366812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513172c90cdf89049b0cd6c2f5e970b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamepadOtherInstaller
+  _gamepadSettings: {fileID: 11400000, guid: de9f713b9a84c38479058f0a2bb4b39f, type: 2}
 --- !u!1 &5127015498304284498
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,8 +709,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5777150591074028754}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.072230555, y: 0.9258997, z: -0.29098698, w: 0.22982414}
-  m_LocalPosition: {x: 3.5971084, y: 1.6252201, z: -4.503576}
+  m_LocalRotation: {x: 0, y: -0.9063079, z: 0.42261827, w: 0}
+  m_LocalPosition: {x: 1.9651599, y: 1.5832496, z: 11.974289}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -25,7 +25,7 @@ public class Restart : MonoBehaviour
 
     private void Update()
     {
-        ActivePhoneRing();
+        //ActivePhoneRing();
 
 
         //if (Keyboard.current.pKey.wasPressedThisFrame)
