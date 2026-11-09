@@ -234,7 +234,7 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
@@ -355,7 +355,7 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""id"": ""3ea4d645-4504-4529-b061-ab81934c3752"",
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": ""Joystick"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
@@ -366,7 +366,7 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -916,6 +916,24 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""processors"": ""Normalize(min=-1,max=1)"",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ec96ab9-86a0-4be9-adee-ad7def394f88"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Deselect"",
+                    ""type"": ""Button"",
+                    ""id"": ""80656ee4-f1b0-469e-b487-c8b94bf0dcfa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1369,6 +1387,28 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""action"": ""RightLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3450898-efc4-47d0-bb22-9335d9b12c5f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""282e0eee-8e21-4e9c-bae9-7fef90507105"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Deselect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1466,6 +1506,8 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_RightLeft = m_UI.FindAction("RightLeft", throwIfNotFound: true);
+        m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
+        m_UI_Deselect = m_UI.FindAction("Deselect", throwIfNotFound: true);
     }
 
     ~@PlayerSystemActions()
@@ -1808,6 +1850,8 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_RightLeft;
+    private readonly InputAction m_UI_Select;
+    private readonly InputAction m_UI_Deselect;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1863,6 +1907,14 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/RightLeft".
         /// </summary>
         public InputAction @RightLeft => m_Wrapper.m_UI_RightLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Select".
+        /// </summary>
+        public InputAction @Select => m_Wrapper.m_UI_Select;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Deselect".
+        /// </summary>
+        public InputAction @Deselect => m_Wrapper.m_UI_Deselect;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1922,6 +1974,12 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
             @RightLeft.started += instance.OnRightLeft;
             @RightLeft.performed += instance.OnRightLeft;
             @RightLeft.canceled += instance.OnRightLeft;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+            @Deselect.started += instance.OnDeselect;
+            @Deselect.performed += instance.OnDeselect;
+            @Deselect.canceled += instance.OnDeselect;
         }
 
         /// <summary>
@@ -1966,6 +2024,12 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
             @RightLeft.started -= instance.OnRightLeft;
             @RightLeft.performed -= instance.OnRightLeft;
             @RightLeft.canceled -= instance.OnRightLeft;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+            @Deselect.started -= instance.OnDeselect;
+            @Deselect.performed -= instance.OnDeselect;
+            @Deselect.canceled -= instance.OnDeselect;
         }
 
         /// <summary>
@@ -2261,5 +2325,19 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRightLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelect(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Deselect" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDeselect(InputAction.CallbackContext context);
     }
 }

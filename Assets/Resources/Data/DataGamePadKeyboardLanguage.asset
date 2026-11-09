@@ -1,0 +1,345 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c01fc028413594d99c8558f9406424, type: 3}
+  m_Name: DataGamePadKeyboardLanguage
+  m_EditorClassIdentifier: Assembly-CSharp::DataGamePadKeyboardLanguage
+  GamePadKeyboardName:
+  - '#KeyboardLanguage.`'
+  - '#KeyboardLanguage.1'
+  - '#KeyboardLanguage.2'
+  - '#KeyboardLanguage.3'
+  - '#KeyboardLanguage.4'
+  - '#KeyboardLanguage.5'
+  - '#KeyboardLanguage.6'
+  - '#KeyboardLanguage.7'
+  - '#KeyboardLanguage.8'
+  - '#KeyboardLanguage.9'
+  - '#KeyboardLanguage.0'
+  - '#KeyboardLanguage.-'
+  - '#KeyboardLanguage.='
+  - '#KeyboardLanguage.Q'
+  - '#KeyboardLanguage.W'
+  - '#KeyboardLanguage.E'
+  - '#KeyboardLanguage.R'
+  - '#KeyboardLanguage.T'
+  - '#KeyboardLanguage.Y'
+  - '#KeyboardLanguage.U'
+  - '#KeyboardLanguage.I'
+  - '#KeyboardLanguage.O'
+  - '#KeyboardLanguage.P'
+  - '#KeyboardLanguage.['
+  - '#KeyboardLanguage.]'
+  - '#KeyboardLanguage.\'
+  - '#KeyboardLanguage.A'
+  - '#KeyboardLanguage.S'
+  - '#KeyboardLanguage.D'
+  - '#KeyboardLanguage.F'
+  - '#KeyboardLanguage.G'
+  - '#KeyboardLanguage.H'
+  - '#KeyboardLanguage.J'
+  - '#KeyboardLanguage.K'
+  - '#KeyboardLanguage.L'
+  - '#KeyboardLanguage.;'
+  - '#KeyboardLanguage.'''
+  - '#KeyboardLanguage.Z'
+  - '#KeyboardLanguage.X'
+  - '#KeyboardLanguage.C'
+  - '#KeyboardLanguage.V'
+  - '#KeyboardLanguage.B'
+  - '#KeyboardLanguage.N'
+  - '#KeyboardLanguage.M'
+  - '#KeyboardLanguage.,'
+  - '#KeyboardLanguage..'
+  - '#KeyboardLanguage.?'
+  itemSettings:
+  - KEY: '#KeyboardLanguage.`'
+    ID: 0
+    En: '`'
+    En_Secondary: ~
+    Rus: "\u0451"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.1'
+    ID: 1
+    En: 1
+    En_Secondary: '!'
+    Rus: 1
+    Rus_Secondary: '!'
+  - KEY: '#KeyboardLanguage.2'
+    ID: 2
+    En: 2
+    En_Secondary: '@'
+    Rus: 2
+    Rus_Secondary: '@'
+  - KEY: '#KeyboardLanguage.3'
+    ID: 3
+    En: 3
+    En_Secondary: '#'
+    Rus: 3
+    Rus_Secondary: '#'
+  - KEY: '#KeyboardLanguage.4'
+    ID: 4
+    En: 4
+    En_Secondary: $
+    Rus: 4
+    Rus_Secondary: $
+  - KEY: '#KeyboardLanguage.5'
+    ID: 5
+    En: 5
+    En_Secondary: '%'
+    Rus: 5
+    Rus_Secondary: '%'
+  - KEY: '#KeyboardLanguage.6'
+    ID: 6
+    En: 6
+    En_Secondary: ^
+    Rus: 6
+    Rus_Secondary: ^
+  - KEY: '#KeyboardLanguage.7'
+    ID: 7
+    En: 7
+    En_Secondary: '&'
+    Rus: 7
+    Rus_Secondary: '&'
+  - KEY: '#KeyboardLanguage.8'
+    ID: 8
+    En: 8
+    En_Secondary: '*'
+    Rus: 8
+    Rus_Secondary: '*'
+  - KEY: '#KeyboardLanguage.9'
+    ID: 9
+    En: 9
+    En_Secondary: (
+    Rus: 9
+    Rus_Secondary: (
+  - KEY: '#KeyboardLanguage.0'
+    ID: 10
+    En: 0
+    En_Secondary: )
+    Rus: 0
+    Rus_Secondary: )
+  - KEY: '#KeyboardLanguage.-'
+    ID: 11
+    En: '-'
+    En_Secondary: _
+    Rus: '-'
+    Rus_Secondary: _
+  - KEY: '#KeyboardLanguage.='
+    ID: 12
+    En: =
+    En_Secondary: +
+    Rus: =
+    Rus_Secondary: +
+  - KEY: '#KeyboardLanguage.Q'
+    ID: 13
+    En: q
+    En_Secondary: 
+    Rus: "\u0439"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.W'
+    ID: 14
+    En: w
+    En_Secondary: 
+    Rus: "\u0446"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.E'
+    ID: 15
+    En: e
+    En_Secondary: 
+    Rus: "\u0443"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.R'
+    ID: 16
+    En: r
+    En_Secondary: 
+    Rus: "\u043A"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.T'
+    ID: 17
+    En: t
+    En_Secondary: 
+    Rus: "\u0435"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.Y'
+    ID: 18
+    En: y
+    En_Secondary: 
+    Rus: "\u043D"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.U'
+    ID: 19
+    En: u
+    En_Secondary: 
+    Rus: "\u0433"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.I'
+    ID: 20
+    En: i
+    En_Secondary: 
+    Rus: "\u0448"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.O'
+    ID: 21
+    En: o
+    En_Secondary: 
+    Rus: "\u0449"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.P'
+    ID: 22
+    En: p
+    En_Secondary: 
+    Rus: "\u0437"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.['
+    ID: 23
+    En: '['
+    En_Secondary: '{'
+    Rus: "\u0445"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.]'
+    ID: 24
+    En: ']'
+    En_Secondary: '}'
+    Rus: "\u044A"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.\'
+    ID: 25
+    En: \
+    En_Secondary: '|'
+    Rus: \
+    Rus_Secondary: /
+  - KEY: '#KeyboardLanguage.A'
+    ID: 26
+    En: a
+    En_Secondary: 
+    Rus: "\u0444"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.S'
+    ID: 27
+    En: s
+    En_Secondary: 
+    Rus: "\u044B"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.D'
+    ID: 28
+    En: d
+    En_Secondary: 
+    Rus: "\u0432"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.F'
+    ID: 29
+    En: f
+    En_Secondary: 
+    Rus: "\u0430"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.G'
+    ID: 30
+    En: g
+    En_Secondary: 
+    Rus: "\u043F"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.H'
+    ID: 31
+    En: h
+    En_Secondary: 
+    Rus: "\u0440"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.J'
+    ID: 32
+    En: j
+    En_Secondary: 
+    Rus: "\u043E"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.K'
+    ID: 33
+    En: k
+    En_Secondary: 
+    Rus: "\u043B"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.L'
+    ID: 34
+    En: l
+    En_Secondary: 
+    Rus: "\u0434"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.;'
+    ID: 35
+    En: ;
+    En_Secondary: ':'
+    Rus: "\u0436"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.'''
+    ID: 36
+    En: ''''
+    En_Secondary: '"'
+    Rus: "\u044D"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.Z'
+    ID: 37
+    En: z
+    En_Secondary: 
+    Rus: "\u044F"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.X'
+    ID: 38
+    En: x
+    En_Secondary: 
+    Rus: "\u0447"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.C'
+    ID: 39
+    En: c
+    En_Secondary: 
+    Rus: "\u0441"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.V'
+    ID: 40
+    En: v
+    En_Secondary: 
+    Rus: "\u043C"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.B'
+    ID: 41
+    En: b
+    En_Secondary: 
+    Rus: "\u0438"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.N'
+    ID: 42
+    En: n
+    En_Secondary: 
+    Rus: "\u0442"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.M'
+    ID: 43
+    En: m
+    En_Secondary: 
+    Rus: "\u044C"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.,'
+    ID: 44
+    En: ','
+    En_Secondary: <
+    Rus: "\u0431"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage..'
+    ID: 45
+    En: .
+    En_Secondary: '>'
+    Rus: "\u044E"
+    Rus_Secondary: 
+  - KEY: '#KeyboardLanguage.?'
+    ID: 46
+    En: /
+    En_Secondary: '?'
+    Rus: .
+    Rus_Secondary: ','

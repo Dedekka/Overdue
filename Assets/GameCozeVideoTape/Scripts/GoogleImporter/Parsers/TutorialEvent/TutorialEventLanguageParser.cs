@@ -6,8 +6,6 @@ public class TutorialEventLanguageParser : IGoogleParser
     private readonly MainGoogleSettings _mainGoogleSettings;
     private TutorialEventLanguageSettings _currentTutorialEventSettings;
 
-    
-
     public TutorialEventLanguageParser(MainGoogleSettings mainGoogleSettings)
     {
         _mainGoogleSettings = mainGoogleSettings;

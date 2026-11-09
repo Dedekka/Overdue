@@ -35,7 +35,6 @@ public class Phone : MonoBehaviour
         Debug.Log("Phone, ActiveCallEffect");
         // Класс отвечающий за эфекты телефона 
         // Вкл эффекты
-
     }
 
     public void SetDialogName(int dialogId)

@@ -22,9 +22,7 @@ public class ControlCassetteEffects
         }
         else
         {
-            if (materials.Length <= 1) { return materials; }
-
-            materials[1] = null;
+            materials = ClearEffects(materials);
         }
         return materials;
     }
@@ -51,7 +49,7 @@ public class ControlCassetteEffects
     {
         if (materials.Length <= 1) { return materials; }
 
-        materials[1] = null;
+        materials = new Material[] { materials[0] };
         return materials;
     }
 }

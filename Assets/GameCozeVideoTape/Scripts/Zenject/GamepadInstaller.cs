@@ -7,6 +7,7 @@ using Zenject;
 public class GamepadInstaller : MonoInstaller
 {
     [SerializeField] private GamePadUiSettings _gamePadUiSettings;
+    //[SerializeField] private GamepadSettings _gamepadSettings;
     [SerializeField] private List<GameObject> _selectedPanel;
     [SerializeField] private List<GamepadButtonData> _gamepadButtonData;
 
@@ -17,18 +18,41 @@ public class GamepadInstaller : MonoInstaller
         BindGamePadeUI();
         BindInput();
         BindImporter();
+        //BindGamepadVibration();
     }
 
+   
     private void FindSub()
     {
         Container.Bind<DataTagTypeDevice>()
              .FromResource(PathConst.DataTagTypeDeviceAsset)
              .AsSingle();
 
+        //Container.Bind<GamepadSettings>()
+        //     .FromInstance(_gamepadSettings)
+        //     .AsSingle();
+
         Container.Bind<GamePadUiSettings>()
             .FromInstance(_gamePadUiSettings)
             .AsSingle();
     }
+
+
+    //private void BindGamepadVibration()
+    //{
+    //    Container.BindInterfacesAndSelfTo<ControlGamepadVibration>()
+    //  .AsSingle();
+
+    //    Container.BindInterfacesAndSelfTo<ListenerPresentEvent>()
+    //  .AsSingle();
+
+    //    Container.BindInterfacesAndSelfTo<ListenerFailInstallEvent>()
+    //  .AsSingle();
+    //    Container.BindInterfacesAndSelfTo<ListenerPhoneEvent>()
+    //  .AsSingle();
+    //}
+
+
 
     private void BindGamePadeUI()
     {

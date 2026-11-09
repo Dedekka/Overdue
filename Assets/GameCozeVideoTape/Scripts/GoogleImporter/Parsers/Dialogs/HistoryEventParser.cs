@@ -44,6 +44,10 @@ public class HistoryEventParser : IGoogleParser
                 {
                     _currentDialogueEventData.IDDialogue = Convert.ToInt32(token);
                 }
+                else
+                {
+                    _currentDialogueEventData.IDDialogue = -1;
+                }
                
                 break;
 
@@ -53,6 +57,10 @@ public class HistoryEventParser : IGoogleParser
                 {
                     _currentDialogueEventData.IDCassette = Convert.ToInt32(token);
                 }
+                else
+                {
+                    _currentDialogueEventData.IDCassette = -1;
+                }
 
                 break;
 
@@ -60,6 +68,10 @@ public class HistoryEventParser : IGoogleParser
                 if (int.TryParse(token, out int id_Present))
                 {
                     _currentDialogueEventData.IDPresent = Convert.ToInt32(token);
+                }
+                else
+                {
+                    _currentDialogueEventData.IDPresent = -1;
                 }
                 break;
             default:

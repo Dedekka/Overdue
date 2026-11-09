@@ -7,13 +7,15 @@ using Zenject;
 public class Restart : MonoBehaviour
 {
     private Saver _saver;
-    private RealizerPresent _realizerPresent;
+    private ControlPhoneAnswer _phone;
+    private PresentEventManager _realizerPresent;
 
     [Inject]
-    private void Construct(Saver saver, RealizerPresent realizerPresent)
+    private void Construct(Saver saver, PresentEventManager realizerPresent, ControlPhoneAnswer phone)
     {
         _saver = saver;
         _realizerPresent = realizerPresent;
+        _phone = phone;
     }
 
     private void Start()
@@ -23,6 +25,9 @@ public class Restart : MonoBehaviour
 
     private void Update()
     {
+        //ActivePhoneRing();
+
+
         //if (Keyboard.current.pKey.wasPressedThisFrame)
         //{
         //    ResetLevel();
@@ -36,16 +41,27 @@ public class Restart : MonoBehaviour
         //{
         //    LoadLevel();
         //}
+        //if (Gamepad.current.bButton.wasPressedThisFrame)
+        //{
 
+        //    _realizerPresent.SetCallData(new PresentEvent()
+        //    {
+        //        IDCassette = 0,
+        //        IDPresent = 1
+        //    });
+        //    _realizerPresent.ActiveEvent();
+        //}
 
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            _realizerPresent.SetCallData(new PresentEvent()
-            {
-                IDCassette = 0,
-                IDPresent = 1
-            });
-        }
+        //if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        //{
+
+        //    _realizerPresent.SetCallData(new PresentEvent()
+        //    {
+        //        IDCassette = 0,
+        //        IDPresent = 1
+        //    });
+        //    _realizerPresent.ActiveEvent();
+        //}
 
         //if (Keyboard.current.digit2Key.wasPressedThisFrame)
         //{
@@ -93,5 +109,20 @@ public class Restart : MonoBehaviour
     private void LoadLevel()
     {
         _saver.Load();
+    }
+
+    private void ActivePhoneRing()
+    {
+        if (Gamepad.current == null) { return; }
+        if (Gamepad.current.bButton.wasReleasedThisFrame)
+        {
+            Debug.Log("ActivePhoneRing");
+            _phone.SetEvent(new PhoneEvent()
+            {
+                CountCassette = 0,
+                IDDialogue = 1,
+                IdEventHistory = 1
+            });
+        }
     }
 }

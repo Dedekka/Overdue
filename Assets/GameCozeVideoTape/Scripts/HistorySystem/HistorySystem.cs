@@ -83,7 +83,6 @@ public class HistorySystem : IInitializable, IDisposable
 
     private void FindEvent(BazeEvent bazeEvent)
     {
-
         _waitCompliteEvent = true;
         //Debug.Log($"FindEvent IdEventHistory:{bazeEvent.IdEventHistory}");
         if (bazeEvent is PresentEvent presentEvent)

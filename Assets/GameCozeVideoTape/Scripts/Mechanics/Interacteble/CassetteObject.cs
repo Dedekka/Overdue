@@ -28,6 +28,7 @@ public class CassetteObject : BazeInteracteble, IItemble
     private bool _isOpera;
     public event Action<CassetteObject> OnPickUp;
     public event Action OnDrop;
+    public event Action OnEndInstall;
 
     [Inject]
     private void Construct(PickUpItem PickUpItem, InstallItem installItem, ManagerCassette managerCassette, StateItem stateItem, CassetteEffects cassetteEffects)
@@ -117,6 +118,7 @@ public class CassetteObject : BazeInteracteble, IItemble
     {
         _stateItem.Install();
         _cassetteEffects.Install();
+        OnEndInstall?.Invoke();
     }
 
     protected override void Interact()

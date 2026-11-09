@@ -3,8 +3,8 @@ using System;
 public class ListenerFailInstallCassete : IDisposable
 {
     private ManagerRack _managerRack;
-    public event Action OnComplited;
-
+    public event Action<bool> OnStateInstall;
+   
     public ListenerFailInstallCassete(ManagerRack managerRack)
     {
         _managerRack = managerRack;
@@ -38,8 +38,6 @@ public class ListenerFailInstallCassete : IDisposable
 
     private void FailInstall(bool isState)
     {
-        if (isState) { return; }
-        Dispose();
-        OnComplited?.Invoke();
+        OnStateInstall?.Invoke(isState);
     }
 }

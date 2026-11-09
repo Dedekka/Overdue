@@ -14,17 +14,18 @@ public class ImporterListenerFailInstallControlFullScreenTutorial : IDisposable,
 
     public void Dispose()
     {
-        _listenerFailInstallCassete.OnComplited -= OnComplited;
+        _listenerFailInstallCassete.OnStateInstall -= OnStateInstall;
     }
 
     public void Initialize()
     {
         _listenerFailInstallCassete.Initialize();
-        _listenerFailInstallCassete.OnComplited += OnComplited;
+        _listenerFailInstallCassete.OnStateInstall += OnStateInstall;
     }
 
-    private void OnComplited()
+    private void OnStateInstall(bool isState)
     {
+        if (isState) { return; }
         Dispose();
         _controlFullScreenTutorial.SetPanel(1);
     }
