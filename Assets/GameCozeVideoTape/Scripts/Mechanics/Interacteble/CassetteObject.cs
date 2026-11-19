@@ -25,7 +25,6 @@ public class CassetteObject : BazeInteracteble, IItemble
 
     private CassetteEffects _cassetteEffects;
 
-    private bool _isOpera;
     public event Action<CassetteObject> OnPickUp;
     public event Action OnDrop;
     public event Action OnEndInstall;
@@ -43,7 +42,6 @@ public class CassetteObject : BazeInteracteble, IItemble
 
     private void Awake()
     {
-        _isOpera = false;
         _rigidbody = GetComponent<Rigidbody>();
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         _managerCassette.AddCassette(this);
