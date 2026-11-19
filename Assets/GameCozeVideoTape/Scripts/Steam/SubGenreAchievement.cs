@@ -39,41 +39,20 @@ public class SubGenreAchievement : IDisposable
     private void CheckComplitedSubGenre(Rack rack, DataShelf dataShelf)
     {
         int tempCountSlot = 0;
-        if (rack is OperaRack cassette)
+        for (int i = 0; i < dataShelf.SubGenreShelfs.ShelfSlot.Length; i++)
         {
-            for (int i = 0; i < dataShelf.SubGenreShelfs.ShelfSlot.Length; i++)
+            if (dataShelf.SubGenreShelfs.ShelfSlot[i].IsCorrectInstall)
             {
-                if (dataShelf.SubGenreShelfs.ShelfSlot[i].IsCorrectInstall)
-                {
-                    tempCountSlot++;
-                }
+                tempCountSlot++;
             }
-            if (tempCountSlot == 1)
-            {
-                _controlSubGenreAchievement.SetFirstOpera();
-            }
+        }
+        if (tempCountSlot == dataShelf.SubGenreShelfs.ShelfSlot.Length)
+        {
+            _controlSubGenreAchievement.SetFullSubGenre(rack.Genre, dataShelf.SubGenreindex);
+        }
+        Debug.Log($"Rack, Genre:{rack.Genre}, SubGenre:{dataShelf.SubGenreindex},tempCountSlot:{tempCountSlot}, NEED:{dataShelf.SubGenreShelfs.ShelfSlot.Length}");
 
-            if (tempCountSlot == 3)
-            {
-                _controlSubGenreAchievement.SetFullOpera();
-            }
-        }
-        else
-        {
-            for (int i = 0; i < dataShelf.SubGenreShelfs.ShelfSlot.Length; i++)
-            {
-                if (dataShelf.SubGenreShelfs.ShelfSlot[i].IsCorrectInstall)
-                {
-                    tempCountSlot++;
-                }
-            }
-            if (tempCountSlot == dataShelf.SubGenreShelfs.ShelfSlot.Length)
-            {
-                _controlSubGenreAchievement.SetFullSubGenre(rack.Genre, dataShelf.SubGenreindex);
-            }
-            Debug.Log($"Rack, Genre:{rack.Genre}, SubGenre:{dataShelf.SubGenreindex},tempCountSlot:{tempCountSlot}, NEED:{dataShelf.SubGenreShelfs.ShelfSlot.Length}");
-        }
     }
 
-    
+
 }

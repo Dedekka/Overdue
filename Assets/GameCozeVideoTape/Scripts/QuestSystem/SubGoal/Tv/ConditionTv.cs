@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ConditionTv : Condition
 {
-    private OperaChecker _listenerTv;
+    private CheckerTvCassette _listenerTv;
     private bool isComplited;
     
     public override void Initialization(GoalController goalController)
     {
         _listenerTv = goalController.GoalContext.ListenerTv.OperaChecker;
         isComplited = false;
-        SetSub();
+        SetSub(); 
         Debug.Log($"{this.GetType()} Initialization");
     }
 
@@ -20,17 +20,16 @@ public class ConditionTv : Condition
 
     protected override void SetSub()
     {
-        _listenerTv.OnCheckOperaCassette += OnCheckOperaCassette;
+        _listenerTv.OnCheckCassette += OnCheckOperaCassette;
     }
 
     protected override void SetUnSub()
     {
-        _listenerTv.OnCheckOperaCassette -= OnCheckOperaCassette;
+        _listenerTv.OnCheckCassette -= OnCheckOperaCassette;
     }
 
-    private void OnCheckOperaCassette(bool OnShow)
+    private void OnCheckOperaCassette()
     {
-        if (OnShow) { return; }
         CheckCondition();
     }
 

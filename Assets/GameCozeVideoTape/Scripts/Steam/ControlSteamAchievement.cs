@@ -16,13 +16,6 @@ public class ControlSteamAchievement
         StoreState();
     }
      
-    //private void Start()
-    //{
-    //    RequestStats();
-    //    ClearAchievement(DataAchievement.ACHIEVEMENT_1);
-    //    //SetAchievement(DataAchievement.ACHIEVEMENT_1);
-    //}
-
     private bool RequestStats()
     {
         _isActiveSteam = SteamManager.Initialized;

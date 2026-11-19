@@ -47,6 +47,4 @@ public enum TutorialEventType
     OnInstall,
     OnChangeAudio,
     OnPlayAudio,
-    OnOpera,
-    OnInstallOpera
 }

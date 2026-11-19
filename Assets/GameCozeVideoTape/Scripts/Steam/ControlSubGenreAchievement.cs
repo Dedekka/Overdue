@@ -6,16 +6,6 @@ public class ControlSubGenreAchievement
         _controlSteamAchievement = controlSteamAchievement;
     }
 
-    public void SetFullOpera()
-    {
-        _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_27);
-    }
-
-    public void SetFirstOpera()
-    {
-        _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_26);
-    }
-
     public void SetFullSubGenre(Genre genre, int subGenreindex)
     {
         FindSubGenreAchievement(genre, subGenreindex);

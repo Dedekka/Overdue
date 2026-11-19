@@ -8,8 +8,8 @@ public class GoogleMenu
     #region System
     private const string CassetteDataSheet_id = "1E8nV_8KQ_zj8EQ3zbHRbxc3EquugKUKNG12jmPgthus";
     private const string CassetteLanguageSheet_id = "1v4cQrW74jHJX6wswTOJB2ghPB05at2QY9R5-65hnTJk";
-    //private const string Credentials_path = "W:/_WorkSpace/Overdue/KeyGoogle/overdue-503208-623ff1e581e7.json";
-    private const string Credentials_path = "H:/_WorkProject/Overdue/KeyGoogleSheets/overdue-503208-d39af501a561.json";
+    private const string Credentials_path = "W:/_WorkSpace/Overdue/KeyGoogle/overdue-503208-623ff1e581e7.json";
+    //private const string Credentials_path = "H:/_WorkProject/Overdue/KeyGoogleSheets/overdue-503208-d39af501a561.json";
     #endregion
 
     #region Sheets Name
@@ -53,7 +53,6 @@ public class GoogleMenu
         await Dialogs(gameSettings, sheetsImporter);
         await Events(gameSettings, sheetsImporter);
 
-        await Opera(gameSettings, sheetsImporter);
         await MusicCassette(gameSettings, sheetsImporter);
 
         await TutorialEvent(gameSettings, sheetsImporter);
@@ -65,7 +64,6 @@ public class GoogleMenu
         await ItemLanguage(gameSettings, sheetsImporter);
         await MusicLanguage(gameSettings, sheetsImporter);
         await DialogsLanguage(gameSettings, sheetsImporter);
-        await OperaLanguage(gameSettings, sheetsImporter);
         await PresentLanguage(gameSettings, sheetsImporter);
         await GenreLanguage(gameSettings, sheetsImporter);
         await TutorialEventLanguage(gameSettings, sheetsImporter);
@@ -91,7 +89,6 @@ public class GoogleMenu
         SaveAssetsType(ScriptableObject.CreateInstance<DataGenre>(), mainGoogleSettings, PathConst.DataGenrePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataDialogue>(), mainGoogleSettings, PathConst.DataDialoguePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataPresent>(), mainGoogleSettings, PathConst.DataPresentPath);
-        SaveAssetsType(ScriptableObject.CreateInstance<DataOpera>(), mainGoogleSettings, PathConst.DataOperaPath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataHistoryEvent>(), mainGoogleSettings, PathConst.DataHistoryEventPath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataMusicCassets>(), mainGoogleSettings, PathConst.DataMusicCassetsPath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataTutorialEvent>(), mainGoogleSettings, PathConst.DataTutorialEventPath);
@@ -99,14 +96,11 @@ public class GoogleMenu
         SaveAssetsType(ScriptableObject.CreateInstance<DataFullScreenTutorialKey>(), mainGoogleSettings, PathConst.DataFullScreenTutorialKeyPath);
 
         #endregion
-
         #region GameLanguage
-
         SaveAssetsType(ScriptableObject.CreateInstance<DataTutorialEventLanguage>(), mainGoogleSettings, PathConst.DataTutorialEventLanguagePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataLanguage>(), mainGoogleSettings, PathConst.LanguageCassetsPath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataMusicLanguage>(), mainGoogleSettings, PathConst.DataMusicLanguagePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataDialogLanguage>(), mainGoogleSettings, PathConst.DataDialogLanguagePath);
-        SaveAssetsType(ScriptableObject.CreateInstance<DataOperaLanguage>(), mainGoogleSettings, PathConst.DataOperaLanguagePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataPresentLanguage>(), mainGoogleSettings, PathConst.DataPresentLanguagePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataGenreLanguage>(), mainGoogleSettings, PathConst.DataGenreLanguagePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataGamePadKeyboardLanguage>(), mainGoogleSettings, PathConst.DataGamePadKeyboardLanguagePath);
@@ -122,6 +116,7 @@ public class GoogleMenu
         }
         else
         {
+            
             Debug.LogError("Not Found ScriptableObject");
         }
     }
@@ -165,12 +160,6 @@ public class GoogleMenu
     {
         HistoryEventParser dialogueEventParser = new HistoryEventParser(gameSettings);
         await sheetsImporter.DownloandAndParseSheet(HistoryEvent_sheets_name, dialogueEventParser);
-    }
-
-    private static async UniTask Opera(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
-    {
-        OperaParser operaParser = new OperaParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(CassetteOpera_sheets_name, operaParser);
     }
 
     private static async UniTask MusicCassette(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
@@ -218,11 +207,7 @@ public class GoogleMenu
         await sheetsImporter.DownloandAndParseSheet(DialogueLanguage_sheets_name, LanguageParser);
     }
 
-    private static async UniTask OperaLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
-    {
-        OperaLanguageParser operaLanguageParser = new OperaLanguageParser(gameSettings);
-        await sheetsImporter.DownloandAndParseSheet(OperaLanguage_sheets_name, operaLanguageParser);
-    }
+  
 
     private static async UniTask PresentLanguage(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
     {

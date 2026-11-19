@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class FinderFreeSlot
 {
@@ -25,20 +24,7 @@ public class FinderFreeSlot
     private int CheckRack(Rack rack, DataShelf dataShelf)
     {
         int tempCountSlot = 0;
-        if (rack is OperaRack cassette)
-        {
-            for (int i = 0; i < dataShelf.SubGenreShelfs.ShelfSlot.Length; i++)
-            {
-                if (dataShelf.SubGenreShelfs.ShelfSlot[i].gameObject.activeSelf)
-                {
-                    tempCountSlot++;
-                }
-            }
-        }
-        else
-        {
-            tempCountSlot = dataShelf.SubGenreShelfs.ShelfSlot.Length;
-        }
+        tempCountSlot = dataShelf.SubGenreShelfs.ShelfSlot.Length;
         return tempCountSlot;
     }
 

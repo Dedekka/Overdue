@@ -7,7 +7,7 @@ using Zenject;
 public class CassetteObject : BazeInteracteble, IItemble
 {
     public int Id => _id;
-    public bool IsOpera => _isOpera;
+    //public bool IsOpera => _isOpera;
     public Rigidbody Rigidbody => _rigidbody;
     public Collider Collider => _stateItem.Collider;
     public ItemSettings ItemSettings => _itemSettings;
@@ -72,10 +72,10 @@ public class CassetteObject : BazeInteracteble, IItemble
         Description = nameTitle;
     }
 
-    public void SetOpera()
-    {
-        _isOpera = true;
-    }
+    //public void SetOpera()
+    //{
+    //    _isOpera = true;
+    //}
 
     public void OffInteracteble()
     {

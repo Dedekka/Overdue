@@ -28,10 +28,6 @@ public class DialogueInstaller : MonoInstaller
         //_dataDialogue = Resources.Load<DataDialogue>(PathConst.DataDialogueAsset);
         //_dataOpera = Resources.Load<DataOpera>(PathConst.DataOperaAsset);
 
-        Container.Bind<DataOpera>()
-            .FromResource(PathConst.DataOperaAsset)
-            .AsSingle();
-
         Container.Bind<DataDialogue>()
             .FromResource(PathConst.DataDialogueAsset)
             .AsSingle();
@@ -44,9 +40,6 @@ public class DialogueInstaller : MonoInstaller
     private void BindDialogue()
     {
         Container.Bind<DialogCall>()
-            .AsSingle();
-
-        Container.BindInterfacesAndSelfTo<DialogSubtitles>()
             .AsSingle();
 
         Container.Bind<DialogSound>()
@@ -76,11 +69,6 @@ public class DialogueInstaller : MonoInstaller
     {
         Container.Bind<DialogSystemCall>()
             .AsSingle();
-            //.WithArguments(_dataDialogue);
-
-        Container.Bind<DialogSystemSubtitles>()
-            .AsSingle();
-
 
         Container.Bind<DialogSystemPlayerSay>()
             .AsSingle();
@@ -111,7 +99,5 @@ public class DialogueInstaller : MonoInstaller
           .AsSingle();
           //.WithArguments(_dataOpera);
 
-        Container.Bind<SubtitlesWaiter>()
-          .AsSingle();
     }
 }

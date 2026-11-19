@@ -21,7 +21,7 @@ public class PlayerInventory
             Item = present;
             return result;
         }
-        else if (sloteble is ContentSlot || sloteble is BazeSlot || sloteble is OperaChecker || sloteble is TV)
+        else if (sloteble is ContentSlot || sloteble is BazeSlot || sloteble is CheckerTvCassette || sloteble is TV)
         {
             result = InventorySlot.CheckActiveCassette(out CassetteObject currentCassette);
             Item = currentCassette;

@@ -25,8 +25,8 @@ public static class DataAchievement
     public const string ACHIEVEMENT_23 = "ACHIEVEMENT_23";
     public const string ACHIEVEMENT_24 = "ACHIEVEMENT_24";
     public const string ACHIEVEMENT_25 = "ACHIEVEMENT_25";
-    public const string ACHIEVEMENT_26 = "ACHIEVEMENT_26";
-    public const string ACHIEVEMENT_27 = "ACHIEVEMENT_27";
+    public const string ACHIEVEMENT_26 = "ACHIEVEMENT_26"; // Free
+    public const string ACHIEVEMENT_27 = "ACHIEVEMENT_27"; // Free
     public const string ACHIEVEMENT_28 = "ACHIEVEMENT_28";
     public const string ACHIEVEMENT_29 = "ACHIEVEMENT_29";
     public const string ACHIEVEMENT_30 = "ACHIEVEMENT_30";

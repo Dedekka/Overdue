@@ -4,30 +4,17 @@ using UnityEngine.Video;
 
 public class VideoControl
 {
-    private ControlOperaLanguage _controlOperaLanguage;
     private VideoPlayer _videoPlayer;
     public event Action OnEndEpisode;
-
-    public VideoControl(ControlOperaLanguage controlOperaLanguage)
-    {
-        _controlOperaLanguage = controlOperaLanguage;
-    }
 
     public void Initialization(VideoPlayer videoPlayer)
     {
         _videoPlayer = videoPlayer;
     }
 
-    public void SetVideo(VideoClip video = null)
+    public void SetVideo(VideoClip video)
     {
-        if (video == null)
-        {
-        _videoPlayer.clip = _controlOperaLanguage.GetSubtitles().Video;
-        }
-        else
-        {
-            _videoPlayer.clip = video;
-        }
+        _videoPlayer.clip = video;
         StopVideo();
     }
 

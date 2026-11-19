@@ -5,23 +5,21 @@ using Zenject;
 
 public class TvManager : IDisposable, IInitializable
 {
-    private DialogSubtitles _dialogSubtitles;
     private VideoControl _videoControl;
     private TVCameraControl _tvCameraControl;
     private DialogSound _dialogSound;
-    private OperaChecker _operaChecker;
+    private CheckerTvCassette _operaChecker;
     private ControlGenreVideo _controlGenreVideo;
 
     private TvGanreSound _tvGanreSound;
 
-    private OperaSettings _currentEpisode;
+    //private OperaSettings _currentEpisode;
     private GenreVideo _currentGanreVideo;
 
     public event Action<bool> OnPlayEpisode;
 
-    public TvManager(DialogSubtitles dialogSubtitles, VideoControl videoControl, TVCameraControl tvCameraControl, DialogSound dialogSound, OperaChecker operaChecker, ControlGenreVideo controlGenreVideo, TvGanreSound tvGanreSound)//, DataOpera dataOpera)
+    public TvManager(VideoControl videoControl, TVCameraControl tvCameraControl, DialogSound dialogSound, CheckerTvCassette operaChecker, ControlGenreVideo controlGenreVideo, TvGanreSound tvGanreSound)//, DataOpera dataOpera)
     {
-        _dialogSubtitles = dialogSubtitles;
         _videoControl = videoControl;
         _tvCameraControl = tvCameraControl;
         _dialogSound = dialogSound;
@@ -49,17 +47,17 @@ public class TvManager : IDisposable, IInitializable
 
     public void OnPlayCasset()
     {
-        bool isCorrectEpisode = CheckEpisode();
-        if (isCorrectEpisode)
-        {
-            bool successStartDialog = _dialogSubtitles.StartWaitSubtitles(_currentEpisode);
-            CheckSuccessCall(successStartDialog);
-        }
-        else
-        {
+            CheckEpisode();
+        //if (isCorrectEpisode)
+        //{
+        //    bool successStartDialog = _dialogSubtitles.StartWaitSubtitles(_currentEpisode);
+        //    CheckSuccessCall(successStartDialog);
+        //}
+        //else
+        //{
             // Запустить жанровое видео
             StartGanreVideo();
-        }
+        //}
     }
 
     public void StopPlay()
@@ -77,19 +75,19 @@ public class TvManager : IDisposable, IInitializable
     }
 
 
-    private void CheckSuccessCall(bool successStartDialog)
-    {
-        if (successStartDialog)
-        {
-            StartEpisode();
-        }
-    }
+    //private void CheckSuccessCall(bool successStartDialog)
+    //{
+    //    if (successStartDialog)
+    //    {
+    //        StartEpisode();
+    //    }
+    //}
 
-    private void StartEpisode()
-    {
-        SetEpisode();
-        PlayEpisode();
-    }
+    //private void StartEpisode()
+    //{
+    //    SetEpisode();
+    //    PlayEpisode();
+    //}
 
     private void StartGanreVideo()
     {
@@ -99,28 +97,26 @@ public class TvManager : IDisposable, IInitializable
 
 
 
-    private bool CheckEpisode()
+    private void CheckEpisode()
     {
-        bool isOpera;
+        //_currentEpisode = _operaChecker.GetOperaEpisode();
+        //isOpera = _currentEpisode != null;
 
-        _currentEpisode = _operaChecker.GetOperaEpisode();
-        isOpera = _currentEpisode != null;
-
-        if (!isOpera)
-        {
+        //if (!isOpera)
+        //{
             _currentGanreVideo = _controlGenreVideo.GetGenreVideo();
-        }
+        //}
 
 
         //_currentEpisode = _dataOpera.GetOperaSettings(idEpisode);
-        return isOpera;
+       
     }
 
-    private void SetEpisode()
-    {
-        _videoControl.SetVideo();
-        _dialogSound.SetFmodSound(_currentEpisode.Audio);
-    }
+    //private void SetEpisode()
+    //{
+    //    _videoControl.SetVideo();
+    //    _dialogSound.SetFmodSound(_currentEpisode.Audio);
+    //}
 
     private void SetEpisode(VideoClip video, string Audio)
     {
@@ -134,12 +130,12 @@ public class TvManager : IDisposable, IInitializable
         _tvGanreSound.StartSound();
     }
 
-    private void PlayEpisode()
-    {
-        Debug.Log("PlayEpisode");
-        OnPlayEpisode?.Invoke(true);
-        _videoControl.StartEpisode();
-        _tvCameraControl.StartEpisode();
-        _dialogSound.StartSound();
-    }
+    //private void PlayEpisode()
+    //{
+    //    Debug.Log("PlayEpisode");
+    //    OnPlayEpisode?.Invoke(true);
+    //    _videoControl.StartEpisode();
+    //    _tvCameraControl.StartEpisode();
+    //    _dialogSound.StartSound();
+    //}
 }

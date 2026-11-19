@@ -27,9 +27,9 @@ public class CheckerTextIconTags
             tempIdTag++;
             if (text.Contains(tagTypeDeviceSettings.KeyTag))
             {
-                Debug.Log($"CheckTag, Text:{tagTypeDeviceSettings.KeyTag}");
+                //Debug.Log($"CheckTag, Text:{tagTypeDeviceSettings.KeyTag}");
                 text = FindIcon(tagTypeDeviceSettings, text);
-                Debug.Log($"CheckTag, FullText :{text}");
+                //Debug.Log($"CheckTag, FullText :{text}");
             }
         }
         return text;
@@ -54,8 +54,8 @@ public class CheckerTextIconTags
 
         UiButtonText UiButtonText = UiButtonTexts.Find((x) => x.DeviceType == DeviceType);
 
-        Debug.Log($"CheckDevice, FindUiButtonTexts = null?{UiButtonText == null}");
-        Debug.Log($"CheckDevice, Text:{DeviceType}");
+        //Debug.Log($"CheckDevice, FindUiButtonTexts = null?{UiButtonText == null}");
+        //Debug.Log($"CheckDevice, Text:{DeviceType}");
         //Debug.Log($"CheckDevice, Text:{UiButtonText.Text}");
         return UiButtonText.Text;
     }

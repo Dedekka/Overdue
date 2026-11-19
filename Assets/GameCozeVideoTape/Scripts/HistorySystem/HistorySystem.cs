@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Zenject;
 
 
@@ -24,7 +25,7 @@ public class HistorySystem : IInitializable, IDisposable
         _controlHistoryEvent = controlHistoryEvent;
         _bazeEvents = new List<BazeEvent>();
         _controlPresentEvent = controlPresentEvent;
-        _countHistoryEvent =0;
+        _countHistoryEvent = 0;
         _waitCompliteEvent = false;
     }
 
@@ -51,9 +52,9 @@ public class HistorySystem : IInitializable, IDisposable
     private void ChangeCurrentEvent()
     {
         if (_bazeEvents == null) { return; }
-        if (_countHistoryEvent >= _bazeEvents.Count) { return; }
+        if (_countHistoryEvent >= _bazeEvents.Count) {return; }
         _currentEvent = _bazeEvents[_countHistoryEvent];
-        //Debug.Log($"ChangeCurrentEvent:{_currentEvent.IdEventHistory}");
+        Debug.Log($"ChangeCurrentEvent:{_currentEvent.IdEventHistory}");
     }
 
     public void ProgressHistory(int successInstall)
@@ -74,31 +75,30 @@ public class HistorySystem : IInitializable, IDisposable
 
     public void ComplitedHistoryEvent()
     {
-        //Debug.Log($"Complited_CountHistoryEvent:{_countHistoryEvent}");
+        Debug.Log($"Complited_CountHistoryEvent:{_countHistoryEvent}");
         _waitCompliteEvent = false;
         _countHistoryEvent++;
-        //Debug.Log($"UP_CountHistoryEvent:{_countHistoryEvent}");
+        Debug.Log($"UP_CountHistoryEvent:{_countHistoryEvent}");
         ChangeCurrentEvent();
     }
 
     private void FindEvent(BazeEvent bazeEvent)
     {
         _waitCompliteEvent = true;
-        //Debug.Log($"FindEvent IdEventHistory:{bazeEvent.IdEventHistory}");
+        Debug.Log($"FindEvent IdEventHistory:{bazeEvent.IdEventHistory}");
         if (bazeEvent is PresentEvent presentEvent)
         {
             _controlPresentEvent.SetEvent(presentEvent);
-            //Debug.Log($"PresentEvent , Подарок: {presentEvent.IDPresent}");
+            Debug.Log($"PresentEvent , Подарок: {presentEvent.IDPresent}");
             return;
         }
 
         if (bazeEvent is PhoneEvent PhoneEvent)
         {
-            //Debug.Log($"PhoneEvent, Звонок: {PhoneEvent.IDDialogue}");
+            Debug.Log($"PhoneEvent, Звонок: {PhoneEvent.IDDialogue}");
             _controlPhoneAnswer.SetEvent(PhoneEvent);
             return;
         }
         _controlHistoryEvent.SetEvent(bazeEvent);
-
     }
 }

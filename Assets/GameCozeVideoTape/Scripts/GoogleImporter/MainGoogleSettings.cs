@@ -17,9 +17,6 @@ public class MainGoogleSettings
     public List<HistoryEventSettings> HistoryEvent;
     public List<DialogSettings> Dialogues;
     public List<DialogLanguageSettings> DialogLanguage;
-    [Header("Opera")]
-    public List<OperaSettings> Opera;
-    public List<OperaLanguageSettings> OperaLanguage;
     [Header("Music")]
     public List<MusicCassetteSettings> Music;
     public List<MusicLanguage> MusicLanguage;

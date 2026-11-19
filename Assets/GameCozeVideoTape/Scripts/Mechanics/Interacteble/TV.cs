@@ -9,14 +9,14 @@ public class TV : MonoBehaviour, ISloteble
     [SerializeField] private TVSlot _tvSlot;
     private TvManager _tvManager;
     private VideoPlayer _videoPlayer;
-    private OperaChecker _operatingChecker;
+    private CheckerTvCassette _operatingChecker;
     private CassetteObject _cassetteObject;
     private PlayerInventory _playerInventory;
     public bool IsEmpty => _cassetteObject == null;
     public event Action<bool> OnStateInstallTv;
 
     [Inject]
-    public void Construct(TvManager tvManager, OperaChecker operatingChecker, PlayerInventory playerInventory)
+    public void Construct(TvManager tvManager, CheckerTvCassette operatingChecker, PlayerInventory playerInventory)
     {
         _playerInventory = playerInventory;
         _tvManager = tvManager;
@@ -55,7 +55,7 @@ public class TV : MonoBehaviour, ISloteble
     private void OnPlayCasset()
     {
         if (!IsEmpty) { return; }
-        if (_operatingChecker.CheckHand(true))
+        if (_operatingChecker.CheckHand())
         {
             Install();
         }

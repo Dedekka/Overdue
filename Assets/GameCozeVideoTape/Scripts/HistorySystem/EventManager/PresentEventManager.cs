@@ -49,6 +49,7 @@ public class PresentEventManager
     {
         CheckCorrectID(_presentEvent.IDCassette, _returnedMover.SetCallData);
         CheckCorrectID(_presentEvent.IDPresent, _presentSpawner.SetCallData);
+        Debug.Log($"Active PresentEventManager");
         OnEventComplited?.Invoke();
     }
 

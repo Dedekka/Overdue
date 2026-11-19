@@ -6,15 +6,15 @@ public class HistoryInstaller : MonoInstaller
     {
         FindSub();
         BindHistorySystem();
-        BindControlOpera();
+        //BindControlOpera();
         BindImporter();
     }
 
-    private void BindControlOpera()
-    {
-        Container.BindInterfacesAndSelfTo<ControlOpera>()
-      .AsSingle();
-    }
+    //private void BindControlOpera()
+    //{
+    //    Container.BindInterfacesAndSelfTo<ControlOpera>()
+    //  .AsSingle();
+    //}
 
     private void FindSub()
     {

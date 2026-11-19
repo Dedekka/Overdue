@@ -17,14 +17,14 @@ public class SimpleButton : Button
     {
         isEnter = true;
         base.OnPointerEnter(eventData);
-        Debug.Log("OnPointerEnter");
+        //Debug.Log("OnPointerEnter");
         OnEnter?.Invoke();
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
         isEnter = false;
-        Debug.Log("OnPointerExit");
+        //Debug.Log("OnPointerExit");
         base.OnPointerExit(eventData);
     }
 
@@ -35,14 +35,14 @@ public class SimpleButton : Button
         {
         OnEnter?.Invoke();
         }
-        Debug.Log("OnSelect");
+        //Debug.Log("OnSelect");
     }
 
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
         isEnter = false;
-        Debug.Log("OnDeselect");
+        //Debug.Log("OnDeselect");
     }
 }
 

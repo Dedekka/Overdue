@@ -4,25 +4,25 @@ using Zenject;
 public class ControlPresentEvent : IDisposable, IInitializable
 {
     private PresentEffect _presentEffect;
-    private PresentEventManager _dialogEventManager;
+    private PresentEventManager _presentEventManager;
     private PresentEvent _presentEvent;
 
     public event Action OnEventComplited;
 
     public ControlPresentEvent(PresentEventManager dialogEventManager, PresentEffect presentEffect)
     {
-        _dialogEventManager = dialogEventManager;
+        _presentEventManager = dialogEventManager;
         _presentEffect = presentEffect;
     }
 
     public void Initialize()
     {
-        _dialogEventManager.OnEventComplited += OnEventComplited;
+        _presentEventManager.OnEventComplited += OnEventComplited;
     }
 
     public void Dispose()
     {
-        _dialogEventManager.OnEventComplited -= OnEventComplited;
+        _presentEventManager.OnEventComplited -= OnEventComplited;
     }
 
     public void SetEvent(PresentEvent presentEvent)
@@ -34,8 +34,8 @@ public class ControlPresentEvent : IDisposable, IInitializable
     public void ActiveEvent()
     {
         _presentEffect.SetCallData(_presentEvent);
-        _dialogEventManager.SetCallData(_presentEvent);
-        _dialogEventManager.ActiveEvent();
+        _presentEventManager.SetCallData(_presentEvent);
+        _presentEventManager.ActiveEvent();
         _presentEffect.ActivationPresentEffect();
     }
 }

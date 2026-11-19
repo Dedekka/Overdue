@@ -102,14 +102,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<VideoControl>()
          .AsSingle();
 
-        Container.Bind<CassetteOpera>()
+
+        Container.Bind<CheckerTvCassette>()
          .AsSingle();
 
-        Container.Bind<OperaChecker>()
-         .AsSingle();
-
-        Container.Bind<ControlOperaLanguage>()
-         .AsSingle();
 
         Container.Bind<ControlGenreVideo>()
          .AsSingle();
@@ -181,9 +177,7 @@ public class GameInstaller : MonoInstaller
            .FromResource(PathConst.DataPresentAsset)
            .AsSingle();
 
-        Container.Bind<DataOperaLanguage>()
-           .FromResource(PathConst.DataOperaLanguageAsset)
-           .AsSingle();
+      
 
         Container.Bind<DataPresentLanguage>()
            .FromResource(PathConst.DataPresentLanguageAsset)

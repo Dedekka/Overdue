@@ -8,7 +8,6 @@ public class DialogSystem
     private DialogWaiter _dialogWaiter;
 
     private DialogSystemCall _dialogSystemCall;
-    private DialogSystemSubtitles _dialogSystemSubtitles;
     private DialogSystemPlayerSay _dialogSystemPlayerSay;
 
     private IRealizerDialogueble _currentRealizer;
@@ -21,11 +20,10 @@ public class DialogSystem
 
     public event Action<bool> OnStateDialog;
 
-    public DialogSystem(DialogSystemSubtitles dialogSystemSubtitles, DialogSystemCall dialogSystemCall, DialogSystemPlayerSay dialogSystemPlayerSay, DialogWaiter dialogWaiter, float timeWaitLine)
+    public DialogSystem(DialogSystemCall dialogSystemCall, DialogSystemPlayerSay dialogSystemPlayerSay, DialogWaiter dialogWaiter, float timeWaitLine)
     {
         _dialogSystemPlayerSay = dialogSystemPlayerSay;
         _dialogSystemCall = dialogSystemCall;
-        _dialogSystemSubtitles = dialogSystemSubtitles;
         _dialogWaiter = dialogWaiter;
         _timeWaitLine = timeWaitLine;
         _isPlaying = false;
@@ -40,10 +38,10 @@ public class DialogSystem
         {
             _currentRealizer = _dialogSystemCall;
         }
-        else if (starterDialogue is DialogSubtitles)
-        {
-            _currentRealizer = _dialogSystemSubtitles;
-        }
+        //else if (starterDialogue is DialogSubtitles)
+        //{
+        //    _currentRealizer = _dialogSystemSubtitles;
+        //}
         else if (starterDialogue is PlayerSaySystem)
         {
             _currentRealizer = _dialogSystemPlayerSay;

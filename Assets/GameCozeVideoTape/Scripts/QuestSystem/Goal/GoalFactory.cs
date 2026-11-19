@@ -53,8 +53,6 @@ public class GoalFactory
             TutorialEventType.OnInstall => _container.Instantiate<ConditionInstall>(),
             TutorialEventType.OnChangeAudio => _container.Instantiate<ConditionChangeAudio>(),
             TutorialEventType.OnPlayAudio => _container.Instantiate<ConditionPlayAudio>(),
-            TutorialEventType.OnOpera => _container.Instantiate<ConditionOpera>(),
-            TutorialEventType.OnInstallOpera => _container.Instantiate<ConditionInstallOpera>(),
             _ => throw new NotImplementedException()
         };
         return tutorialEventType;
@@ -73,13 +71,11 @@ public class GoalFactory
             TutorialEventType.OnShow => _container.Instantiate<GoalShow>(new object[] { settings, conditions }),
             TutorialEventType.OnTv => _container.Instantiate<GoalTv>(new object[] { settings, conditions }),
             TutorialEventType.OnPhone => _container.Instantiate<GoalPhone>(new object[] { settings, conditions }),
-            TutorialEventType.OnPresent => _container.Instantiate<GoalPresent>(new object[] {11, settings, conditions }),
+            TutorialEventType.OnPresent => _container.Instantiate<GoalPresent>(new object[] { 11, settings, conditions }),
             TutorialEventType.OnReturned => _container.Instantiate<GoalReturned>(new object[] { settings, conditions }),
-            TutorialEventType.OnInstall => _container.Instantiate<GoalInstall>(new object[] {12, settings, conditions }),
+            TutorialEventType.OnInstall => _container.Instantiate<GoalInstall>(new object[] { 12, settings, conditions }),
             TutorialEventType.OnChangeAudio => _container.Instantiate<GoalChangeAudio>(new object[] { settings, conditions }),
             TutorialEventType.OnPlayAudio => _container.Instantiate<GoalPlayAudio>(new object[] { settings, conditions }),
-            TutorialEventType.OnOpera => _container.Instantiate<GoalOpera>(new object[] { settings, conditions }),
-            TutorialEventType.OnInstallOpera => _container.Instantiate<GoalInstallOpera>(new object[] { settings, conditions }),
             _ => throw new NotImplementedException()
         };
         return tutorialEventType;

@@ -4,21 +4,16 @@ using UnityEngine;
 public class DataHistoryEvent : ScriptableObject, IDatable
 {
     [SerializeField] private List<HistoryEventSettings> _historyEvent;
-    private Dictionary<int, HistoryEventSettings> _historyData;
-
-    private bool _checkDictionary => _historyData == null;
-
     public void Initialization(MainGoogleSettings mainGoogleSettings)
     {
         _historyEvent = mainGoogleSettings.HistoryEvent;
     }
 
-    //public void SetBazeEvent
-
     public void GetBazeEvent(ref List<BazeEvent> _bazeEvents)
     {
         BazeEvent tempBazeEvent = null;
         HistoryEventSettings historyEventSettings;
+
         for (int i = 0; i < _historyEvent.Count; i++)
         {
             historyEventSettings = _historyEvent[i];
@@ -44,7 +39,7 @@ public class DataHistoryEvent : ScriptableObject, IDatable
                 };
                 tempBazeEvent = presentEvent;
             }
-            else if (historyEventSettings.IDCassette == 0 && historyEventSettings.IDDialogue == 0)
+            else if (historyEventSettings.IDCassette < 0 && historyEventSettings.IDDialogue < 0)
             {
                 tempBazeEvent = new BazeEvent()
                 {
@@ -53,25 +48,6 @@ public class DataHistoryEvent : ScriptableObject, IDatable
                 };
             }
             _bazeEvents.Add(tempBazeEvent);
-        }
-    }
-
-    public HistoryEventSettings GetItem(int id)
-    {
-        if (_checkDictionary)
-        {
-            SetDictionary(_historyEvent);
-        }
-        HistoryEventSettings tempItem = _historyData.TryGetValue(id, out HistoryEventSettings item) ? item : null;
-        return tempItem;
-    }
-
-    private void SetDictionary(List<HistoryEventSettings> itemSettings)
-    {
-        _historyData = new Dictionary<int, HistoryEventSettings>();
-        foreach (var item in itemSettings)
-        {
-            _historyData.Add(item.IdEventHistory, item);
         }
     }
 }

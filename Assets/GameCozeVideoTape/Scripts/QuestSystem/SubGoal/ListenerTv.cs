@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ListenerTv 
 {
-    public readonly OperaChecker OperaChecker;
+    public readonly CheckerTvCassette OperaChecker;
 
-    public ListenerTv(OperaChecker operaChecker)
+    public ListenerTv(CheckerTvCassette operaChecker)
     {
         OperaChecker = operaChecker;
     }
