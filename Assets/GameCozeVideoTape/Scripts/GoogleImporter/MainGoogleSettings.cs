@@ -30,4 +30,7 @@ public class MainGoogleSettings
     public List<FullScreenTutorialKeySettings> FullScreenTutorialKeySettings;
     [Header("GamePadKeyboard")]
     public List<GamePadKeyboardLanguageSettings> GamePadKeyboardLanguageSettings;
+
+    [Header("AnalyticsEvent")]
+    public List<AnalyticsEventSettings> AnalyticsEventSettings;
 }

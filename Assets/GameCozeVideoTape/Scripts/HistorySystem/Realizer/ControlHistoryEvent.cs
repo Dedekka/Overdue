@@ -1,5 +1,3 @@
-using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine;
 
 public class ControlHistoryEvent
@@ -8,12 +6,14 @@ public class ControlHistoryEvent
     private BazeEvent _bazeEvent;
     private ControlLogic _сontrolLogic;
     private CutSceneController _cutSceneController;
+    private ControlGameAnalytics _controlGameAnalytics;
 
-    public ControlHistoryEvent(ControlLogic сontrolLogic, CutSceneController cutSceneController, ControlSteamAchievement controlSteamAchievement)
+    public ControlHistoryEvent(ControlLogic сontrolLogic, ControlGameAnalytics controlGameAnalytics, CutSceneController cutSceneController, ControlSteamAchievement controlSteamAchievement)
     {
         _сontrolLogic = сontrolLogic;
         _cutSceneController = cutSceneController;
         _controlSteamAchievement = controlSteamAchievement;
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public void SetEvent(BazeEvent bazeEvent)
@@ -27,5 +27,6 @@ public class ControlHistoryEvent
         Debug.Log($"ControlHistoryEvent, IdEventHistory:{_bazeEvent.IdEventHistory}, CountCassette:{_bazeEvent.CountCassette}");
         _cutSceneController.StartCutscene(3);
         _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_3);
+        _controlGameAnalytics.SendCompliteEvent(20);
     }
 }

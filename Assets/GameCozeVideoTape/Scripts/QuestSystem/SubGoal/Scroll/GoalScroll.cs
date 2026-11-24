@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class GoalScroll : Goal
 {
-    public GoalScroll(TutorialEventSettings settings, List<Condition> conditions) : base(settings, conditions)
+    private ControlGameAnalytics _controlGameAnalytics;
+    public GoalScroll(TutorialEventSettings settings, List<Condition> conditions, ControlGameAnalytics controlGameAnalytics) : base(settings, conditions)
     {
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public override void Initialization(GoalController goalController)
@@ -12,6 +14,8 @@ public class GoalScroll : Goal
         base.Initialization(goalController);
         SetSub();
         Debug.Log($"{this.GetType()} Initialization");
+
+        _controlGameAnalytics.SendCompliteEvent(8);
     }
 
 

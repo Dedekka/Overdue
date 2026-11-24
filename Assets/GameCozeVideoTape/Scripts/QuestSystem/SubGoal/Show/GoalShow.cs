@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class GoalShow : Goal
 {
+
+    private ControlGameAnalytics _controlGameAnalytics;
     private ControlFullScreenTutorial _controlFullScreenTutorial;
-    public GoalShow(TutorialEventSettings settings, List<Condition> conditions, ControlFullScreenTutorial controlFullScreenTutorial) : base(settings, conditions)
+    public GoalShow(TutorialEventSettings settings, List<Condition> conditions, ControlGameAnalytics controlGameAnalytics, ControlFullScreenTutorial controlFullScreenTutorial) : base(settings, conditions)
     {
         _controlFullScreenTutorial = controlFullScreenTutorial;
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public override void Initialization(GoalController goalController)
@@ -14,6 +17,8 @@ public class GoalShow : Goal
         base.Initialization(goalController);
         SetSub();
         Debug.Log($"{this.GetType()} Initialization");
+
+        _controlGameAnalytics.SendCompliteEvent(9);
     }
 
     protected override void OnComplitedCondition(Condition condition)

@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class GoalChangeAudio : Goal
 {
-    public GoalChangeAudio(TutorialEventSettings settings, List<Condition> conditions) : base(settings, conditions)
+
+    private ControlGameAnalytics _controlGameAnalytics;
+    public GoalChangeAudio(TutorialEventSettings settings, List<Condition> conditions, ControlGameAnalytics controlGameAnalytics) : base(settings, conditions)
     {
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public override void Initialization(GoalController goalController)
@@ -19,5 +22,6 @@ public class GoalChangeAudio : Goal
         base.OnComplitedCondition(condition);
         _goalController.ClearGoal(Settings.TutorialEventType);
         _goalController.ActiveGoal(TutorialEventType.OnPlayAudio);
+        _controlGameAnalytics.SendCompliteEvent(15);
     }
 }

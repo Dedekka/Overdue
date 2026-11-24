@@ -8,13 +8,15 @@ public class ControlPhoneAnswer : IDisposable, IInitializable
     private Phone _phone;
     private DialogSystemCall _dialogSystemCall;
     private PhoneEvent _phoneEvent;
+    private ControlGameAnalytics _controlGameAnalytics;
 
     public event Action OnEventComplited;
 
-    public ControlPhoneAnswer(Phone phone, DialogSystemCall dialogSystemCall)
+    public ControlPhoneAnswer(Phone phone, DialogSystemCall dialogSystemCall, ControlGameAnalytics controlGameAnalytics)
     {
         _phone = phone;
         _dialogSystemCall = dialogSystemCall;
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public void Initialize()
@@ -30,6 +32,7 @@ public class ControlPhoneAnswer : IDisposable, IInitializable
     public void SetEvent(PhoneEvent phoneEvent)
     {
         _phoneEvent = phoneEvent;
+        _controlGameAnalytics.SendPhoneEvent(phoneEvent.IdEventHistory);
         ActiveEvent();
     }
 

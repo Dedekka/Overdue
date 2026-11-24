@@ -20,7 +20,6 @@ public class GoogleImporter
         using (var stream = new System.IO.FileStream(credentialsPath, System.IO.FileMode.Open))
         {
             credential = GoogleCredential.FromStream(stream).CreateScoped(SheetsService.Scope.Spreadsheets);
-
         }
 
         _service = new SheetsService(new Google.Apis.Services.BaseClientService.Initializer()

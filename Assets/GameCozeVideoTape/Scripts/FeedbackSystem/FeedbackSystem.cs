@@ -15,11 +15,12 @@ public class FeedbackSystem : IInitializable, IDisposable
     private FactoryFeedback _factoryFeedback;
     private ControlLogic _ñontrolLogic;
     private ControlSettings _controlSettings;
+    private ControlGameAnalytics _controlGameAnalytics;
 
     private List<GameObject> _selectedPanel;
     private EventSystem _eventSystem;
 
-    public FeedbackSystem(Main_ButtonSEND main_ButtonSEND, FactoryFeedback factoryFeedback, ControlLogic ñontrolLogic, ControlSettings controlSettings, List<GameObject> selectedPanel, EventSystem eventSystem)
+    public FeedbackSystem(Main_ButtonSEND main_ButtonSEND, FactoryFeedback factoryFeedback, ControlLogic ñontrolLogic, ControlGameAnalytics controlGameAnalytics, ControlSettings controlSettings, List<GameObject> selectedPanel, EventSystem eventSystem)
     {
         _main_ButtonSEND = main_ButtonSEND;
         _factoryFeedback = factoryFeedback;
@@ -27,6 +28,7 @@ public class FeedbackSystem : IInitializable, IDisposable
         _controlSettings = controlSettings;
         _selectedPanel = selectedPanel;
         _eventSystem = eventSystem;
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public void Initialize()
@@ -94,6 +96,7 @@ public class FeedbackSystem : IInitializable, IDisposable
     private async void MainSend()
     {
         _factoryFeedback.PrePost();
+        _controlGameAnalytics.SendCompliteEvent(22);
         await Post(_cancellationTokenSource.Token);
         _controlSettings.ChangeComplitedFeedback(true);
         _ñontrolLogic.BackMenu();

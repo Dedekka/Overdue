@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class GoalPickUp : Goal
 {
-    public GoalPickUp( TutorialEventSettings settings, List<Condition> conditions ) : base(settings, conditions)
+    private ControlGameAnalytics _controlGameAnalytics;
+    public GoalPickUp( TutorialEventSettings settings, List<Condition> conditions, ControlGameAnalytics controlGameAnalytics ) : base(settings, conditions)
     {
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public override void Initialization(GoalController goalController)
     {
         base.Initialization(goalController);
         SetSub();
+        _controlGameAnalytics.SendCompliteEvent(6);
         Debug.Log($"{this.GetType()} Initialization");
     }
 

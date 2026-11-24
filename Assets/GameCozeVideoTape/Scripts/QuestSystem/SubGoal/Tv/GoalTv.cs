@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class GoalTv : Goal
 {
-    public GoalTv(TutorialEventSettings settings, List<Condition> conditions) : base(settings, conditions)
+
+    private ControlGameAnalytics _controlGameAnalytics;
+    public GoalTv(TutorialEventSettings settings, List<Condition> conditions, ControlGameAnalytics controlGameAnalytics) : base(settings, conditions)
     {
+        _controlGameAnalytics = controlGameAnalytics;
     }
     
     public override void Initialization(GoalController goalController)
@@ -12,6 +15,8 @@ public class GoalTv : Goal
         base.Initialization(goalController);
         SetSub();
         Debug.Log($"{this.GetType()} Initialization");
+
+        _controlGameAnalytics.SendCompliteEvent(10);
     }
 
     protected override void OnComplitedCondition(Condition condition)

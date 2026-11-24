@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class GoalDrop : Goal
 {
-    public GoalDrop(TutorialEventSettings settings, List<Condition> conditions) : base(settings, conditions)
+
+    private ControlGameAnalytics _controlGameAnalytics;
+    public GoalDrop(TutorialEventSettings settings, List<Condition> conditions, ControlGameAnalytics controlGameAnalytics) : base(settings, conditions)
     {
+        _controlGameAnalytics = controlGameAnalytics;
     }
     
     public override void Initialization(GoalController goalController)
     {
         base.Initialization(goalController);
         SetSub();
+        _controlGameAnalytics.SendCompliteEvent(7);
         Debug.Log($"GoalDrop Initialization");
     }
 

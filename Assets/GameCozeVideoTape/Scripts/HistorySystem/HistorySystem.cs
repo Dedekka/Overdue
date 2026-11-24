@@ -11,14 +11,14 @@ public class HistorySystem : IInitializable, IDisposable
     private ControlPhoneAnswer _controlPhoneAnswer;
     private ControlPresentEvent _controlPresentEvent;
     private ControlHistoryEvent _controlHistoryEvent;
-
+    
     private BazeEvent _currentEvent;
     private int _countHistoryEvent;
     private bool _waitCompliteEvent;
 
     public event Action<BazeEvent> OnActiveEvent;
 
-    public HistorySystem(ControlPhoneAnswer controlPhoneAnswer, DataHistoryEvent dataHistoryEvent, ControlPresentEvent controlPresentEvent, ControlHistoryEvent controlHistoryEvent)
+    public HistorySystem(ControlPhoneAnswer controlPhoneAnswer, ControlGameAnalytics controlGameAnalytics, DataHistoryEvent dataHistoryEvent, ControlPresentEvent controlPresentEvent, ControlHistoryEvent controlHistoryEvent)
     {
         _controlPhoneAnswer = controlPhoneAnswer;
         _dataHistoryEvent = dataHistoryEvent;
