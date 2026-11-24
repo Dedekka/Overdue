@@ -3,10 +3,12 @@ using UnityEngine;
 public class ControlLogic
 {
     private LoadingSystem _loadingSystem;
+    private ControlGameAnalytics _controlGameAnalytics;
 
-    public ControlLogic(LoadingSystem loadingSystem)
+    public ControlLogic(LoadingSystem loadingSystem, ControlGameAnalytics controlGameAnalytics)
     {
         _loadingSystem = loadingSystem;
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public void StartGame()
@@ -26,6 +28,7 @@ public class ControlLogic
 
     public void Exit()
     {
+        _controlGameAnalytics.ExitEvent();
         Application.Quit();
     }
 }

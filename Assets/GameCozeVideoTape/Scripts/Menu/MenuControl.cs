@@ -1,3 +1,6 @@
+using DG.Tweening.Plugins.Core.PathCore;
+using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -17,14 +20,17 @@ public class MenuControl : MonoBehaviour
         _visibleCursor = visibleCursor;
     }
 
+
     private void Start()
     {
         Time.timeScale = 1.0f;
         _visibleCursor.SetVisibleState(true);
-        //Cursor.lockState = CursorLockMode.None;
-
         _buttonFeedbackMenu.gameObject.SetActive(!_controlSettings.IsComplitedFeedback);
-        
+
+        Debug.Log("Analytics test started");
+
+       
+
         //Debug.Log($"Steam Inst:{SteamManager.Initialized}");
 # if UNITY_EDITOR
         _controlSteamAchievement.ClearAchievement(DataAchievement.ACHIEVEMENT_1);

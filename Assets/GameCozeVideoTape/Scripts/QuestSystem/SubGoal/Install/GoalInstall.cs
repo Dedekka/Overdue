@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class GoalInstall : Goal
 {
+
+    private ControlGameAnalytics _controlGameAnalytics;
     private ControlSteamAchievement _controlSteamAchievement;
     private CutSceneController _cutSceneController;
     private PlayerSaySystem _playerSaySystem;
     private int _idDialogue;
 
-    public GoalInstall(int idDialogue, TutorialEventSettings settings, CutSceneController cutSceneController, List<Condition> conditions, PlayerSaySystem playerSaySystem, ControlSteamAchievement controlSteamAchievement) : base(settings, conditions)
+    public GoalInstall(int idDialogue, TutorialEventSettings settings, ControlGameAnalytics controlGameAnalytics, CutSceneController cutSceneController, List<Condition> conditions, PlayerSaySystem playerSaySystem, ControlSteamAchievement controlSteamAchievement) : base(settings, conditions)
     {
         _cutSceneController = cutSceneController;
         _playerSaySystem = playerSaySystem;
         _idDialogue = idDialogue;
         _controlSteamAchievement = controlSteamAchievement;
+        _controlGameAnalytics = controlGameAnalytics;
     }
     
     public override void Initialization(GoalController goalController)
@@ -32,6 +35,8 @@ public class GoalInstall : Goal
         _playerSaySystem.ActiveDialogue(_idDialogue);
         _goalController.ClearGoal(Settings.TutorialEventType);
         _goalController.ActiveGoal(TutorialEventType.OnChangeAudio);
-        
+
+        _controlGameAnalytics.SendCompliteEvent(14);
+
     }
 }

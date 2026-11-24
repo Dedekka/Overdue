@@ -9,18 +9,21 @@ public class Restart : MonoBehaviour
     private Saver _saver;
     private ControlPhoneAnswer _phone;
     private PresentEventManager _realizerPresent;
+    private ControlGameAnalytics _controlGameAnalytics;
 
     [Inject]
-    private void Construct(Saver saver, PresentEventManager realizerPresent, ControlPhoneAnswer phone)
+    private void Construct(Saver saver, PresentEventManager realizerPresent, ControlPhoneAnswer phone, ControlGameAnalytics controlGameAnalytics)
     {
         _saver = saver;
         _realizerPresent = realizerPresent;
         _phone = phone;
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     private void Start()
     {
         _saver.Initialize();
+        _controlGameAnalytics.SendCompliteEvent(2);
     }
 
     private void Update()

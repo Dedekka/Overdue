@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -34,6 +35,7 @@ public class ImporterButtonMenuControlLogic : IInitializable, IDisposable
     private void NewGame()
     {
         _controlLogic.StartGame();
+        PlayerPrefs.DeleteAll();
     }
 
     private void Exit()

@@ -70,11 +70,6 @@ public class GoalController : IInitializable, IDisposable
         Goal currentGoal = _goals.Find((x) => x.Settings.TutorialEventType == type);
         currentGoal.Initialization(this);
 
-
-        //string GoalText = _controlGoalLanguage.GetLanguage(currentGoal.Settings.Id);
-        //GoalText = _ñontrolGoalTextIcon.CheckTagIcon(GoalText);
-        //_questViewUi.Initialization(currentGoal.Settings.Id, GoalText);
-
         SetInitializationGoal(currentGoal.Settings.Id);
     }
 
@@ -94,17 +89,7 @@ public class GoalController : IInitializable, IDisposable
     {
         _controlComplited.Initialization();
         _goals = _goalFactory.GetGoal();
-        //Debug.Log($"_goals:{_goals.Count}");
-
-        //for (int i = 0; i < _goals.Count; i++)
-        //{
-        //    Debug.Log($"Goals_ID:{_goals[i].Settings.Id}, TutorialEventType:{_goals[i].Settings.TutorialEventType}, Conditions:{_goals[i].Conditions.Count}");
-
-        //    Condition tempCondition = _goals[i].Conditions[0];
-
-        //    Debug.Log($"Goals_ID:{_goals[i].Settings.Id}, ConditionType:{tempCondition.GetType()}");
-        //}
-        ActiveGoal(TutorialEventType.OnMove);
+       ActiveGoal(TutorialEventType.OnMove);
     }
 
     private void SetInitializationGoal(int tempIdQuest)

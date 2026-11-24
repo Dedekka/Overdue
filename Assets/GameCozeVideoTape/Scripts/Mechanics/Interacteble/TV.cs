@@ -12,12 +12,14 @@ public class TV : MonoBehaviour, ISloteble
     private CheckerTvCassette _operatingChecker;
     private CassetteObject _cassetteObject;
     private PlayerInventory _playerInventory;
+    private ControlGameAnalytics _controlGameAnalytics;
     public bool IsEmpty => _cassetteObject == null;
     public event Action<bool> OnStateInstallTv;
 
     [Inject]
-    public void Construct(TvManager tvManager, CheckerTvCassette operatingChecker, PlayerInventory playerInventory)
+    public void Construct(TvManager tvManager, ControlGameAnalytics controlGameAnalytics, CheckerTvCassette operatingChecker, PlayerInventory playerInventory)
     {
+        _controlGameAnalytics = controlGameAnalytics;
         _playerInventory = playerInventory;
         _tvManager = tvManager;
         _operatingChecker = operatingChecker;
@@ -70,6 +72,7 @@ public class TV : MonoBehaviour, ISloteble
             bool isNull = _tvSlot.Install(cassette, out _cassetteObject);
             SubPickUp(isNull);
             _tvSlot.gameObject.SetActive(isNull);
+            _controlGameAnalytics.VCREvent(cassette.Id);
         }
         else
         {

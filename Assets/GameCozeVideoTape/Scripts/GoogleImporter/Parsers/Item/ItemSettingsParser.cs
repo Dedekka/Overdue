@@ -62,6 +62,10 @@ public class ItemSettingsParser : IGoogleParser
                 _currentitemSettings.MaterialIndex = Convert.ToInt32(token);
                 break;
 
+            case "StikerIndex":
+                _currentitemSettings.StikerIndex = Convert.ToInt32(token);
+                break;
+
             default:
                 throw new Exception($"Invalid header: {headerName}");
         }

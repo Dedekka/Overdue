@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class GoalReturned : Goal
 {
-    public GoalReturned(TutorialEventSettings settings, List<Condition> conditions) : base(settings, conditions)
+
+    private ControlGameAnalytics _controlGameAnalytics;
+    public GoalReturned(TutorialEventSettings settings, List<Condition> conditions, ControlGameAnalytics controlGameAnalytics) : base(settings, conditions)
     {
+        _controlGameAnalytics = controlGameAnalytics;
     }
 
     public override void Initialization(GoalController goalController)
@@ -12,6 +15,7 @@ public class GoalReturned : Goal
         base.Initialization(goalController);
         SetSub();
         Debug.Log($"{this.GetType()} Initialization");
+
     }
 
 
@@ -20,6 +24,7 @@ public class GoalReturned : Goal
         base.OnComplitedCondition(condition);
         Debug.Log($"CheckComplited:{CheckComplited()}");
         _goalController.ClearGoal(Settings.TutorialEventType);
+        _controlGameAnalytics.SendCompliteEvent(13);
 
     }
 }

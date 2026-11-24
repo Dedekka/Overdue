@@ -198,7 +198,7 @@ public class GameInstaller : MonoInstaller
 
     private void BindUI()
     {
-
+        
 
         Container.Bind<PlayerUi>()
            .FromInstance(_playerUi)

@@ -25,7 +25,7 @@ public class GoogleMenu
     private const string Present_sheets_name = "BazePresent";
     private const string HistoryEvent_sheets_name = "HistoryEvent";
     private const string BazeDialogue_sheets_name = "BazeDialogue";
-    private const string CassetteOpera_sheets_name = "CassetteOpera";
+    private const string AnalyticsEvent_sheets_name = "AnalyticsEvent";
     private const string MusicCassette_sheets_name = "BazeMusicCassette";
     private const string TutorialEvent_sheets_name = "TutorialEvent";
     private const string TutorialEventLanguage_sheets_name = "TutorialEventLanguage";
@@ -59,6 +59,7 @@ public class GoogleMenu
 
         await TagTypeDevice(gameSettings, sheetsImporter);
         await FullScreenTutorialKey(gameSettings, sheetsImporter);
+        await AnalyticsEvent(gameSettings, sheetsImporter);
 
         sheetsImporter = new GoogleImporter(Credentials_path, CassetteLanguageSheet_id);
         await ItemLanguage(gameSettings, sheetsImporter);
@@ -94,6 +95,7 @@ public class GoogleMenu
         SaveAssetsType(ScriptableObject.CreateInstance<DataTutorialEvent>(), mainGoogleSettings, PathConst.DataTutorialEventPath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataTagTypeDevice>(), mainGoogleSettings, PathConst.DataTagTypeDevicePath);
         SaveAssetsType(ScriptableObject.CreateInstance<DataFullScreenTutorialKey>(), mainGoogleSettings, PathConst.DataFullScreenTutorialKeyPath);
+        SaveAssetsType(ScriptableObject.CreateInstance<DataAnalyticsEvent>(), mainGoogleSettings, PathConst.DataAnalyticsEventPath);
 
         #endregion
         #region GameLanguage
@@ -186,6 +188,12 @@ public class GoogleMenu
         await sheetsImporter.DownloandAndParseSheet(FullScreenTutorialPanel_sheets_name, tutorialEventParser);
     }
 
+    private static async UniTask AnalyticsEvent(MainGoogleSettings gameSettings, GoogleImporter sheetsImporter)
+    {
+        AnalyticsEventParser tutorialEventParser = new AnalyticsEventParser(gameSettings);
+        await sheetsImporter.DownloandAndParseSheet(AnalyticsEvent_sheets_name, tutorialEventParser);
+    }
+    
     #endregion
 
     #region GameLanguage

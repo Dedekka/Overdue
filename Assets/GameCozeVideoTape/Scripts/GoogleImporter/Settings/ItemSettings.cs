@@ -14,6 +14,7 @@ public class ItemSettings
     public int IdSubGenre;
     public string Material;
     public int MaterialIndex;
+    public int StikerIndex;
 }
 
 [Serializable]

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -12,12 +11,22 @@ public class MainSystemInstaller : MonoInstaller
     [Header("Steam")]
     [SerializeField] private SteamManager _steamManager;
 
-
     public override void InstallBindings()
     {
         BindSettingsSound();
         BindControlLogic();
         BindSteam();
+        BindGameAnalytics();
+    }
+
+    private void BindGameAnalytics()
+    {
+        Container.Bind<DataAnalyticsEvent>()
+           .FromResource(PathConst.DataAnalyticsEventAsset)
+           .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<ControlGameAnalytics>()
+            .AsSingle();
     }
 
     private void BindSteam()
