@@ -1,11 +1,29 @@
 using System.IO;
+using UnityEngine;
 
-public class ControlSteamState
+public class ControlSteamState 
 {
-    private const string State = "steam_display";
-
-    public void SetPlayerState(string playerState)
+    public void SetPlayerState(string keyStatus)
     {
-        Steamworks.SteamFriends.SetRichPresence(State, playerState);
+        if (Steamworks.SteamFriends.SetRichPresence("steam_display", keyStatus))
+        {
+            Debug.LogWarning($"Active - {keyStatus}");
+        }
+        else
+        {
+            Debug.LogWarning($"No Active - {keyStatus}");
+        }
+    }
+
+    public void SetCountInstall(string keyStatus)
+    {
+        if (Steamworks.SteamFriends.SetRichPresence("Count", keyStatus))
+        {
+            Debug.LogWarning($"Active - {keyStatus}");
+        }
+        else
+        {
+            Debug.LogWarning($"No Active - {keyStatus}");
+        }
     }
 }

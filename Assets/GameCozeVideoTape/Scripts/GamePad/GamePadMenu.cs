@@ -16,7 +16,7 @@ public class GamePadMenu : IInitializable
     public void Initialize()
     {
         _eventSystem = EventSystem.current;
-        Debug.Log($"Initialize, _eventSystem ={_eventSystem == null}");
+        //Debug.Log($"Initialize, _eventSystem ={_eventSystem == null}");
         ActiveButton(0);
     }
 
@@ -40,7 +40,7 @@ public class GamePadMenu : IInitializable
 
         if (index >= _selectedPanel.Count) { isSuccess = false; }
 
-        Debug.Log($"CheckButton, _eventSystem ={_eventSystem == null}, index >= _selectedPanel.Count {index >= _selectedPanel.Count}");
+        //Debug.Log($"CheckButton, _eventSystem ={_eventSystem == null}, index >= _selectedPanel.Count {index >= _selectedPanel.Count}");
         return isSuccess;
     }
 

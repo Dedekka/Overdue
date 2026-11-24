@@ -2261,17 +2261,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1623232853774482366, guid: 4b43bc9e552adc4488e56e7748472399, type: 3}
   m_PrefabInstance: {fileID: 1263714628746786004}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1251191350 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8435357624459045061, guid: 5ad514e1cd956694ab48ded861248037, type: 3}
-  m_PrefabInstance: {fileID: 7600454898406122197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c92ba00ccd435fd4d8c1c1c9cf1f742d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleButton
 --- !u!114 &1251191351 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5649649483226433461, guid: 5ad514e1cd956694ab48ded861248037, type: 3}
@@ -2615,8 +2604,6 @@ MonoBehaviour:
   - Selectable: {fileID: 1251191352}
     SoundUi: 1
   - Selectable: {fileID: 1251191351}
-    SoundUi: 1
-  - Selectable: {fileID: 1251191350}
     SoundUi: 1
   _selectUiSoundSlider:
   - {fileID: 1263714628746786008}
@@ -3199,9 +3186,6 @@ MonoBehaviour:
   - IdPage: 4
     NextPage: {fileID: 1251191351}
     LastPage: {fileID: 7600454898406122201}
-  - IdPage: 5
-    NextPage: {fileID: 1251191350}
-    LastPage: {fileID: 7600454898406122200}
 --- !u!1 &1927730461
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,51 +3364,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927730461}
   m_CullTransparentMesh: 1
---- !u!1 &2033060018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2033060020}
-  - component: {fileID: 2033060019}
-  m_Layer: 0
-  m_Name: MyAnalytics
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2033060019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033060018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d14b1b6c332114bb341e2de9211a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestGameAnalytics
-  _eventName: 1_Menu
---- !u!4 &2033060020
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033060018}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046968913
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,11 +3954,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3234924335449467498, guid: 5ad514e1cd956694ab48ded861248037, type: 3}
   m_PrefabInstance: {fileID: 7600454898406122197}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7600454898406122200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 73140168529189226, guid: 5ad514e1cd956694ab48ded861248037, type: 3}
-  m_PrefabInstance: {fileID: 7600454898406122197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7600454898406122201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8028280748151737117, guid: 5ad514e1cd956694ab48ded861248037, type: 3}
@@ -4043,5 +3977,4 @@ SceneRoots:
   - {fileID: 885082163}
   - {fileID: 643119863}
   - {fileID: 330585546}
-  - {fileID: 2033060020}
   - {fileID: 1776576441}

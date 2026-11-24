@@ -1,5 +1,4 @@
 using SaveLoadSystem;
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,6 +61,17 @@ public class GameInstaller : MonoInstaller
         BindTv();
         BindRecorder();
         BindFullScreenTutorial();
+        BindSteamState();
+    }
+
+    private void BindSteamState()
+    {
+        Container.BindInterfacesAndSelfTo<ImporterSteamStatePauseSystem>()
+        .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<RundomChangerSteamState>()
+        .AsSingle();
+
     }
 
     private void BindFullScreenTutorial()
@@ -73,7 +83,7 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<ControlFullScreenTutorial>()
         .AsSingle();
-        
+
         Container.Bind<ListenerFailInstallCassete>()
         .AsSingle();
 
@@ -177,7 +187,7 @@ public class GameInstaller : MonoInstaller
            .FromResource(PathConst.DataPresentAsset)
            .AsSingle();
 
-      
+
 
         Container.Bind<DataPresentLanguage>()
            .FromResource(PathConst.DataPresentLanguageAsset)
@@ -198,7 +208,7 @@ public class GameInstaller : MonoInstaller
 
     private void BindUI()
     {
-        
+
 
         Container.Bind<PlayerUi>()
            .FromInstance(_playerUi)

@@ -11,13 +11,15 @@ public class MenuControl : MonoBehaviour
     private ControlSettings _controlSettings;
     private ControlSteamAchievement _controlSteamAchievement;
     private ControlVisibleCursor _visibleCursor;
+    private ControlSteamState _controlSteamState;
 
     [Inject]
-    public void Construct(ControlSettings controlSettings, ControlSteamAchievement controlSteamAchievement, ControlVisibleCursor visibleCursor)
+    public void Construct(ControlSettings controlSettings, ControlSteamAchievement controlSteamAchievement, ControlVisibleCursor visibleCursor, ControlSteamState controlSteamState)
     {
         _controlSettings = controlSettings;
         _controlSteamAchievement = controlSteamAchievement;
         _visibleCursor = visibleCursor;
+        _controlSteamState = controlSteamState;
     }
 
 
@@ -26,13 +28,11 @@ public class MenuControl : MonoBehaviour
         Time.timeScale = 1.0f;
         _visibleCursor.SetVisibleState(true);
         _buttonFeedbackMenu.gameObject.SetActive(!_controlSettings.IsComplitedFeedback);
-
-        Debug.Log("Analytics test started");
-
-       
-
+        _controlSteamState.SetPlayerState(DataSteamStateKey.MainMenu);
         //Debug.Log($"Steam Inst:{SteamManager.Initialized}");
 # if UNITY_EDITOR
+        if (!SteamManager.Initialized) { return; }
+       
         _controlSteamAchievement.ClearAchievement(DataAchievement.ACHIEVEMENT_1);
         _controlSteamAchievement.ClearAchievement(DataAchievement.ACHIEVEMENT_2);
         _controlSteamAchievement.ClearAchievement(DataAchievement.ACHIEVEMENT_3);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -17,6 +18,13 @@ public class MainSystemInstaller : MonoInstaller
         BindControlLogic();
         BindSteam();
         BindGameAnalytics();
+        BindSteamState();
+    }
+
+    private void BindSteamState()
+    {
+        Container.Bind<ControlSteamState>()
+             .AsSingle();
     }
 
     private void BindGameAnalytics()

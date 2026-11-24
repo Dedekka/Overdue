@@ -22,15 +22,12 @@ public class ControlGameAnalytics : IInitializable
 
     public void VCREvent(int idCassette)
     {
-        if (GetAnalyticsEvent(3, out AnalyticsEventSettings analyticsEventSettings))
-        {
-            GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, "VCR", 1, "IdCassette", idCassette.ToString());
-        }
+        GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, "VCR", 1, "IdCassette", idCassette.ToString());
     }
 
     public void ExitEvent()
     {
-        if (GetAnalyticsEvent(3, out AnalyticsEventSettings analyticsEventSettings))
+        if (GetAnalyticsEvent(20, out AnalyticsEventSettings analyticsEventSettings))
         {
             int time = Convert.ToInt32(Time.time);
             FunnelFinished(analyticsEventSettings, time, true);

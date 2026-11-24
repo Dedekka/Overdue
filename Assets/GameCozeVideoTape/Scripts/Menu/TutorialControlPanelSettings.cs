@@ -16,13 +16,11 @@ public class TutorialControlPanelSettings : IDisposable, IInitializable, ISelect
     }
     public void Dispose()
     {
-
         _pageButtons[0].NextPage.onClick.RemoveAllListeners();
         _pageButtons[1].NextPage.onClick.RemoveAllListeners();
         _pageButtons[2].NextPage.onClick.RemoveAllListeners();
         _pageButtons[3].NextPage.onClick.RemoveAllListeners();
         _pageButtons[4].NextPage.onClick.RemoveAllListeners();
-        _pageButtons[5].NextPage.onClick.RemoveAllListeners();
     }
 
 
@@ -33,7 +31,6 @@ public class TutorialControlPanelSettings : IDisposable, IInitializable, ISelect
         _pageButtons[2].NextPage.onClick.AddListener(() => ActivePanel(2));
         _pageButtons[3].NextPage.onClick.AddListener(() => ActivePanel(3));
         _pageButtons[4].NextPage.onClick.AddListener(() => ActivePanel(4));
-        _pageButtons[5].NextPage.onClick.AddListener(() => ActivePanel(5));
     }
 
     public void ActivePanel(int idPanel)

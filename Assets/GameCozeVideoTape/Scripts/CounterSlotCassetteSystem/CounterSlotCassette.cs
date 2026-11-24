@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CounterSlotCassette : IDisposable
 {
+    public int CountSuccessInstall => _countSuccessInstall;
+
     private ManagerRack _managerRack;
     private FinderFreeSlot _finderFreeSlot;
     private CounterRackSlot _counterRackSlot;
