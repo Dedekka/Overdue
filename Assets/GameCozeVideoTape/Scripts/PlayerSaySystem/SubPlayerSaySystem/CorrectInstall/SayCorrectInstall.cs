@@ -12,7 +12,7 @@ public class SayCorrectInstall : SayEvent
 
     protected override void Complited()
     {
-        _playerSaySystem.ActiveDialogue(_idDialogue);
+        _playerSaySystem.ActiveDialogue(_idDialogue).Forget();
         _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_1);
         // Вызов первой очивки
     }

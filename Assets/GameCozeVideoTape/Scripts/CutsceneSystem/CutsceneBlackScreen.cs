@@ -23,6 +23,7 @@ public class CutsceneBlackScreen
         _stateBlackScreen = DOTween.Sequence();
         _stateBlackScreen.Append(_blackScreen.DOFade(1, StartWait));
         _stateBlackScreen.Append(_blackScreen.DOFade(0, EndWait));
+        _stateBlackScreen.SetLink(_blackScreen.gameObject);
         _stateBlackScreen.Play();
     }
 }

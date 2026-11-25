@@ -12,6 +12,6 @@ public class SayPickUp : SayEvent
 
     protected override void Complited()
     {
-        _playerSaySystem.ActiveDialogue(_idDialogue);
+        _playerSaySystem.ActiveDialogue(_idDialogue).Forget();
     }
 }

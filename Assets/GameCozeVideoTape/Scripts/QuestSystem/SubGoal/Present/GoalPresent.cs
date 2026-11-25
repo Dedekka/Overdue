@@ -25,7 +25,7 @@ public class GoalPresent : Goal
     {
         base.OnComplitedCondition(condition);
         Debug.Log($"{this.GetType()}, CheckComplited:{CheckComplited()}");
-        _playerSaySystem.ActiveDialogue(_idDialogue);
+        _playerSaySystem.ActiveDialogue(_idDialogue).Forget();
         _goalController.ClearGoal(Settings.TutorialEventType);
         _goalController.ActiveGoal(TutorialEventType.OnInstall);
         _controlGameAnalytics.SendCompliteEvent(12);

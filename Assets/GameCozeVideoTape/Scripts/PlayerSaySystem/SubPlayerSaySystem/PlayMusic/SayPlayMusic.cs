@@ -12,7 +12,7 @@ public class SayPlayMusic : SayEvent
 
     protected override void Complited()
     {
-        _playerSaySystem.ActiveDialogue(_idDialogue);
+        _playerSaySystem.ActiveDialogue(_idDialogue).Forget();
         // Вызвать диалог 13 
     }
 }

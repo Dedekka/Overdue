@@ -12,6 +12,6 @@ public class PlayerSay : MonoBehaviour
 
     public void ActiveDialogue(int idDialogue)
     {
-        _playerSaySystem.ActiveDialogue(idDialogue);
+        _playerSaySystem.ActiveDialogue(idDialogue).Forget();
     }
 }

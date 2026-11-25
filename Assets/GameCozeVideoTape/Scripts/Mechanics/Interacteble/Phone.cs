@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using Zenject;
@@ -20,13 +21,13 @@ public class Phone : MonoBehaviour
 
     private void OnEnable()
     {
-        _answerCall.OnCall += StartDialog;
+        _answerCall.OnCall += OnCall;
         _answerCall.gameObject.SetActive(false);
     }
 
     private void OnDisable()
     {
-        _answerCall.OnCall -= StartDialog;
+        _answerCall.OnCall -= OnCall;
     }
 
     public void ActiveCallEffect()
@@ -43,12 +44,14 @@ public class Phone : MonoBehaviour
         _dialogId = dialogId;
     }
 
-    private void StartDialog()
+    private void OnCall()
     {
-        // Класс отвечающий за эфекты телефона 
-        // Выкл эффектыы
+        StartDialog().Forget();
+    }
 
-        bool successStartDialog = _dialogTest.StartDialog(_dialogId);
+    private async UniTaskVoid StartDialog()
+    {
+        bool successStartDialog = await _dialogTest.StartDialog(_dialogId);
         CheckSuccessCall(successStartDialog);
     }
 

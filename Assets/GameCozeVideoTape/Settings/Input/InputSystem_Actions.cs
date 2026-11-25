@@ -934,6 +934,15 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CallSkip"",
+                    ""type"": ""Button"",
+                    ""id"": ""633d8416-94af-45f8-8c3c-dc33ea15c4a4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1409,6 +1418,39 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
                     ""action"": ""Deselect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""810794c5-12be-45d3-8ed4-54084674dd74"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CallSkip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c4cc7f1-eadb-4d2a-984b-69b1f0851f04"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CallSkip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e1b9c61-cedd-4252-a764-62f8ad375d9d"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CallSkip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1508,6 +1550,7 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         m_UI_RightLeft = m_UI.FindAction("RightLeft", throwIfNotFound: true);
         m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
         m_UI_Deselect = m_UI.FindAction("Deselect", throwIfNotFound: true);
+        m_UI_CallSkip = m_UI.FindAction("CallSkip", throwIfNotFound: true);
     }
 
     ~@PlayerSystemActions()
@@ -1852,6 +1895,7 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_RightLeft;
     private readonly InputAction m_UI_Select;
     private readonly InputAction m_UI_Deselect;
+    private readonly InputAction m_UI_CallSkip;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1915,6 +1959,10 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Deselect".
         /// </summary>
         public InputAction @Deselect => m_Wrapper.m_UI_Deselect;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/CallSkip".
+        /// </summary>
+        public InputAction @CallSkip => m_Wrapper.m_UI_CallSkip;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1980,6 +2028,9 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
             @Deselect.started += instance.OnDeselect;
             @Deselect.performed += instance.OnDeselect;
             @Deselect.canceled += instance.OnDeselect;
+            @CallSkip.started += instance.OnCallSkip;
+            @CallSkip.performed += instance.OnCallSkip;
+            @CallSkip.canceled += instance.OnCallSkip;
         }
 
         /// <summary>
@@ -2030,6 +2081,9 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
             @Deselect.started -= instance.OnDeselect;
             @Deselect.performed -= instance.OnDeselect;
             @Deselect.canceled -= instance.OnDeselect;
+            @CallSkip.started -= instance.OnCallSkip;
+            @CallSkip.performed -= instance.OnCallSkip;
+            @CallSkip.canceled -= instance.OnCallSkip;
         }
 
         /// <summary>
@@ -2339,5 +2393,12 @@ public partial class @PlayerSystemActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDeselect(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CallSkip" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCallSkip(InputAction.CallbackContext context);
     }
 }

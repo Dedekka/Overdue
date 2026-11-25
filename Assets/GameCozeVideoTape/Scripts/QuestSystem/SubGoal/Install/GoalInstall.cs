@@ -32,7 +32,7 @@ public class GoalInstall : Goal
         Debug.Log($"CheckComplited:{CheckComplited()}");
         _controlSteamAchievement.SetAchievement(DataAchievement.ACHIEVEMENT_25);
         _cutSceneController.StartCutscene(2);
-        _playerSaySystem.ActiveDialogue(_idDialogue);
+        _playerSaySystem.ActiveDialogue(_idDialogue).Forget();
         _goalController.ClearGoal(Settings.TutorialEventType);
         _goalController.ActiveGoal(TutorialEventType.OnChangeAudio);
 

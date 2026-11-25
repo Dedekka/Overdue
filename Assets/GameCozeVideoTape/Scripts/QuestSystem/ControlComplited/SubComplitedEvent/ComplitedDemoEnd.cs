@@ -13,6 +13,6 @@ public class ComplitedDemoEnd : ComplitedHistoryEvent
 
     public override void Complited()
     {
-        _playerSaySystem.ActiveDialogue(_idDialogue);
+        _playerSaySystem.ActiveDialogue(_idDialogue).Forget();
     }
 }

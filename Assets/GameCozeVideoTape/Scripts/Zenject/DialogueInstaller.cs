@@ -1,5 +1,3 @@
-using System;
-using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +9,7 @@ public class DialogueInstaller : MonoInstaller
     //private DataDialogue _dataDialogue;
     //private DataOpera _dataOpera;
 
-   
+
 
     public override void InstallBindings()
     {
@@ -48,15 +46,21 @@ public class DialogueInstaller : MonoInstaller
         Container.Bind<PresentEventManager>()
             .AsSingle();
 
+        Container.Bind<ControlSkipCall>()
+            .AsSingle();
+
+        Container.BindInterfacesAndSelfTo<InputActionCallSkip>()
+            .AsSingle();
+
         //Container.Bind<DialogEvent>()
         //    .AsSingle();
 
 
-        Container.Bind<DialogSystem>()
+        Container.BindInterfacesAndSelfTo<DialogSystem>()
             .AsSingle()
             .WithArguments(_timeWaitLine);
 
-        Container.Bind<DialogWaiter>()
+        Container.BindInterfacesAndSelfTo<DialogWaiter>()
             .AsSingle()
             .WithArguments(_timeWaitChar);
 
@@ -72,7 +76,7 @@ public class DialogueInstaller : MonoInstaller
 
         Container.Bind<DialogSystemPlayerSay>()
             .AsSingle();
-            //.WithArguments(_dataOpera);
+        //.WithArguments(_dataOpera);
     }
 
     private void BindImporter()
@@ -86,18 +90,22 @@ public class DialogueInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<AudioDialogSoundImporter>()
             .AsSingle();
 
-        Container.BindInterfacesAndSelfTo<ImporterDialogEventManager>()
+        Container.BindInterfacesAndSelfTo<ImporterDialogSystemCallControlSkip>()
             .AsSingle();
+
+
 
         //Container.BindInterfacesAndSelfTo<ImporterSystemSubtitlesVideoControl>()
         //    .AsSingle();
     }
 
+
+
     private void BindTv()
     {
         Container.BindInterfacesAndSelfTo<TvManager>()
           .AsSingle();
-          //.WithArguments(_dataOpera);
+        //.WithArguments(_dataOpera);
 
     }
 }

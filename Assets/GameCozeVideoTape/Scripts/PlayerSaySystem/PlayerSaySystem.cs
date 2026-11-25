@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -43,13 +45,13 @@ public class PlayerSaySystem : IInitializable, IDisposable, IStarterDialogueble
             Debug.Log("Not found waitdialogId");
             return;
         }
-        ActiveDialogue(_waitDialogId);
+        ActiveDialogue(_waitDialogId).Forget();
         _waitDialogId = -1;
     }
 
-    public void ActiveDialogue(int idDialogue)
+    public async UniTaskVoid ActiveDialogue(int idDialogue)
     {
-        bool SuccessStart = _dialogSystem.CheckDialogue(this, idDialogue);
+        bool SuccessStart = await _dialogSystem.CheckDialogue(this, idDialogue);
 
         if (SuccessStart)
         {

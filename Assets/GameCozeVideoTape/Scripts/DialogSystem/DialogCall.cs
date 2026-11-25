@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -12,10 +14,10 @@ public class DialogCall : IStarterDialogueble
         _dialogSystem = dialogSystem;
     }
 
-    public bool StartDialog(int dialogIndex)
+    public async UniTask<bool> StartDialog(int dialogIndex)
     {
         bool SuccessStart = CheckCurrentDialogs(dialogIndex);
-        SuccessStart = SuccessStart ? _dialogSystem.CheckDialogue(this, dialogIndex) : false;
+        SuccessStart = SuccessStart ? await _dialogSystem.CheckDialogue(this, dialogIndex) : false;
         if (SuccessStart)
         {
             _dialogSystem.StartDialogue();

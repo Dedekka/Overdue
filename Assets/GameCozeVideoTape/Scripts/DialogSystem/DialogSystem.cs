@@ -3,7 +3,7 @@ using System;
 using System.Threading;
 using UnityEngine;
 
-public class DialogSystem
+public class DialogSystem : IDisposable
 {
     private DialogWaiter _dialogWaiter;
 
@@ -11,8 +11,9 @@ public class DialogSystem
     private DialogSystemPlayerSay _dialogSystemPlayerSay;
 
     private IRealizerDialogueble _currentRealizer;
-
-    private CancellationTokenSource _cancellationTokenSource;
+    private UniTask _currentDialogTask;
+    private CancellationTokenSource _sourceWaitLine;
+    private CancellationTokenSource _sourceMainDialoge;
 
     private float _timeWaitLine;
     private bool _isPlaying;
@@ -29,19 +30,17 @@ public class DialogSystem
         _isPlaying = false;
     }
 
-    public bool CheckDialogue(IStarterDialogueble starterDialogue, int id)
+    public async UniTask<bool> CheckDialogue(IStarterDialogueble starterDialogue, int id)
     {
-        if (_isPlaying) { StopProgressShow(); }   
-
+        if (_isPlaying) 
+        { 
+           await StopProgressShow();
+        }
         bool isRealizer = false;
         if (starterDialogue is DialogCall)
         {
             _currentRealizer = _dialogSystemCall;
         }
-        //else if (starterDialogue is DialogSubtitles)
-        //{
-        //    _currentRealizer = _dialogSystemSubtitles;
-        //}
         else if (starterDialogue is PlayerSaySystem)
         {
             _currentRealizer = _dialogSystemPlayerSay;
@@ -54,8 +53,13 @@ public class DialogSystem
     public void StartDialogue()
     {
         if (_currentRealizer == null) { return; }
-        _cancellationTokenSource = new CancellationTokenSource();
-        ProgressShow(_currentRealizer, _cancellationTokenSource).Forget();
+        _sourceMainDialoge = new CancellationTokenSource();
+        _currentDialogTask = ProgressShow(_currentRealizer, _sourceMainDialoge.Token);
+    }
+
+    public void StopDialogue()
+    {
+        _sourceWaitLine?.Cancel();
     }
 
     private bool RealizerDialogue(IRealizerDialogueble realizer, int id)
@@ -65,22 +69,28 @@ public class DialogSystem
         return realizer.CheckId(id);
     }
 
-    private async UniTask ProgressShow(IRealizerDialogueble realizerDialogueble, CancellationTokenSource cancellationTokenSource)
+    private async UniTask ProgressShow(IRealizerDialogueble realizerDialogueble, CancellationToken token)
     {
+        int countDialogLine = PreDialog(realizerDialogueble);
+        Debug.Log($"ProgressShow, countDialogLine:{countDialogLine}");
         try
         {
-            int countDialogLine = PreDialog(realizerDialogueble);
-            Debug.Log($"ProgressShow, countDialogLine:{countDialogLine}");
             for (int j = 0; j < countDialogLine; j++)
             {
                 IDialoguebleLine dialogLine = realizerDialogueble.GetDialogLine(j);
                 if (dialogLine == null) { Debug.LogError("ProgressShow not found IDialoguebleLine"); }
 
                 SetDialogLine(realizerDialogueble, dialogLine);
-                await StartDialog(realizerDialogueble, dialogLine, cancellationTokenSource.Token);
-                await UniTask.Delay(TimeSpan.FromSeconds(_timeWaitLine), cancellationToken: cancellationTokenSource.Token);
+                ControlEndToken(_sourceWaitLine);
+                _sourceWaitLine = new CancellationTokenSource();
+
+                if (token.IsCancellationRequested) { break; }
+
+                await UniTask.WhenAll(
+                 StartDialog(realizerDialogueble, dialogLine),
+                 UniTask.Delay(TimeSpan.FromSeconds(_timeWaitLine), cancellationToken: _sourceWaitLine.Token).SuppressCancellationThrow()
+                 );
             }
-            EndDialog(realizerDialogueble);
         }
         catch (OperationCanceledException)
         {
@@ -88,16 +98,20 @@ public class DialogSystem
         }
         finally
         {
-            cancellationTokenSource?.Dispose();
+            EndDialog(realizerDialogueble);
         }
     }
 
-    private void StopProgressShow()
+    private async UniTask StopProgressShow()
     {
         if (_currentRealizer == null) { return; }
 
-        _cancellationTokenSource?.Cancel();
+        ControlEndToken(_sourceWaitLine);
+        ControlEndToken(_sourceMainDialoge);
         _currentRealizer.StopProgressShow();
+        _dialogWaiter.EndPrintChar();
+        _isPlaying = false;
+        await _currentDialogTask;
         // Здесь нужно выключать токен ассинхронной операции 
     }
 
@@ -114,10 +128,10 @@ public class DialogSystem
         _dialogWaiter.SetDialogLine(dialogLine);
     }
 
-    private async UniTask StartDialog(IRealizerDialogueble realizer, IDialoguebleLine dialogLine, CancellationToken token)
+    private async UniTask StartDialog(IRealizerDialogueble realizer, IDialoguebleLine dialogLine)
     {
         realizer.StartDialog();
-        await _dialogWaiter.StartShow(token);
+        await _dialogWaiter.StartShow();
     }
 
     private void EndDialog(IRealizerDialogueble realizer)
@@ -126,5 +140,18 @@ public class DialogSystem
         Debug.Log("EndDialog");
         realizer.EndDialog();
         OnStateDialog?.Invoke(false);
+    }
+
+    private void ControlEndToken(CancellationTokenSource cancellationToken)
+    {
+        cancellationToken?.Cancel();
+    }
+
+    public void Dispose()
+    {
+        ControlEndToken(_sourceMainDialoge);
+        ControlEndToken(_sourceWaitLine);
+        _sourceMainDialoge?.Dispose();
+        _sourceWaitLine?.Dispose();
     }
 }
