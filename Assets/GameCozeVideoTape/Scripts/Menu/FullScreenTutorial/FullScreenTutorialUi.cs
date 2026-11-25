@@ -31,29 +31,4 @@ public class FullScreenTutorialUi : MonoBehaviour
     {
         _panel.gameObject.SetActive(active);
     }
-    //[SerializeField] private LocalizeStringEvent LocalizeStringEvent;
-
-    //string name1 = "#FullScreenTutorialPanel.Main.Header";
-    //string name2 = "#FullScreenTutorialPanel.Sorting.HeaderV1";
-    //string name3 = "#FullScreenTutorialPanel.Sorting.Body";
-    //string Table11 = "FullScreenTutorialPanel";
-    //string Entry21 = "#FullScreenTutorialPanel.Main.Header";
-    //string Entry22 = "#FullScreenTutorialPanel.Sorting.HeaderV1";
-
-    //string Table12 = "Game";
-    //string Entry23 = "#Game.SunsetCreek";
-
-
-    //private void Start()
-    //{
-    //    Debug.Log($"StringReference + {LocalizeStringEvent.StringReference}");
-    //    Debug.Log($"StringReference + {LocalizeStringEvent.StringReference}");
-    //}
-
-    //[ContextMenu("SetV2")]
-    //private void SetV2()
-    //{
-    //    LocalizeStringEvent.SetTable(Table12);
-    //    LocalizeStringEvent.SetEntry(Entry23);
-    //}
 }

@@ -19,7 +19,6 @@ public class ControlFullScreenTutorial
         _isActive = isActive;
         _fullScreenTutorialUi.ControlActive(isActive);
         OnStateFullScreenTutorial?.Invoke(isActive);
-        //OnStateFullScreenTutorial.
     }
 
     public void SetPanel(int id)
@@ -34,4 +33,3 @@ public class ControlFullScreenTutorial
         ControlActive(true);
     }
 }
-//ImporterFullScreenTutorialLookItemEffects 

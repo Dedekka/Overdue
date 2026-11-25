@@ -32,7 +32,15 @@ public class HistoryEventParser : IGoogleParser
                 break;
 
             case "Count Cassette":
-                _currentDialogueEventData.CountCassette = Convert.ToInt32(token);
+
+                if (int.TryParse(token, out int CountCassette))
+                {
+                    _currentDialogueEventData.CountCassette = CountCassette;
+                }
+                else
+                {
+                    _currentDialogueEventData.CountCassette = -1;
+                }
                 break;
 
             case "Description":
@@ -42,7 +50,7 @@ public class HistoryEventParser : IGoogleParser
 
                 if (int.TryParse(token, out int id_Dialogue))
                 {
-                    _currentDialogueEventData.IDDialogue = Convert.ToInt32(token);
+                    _currentDialogueEventData.IDDialogue = id_Dialogue;
                 }
                 else
                 {
@@ -55,7 +63,7 @@ public class HistoryEventParser : IGoogleParser
 
                 if (int.TryParse(token, out int id_Cassette))
                 {
-                    _currentDialogueEventData.IDCassette = Convert.ToInt32(token);
+                    _currentDialogueEventData.IDCassette = id_Cassette;
                 }
                 else
                 {
@@ -67,7 +75,7 @@ public class HistoryEventParser : IGoogleParser
             case "ID_Present":
                 if (int.TryParse(token, out int id_Present))
                 {
-                    _currentDialogueEventData.IDPresent = Convert.ToInt32(token);
+                    _currentDialogueEventData.IDPresent = id_Present;
                 }
                 else
                 {

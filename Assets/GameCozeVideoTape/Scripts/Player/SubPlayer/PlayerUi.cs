@@ -39,6 +39,7 @@ public class PlayerUi : MonoBehaviour
 
     public void ChangeOtherGoup(bool isVisible)
     {
+        Debug.Log($"ChangeOtherGoup, isVisible:{isVisible}");
         _otherGoup.alpha = isVisible ? 1 : 0;
     }
 }

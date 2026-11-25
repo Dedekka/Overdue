@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +13,9 @@ public class HistorySystem : IInitializable, IDisposable
     private ControlPhoneAnswer _controlPhoneAnswer;
     private ControlPresentEvent _controlPresentEvent;
     private ControlHistoryEvent _controlHistoryEvent;
-    
+
+    private CancellationTokenSource _cancellationTokenSource;
+
     private BazeEvent _currentEvent;
     private int _countHistoryEvent;
     private bool _waitCompliteEvent;
@@ -36,8 +40,9 @@ public class HistorySystem : IInitializable, IDisposable
 
     public void Dispose()
     {
+        ControlEndToken();
         _controlPhoneAnswer.OnEventComplited -= ComplitedHistoryEvent;
-        _controlPresentEvent.OnEventComplited -= ComplitedHistoryEvent;
+        //_controlPresentEvent.OnEventComplited -= ComplitedHistoryEvent;
     }
 
     private void SetBazeEvent()
@@ -46,15 +51,21 @@ public class HistorySystem : IInitializable, IDisposable
         ChangeCurrentEvent();
 
         _controlPhoneAnswer.OnEventComplited += ComplitedHistoryEvent;
-        _controlPresentEvent.OnEventComplited += ComplitedHistoryEvent;
+        //_controlPresentEvent.OnEventComplited += ComplitedHistoryEvent;
     }
 
     private void ChangeCurrentEvent()
     {
         if (_bazeEvents == null) { return; }
-        if (_countHistoryEvent >= _bazeEvents.Count) {return; }
+        if (_countHistoryEvent >= _bazeEvents.Count) { return; }
         _currentEvent = _bazeEvents[_countHistoryEvent];
         Debug.Log($"ChangeCurrentEvent:{_currentEvent.IdEventHistory}");
+        if (_currentEvent.CountCassette < 0)
+        {
+            ControlEndToken();
+            _cancellationTokenSource = new CancellationTokenSource();
+            WaitPresentEvent(_cancellationTokenSource.Token).Forget();
+        }
     }
 
     public void ProgressHistory(int successInstall)
@@ -63,7 +74,6 @@ public class HistorySystem : IInitializable, IDisposable
         {
             ChangeCurrentEvent();
         }
-
         if (_currentEvent == null) { return; }
         if (_waitCompliteEvent) { return; }
         if (_currentEvent.CountCassette <= successInstall)
@@ -101,4 +111,18 @@ public class HistorySystem : IInitializable, IDisposable
         }
         _controlHistoryEvent.SetEvent(bazeEvent);
     }
+
+    private async UniTaskVoid WaitPresentEvent(CancellationToken token)
+    {
+        await UniTask.Delay(100, cancellationToken: token);
+        ProgressHistory(0);
+    }
+
+    private void ControlEndToken()
+    {
+        _cancellationTokenSource?.Cancel();
+        _cancellationTokenSource?.Dispose();
+        _cancellationTokenSource = null;
+    }
+
 }
