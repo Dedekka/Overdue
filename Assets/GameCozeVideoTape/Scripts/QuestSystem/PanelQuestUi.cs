@@ -22,27 +22,4 @@ public class PanelQuestUi : MonoBehaviour
         IdQuest = -1;
         _text.text = string.Empty;
     }
-
-    //public void UpdateTextInventory( string textPanel)
-    //{
-    //    if (_text == null) return;
-    //    if (_text.text == textPanel) return;
-    //    //Debug.Log($"UpdateTextInventory: {text}");
-    //    _text.text = textPanel;
-
-    //    bool isVisible = textPanel != string.Empty;
-    //    gameObject.SetActive(isVisible);
-    //}
-
-    //public void Show()
-    //{
-    //    if (!gameObject.activeSelf) return;
-    //    _isVisible = !_isVisible;
-    //    //_tempMovePanel = _isVisible ? _onSize : _offSize;
-
-    //    //_tween = _rectTransform.DOAnchorMin(_tempMovePanel, _duration)
-    //    //         .SetLink(gameObject);
-    //    //_tween.Play();
-    //    //OnShow?.Invoke(_isVisible);
-    //}
 }

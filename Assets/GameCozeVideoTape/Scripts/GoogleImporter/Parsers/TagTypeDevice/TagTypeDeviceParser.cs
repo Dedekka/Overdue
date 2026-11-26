@@ -12,7 +12,7 @@ public class TagTypeDeviceParser : IGoogleParser
         _mainGoogleSettings.TagTypeDeviceSettings = new List<TagTypeDeviceSettings>();
     }
 
-    
+
     public void Parse(string headerName, string token)
     {
         switch (headerName)
@@ -38,11 +38,11 @@ public class TagTypeDeviceParser : IGoogleParser
                 _currentTutorialEventSettings.UiButtonTexts.Add(FindType(token, DeviceType.Gamepad));
                 break;
             case "GamepadXbox":
-                 //device = DeviceType.GamepadXbox | DeviceType.Gamepad;
+                //device = DeviceType.GamepadXbox | DeviceType.Gamepad;
                 _currentTutorialEventSettings.UiButtonTexts.Add(FindType(token, DeviceType.GamepadXbox));
                 break;
             case "GamepadSony":
-                 //device = DeviceType.GamepadSony | DeviceType.Gamepad;
+                //device = DeviceType.GamepadSony | DeviceType.Gamepad;
                 _currentTutorialEventSettings.UiButtonTexts.Add(FindType(token, DeviceType.GamepadSony));
                 break;
             default:

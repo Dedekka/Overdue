@@ -53,10 +53,6 @@ public class CheckerTextIconTags
         DeviceType DeviceType = _importerMenuInputControlDevice.CurrentDevice;
 
         UiButtonText UiButtonText = UiButtonTexts.Find((x) => x.DeviceType == DeviceType);
-
-        //Debug.Log($"CheckDevice, FindUiButtonTexts = null?{UiButtonText == null}");
-        //Debug.Log($"CheckDevice, Text:{DeviceType}");
-        //Debug.Log($"CheckDevice, Text:{UiButtonText.Text}");
         return UiButtonText.Text;
     }
 
