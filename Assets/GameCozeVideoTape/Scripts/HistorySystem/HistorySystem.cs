@@ -42,7 +42,7 @@ public class HistorySystem : IInitializable, IDisposable
     {
         ControlEndToken();
         _controlPhoneAnswer.OnEventComplited -= ComplitedHistoryEvent;
-        //_controlPresentEvent.OnEventComplited -= ComplitedHistoryEvent;
+        _controlPresentEvent.OnEventComplited -= ComplitedHistoryEvent;
     }
 
     private void SetBazeEvent()
@@ -51,7 +51,7 @@ public class HistorySystem : IInitializable, IDisposable
         ChangeCurrentEvent();
 
         _controlPhoneAnswer.OnEventComplited += ComplitedHistoryEvent;
-        //_controlPresentEvent.OnEventComplited += ComplitedHistoryEvent;
+        _controlPresentEvent.OnEventComplited += ComplitedHistoryEvent;
     }
 
     private void ChangeCurrentEvent()

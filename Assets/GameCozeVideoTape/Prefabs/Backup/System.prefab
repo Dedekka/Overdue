@@ -301,8 +301,6 @@ MonoBehaviour:
     SoundUi: 1
   - Selectable: {fileID: 0}
     SoundUi: 1
-  - Selectable: {fileID: 0}
-    SoundUi: 1
   _selectUiSoundSlider:
   - {fileID: 0}
   - {fileID: 0}
@@ -411,8 +409,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueInstaller
   _viewDialog: {fileID: 0}
-  _timeWaitChar: 0.03
-  _timeWaitLine: 2.5
+  _timeWaitChar: 0.015
+  _timeWaitLine: 3.5
 --- !u!1 &4485493663572995381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,10 +1124,14 @@ MonoBehaviour:
   - CutsceneName: InstallRecorderCat
     IDCutscene: 2
     CutsceneObject: {fileID: 0}
-  - CutsceneName: End
+  - CutsceneName: PreEnd
     IDCutscene: 3
     CutsceneObject: {fileID: 0}
+  - CutsceneName: End
+    IDCutscene: 4
+    CutsceneObject: {fileID: 0}
   _blackScreen: {fileID: 0}
+  _triggerCutscene: {fileID: 0}
 --- !u!1 &8276730092316044430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,9 +1190,6 @@ MonoBehaviour:
     NextPage: {fileID: 0}
     LastPage: {fileID: 0}
   - IdPage: 4
-    NextPage: {fileID: 0}
-    LastPage: {fileID: 0}
-  - IdPage: 5
     NextPage: {fileID: 0}
     LastPage: {fileID: 0}
 --- !u!1 &8282040479229805756

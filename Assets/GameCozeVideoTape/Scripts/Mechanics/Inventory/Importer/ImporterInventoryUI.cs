@@ -5,8 +5,6 @@ public class ImporterInventoryUI : IDisposable, IInitializable
 {
     private PlayerUi _playerUi;
     private InventoryCassette _inventorySlot;
-    //<sprite="UiGamePad" index=26>
-    //private const string tempTag = "<sprite=\"StikersAtlas\" index=0>";
     public ImporterInventoryUI(InventoryCassette inventorySlot, PlayerUi playerUi)
     {
         _playerUi = playerUi;

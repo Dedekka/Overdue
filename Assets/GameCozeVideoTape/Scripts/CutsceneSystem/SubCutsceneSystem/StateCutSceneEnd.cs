@@ -7,13 +7,15 @@ public class StateCutSceneEnd : StateCutScene
     private Cat _cat;
     private ControlLogic _ñontrolLogic;
     private AudioManager _audioManager;
+    private GoalController _goalController;
     private CutsceneBlackScreen _cutsceneBlackScreen;
     private ControlSettings _controlSettings;
     private float _startWait;
     private float _endWait;
 
-    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi, ControlSettings controlSettings, AudioManager audioManager, Cat cat) : base(idCutscene, playerStateControl, playerUi)
+    public StateCutSceneEnd(int idCutscene, float StartWait, float EndWait, ControlLogic ñontrolLogic, PlayerStateControl playerStateControl, CutsceneBlackScreen cutsceneBlackScreen, PlayerUi playerUi, ControlSettings controlSettings, AudioManager audioManager, Cat cat, GoalController goalController) : base(idCutscene, playerStateControl, playerUi)
     {
+        _goalController = goalController;
          _cutsceneBlackScreen = cutsceneBlackScreen;
         _startWait = StartWait;
         _endWait = EndWait;
@@ -31,6 +33,7 @@ public class StateCutSceneEnd : StateCutScene
         _playerStateControl.ChangeStateControlPlayer(false);
         _playerUi.ChangeOtherGoup(false);
         _cat.gameObject.SetActive(false);
+        _goalController.ClearGoal(TutorialEventType.OnExit);
     }
 
     public override void EndCutscene()

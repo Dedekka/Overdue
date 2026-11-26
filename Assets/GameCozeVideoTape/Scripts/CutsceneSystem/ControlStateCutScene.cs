@@ -8,8 +8,8 @@ public class ControlStateCutScene :IDisposable, IInitializable
     private List<StateCutScene> _stateCutScenes;
     private FactoryCutScene _factoryCutScene;
     private CutSceneController _cutSceneController;
-    private int _currentCutsceneIndex;
     private StateCutScene _currentStateCutScene;
+    private int _currentCutsceneIndex;
 
     public ControlStateCutScene(FactoryCutScene factoryCutScene, CutSceneController cutSceneController)
     {

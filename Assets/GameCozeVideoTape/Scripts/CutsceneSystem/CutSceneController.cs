@@ -10,7 +10,6 @@ public class CutSceneController
     private Dictionary<int, PlayableDirector> cutsceneDataBase = new Dictionary<int, PlayableDirector>();
     private FactoryCutScene _factoryCutScene;
 
-
     public event Action<bool> OnCutscene;
     public event Action<int> OnStartCutscene;
     public event Action OnEndCutscene;

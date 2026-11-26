@@ -47,4 +47,5 @@ public enum TutorialEventType
     OnInstall,
     OnChangeAudio,
     OnPlayAudio,
+    OnExit,
 }

@@ -32,10 +32,9 @@ public class FactoryCutScene
         {
             _container.Instantiate<StateCutSceneIntro>(new object[] {1}),
             _container.Instantiate<StateCutSceneInstallRecorderCat>(new object[] {2}),
-            _container.Instantiate<StateCutSceneEnd>(new object[] {3,1f,2f}) 
-            //StateCutSceneIntro
+            _container.Instantiate<StateCutScenePreEnd>(new object[] {3}),
+            _container.Instantiate<StateCutSceneEnd>(new object[] {4,1f,2f}) 
         };
-
         return stateCutScenes;
     }
 

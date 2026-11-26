@@ -7,7 +7,8 @@ public class CutsceneInstaller : MonoInstaller
 {
     [SerializeField] private List<CutsceneStruct> _cutscenes = new List<CutsceneStruct>();
     [SerializeField] private CanvasGroup _blackScreen;
-    
+    [SerializeField] private TriggerCutscene _triggerCutscene;
+
     public override void InstallBindings()
     {
         BindCutsceneSystem();
@@ -31,5 +32,9 @@ public class CutsceneInstaller : MonoInstaller
         Container.Bind<CutsceneBlackScreen>()
               .AsSingle()
               .WithArguments(_blackScreen);
+
+        Container.Bind<TriggerCutscene>()
+            .FromInstance(_triggerCutscene)
+            .AsSingle();
     }
 }

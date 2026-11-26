@@ -1,13 +1,13 @@
 using System;
 using Zenject;
 
-public class ControlPresentEvent //: IDisposable, IInitializable
+public class ControlPresentEvent : IDisposable, IInitializable
 {
     private PresentEffect _presentEffect;
     private PresentEventManager _presentEventManager;
     private PresentEvent _presentEvent;
 
-    //public event Action OnEventComplited;
+    public event Action OnEventComplited;
 
     public ControlPresentEvent(PresentEventManager dialogEventManager, PresentEffect presentEffect)
     {
@@ -15,15 +15,15 @@ public class ControlPresentEvent //: IDisposable, IInitializable
         _presentEffect = presentEffect;
     }
 
-    //public void Initialize()
-    //{
-    //    _presentEventManager.OnEventComplited += OnEventComplited;
-    //}
+    public void Initialize()
+    {
+        _presentEventManager.OnEventComplited += OnEventComplited;
+    }
 
-    //public void Dispose()
-    //{
-    //    _presentEventManager.OnEventComplited -= OnEventComplited;
-    //}
+    public void Dispose()
+    {
+        _presentEventManager.OnEventComplited -= OnEventComplited;
+    }
 
     public void SetEvent(PresentEvent presentEvent)
     {
@@ -38,4 +38,6 @@ public class ControlPresentEvent //: IDisposable, IInitializable
         _presentEventManager.ActiveEvent();
         _presentEffect.ActivationPresentEffect();
     }
+
+   
 }
