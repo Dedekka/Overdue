@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class UiInstaller : MonoInstaller
@@ -23,10 +22,13 @@ public class UiInstaller : MonoInstaller
         .WithArguments(_selectUiSoundButton, _selectUiSoundSlider);
 
         Container.Bind<AudioUi>()
-        .AsSingle()
-        .WithArguments(_audioSettings);
+        .AsSingle();
 
-       
+        Container.Bind<AudioSettings>()
+            .FromInstance(_audioSettings)
+            .AsSingle();
+
+
     }
 }
 

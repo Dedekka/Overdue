@@ -9,7 +9,7 @@ public class CutsceneSystem : IDisposable, IInitializable
     {
         _cutSceneController = cutSceneController;
     }
-
+    
     public void Initialize()
     { 
         _cutSceneController.Initialization();

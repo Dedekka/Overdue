@@ -27,6 +27,7 @@ public class AudioSettings : ScriptableObject
     public EventReference Cat_idle => _cat_idle;
     public EventReference Cat_meow => _cat_meow;
     public float TimeWaitSliderSound => _timeWaitSliderSound;
+    public float TimeWaitScrollSound => _timeWaitScrollSound;
 
     #endregion
     [Header("Cassette")]
@@ -63,4 +64,5 @@ public class AudioSettings : ScriptableObject
 
     [Header("UiSettings")]
     [SerializeField] private float _timeWaitSliderSound;
+    [SerializeField] private float _timeWaitScrollSound;
 }

@@ -6,14 +6,16 @@ using Zenject;
 
 public class Restart : MonoBehaviour
 {
+    private CutSceneController _cutSceneController;
     private Saver _saver;
     private ControlPhoneAnswer _phone;
     private PresentEventManager _realizerPresent;
     private ControlGameAnalytics _controlGameAnalytics;
 
     [Inject]
-    private void Construct(Saver saver, PresentEventManager realizerPresent, ControlPhoneAnswer phone, ControlGameAnalytics controlGameAnalytics)
+    private void Construct(Saver saver, PresentEventManager realizerPresent, ControlPhoneAnswer phone, ControlGameAnalytics controlGameAnalytics, CutSceneController cutSceneController)
     {
+        _cutSceneController = cutSceneController;
         _saver = saver;
         _realizerPresent = realizerPresent;
         _phone = phone;
@@ -33,7 +35,8 @@ public class Restart : MonoBehaviour
 
         //if (Keyboard.current.pKey.wasPressedThisFrame)
         //{
-        //    ResetLevel();
+        //    _cutSceneController.StartCutscene(3);
+        //    //ResetLevel();
         //}
 
         //if (Keyboard.current.kKey.wasPressedThisFrame)

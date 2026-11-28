@@ -11,6 +11,7 @@ public class StateCutScenePreEnd : StateCutScene
     public override void StartCutscene()
     {
         _playerStateControl.ChangeStateControlPlayer(false);
+        _playerUi.ChangeOtherGoup(false);
     }
 
     public override void EndCutscene()
@@ -18,5 +19,6 @@ public class StateCutScenePreEnd : StateCutScene
         _playerStateControl.ChangeStateControlPlayer(true);
         _goalController.ActiveGoal(TutorialEventType.OnExit);
         _triggerCutscene.gameObject.SetActive(true);
+        _playerUi.ChangeOtherGoup(true);
     }
 }
